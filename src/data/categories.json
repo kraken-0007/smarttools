@@ -1,0 +1,66 @@
+[
+  {
+    "id": "pdf-tools",
+    "slug": "pdf-tools",
+    "icon": "FileText",
+    "color": "from-red-500 to-rose-600",
+    "name": {
+      "en": "PDF Tools",
+      "fr": "Outils PDF",
+      "ar": "أدوات PDF"
+    },
+    "description": {
+      "en": "Convert, merge, compress and edit PDF files",
+      "fr": "Convertissez, fusionnez et modifiez vos PDF",
+      "ar": "تحويل ودمج وتحرير ملفات PDF"
+    }
+  },
+  {
+    "id": "image-tools",
+    "slug": "image-tools",
+    "icon": "Image",
+    "color": "from-blue-500 to-indigo-600",
+    "name": {
+      "en": "Image Tools",
+      "fr": "Outils Image",
+      "ar": "أدوات الصور"
+    },
+    "description": {
+      "en": "Compress, resize and convert your images",
+      "fr": "Compressez, redimensionnez vos images",
+      "ar": "ضغط وتغيير حجم وتحويل صورك"
+    }
+  },
+  {
+    "id": "text-tools",
+    "slug": "text-tools",
+    "icon": "Type",
+    "color": "from-green-500 to-emerald-600",
+    "name": {
+      "en": "Text Tools",
+      "fr": "Outils Texte",
+      "ar": "أدوات النصوص"
+    },
+    "description": {
+      "en": "Word count, password generation and more",
+      "fr": "Comptage de mots, génération de mots de passe",
+      "ar": "عدّ الكلمات وتوليد كلمات المرور"
+    }
+  },
+  {
+    "id": "calculators",
+    "slug": "calculators",
+    "icon": "Calculator",
+    "color": "from-purple-500 to-violet-600",
+    "name": {
+      "en": "Calculators",
+      "fr": "Calculatrices",
+      "ar": "الآلات الحاسبة"
+    },
+    "description": {
+      "en": "Age, BMI and other useful calculators",
+      "fr": "Calculatrices d'âge, IMC et plus encore",
+      "ar": "حاسبة العمر ومؤشر كتلة الجسم وغيرها"
+    }
+  }
+]

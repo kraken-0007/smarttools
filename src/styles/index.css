@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 255 255 255;
+    --fg: 15 23 42;
+  }
+  .dark {
+    --bg: 10 10 15;
+    --fg: 248 250 252;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  [dir="rtl"] body,
+  [dir="rtl"] * {
+    font-family: 'Cairo', sans-serif;
+  }
+
+  * {
+    @apply border-gray-200 dark:border-gray-800;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-600 to-purple-600 bg-clip-text text-transparent;
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:-translate-y-1 hover:shadow-lg;
+  }
+  .glass {
+    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm;
+  }
+}

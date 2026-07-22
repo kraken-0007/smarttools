@@ -1,0 +1,137 @@
+{
+  "en": {
+    "dir": "ltr",
+    "nav": {
+      "home": "Home",
+      "categories": "Categories",
+      "tools": "Tools"
+    },
+    "hero": {
+      "badge": "100% Free Online Tools",
+      "title": "Smart Tools for",
+      "titleHighlight": "Everyone",
+      "subtitle": "A fast, multilingual platform with essential online tools. No sign-up, no ads, just tools.",
+      "searchPlaceholder": "Search tools..."
+    },
+    "categories": {
+      "title": "Browse by Category",
+      "subtitle": "Choose a category to explore all available tools",
+      "toolsCount": "tools"
+    },
+    "tools": {
+      "popular": "Popular Tools",
+      "viewAll": "View All",
+      "useTool": "Use Tool",
+      "viewCategory": "View Category",
+      "howTo": "How to use",
+      "related": "Related Tools",
+      "comingSoon": "Tool interface coming soon",
+      "comingSoonDesc": "This tool is being developed. Check back soon!"
+    },
+    "footer": {
+      "tagline": "Fast, free, multilingual online tools for everyone.",
+      "categories": "Categories",
+      "language": "Language",
+      "copyright": "© 2026 SmartTools. All rights reserved."
+    },
+    "theme": {
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "search": {
+      "results": "results for",
+      "noResults": "No tools found for",
+      "tryOther": "Try a different search term."
+    }
+  },
+  "fr": {
+    "dir": "ltr",
+    "nav": {
+      "home": "Accueil",
+      "categories": "Catégories",
+      "tools": "Outils"
+    },
+    "hero": {
+      "badge": "Outils en ligne 100% gratuits",
+      "title": "Des outils intelligents pour",
+      "titleHighlight": "tous",
+      "subtitle": "Une plateforme rapide et multilingue avec des outils essentiels. Sans inscription, sans publicité.",
+      "searchPlaceholder": "Rechercher un outil..."
+    },
+    "categories": {
+      "title": "Parcourir par catégorie",
+      "subtitle": "Choisissez une catégorie pour explorer tous les outils disponibles",
+      "toolsCount": "outils"
+    },
+    "tools": {
+      "popular": "Outils populaires",
+      "viewAll": "Voir tout",
+      "useTool": "Utiliser",
+      "viewCategory": "Voir la catégorie",
+      "howTo": "Comment utiliser",
+      "related": "Outils associés",
+      "comingSoon": "Interface en cours de développement",
+      "comingSoonDesc": "Cet outil est en cours de développement. Revenez bientôt !"
+    },
+    "footer": {
+      "tagline": "Outils en ligne rapides, gratuits et multilingues pour tous.",
+      "categories": "Catégories",
+      "language": "Langue",
+      "copyright": "© 2026 SmartTools. Tous droits réservés."
+    },
+    "theme": {
+      "light": "Clair",
+      "dark": "Sombre"
+    },
+    "search": {
+      "results": "résultats pour",
+      "noResults": "Aucun outil trouvé pour",
+      "tryOther": "Essayez un autre terme."
+    }
+  },
+  "ar": {
+    "dir": "rtl",
+    "nav": {
+      "home": "الرئيسية",
+      "categories": "الفئات",
+      "tools": "الأدوات"
+    },
+    "hero": {
+      "badge": "أدوات مجانية 100% عبر الإنترنت",
+      "title": "أدوات ذكية",
+      "titleHighlight": "للجميع",
+      "subtitle": "منصة سريعة ومتعددة اللغات بأدوات أساسية. بدون تسجيل، بدون إعلانات.",
+      "searchPlaceholder": "ابحث عن أداة..."
+    },
+    "categories": {
+      "title": "تصفح حسب الفئة",
+      "subtitle": "اختر فئة لاستعراض جميع الأدوات المتاحة",
+      "toolsCount": "أدوات"
+    },
+    "tools": {
+      "popular": "الأدوات الشائعة",
+      "viewAll": "عرض الكل",
+      "useTool": "استخدام الأداة",
+      "viewCategory": "عرض الفئة",
+      "howTo": "كيفية الاستخدام",
+      "related": "أدوات ذات صلة",
+      "comingSoon": "واجهة الأداة قريباً",
+      "comingSoonDesc": "هذه الأداة قيد التطوير. تفقد قريباً!"
+    },
+    "footer": {
+      "tagline": "أدوات سريعة ومجانية ومتعددة اللغات للجميع.",
+      "categories": "الفئات",
+      "language": "اللغة",
+      "copyright": "© 2026 SmartTools. جميع الحقوق محفوظة."
+    },
+    "theme": {
+      "light": "فاتح",
+      "dark": "داكن"
+    },
+    "search": {
+      "results": "نتائج لـ",
+      "noResults": "لا توجد أدوات لـ",
+      "tryOther": "جرّب مصطلح بحث مختلف."
+    }
+  }
+}
