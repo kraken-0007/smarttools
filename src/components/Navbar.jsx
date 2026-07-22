@@ -1,108 +1,108 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Sun, Moon, Search, Menu, X, Zap } from 'lucide-react'
-import { cn } from '../lib/utils'
+import { Search, Sun, Moon, X, Menu, Zap, ChevronDown } from 'lucide-react'
 
-const FLAG = { en: '🇬🇧', fr: '🇫🇷', ar: '🇲🇦' }
-const LABEL = { en: 'EN', fr: 'FR', ar: 'AR' }
+const LANG_META = {
+  en: { label: 'EN', flag: '🇬🇧', full: 'English' },
+  fr: { label: 'FR', flag: '🇫🇷', full: 'Français' },
+  ar: { label: 'AR', flag: '🇸🇦', full: 'العربية' },
+}
 
-export default function Navbar({ theme, toggleTheme, lang, setLang, langs, t }) {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
+export default function Navbar({ theme, toggleTheme, lang, setLang, langs, t, onMenuToggle }) {
   const [query, setQuery] = useState('')
+  const [searchFocus, setSearchFocus] = useState(false)
+  const [langOpen, setLangOpen] = useState(false)
   const navigate = useNavigate()
+  const langRef = useRef(null)
+
+  useEffect(() => {
+    const handler = (e) => { if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(false) }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
 
   const handleSearch = (e) => {
     e.preventDefault()
-    if (query.trim()) {
-      navigate(`/search?q=${encodeURIComponent(query.trim())}`)
-      setQuery('')
-      setSearchOpen(false)
-    }
+    if (query.trim()) { navigate(`/search?q=${encodeURIComponent(query.trim())}`); setQuery('') }
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b glass">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 h-16 bg-white/95 dark:bg-gray-950/95 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 flex items-center">
+      <div className="w-full px-4 flex items-center gap-3">
+
+        {/* Mobile hamburger */}
+        <button onClick={onMenuToggle} className="lg:hidden btn-ghost p-2 rounded-xl" aria-label="Menu">
+          <Menu className="w-5 h-5" />
+        </button>
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
-            <Zap className="w-4 h-4 text-white" />
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-500 flex items-center justify-center shadow-sm">
+            <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
           </div>
-          <span className="font-bold text-lg tracking-tight">SmartTools</span>
+          <span className="font-bold text-[17px] tracking-tight hidden sm:block text-gray-900 dark:text-white">
+            Smart<span className="text-blue-600">Tools</span>
+          </span>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600 dark:text-gray-300">
-          <Link to="/" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">{t.nav.home}</Link>
-          <Link to="/categories" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">{t.nav.categories}</Link>
-        </nav>
-
-        {/* Actions */}
-        <div className="flex items-center gap-2">
-          {/* Search */}
-          {searchOpen ? (
-            <form onSubmit={handleSearch} className="flex items-center gap-2">
-              <input
-                autoFocus
-                value={query}
-                onChange={e => setQuery(e.target.value)}
-                placeholder={t.hero.searchPlaceholder}
-                className="w-48 md:w-64 px-3 py-1.5 text-sm rounded-lg border bg-white dark:bg-gray-900 dark:border-gray-700 outline-none focus:ring-2 focus:ring-brand-500"
-              />
-              <button type="button" onClick={() => setSearchOpen(false)} className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white">
-                <X className="w-4 h-4" />
+        {/* Search bar — center */}
+        <form onSubmit={handleSearch} className="flex-1 max-w-xl mx-auto">
+          <div className={`relative flex items-center h-10 rounded-xl border-2 transition-all duration-200 bg-gray-50 dark:bg-gray-900 ${searchFocus ? 'border-blue-500 bg-white dark:bg-gray-800 shadow-sm shadow-blue-500/10' : 'border-gray-200 dark:border-gray-700'}`}>
+            <Search className="absolute start-3 w-4 h-4 text-gray-400" />
+            <input
+              type="text"
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              onFocus={() => setSearchFocus(true)}
+              onBlur={() => setSearchFocus(false)}
+              placeholder={t.nav.search}
+              className="w-full h-full ps-9 pe-4 bg-transparent text-sm outline-none placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white"
+            />
+            {query && (
+              <button type="button" onClick={() => setQuery('')} className="absolute end-3 text-gray-400 hover:text-gray-600">
+                <X className="w-3.5 h-3.5" />
               </button>
-            </form>
-          ) : (
-            <button onClick={() => setSearchOpen(true)} className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Search">
-              <Search className="w-4 h-4" />
-            </button>
-          )}
+            )}
+          </div>
+        </form>
 
-          {/* Theme */}
-          <button onClick={toggleTheme} className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle theme">
-            {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </button>
-
-          {/* Language */}
-          <div className="relative group">
-            <button className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-              <span>{FLAG[lang]}</span>
-              <span>{LABEL[lang]}</span>
+        {/* Right actions */}
+        <div className="flex items-center gap-1 shrink-0">
+          {/* Lang switcher */}
+          <div className="relative" ref={langRef}>
+            <button
+              onClick={() => setLangOpen(!langOpen)}
+              className="btn-ghost px-3 py-2 rounded-xl flex items-center gap-1.5 text-sm font-medium"
+            >
+              <span className="text-base leading-none">{LANG_META[lang].flag}</span>
+              <span className="hidden sm:block">{LANG_META[lang].label}</span>
+              <ChevronDown className={`w-3.5 h-3.5 text-gray-400 transition-transform ${langOpen ? 'rotate-180' : ''}`} />
             </button>
-            <div className="absolute end-0 top-full mt-1 bg-white dark:bg-gray-900 border rounded-xl shadow-lg overflow-hidden hidden group-hover:block min-w-[100px]">
-              {langs.map(l => (
-                <button
-                  key={l}
-                  onClick={() => setLang(l)}
-                  className={cn(
-                    'w-full flex items-center gap-2 px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors',
-                    lang === l ? 'text-brand-600 font-medium' : 'text-gray-700 dark:text-gray-300'
-                  )}
-                >
-                  <span>{FLAG[l]}</span>
-                  <span>{LABEL[l]}</span>
-                </button>
-              ))}
-            </div>
+            {langOpen && (
+              <div className="absolute end-0 top-full mt-2 w-40 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl shadow-card-lg overflow-hidden py-1 animate-fade-in">
+                {langs.map(l => (
+                  <button
+                    key={l}
+                    onClick={() => { setLang(l); setLangOpen(false) }}
+                    className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${l === lang ? 'bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 font-semibold' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'}`}
+                  >
+                    <span className="text-base">{LANG_META[l].flag}</span>
+                    <span>{LANG_META[l].full}</span>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
-          {/* Mobile menu */}
-          <button className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          {/* Theme toggle */}
+          <button onClick={toggleTheme} className="btn-ghost p-2.5 rounded-xl" aria-label="Toggle theme">
+            {theme === 'dark'
+              ? <Sun className="w-4 h-4 text-amber-400" />
+              : <Moon className="w-4 h-4" />
+            }
           </button>
         </div>
       </div>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden border-t bg-white dark:bg-gray-950 px-4 py-3 flex flex-col gap-3 text-sm font-medium">
-          <Link to="/" onClick={() => setMenuOpen(false)} className="py-2 hover:text-brand-600">{t.nav.home}</Link>
-          <Link to="/categories" onClick={() => setMenuOpen(false)} className="py-2 hover:text-brand-600">{t.nav.categories}</Link>
-        </div>
-      )}
     </header>
   )
 }

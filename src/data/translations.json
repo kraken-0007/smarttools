@@ -1,137 +1,149 @@
 {
   "en": {
     "dir": "ltr",
-    "nav": {
-      "home": "Home",
-      "categories": "Categories",
-      "tools": "Tools"
-    },
+    "nav": { "home": "Home", "categories": "Categories", "tools": "Tools", "search": "Search tools…" },
     "hero": {
-      "badge": "100% Free Online Tools",
-      "title": "Smart Tools for",
-      "titleHighlight": "Everyone",
-      "subtitle": "A fast, multilingual platform with essential online tools. No sign-up, no ads, just tools.",
-      "searchPlaceholder": "Search tools..."
+      "badge": "100% Free · No Sign-up · No Ads",
+      "title": "All-in-One Free\nOnline Tools",
+      "subtitle": "Convert, Compress, Edit and Optimize Files Online for Free.",
+      "cta": "Explore All Tools",
+      "searchPlaceholder": "Search 8+ tools…",
+      "stat1": "Tools", "stat2": "Categories", "stat3": "Languages"
     },
-    "categories": {
-      "title": "Browse by Category",
-      "subtitle": "Choose a category to explore all available tools",
-      "toolsCount": "tools"
+    "sections": {
+      "categories": "Browse Categories",
+      "categoriesSub": "Pick a category to explore all available tools",
+      "popular": "Popular Tools",
+      "popularSub": "Most used tools by our community",
+      "recent": "Recently Added",
+      "recentSub": "The latest tools added to SmartTools",
+      "why": "Why SmartTools?",
+      "whySub": "Built for speed, simplicity and everyone"
     },
     "tools": {
-      "popular": "Popular Tools",
-      "viewAll": "View All",
-      "useTool": "Use Tool",
-      "viewCategory": "View Category",
+      "open": "Open Tool",
+      "viewAll": "View all",
       "howTo": "How to use",
       "related": "Related Tools",
-      "comingSoon": "Tool interface coming soon",
-      "comingSoonDesc": "This tool is being developed. Check back soon!"
+      "faq": "FAQ",
+      "comingSoon": "Coming Soon",
+      "comingSoonDesc": "This tool is under development. Check back soon!"
     },
+    "why": [
+      { "title": "Lightning Fast", "desc": "No loading screens. Results in seconds." },
+      { "title": "100% Free", "desc": "No subscriptions, no hidden fees, ever." },
+      { "title": "No Sign-up", "desc": "Just open a tool and use it instantly." },
+      { "title": "Multilingual", "desc": "Available in English, French and Arabic." }
+    ],
     "footer": {
-      "tagline": "Fast, free, multilingual online tools for everyone.",
-      "categories": "Categories",
-      "language": "Language",
-      "copyright": "© 2026 SmartTools. All rights reserved."
-    },
-    "theme": {
-      "light": "Light",
-      "dark": "Dark"
+      "tagline": "Fast, free and multilingual online tools for everyone.",
+      "categories": "Categories", "links": "Quick Links", "lang": "Language",
+      "copyright": "© 2026 SmartTools · All rights reserved."
     },
     "search": {
+      "title": "Search Results",
       "results": "results for",
       "noResults": "No tools found for",
-      "tryOther": "Try a different search term."
-    }
+      "hint": "Try searching: PDF, image, calculator…"
+    },
+    "breadcrumb": { "home": "Home" }
   },
   "fr": {
     "dir": "ltr",
-    "nav": {
-      "home": "Accueil",
-      "categories": "Catégories",
-      "tools": "Outils"
-    },
+    "nav": { "home": "Accueil", "categories": "Catégories", "tools": "Outils", "search": "Rechercher…" },
     "hero": {
-      "badge": "Outils en ligne 100% gratuits",
-      "title": "Des outils intelligents pour",
-      "titleHighlight": "tous",
-      "subtitle": "Une plateforme rapide et multilingue avec des outils essentiels. Sans inscription, sans publicité.",
-      "searchPlaceholder": "Rechercher un outil..."
+      "badge": "100% Gratuit · Sans inscription · Sans pub",
+      "title": "Tous vos outils\nen ligne gratuits",
+      "subtitle": "Convertissez, compressez, modifiez et optimisez vos fichiers en ligne.",
+      "cta": "Explorer les outils",
+      "searchPlaceholder": "Rechercher parmi 8+ outils…",
+      "stat1": "Outils", "stat2": "Catégories", "stat3": "Langues"
     },
-    "categories": {
-      "title": "Parcourir par catégorie",
-      "subtitle": "Choisissez une catégorie pour explorer tous les outils disponibles",
-      "toolsCount": "outils"
+    "sections": {
+      "categories": "Parcourir les catégories",
+      "categoriesSub": "Choisissez une catégorie pour explorer tous les outils",
+      "popular": "Outils populaires",
+      "popularSub": "Les outils les plus utilisés par notre communauté",
+      "recent": "Récemment ajoutés",
+      "recentSub": "Les derniers outils ajoutés à SmartTools",
+      "why": "Pourquoi SmartTools ?",
+      "whySub": "Conçu pour la rapidité, la simplicité et tous"
     },
     "tools": {
-      "popular": "Outils populaires",
+      "open": "Ouvrir l'outil",
       "viewAll": "Voir tout",
-      "useTool": "Utiliser",
-      "viewCategory": "Voir la catégorie",
       "howTo": "Comment utiliser",
       "related": "Outils associés",
-      "comingSoon": "Interface en cours de développement",
-      "comingSoonDesc": "Cet outil est en cours de développement. Revenez bientôt !"
+      "faq": "FAQ",
+      "comingSoon": "Bientôt disponible",
+      "comingSoonDesc": "Cet outil est en cours de développement."
     },
+    "why": [
+      { "title": "Ultra rapide", "desc": "Pas d'attente. Résultats en quelques secondes." },
+      { "title": "100% Gratuit", "desc": "Aucun abonnement, aucun frais caché." },
+      { "title": "Sans inscription", "desc": "Ouvrez un outil et utilisez-le immédiatement." },
+      { "title": "Multilingue", "desc": "Disponible en anglais, français et arabe." }
+    ],
     "footer": {
       "tagline": "Outils en ligne rapides, gratuits et multilingues pour tous.",
-      "categories": "Catégories",
-      "language": "Langue",
-      "copyright": "© 2026 SmartTools. Tous droits réservés."
-    },
-    "theme": {
-      "light": "Clair",
-      "dark": "Sombre"
+      "categories": "Catégories", "links": "Liens rapides", "lang": "Langue",
+      "copyright": "© 2026 SmartTools · Tous droits réservés."
     },
     "search": {
+      "title": "Résultats",
       "results": "résultats pour",
       "noResults": "Aucun outil trouvé pour",
-      "tryOther": "Essayez un autre terme."
-    }
+      "hint": "Essayez : PDF, image, calculatrice…"
+    },
+    "breadcrumb": { "home": "Accueil" }
   },
   "ar": {
     "dir": "rtl",
-    "nav": {
-      "home": "الرئيسية",
-      "categories": "الفئات",
-      "tools": "الأدوات"
-    },
+    "nav": { "home": "الرئيسية", "categories": "الفئات", "tools": "الأدوات", "search": "ابحث عن أداة…" },
     "hero": {
-      "badge": "أدوات مجانية 100% عبر الإنترنت",
-      "title": "أدوات ذكية",
-      "titleHighlight": "للجميع",
-      "subtitle": "منصة سريعة ومتعددة اللغات بأدوات أساسية. بدون تسجيل، بدون إعلانات.",
-      "searchPlaceholder": "ابحث عن أداة..."
+      "badge": "مجاني 100% · بدون تسجيل · بدون إعلانات",
+      "title": "جميع الأدوات المجانية\nعبر الإنترنت",
+      "subtitle": "تحويل، ضغط، تحرير وتحسين الملفات عبر الإنترنت مجاناً.",
+      "cta": "استعرض الأدوات",
+      "searchPlaceholder": "ابحث في أكثر من 8 أداة…",
+      "stat1": "أداة", "stat2": "فئات", "stat3": "لغات"
     },
-    "categories": {
-      "title": "تصفح حسب الفئة",
-      "subtitle": "اختر فئة لاستعراض جميع الأدوات المتاحة",
-      "toolsCount": "أدوات"
+    "sections": {
+      "categories": "تصفح الفئات",
+      "categoriesSub": "اختر فئة لاستعراض جميع الأدوات المتاحة",
+      "popular": "الأدوات الشائعة",
+      "popularSub": "الأدوات الأكثر استخداماً من قِبل مجتمعنا",
+      "recent": "أضيف مؤخراً",
+      "recentSub": "أحدث الأدوات المضافة إلى SmartTools",
+      "why": "لماذا SmartTools؟",
+      "whySub": "مصمم للسرعة والبساطة والجميع"
     },
     "tools": {
-      "popular": "الأدوات الشائعة",
+      "open": "فتح الأداة",
       "viewAll": "عرض الكل",
-      "useTool": "استخدام الأداة",
-      "viewCategory": "عرض الفئة",
       "howTo": "كيفية الاستخدام",
       "related": "أدوات ذات صلة",
-      "comingSoon": "واجهة الأداة قريباً",
+      "faq": "الأسئلة الشائعة",
+      "comingSoon": "قريباً",
       "comingSoonDesc": "هذه الأداة قيد التطوير. تفقد قريباً!"
     },
+    "why": [
+      { "title": "سريع جداً", "desc": "بدون انتظار. نتائج في ثوانٍ." },
+      { "title": "مجاني 100%", "desc": "بدون اشتراكات أو رسوم خفية." },
+      { "title": "بدون تسجيل", "desc": "افتح الأداة واستخدمها فوراً." },
+      { "title": "متعدد اللغات", "desc": "متوفر بالعربية والفرنسية والإنجليزية." }
+    ],
     "footer": {
       "tagline": "أدوات سريعة ومجانية ومتعددة اللغات للجميع.",
-      "categories": "الفئات",
-      "language": "اللغة",
-      "copyright": "© 2026 SmartTools. جميع الحقوق محفوظة."
-    },
-    "theme": {
-      "light": "فاتح",
-      "dark": "داكن"
+      "categories": "الفئات", "links": "روابط سريعة", "lang": "اللغة",
+      "copyright": "© 2026 SmartTools · جميع الحقوق محفوظة."
     },
     "search": {
+      "title": "نتائج البحث",
       "results": "نتائج لـ",
       "noResults": "لا توجد أدوات لـ",
-      "tryOther": "جرّب مصطلح بحث مختلف."
-    }
+      "hint": "جرّب: PDF، صورة، حاسبة…"
+    },
+    "breadcrumb": { "home": "الرئيسية" }
   }
 }

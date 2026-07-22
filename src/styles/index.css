@@ -3,42 +3,61 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --bg: 255 255 255;
-    --fg: 15 23 42;
-  }
-  .dark {
-    --bg: 10 10 15;
-    --fg: 248 250 252;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
-    @apply bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased;
-    transition: background-color 0.2s, color 0.2s;
+    @apply bg-slate-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased;
+    transition: background-color 0.25s, color 0.25s;
   }
 
-  [dir="rtl"] body,
-  [dir="rtl"] * {
-    font-family: 'Cairo', sans-serif;
+  [dir="rtl"] * { font-family: 'Cairo', sans-serif; }
+  [dir="ltr"] * { font-family: 'Inter', sans-serif; }
+}
+
+@layer components {
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
+      text-gray-600 dark:text-gray-400
+      hover:bg-blue-50 dark:hover:bg-blue-950/40
+      hover:text-blue-700 dark:hover:text-blue-300
+      transition-all duration-150 cursor-pointer w-full;
+  }
+  .sidebar-link.active {
+    @apply bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 font-semibold;
   }
 
-  * {
-    @apply border-gray-200 dark:border-gray-800;
+  .tool-card {
+    @apply relative bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800
+      rounded-2xl p-5 flex flex-col gap-3
+      hover:border-blue-200 dark:hover:border-blue-800
+      hover:shadow-lg hover:shadow-blue-500/5 dark:hover:shadow-blue-900/20
+      transition-all duration-200 cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5
+      bg-blue-600 hover:bg-blue-700 active:bg-blue-800
+      text-white text-sm font-semibold rounded-xl
+      transition-all duration-150 shadow-sm hover:shadow-md;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2
+      text-gray-600 dark:text-gray-400 text-sm font-medium rounded-xl
+      hover:bg-gray-100 dark:hover:bg-gray-800
+      transition-all duration-150;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700
+      bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100
+      placeholder-gray-400 dark:placeholder-gray-500
+      outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500
+      transition-all duration-150 text-sm;
   }
 }
 
 @layer utilities {
-  .gradient-text {
-    @apply bg-gradient-to-r from-brand-600 to-purple-600 bg-clip-text text-transparent;
-  }
-  .card-hover {
-    @apply transition-all duration-200 hover:-translate-y-1 hover:shadow-lg;
-  }
-  .glass {
-    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm;
-  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 }

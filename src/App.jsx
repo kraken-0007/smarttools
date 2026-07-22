@@ -1,15 +1,15 @@
+import { useState } from 'react'
 import { Routes, Route, Navigate, useParams } from 'react-router-dom'
 import { useTheme } from './hooks/useTheme'
 import { useLang } from './hooks/useLang'
 import Navbar from './components/Navbar'
+import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
 import CategoriesPage from './pages/CategoriesPage'
 import ToolPage from './pages/ToolPage'
 import SearchPage from './pages/SearchPage'
-import categories from './data/categories.json'
 
-// Wrapper components to inject route params
 function CategoryRoute({ lang, t }) {
   const { slug } = useParams()
   return <CategoriesPage lang={lang} t={t} slug={slug} />
@@ -22,11 +22,13 @@ function ToolRoute({ lang, t }) {
 export default function App() {
   const { theme, toggle: toggleTheme } = useTheme()
   const { lang, setLang, t, langs } = useLang()
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
-  const sharedProps = { lang, t }
+  const shared = { lang, t }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-gray-950">
+      {/* Top Navbar */}
       <Navbar
         theme={theme}
         toggleTheme={toggleTheme}
@@ -34,21 +36,32 @@ export default function App() {
         setLang={setLang}
         langs={langs}
         t={t}
+        onMenuToggle={() => setSidebarOpen(o => !o)}
       />
 
-      <div className="flex-1">
-        <Routes>
-          <Route path="/" element={<HomePage {...sharedProps} />} />
-          <Route path="/categories" element={<CategoriesPage {...sharedProps} />} />
-          <Route path="/categories/:slug" element={<CategoryRoute {...sharedProps} />} />
-          <Route path="/tools/:slug" element={<ToolRoute {...sharedProps} />} />
-          <Route path="/search" element={<SearchPage {...sharedProps} />} />
-          {/* Catch-all */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </div>
+      {/* Body: sidebar + main */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* Left Sidebar */}
+        <Sidebar
+          lang={lang}
+          t={t}
+          isOpen={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
+        />
 
-      <Footer t={t} categories={categories} lang={lang} />
+        {/* Main content */}
+        <main className="flex-1 min-w-0 overflow-y-auto">
+          <Routes>
+            <Route path="/" element={<HomePage {...shared} />} />
+            <Route path="/categories" element={<CategoriesPage {...shared} />} />
+            <Route path="/categories/:slug" element={<CategoryRoute {...shared} />} />
+            <Route path="/tools/:slug" element={<ToolRoute {...shared} />} />
+            <Route path="/search" element={<SearchPage {...shared} />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+          <Footer t={t} lang={lang} />
+        </main>
+      </div>
     </div>
   )
 }
