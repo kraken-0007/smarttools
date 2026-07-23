@@ -10,8 +10,8 @@
     transition: background-color 0.25s, color 0.25s;
   }
 
-  [dir="rtl"] * { font-family: 'Cairo', sans-serif; }
-  [dir="ltr"] * { font-family: 'Inter', sans-serif; }
+  [dir="rtl"] * { font-family: 'Cairo', 'Inter', sans-serif; }
+  [dir="ltr"] * { font-family: 'Inter', system-ui, sans-serif; }
 }
 
 @layer components {
@@ -28,7 +28,7 @@
 
   .tool-card {
     @apply relative bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800
-      rounded-2xl p-5 flex flex-col gap-3
+      rounded-2xl p-6 flex flex-col gap-3
       hover:border-blue-200 dark:hover:border-blue-800
       hover:shadow-lg hover:shadow-blue-500/5 dark:hover:shadow-blue-900/20
       transition-all duration-200 cursor-pointer;
@@ -54,6 +54,19 @@
       placeholder-gray-400 dark:placeholder-gray-500
       outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500
       transition-all duration-150 text-sm;
+  }
+
+  /* Premium upload box */
+  .upload-box {
+    @apply relative border-2 border-dashed rounded-2xl
+      border-gray-300 dark:border-gray-700
+      bg-gray-50 dark:bg-gray-900/50
+      hover:border-blue-400 dark:hover:border-blue-600
+      transition-all duration-200;
+  }
+  .upload-box.dragover {
+    @apply border-blue-500 bg-blue-50 dark:bg-blue-950/30
+      shadow-lg shadow-blue-500/10;
   }
 }
 

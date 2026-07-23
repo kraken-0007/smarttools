@@ -4,175 +4,95 @@
     "slug": "pdf-to-word",
     "categoryId": "pdf-tools",
     "icon": "FileText",
+    "type": "file-pdf",
+    "formats": "PDF",
     "featured": true,
-    "name": {
-      "en": "PDF to Word",
-      "fr": "PDF vers Word",
-      "ar": "تحويل PDF إلى Word"
-    },
-    "description": {
-      "en": "Convert your PDF files to editable Word documents instantly.",
-      "fr": "Convertissez vos fichiers PDF en documents Word modifiables.",
-      "ar": "حوّل ملفات PDF إلى مستندات Word قابلة للتحرير."
-    },
-    "howTo": {
-      "en": ["Upload your PDF file", "Click Convert", "Download your Word document"],
-      "fr": ["Téléchargez votre PDF", "Cliquez sur Convertir", "Téléchargez votre document Word"],
-      "ar": ["ارفع ملف PDF", "انقر على تحويل", "حمّل مستند Word"]
-    }
+    "name": { "en": "PDF to Word", "fr": "PDF vers Word", "ar": "تحويل PDF إلى Word" },
+    "description": { "en": "Convert your PDF files to editable Word documents instantly.", "fr": "Convertissez vos fichiers PDF en documents Word modifiables.", "ar": "حوّل ملفات PDF إلى مستندات Word قابلة للتحرير." },
+    "howTo": { "en": ["Upload your PDF file", "Click Convert", "Download your Word document"], "fr": ["Téléchargez votre PDF", "Cliquez sur Convertir", "Téléchargez votre document Word"], "ar": ["ارفع ملف PDF", "انقر على تحويل", "حمّل مستند Word"] }
   },
   {
     "id": "word-to-pdf",
     "slug": "word-to-pdf",
     "categoryId": "pdf-tools",
     "icon": "FilePlus",
+    "type": "file-doc",
+    "formats": "DOC, DOCX",
     "featured": false,
-    "name": {
-      "en": "Word to PDF",
-      "fr": "Word vers PDF",
-      "ar": "تحويل Word إلى PDF"
-    },
-    "description": {
-      "en": "Convert Word documents to PDF with perfect formatting preserved.",
-      "fr": "Convertissez vos documents Word en PDF avec mise en forme parfaite.",
-      "ar": "حوّل مستندات Word إلى PDF مع الحفاظ على التنسيق."
-    },
-    "howTo": {
-      "en": ["Upload your Word file", "Click Convert", "Download your PDF"],
-      "fr": ["Téléchargez votre fichier Word", "Cliquez sur Convertir", "Téléchargez votre PDF"],
-      "ar": ["ارفع ملف Word", "انقر على تحويل", "حمّل ملف PDF"]
-    }
+    "name": { "en": "Word to PDF", "fr": "Word vers PDF", "ar": "تحويل Word إلى PDF" },
+    "description": { "en": "Convert Word documents to PDF with perfect formatting preserved.", "fr": "Convertissez vos documents Word en PDF avec mise en forme parfaite.", "ar": "حوّل مستندات Word إلى PDF مع الحفاظ على التنسيق." },
+    "howTo": { "en": ["Upload your Word file", "Click Convert", "Download your PDF"], "fr": ["Téléchargez votre fichier Word", "Cliquez sur Convertir", "Téléchargez votre PDF"], "ar": ["ارفع ملف Word", "انقر على تحويل", "حمّل ملف PDF"] }
   },
   {
     "id": "compress-image",
     "slug": "compress-image",
     "categoryId": "image-tools",
     "icon": "Minimize2",
+    "type": "file-image",
+    "formats": "JPG, PNG, WebP",
     "featured": true,
-    "name": {
-      "en": "Compress Image",
-      "fr": "Compresser une image",
-      "ar": "ضغط الصورة"
-    },
-    "description": {
-      "en": "Reduce image file size without losing quality.",
-      "fr": "Réduisez la taille de vos images sans perdre en qualité.",
-      "ar": "قلّل حجم الصورة دون فقدان الجودة."
-    },
-    "howTo": {
-      "en": ["Upload your image", "Choose compression level", "Download compressed image"],
-      "fr": ["Téléchargez votre image", "Choisissez le niveau de compression", "Téléchargez"],
-      "ar": ["ارفع صورتك", "اختر مستوى الضغط", "حمّل الصورة المضغوطة"]
-    }
+    "name": { "en": "Compress Image", "fr": "Compresser une image", "ar": "ضغط الصورة" },
+    "description": { "en": "Reduce image file size without losing quality.", "fr": "Réduisez la taille de vos images sans perdre en qualité.", "ar": "قلّل حجم الصورة دون فقدان الجودة." },
+    "howTo": { "en": ["Upload your image", "Choose compression level", "Download compressed image"], "fr": ["Téléchargez votre image", "Choisissez le niveau de compression", "Téléchargez"], "ar": ["ارفع صورتك", "اختر مستوى الضغط", "حمّل الصورة المضغوطة"] }
   },
   {
     "id": "resize-image",
     "slug": "resize-image",
     "categoryId": "image-tools",
     "icon": "Maximize",
+    "type": "file-image",
+    "formats": "JPG, PNG, WebP",
     "featured": false,
-    "name": {
-      "en": "Resize Image",
-      "fr": "Redimensionner une image",
-      "ar": "تغيير حجم الصورة"
-    },
-    "description": {
-      "en": "Resize images to exact dimensions in seconds.",
-      "fr": "Redimensionnez vos images aux dimensions exactes.",
-      "ar": "غيّر حجم الصور إلى أبعاد محددة بثوانٍ."
-    },
-    "howTo": {
-      "en": ["Upload your image", "Enter desired dimensions", "Download resized image"],
-      "fr": ["Téléchargez votre image", "Entrez les dimensions", "Téléchargez"],
-      "ar": ["ارفع صورتك", "أدخل الأبعاد المطلوبة", "حمّل الصورة"]
-    }
+    "name": { "en": "Resize Image", "fr": "Redimensionner une image", "ar": "تغيير حجم الصورة" },
+    "description": { "en": "Resize images to exact dimensions in seconds.", "fr": "Redimensionnez vos images aux dimensions exactes.", "ar": "غيّر حجم الصور إلى أبعاد محددة بثوانٍ." },
+    "howTo": { "en": ["Upload your image", "Enter desired dimensions", "Download resized image"], "fr": ["Téléchargez votre image", "Entrez les dimensions", "Téléchargez"], "ar": ["ارفع صورتك", "أدخل الأبعاد المطلوبة", "حمّل الصورة"] }
   },
   {
     "id": "word-counter",
     "slug": "word-counter",
     "categoryId": "text-tools",
     "icon": "AlignLeft",
+    "type": "text",
+    "formats": null,
     "featured": true,
-    "name": {
-      "en": "Word Counter",
-      "fr": "Compteur de mots",
-      "ar": "عدّاد الكلمات"
-    },
-    "description": {
-      "en": "Count words, characters, sentences and paragraphs instantly.",
-      "fr": "Comptez les mots, caractères, phrases instantanément.",
-      "ar": "احسب الكلمات والحروف والجمل والفقرات فوراً."
-    },
-    "howTo": {
-      "en": ["Paste or type your text", "See live statistics below", "Copy results if needed"],
-      "fr": ["Collez ou tapez votre texte", "Voir les statistiques en direct", "Copiez les résultats"],
-      "ar": ["الصق أو اكتب نصك", "شاهد الإحصائيات مباشرة", "انسخ النتائج"]
-    }
+    "name": { "en": "Word Counter", "fr": "Compteur de mots", "ar": "عدّاد الكلمات" },
+    "description": { "en": "Count words, characters, sentences and paragraphs instantly.", "fr": "Comptez les mots, caractères, phrases instantanément.", "ar": "احسب الكلمات والحروف والجمل والفقرات فوراً." },
+    "howTo": { "en": ["Paste or type your text", "See live statistics below", "Copy results if needed"], "fr": ["Collez ou tapez votre texte", "Voir les statistiques en direct", "Copiez les résultats"], "ar": ["الصق أو اكتب نصك", "شاهد الإحصائيات مباشرة", "انسخ النتائج"] }
   },
   {
     "id": "password-generator",
     "slug": "password-generator",
     "categoryId": "text-tools",
     "icon": "Lock",
+    "type": "text",
+    "formats": null,
     "featured": false,
-    "name": {
-      "en": "Password Generator",
-      "fr": "Générateur de mot de passe",
-      "ar": "مولّد كلمات المرور"
-    },
-    "description": {
-      "en": "Generate strong, secure passwords instantly.",
-      "fr": "Générez des mots de passe forts et sécurisés.",
-      "ar": "أنشئ كلمات مرور قوية وآمنة فوراً."
-    },
-    "howTo": {
-      "en": ["Choose password length", "Select character types", "Copy your password"],
-      "fr": ["Choisissez la longueur", "Sélectionnez les types de caractères", "Copiez"],
-      "ar": ["اختر طول كلمة المرور", "اختر أنواع الأحرف", "انسخ كلمة المرور"]
-    }
+    "name": { "en": "Password Generator", "fr": "Générateur de mot de passe", "ar": "مولّد كلمات المرور" },
+    "description": { "en": "Generate strong, secure passwords instantly.", "fr": "Générez des mots de passe forts et sécurisés.", "ar": "أنشئ كلمات مرور قوية وآمنة فوراً." },
+    "howTo": { "en": ["Choose password length", "Select character types", "Copy your password"], "fr": ["Choisissez la longueur", "Sélectionnez les types de caractères", "Copiez"], "ar": ["اختر طول كلمة المرور", "اختر أنواع الأحرف", "انسخ كلمة المرور"] }
   },
   {
     "id": "age-calculator",
     "slug": "age-calculator",
     "categoryId": "calculators",
     "icon": "Calendar",
+    "type": "calculator",
+    "formats": null,
     "featured": true,
-    "name": {
-      "en": "Age Calculator",
-      "fr": "Calculatrice d'âge",
-      "ar": "حاسبة العمر"
-    },
-    "description": {
-      "en": "Calculate your exact age in years, months, and days.",
-      "fr": "Calculez votre âge exact en années, mois et jours.",
-      "ar": "احسب عمرك بالضبط بالسنوات والأشهر والأيام."
-    },
-    "howTo": {
-      "en": ["Enter your date of birth", "See your exact age instantly", "View detailed breakdown"],
-      "fr": ["Entrez votre date de naissance", "Voir votre âge exact", "Voir les détails"],
-      "ar": ["أدخل تاريخ ميلادك", "شاهد عمرك بدقة", "اعرض التفاصيل"]
-    }
+    "name": { "en": "Age Calculator", "fr": "Calculatrice d'âge", "ar": "حاسبة العمر" },
+    "description": { "en": "Calculate your exact age in years, months, and days.", "fr": "Calculez votre âge exact en années, mois et jours.", "ar": "احسب عمرك بالضبط بالسنوات والأشهر والأيام." },
+    "howTo": { "en": ["Enter your date of birth", "See your exact age instantly", "View detailed breakdown"], "fr": ["Entrez votre date de naissance", "Voir votre âge exact", "Voir les détails"], "ar": ["أدخل تاريخ ميلادك", "شاهد عمرك بدقة", "اعرض التفاصيل"] }
   },
   {
     "id": "bmi-calculator",
     "slug": "bmi-calculator",
     "categoryId": "calculators",
     "icon": "Activity",
+    "type": "calculator",
+    "formats": null,
     "featured": false,
-    "name": {
-      "en": "BMI Calculator",
-      "fr": "Calculatrice IMC",
-      "ar": "حاسبة مؤشر كتلة الجسم"
-    },
-    "description": {
-      "en": "Calculate your Body Mass Index and find your ideal weight range.",
-      "fr": "Calculez votre IMC et trouvez votre poids idéal.",
-      "ar": "احسب مؤشر كتلة جسمك واعرف نطاق وزنك المثالي."
-    },
-    "howTo": {
-      "en": ["Enter your height", "Enter your weight", "See your BMI result"],
-      "fr": ["Entrez votre taille", "Entrez votre poids", "Voir votre IMC"],
-      "ar": ["أدخل طولك", "أدخل وزنك", "شاهد نتيجة مؤشر كتلة الجسم"]
-    }
+    "name": { "en": "BMI Calculator", "fr": "Calculatrice IMC", "ar": "حاسبة مؤشر كتلة الجسم" },
+    "description": { "en": "Calculate your Body Mass Index and find your ideal weight range.", "fr": "Calculez votre IMC et trouvez votre poids idéal.", "ar": "احسب مؤشر كتلة جسمك واعرف نطاق وزنك المثالي." },
+    "howTo": { "en": ["Enter your height", "Enter your weight", "See your BMI result"], "fr": ["Entrez votre taille", "Entrez votre poids", "Voir votre IMC"], "ar": ["أدخل طولك", "أدخل وزنك", "شاهد نتيجة مؤشر كتلة الجسم"] }
   }
 ]

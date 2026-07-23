@@ -4,30 +4,39 @@
     "nav": { "home": "Home", "categories": "Categories", "tools": "Tools", "search": "Search tools…" },
     "hero": {
       "badge": "100% Free · No Sign-up · No Ads",
-      "title": "All-in-One Free\nOnline Tools",
-      "subtitle": "Convert, Compress, Edit and Optimize Files Online for Free.",
-      "cta": "Explore All Tools",
+      "title": "All Your Online Tools In One Place",
+      "subtitle": "Convert, Compress, Edit and Optimize Files Online For Free.",
       "searchPlaceholder": "Search 8+ tools…",
-      "stat1": "Tools", "stat2": "Categories", "stat3": "Languages"
+      "cta": "Explore All Tools",
+      "stat1": "Tools", "stat2": "Categories"
     },
     "sections": {
-      "categories": "Browse Categories",
-      "categoriesSub": "Pick a category to explore all available tools",
+      "categories": "Popular Categories",
+      "categoriesSub": "Click a category to see all available tools",
       "popular": "Popular Tools",
       "popularSub": "Most used tools by our community",
-      "recent": "Recently Added",
-      "recentSub": "The latest tools added to SmartTools",
       "why": "Why SmartTools?",
       "whySub": "Built for speed, simplicity and everyone"
+    },
+    "category": {
+      "expand": "Show tools",
+      "collapse": "Hide tools",
+      "noTools": "No tools available yet"
     },
     "tools": {
       "open": "Open Tool",
       "viewAll": "View all",
       "howTo": "How to use",
       "related": "Related Tools",
-      "faq": "FAQ",
+      "faq": "Frequently Asked Questions",
       "comingSoon": "Coming Soon",
-      "comingSoonDesc": "This tool is under development. Check back soon!"
+      "comingSoonDesc": "This tool is under development. Check back soon!",
+      "uploadTitle": "Drop files here",
+      "uploadOr": "or",
+      "uploadBtn": "Choose File",
+      "uploadFormats": "Supported formats",
+      "uploadDesc": "Select a file from your device",
+      "dragDrop": "Drag and drop your file here"
     },
     "why": [
       { "title": "Lightning Fast", "desc": "No loading screens. Results in seconds." },
@@ -53,30 +62,39 @@
     "nav": { "home": "Accueil", "categories": "Catégories", "tools": "Outils", "search": "Rechercher…" },
     "hero": {
       "badge": "100% Gratuit · Sans inscription · Sans pub",
-      "title": "Tous vos outils\nen ligne gratuits",
+      "title": "Tous vos outils en ligne au même endroit",
       "subtitle": "Convertissez, compressez, modifiez et optimisez vos fichiers en ligne.",
-      "cta": "Explorer les outils",
       "searchPlaceholder": "Rechercher parmi 8+ outils…",
-      "stat1": "Outils", "stat2": "Catégories", "stat3": "Langues"
+      "cta": "Explorer les outils",
+      "stat1": "Outils", "stat2": "Catégories"
     },
     "sections": {
-      "categories": "Parcourir les catégories",
-      "categoriesSub": "Choisissez une catégorie pour explorer tous les outils",
+      "categories": "Catégories populaires",
+      "categoriesSub": "Cliquez sur une catégorie pour voir tous les outils",
       "popular": "Outils populaires",
       "popularSub": "Les outils les plus utilisés par notre communauté",
-      "recent": "Récemment ajoutés",
-      "recentSub": "Les derniers outils ajoutés à SmartTools",
       "why": "Pourquoi SmartTools ?",
       "whySub": "Conçu pour la rapidité, la simplicité et tous"
+    },
+    "category": {
+      "expand": "Afficher les outils",
+      "collapse": "Masquer les outils",
+      "noTools": "Aucun outil disponible"
     },
     "tools": {
       "open": "Ouvrir l'outil",
       "viewAll": "Voir tout",
       "howTo": "Comment utiliser",
       "related": "Outils associés",
-      "faq": "FAQ",
+      "faq": "Questions fréquentes",
       "comingSoon": "Bientôt disponible",
-      "comingSoonDesc": "Cet outil est en cours de développement."
+      "comingSoonDesc": "Cet outil est en cours de développement.",
+      "uploadTitle": "Déposez vos fichiers ici",
+      "uploadOr": "ou",
+      "uploadBtn": "Choisir un fichier",
+      "uploadFormats": "Formats pris en charge",
+      "uploadDesc": "Sélectionnez un fichier depuis votre appareil",
+      "dragDrop": "Glissez et déposez votre fichier ici"
     },
     "why": [
       { "title": "Ultra rapide", "desc": "Pas d'attente. Résultats en quelques secondes." },
@@ -102,21 +120,24 @@
     "nav": { "home": "الرئيسية", "categories": "الفئات", "tools": "الأدوات", "search": "ابحث عن أداة…" },
     "hero": {
       "badge": "مجاني 100% · بدون تسجيل · بدون إعلانات",
-      "title": "جميع الأدوات المجانية\nعبر الإنترنت",
+      "title": "جميع أدواتك في مكان واحد",
       "subtitle": "تحويل، ضغط، تحرير وتحسين الملفات عبر الإنترنت مجاناً.",
-      "cta": "استعرض الأدوات",
       "searchPlaceholder": "ابحث في أكثر من 8 أداة…",
-      "stat1": "أداة", "stat2": "فئات", "stat3": "لغات"
+      "cta": "استعرض الأدوات",
+      "stat1": "أداة", "stat2": "فئات"
     },
     "sections": {
-      "categories": "تصفح الفئات",
-      "categoriesSub": "اختر فئة لاستعراض جميع الأدوات المتاحة",
+      "categories": "الفئات الشائعة",
+      "categoriesSub": "انقر على فئة لعرض جميع الأدوات المتاحة",
       "popular": "الأدوات الشائعة",
       "popularSub": "الأدوات الأكثر استخداماً من قِبل مجتمعنا",
-      "recent": "أضيف مؤخراً",
-      "recentSub": "أحدث الأدوات المضافة إلى SmartTools",
       "why": "لماذا SmartTools؟",
       "whySub": "مصمم للسرعة والبساطة والجميع"
+    },
+    "category": {
+      "expand": "عرض الأدوات",
+      "collapse": "إخفاء الأدوات",
+      "noTools": "لا توجد أدوات متاحة"
     },
     "tools": {
       "open": "فتح الأداة",
@@ -125,7 +146,13 @@
       "related": "أدوات ذات صلة",
       "faq": "الأسئلة الشائعة",
       "comingSoon": "قريباً",
-      "comingSoonDesc": "هذه الأداة قيد التطوير. تفقد قريباً!"
+      "comingSoonDesc": "هذه الأداة قيد التطوير. تفقد قريباً!",
+      "uploadTitle": "أسقط الملفات هنا",
+      "uploadOr": "أو",
+      "uploadBtn": "اختر ملف",
+      "uploadFormats": "الصيغ المدعومة",
+      "uploadDesc": "اختر ملفاً من جهازك",
+      "dragDrop": "اسحب وأفلت ملفك هنا"
     },
     "why": [
       { "title": "سريع جداً", "desc": "بدون انتظار. نتائج في ثوانٍ." },

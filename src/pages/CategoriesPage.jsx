@@ -9,13 +9,7 @@ import { getIcon } from '../lib/icons'
 
 export default function CategoriesPage({ lang, t, slug }) {
   const catMap = useMemo(() => Object.fromEntries(categories.map(c => [c.id, c])), [])
-  const toolCountByCategory = useMemo(() => {
-    const counts = {}
-    tools.forEach(tool => { counts[tool.categoryId] = (counts[tool.categoryId] || 0) + 1 })
-    return counts
-  }, [])
 
-  // ── Single category ──────────────────────────
   if (slug) {
     const category = categories.find(c => c.slug === slug)
     if (!category) return (
@@ -36,7 +30,6 @@ export default function CategoriesPage({ lang, t, slug }) {
           { label: category.name[lang] },
         ]} />
 
-        {/* Category header card */}
         <div className={`rounded-2xl p-6 mb-8 border ${category.border} ${category.bg} flex items-center gap-5`}>
           <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center shadow-sm shrink-0`}>
             <Icon className="w-8 h-8 text-white" strokeWidth={1.6} />
@@ -67,7 +60,6 @@ export default function CategoriesPage({ lang, t, slug }) {
     )
   }
 
-  // ── All categories ───────────────────────────
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 animate-fade-in">
       <Breadcrumb items={[
@@ -83,7 +75,6 @@ export default function CategoriesPage({ lang, t, slug }) {
           const catTools = tools.filter(to => to.categoryId === cat.id)
           return (
             <section key={cat.id}>
-              {/* Category subheader */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${cat.color} flex items-center justify-center`}>
@@ -91,13 +82,10 @@ export default function CategoriesPage({ lang, t, slug }) {
                   </div>
                   <div>
                     <h2 className="font-bold text-gray-900 dark:text-white">{cat.name[lang]}</h2>
-                    <p className="text-xs text-gray-500">{toolCountByCategory[cat.id] || 0} tools</p>
+                    <p className="text-xs text-gray-500">{catTools.length} tools</p>
                   </div>
                 </div>
-                <Link
-                  to={`/categories/${cat.slug}`}
-                  className="text-sm text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-                >
+                <Link to={`/categories/${cat.slug}`} className="text-sm text-blue-600 dark:text-blue-400 font-semibold hover:underline">
                   {t.tools.viewAll} →
                 </Link>
               </div>

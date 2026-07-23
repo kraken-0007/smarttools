@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Zap, Shield, Globe, MousePointerClick, ArrowRight } from 'lucide-react'
+import { Zap, Shield, Globe, MousePointerClick } from 'lucide-react'
 import categories from '../data/categories.json'
 import tools from '../data/tools.json'
 import CategoryCard from '../components/CategoryCard'
@@ -7,31 +7,31 @@ import ToolCard from '../components/ToolCard'
 import SectionHeader from '../components/SectionHeader'
 
 const WHY_ICONS = [Zap, Shield, MousePointerClick, Globe]
-const WHY_COLORS = [
-  'bg-amber-50 dark:bg-amber-950/30 text-amber-500',
-  'bg-green-50 dark:bg-green-950/30 text-green-500',
-  'bg-blue-50 dark:bg-blue-950/30 text-blue-500',
-  'bg-purple-50 dark:bg-purple-950/30 text-purple-500',
+const WHY_STYLES = [
+  { bg: 'bg-amber-50 dark:bg-amber-950/30', text: 'text-amber-500' },
+  { bg: 'bg-green-50 dark:bg-green-950/30', text: 'text-green-500' },
+  { bg: 'bg-blue-50 dark:bg-blue-950/30', text: 'text-blue-500' },
+  { bg: 'bg-purple-50 dark:bg-purple-950/30', text: 'text-purple-500' },
 ]
 
 export default function HomePage({ lang, t }) {
   const catMap = useMemo(() => Object.fromEntries(categories.map(c => [c.id, c])), [])
-  const toolCountByCategory = useMemo(() => {
-    const counts = {}
-    tools.forEach(tool => { counts[tool.categoryId] = (counts[tool.categoryId] || 0) + 1 })
-    return counts
+  const toolsByCategory = useMemo(() => {
+    const map = {}
+    tools.forEach(tool => {
+      if (!map[tool.categoryId]) map[tool.categoryId] = []
+      map[tool.categoryId].push(tool)
+    })
+    return map
   }, [])
   const featuredTools = useMemo(() => tools.filter(t => t.featured), [])
-  const recentTools = useMemo(() => [...tools].reverse().slice(0, 6), [])
-
-  const [heroTitle, ...heroTitleRest] = t.hero.title.split('\n')
 
   return (
     <div className="animate-fade-in">
       {/* ── Hero ──────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/60 via-white to-white dark:from-blue-950/20 dark:via-gray-950 dark:to-gray-950 pt-14 pb-16 px-4 md:px-6">
-        {/* Decorative blobs */}
-        <div className="pointer-events-none absolute -top-32 start-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-blue-200/40 to-indigo-200/30 dark:from-blue-900/20 dark:to-indigo-900/10 blur-3xl" />
+      <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/70 via-white to-white dark:from-blue-950/20 dark:via-gray-950 dark:to-gray-950 pt-16 pb-20 px-4 md:px-6">
+        {/* Decorative gradient blobs */}
+        <div className="pointer-events-none absolute -top-32 start-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-blue-200/40 to-indigo-200/30 dark:from-blue-900/15 dark:to-indigo-900/10 blur-3xl" />
 
         <div className="relative max-w-3xl mx-auto text-center">
           {/* Badge */}
@@ -41,18 +41,15 @@ export default function HomePage({ lang, t }) {
           </span>
 
           {/* Title */}
-          <h1 className="text-4xl md:text-5xl lg:text-[3.4rem] font-extrabold text-gray-900 dark:text-white leading-[1.12] tracking-tight mb-4">
-            {heroTitle}
-            {heroTitleRest.length > 0 && (
-              <><br /><span className="text-blue-600">{heroTitleRest.join('\n')}</span></>
-            )}
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-[1.15] tracking-tight mb-5">
+            {t.hero.title}
           </h1>
 
           <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto mb-8 leading-relaxed">
             {t.hero.subtitle}
           </p>
 
-          {/* Hero search */}
+          {/* Large search box */}
           <form
             onSubmit={e => {
               e.preventDefault()
@@ -81,34 +78,33 @@ export default function HomePage({ lang, t }) {
           </form>
 
           {/* Stats */}
-          <div className="flex items-center justify-center gap-6 md:gap-10">
-            {[['8+', t.hero.stat1], ['10', t.hero.stat2], ['3', t.hero.stat3]].map(([num, label]) => (
+          <div className="flex items-center justify-center gap-12">
+            {[['8+', t.hero.stat1], ['10', t.hero.stat2]].map(([num, label]) => (
               <div key={label} className="text-center">
-                <div className="text-2xl font-extrabold text-gray-900 dark:text-white">{num}</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{label}</div>
+                <div className="text-3xl font-extrabold text-blue-600 dark:text-blue-400">{num}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium">{label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto px-4 md:px-6 space-y-14 py-12">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 space-y-16 py-14">
 
-        {/* ── Categories ─────────────────────────────── */}
+        {/* ── Popular Categories (expandable) ────────── */}
         <section>
           <SectionHeader
             title={t.sections.categories}
             subtitle={t.sections.categoriesSub}
-            linkTo="/categories"
-            linkLabel={t.tools.viewAll}
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-4">
             {categories.map(cat => (
               <CategoryCard
                 key={cat.id}
                 category={cat}
                 lang={lang}
-                toolCount={toolCountByCategory[cat.id] || 0}
+                t={t}
+                tools={toolsByCategory[cat.id] || []}
               />
             ))}
           </div>
@@ -119,8 +115,6 @@ export default function HomePage({ lang, t }) {
           <SectionHeader
             title={t.sections.popular}
             subtitle={t.sections.popularSub}
-            linkTo="/categories"
-            linkLabel={t.tools.viewAll}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-4">
             {featuredTools.map(tool => (
@@ -129,34 +123,17 @@ export default function HomePage({ lang, t }) {
           </div>
         </section>
 
-        {/* ── Recent Tools ───────────────────────────── */}
-        <section>
-          <SectionHeader
-            title={t.sections.recent}
-            subtitle={t.sections.recentSub}
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-4">
-            {recentTools.map(tool => (
-              <ToolCard key={tool.id} tool={tool} lang={lang} t={t} category={catMap[tool.categoryId]} />
-            ))}
-          </div>
-        </section>
-
         {/* ── Why SmartTools ─────────────────────────── */}
         <section>
           <SectionHeader title={t.sections.why} subtitle={t.sections.whySub} />
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {t.why.map((item, i) => {
               const Icon = WHY_ICONS[i]
-              const [bg, textColor] = WHY_COLORS[i].split(' ').reduce((acc, cls) => {
-                if (cls.startsWith('text-')) acc[1] = cls
-                else acc[0] += ' ' + cls
-                return acc
-              }, ['', ''])
+              const style = WHY_STYLES[i]
               return (
-                <div key={i} className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-5">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${WHY_COLORS[i].replace(/ text-\S+/, '')}`}>
-                    <Icon className={`w-5 h-5 ${WHY_COLORS[i].match(/text-\S+/)?.[0] || 'text-blue-500'}`} strokeWidth={2} />
+                <div key={i} className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 hover:shadow-card-md transition-shadow">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${style.bg}`}>
+                    <Icon className={`w-6 h-6 ${style.text}`} strokeWidth={2} />
                   </div>
                   <h3 className="font-bold text-sm text-gray-900 dark:text-white mb-1">{item.title}</h3>
                   <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">{item.desc}</p>

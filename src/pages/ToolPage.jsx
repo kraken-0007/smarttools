@@ -1,11 +1,87 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { CheckCircle2, Wrench, HelpCircle, ChevronDown } from 'lucide-react'
+import { CheckCircle2, Wrench, HelpCircle, ChevronDown, UploadCloud, FileText, File } from 'lucide-react'
 import tools from '../data/tools.json'
 import categories from '../data/categories.json'
 import ToolCard from '../components/ToolCard'
 import Breadcrumb from '../components/Breadcrumb'
 import { getIcon } from '../lib/icons'
+
+/* ─── Upload Box Component ─────────────────────── */
+function UploadBox({ tool, lang, t }) {
+  const [dragOver, setDragOver] = useState(false)
+  const [fileName, setFileName] = useState(null)
+  const inputRef = useRef(null)
+
+  const handleDrop = (e) => {
+    e.preventDefault()
+    setDragOver(false)
+    const file = e.dataTransfer.files[0]
+    if (file) setFileName(file.name)
+  }
+
+  const handleSelect = (e) => {
+    const file = e.target.files[0]
+    if (file) setFileName(file.name)
+  }
+
+  return (
+    <div
+      className={`upload-box p-10 md:p-14 text-center ${dragOver ? 'dragover' : ''}`}
+      onDragOver={(e) => { e.preventDefault(); setDragOver(true) }}
+      onDragLeave={() => setDragOver(false)}
+      onDrop={handleDrop}
+      onClick={() => inputRef.current?.click()}
+      role="button"
+      tabIndex={0}
+    >
+      <input
+        ref={inputRef}
+        type="file"
+        className="hidden"
+        onChange={handleSelect}
+        accept={tool.formats?.toLowerCase().replace(/,\s*/g, ',.')}
+      />
+
+      {fileName ? (
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center">
+            <FileText className="w-8 h-8 text-blue-600 dark:text-blue-400" strokeWidth={1.6} />
+          </div>
+          <p className="text-sm font-semibold text-gray-900 dark:text-white">{fileName}</p>
+          <button
+            onClick={(e) => { e.stopPropagation(); setFileName(null); inputRef.current.value = '' }}
+            className="text-xs text-gray-500 hover:text-red-500 transition-colors"
+          >
+            {lang === 'ar' ? 'إزالة' : lang === 'fr' ? 'Supprimer' : 'Remove'}
+          </button>
+        </div>
+      ) : (
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center">
+            <UploadCloud className="w-8 h-8 text-blue-600 dark:text-blue-400" strokeWidth={1.6} />
+          </div>
+          <div>
+            <p className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+              {t.tools.uploadTitle}
+            </p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+              {t.tools.uploadOr}
+            </p>
+          </div>
+          <span className="btn-primary rounded-xl px-6 py-3 text-sm">
+            {t.tools.uploadBtn}
+          </span>
+          {tool.formats && (
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
+              {t.tools.uploadFormats}: {tool.formats}
+            </p>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
 
 /* ─── Live Tool: Word Counter ──────────────────── */
 function WordCounterTool({ lang }) {
@@ -184,6 +260,46 @@ const LIVE_TOOLS = {
   'bmi-calculator': BMICalculatorTool,
 }
 
+/* ─── Tool Interface Renderer ──────────────────── */
+function ToolInterface({ tool, lang, t }) {
+  const LiveTool = LIVE_TOOLS[tool.slug]
+  if (LiveTool) return <LiveTool lang={lang} />
+
+  // Show upload box for file-type tools
+  if (tool.type === 'file-pdf' || tool.type === 'file-image' || tool.type === 'file-doc') {
+    return <UploadBox tool={tool} lang={lang} t={t} />
+  }
+
+  // Show textarea for text tools
+  if (tool.type === 'text') {
+    return (
+      <div className="space-y-4">
+        <textarea
+          rows={10}
+          placeholder={lang === 'ar' ? 'اكتب أو الصق النص هنا...' : lang === 'fr' ? 'Tapez ou collez votre texte ici...' : 'Type or paste your text here...'}
+          className="input-field resize-none text-sm leading-relaxed"
+        />
+      </div>
+    )
+  }
+
+  // Show input fields for calculators
+  if (tool.type === 'calculator') {
+    return (
+      <div className="py-16 text-center">
+        <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mx-auto mb-5">
+          <Wrench className="w-7 h-7 text-gray-400" />
+        </div>
+        <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">{t.tools.comingSoon}</h3>
+        <p className="text-sm text-gray-500 dark:text-gray-400">{t.tools.comingSoonDesc}</p>
+      </div>
+    )
+  }
+
+  // Default fallback
+  return <UploadBox tool={tool} lang={lang} t={t} />
+}
+
 /* ─── FAQ Accordion ───────────────────────────── */
 function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false)
@@ -245,7 +361,6 @@ export default function ToolPage({ slug, lang, t }) {
 
   const category = categories.find(c => c.id === tool.categoryId)
   const Icon = getIcon(tool.icon)
-  const LiveTool = LIVE_TOOLS[slug]
   const relatedTools = tools.filter(to => to.categoryId === tool.categoryId && to.id !== tool.id)
   const faqs = getFAQ(tool, lang)
   const catMap = Object.fromEntries(categories.map(c => [c.id, c]))
@@ -270,28 +385,18 @@ export default function ToolPage({ slug, lang, t }) {
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 leading-relaxed">{tool.description[lang]}</p>
           {category && (
             <Link to={`/categories/${category.slug}`} className={`inline-flex items-center gap-1 mt-2 text-xs font-semibold px-2.5 py-1 rounded-full ${category.bg} ${category.text} ${category.border} border`}>
-              {category.emoji} {category.name[lang]}
+              <Icon className="w-3 h-3" strokeWidth={2} /> {category.name[lang]}
             </Link>
           )}
         </div>
       </div>
 
-      {/* ── Tool Interface ── */}
+      {/* Tool Interface */}
       <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 md:p-8 mb-6 shadow-card">
-        {LiveTool ? (
-          <LiveTool lang={lang} />
-        ) : (
-          <div className="py-16 text-center">
-            <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mx-auto mb-5">
-              <Wrench className="w-7 h-7 text-gray-400" />
-            </div>
-            <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">{t.tools.comingSoon}</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">{t.tools.comingSoonDesc}</p>
-          </div>
-        )}
+        <ToolInterface tool={tool} lang={lang} t={t} />
       </div>
 
-      {/* ── How to use ── */}
+      {/* How to use */}
       {tool.howTo?.[lang] && (
         <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 mb-6 shadow-card">
           <h2 className="font-bold text-base text-gray-900 dark:text-white mb-4 flex items-center gap-2">
@@ -311,7 +416,7 @@ export default function ToolPage({ slug, lang, t }) {
         </div>
       )}
 
-      {/* ── FAQ ── */}
+      {/* FAQ */}
       <div className="mb-8">
         <h2 className="font-bold text-base text-gray-900 dark:text-white mb-4 flex items-center gap-2">
           <HelpCircle className="w-5 h-5 text-blue-500" />
@@ -324,7 +429,7 @@ export default function ToolPage({ slug, lang, t }) {
         </div>
       </div>
 
-      {/* ── Related Tools ── */}
+      {/* Related Tools */}
       {relatedTools.length > 0 && (
         <div>
           <h2 className="font-bold text-base text-gray-900 dark:text-white mb-4">{t.tools.related}</h2>
