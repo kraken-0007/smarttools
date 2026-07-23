@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import { Zap } from 'lucide-react'
 import categories from '../data/categories.json'
+import logo from '../assets/logo.png'
 
 export default function Footer({ t, lang }) {
   return (
@@ -9,10 +9,8 @@ export default function Footer({ t, lang }) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-500 flex items-center justify-center">
-                <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
-              </div>
+            <div className="flex items-center gap-3 mb-3">
+              <img src={logo} alt="SmartTools" className="w-9 h-9 object-contain rounded-xl" />
               <span className="font-bold text-lg text-gray-900 dark:text-white">
                 Smart<span className="text-blue-600">Tools</span>
               </span>
@@ -22,7 +20,7 @@ export default function Footer({ t, lang }) {
             </p>
           </div>
 
-          {/* Categories */}
+          {/* Categories col 1 */}
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-4">
               {t.footer.categories}
@@ -41,7 +39,7 @@ export default function Footer({ t, lang }) {
             </ul>
           </div>
 
-          {/* More categories */}
+          {/* Categories col 2 */}
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-4">
               &nbsp;
@@ -62,7 +60,10 @@ export default function Footer({ t, lang }) {
         </div>
 
         <div className="mt-10 pt-6 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-400">{t.footer.copyright}</p>
+          <div className="flex items-center gap-2.5">
+            <img src={logo} alt="SmartTools" className="w-5 h-5 object-contain opacity-60" />
+            <p className="text-xs text-gray-400">{t.footer.copyright}</p>
+          </div>
           <div className="flex items-center gap-4">
             <span className="text-xs text-gray-400">🇬🇧 English</span>
             <span className="text-xs text-gray-400">🇫🇷 Français</span>

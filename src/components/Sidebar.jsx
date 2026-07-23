@@ -4,6 +4,7 @@ import { getIcon } from '../lib/icons'
 import { Home, X, ChevronDown } from 'lucide-react'
 import categories from '../data/categories.json'
 import tools from '../data/tools.json'
+import logo from '../assets/logo.png'
 
 export default function Sidebar({ lang, t, isOpen, onClose }) {
   const { pathname } = useLocation()
@@ -35,7 +36,10 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
       >
         {/* Mobile header */}
         <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-gray-800">
-          <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">{t.nav.categories}</span>
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="SmartTools" className="w-6 h-6 object-contain" />
+            <span className="text-sm font-semibold text-gray-900 dark:text-white">SmartTools</span>
+          </div>
           <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
             <X className="w-4 h-4" />
           </button>
@@ -71,11 +75,11 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
                 >
                   <Icon className="w-4 h-4 shrink-0" strokeWidth={1.8} />
                   <span className="flex-1 truncate text-sm">{cat.name[lang]}</span>
-                  <ChevronDown className={`w-3.5 h-3.5 shrink-0 text-gray-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-3.5 h-3.5 shrink-0 text-gray-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
                 </button>
 
                 {isExpanded && (
-                  <ul className="mt-0.5 mb-1 space-y-0.5 animate-fade-in">
+                  <ul className="mt-0.5 mb-1 space-y-0.5">
                     {catTools.length > 0 ? (
                       catTools.map(tool => {
                         const ToolIcon = getIcon(tool.icon)
@@ -93,7 +97,9 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
                         )
                       })
                     ) : (
-                      <li className="ps-9 pe-3 py-2 text-[12px] text-gray-400">{t.category.noTools}</li>
+                      <li className="ps-9 pe-3 py-2 text-[12px] text-gray-400 italic">
+                        {t.category.noTools}
+                      </li>
                     )}
                   </ul>
                 )}
@@ -102,12 +108,16 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
           })}
         </nav>
 
+        {/* Bottom card with logo */}
         <div className="p-3 border-t border-gray-100 dark:border-gray-800 shrink-0">
-          <div className="rounded-xl bg-gradient-to-br from-blue-600 to-blue-500 p-4 text-white">
-            <p className="text-xs font-bold mb-0.5 opacity-90">SmartTools</p>
-            <p className="text-[11px] opacity-70 leading-relaxed">
-              {lang === 'ar' ? 'مجاني دائماً · بدون إعلانات' : lang === 'fr' ? 'Toujours gratuit · Sans pub' : 'Always free · No ads'}
-            </p>
+          <div className="rounded-xl bg-gradient-to-br from-blue-600 to-blue-500 p-4 text-white flex items-center gap-3">
+            <img src={logo} alt="SmartTools" className="w-9 h-9 object-contain rounded-lg bg-white/20 p-1" />
+            <div>
+              <p className="text-xs font-bold leading-snug">SmartTools</p>
+              <p className="text-[11px] opacity-70 leading-relaxed">
+                {lang === 'ar' ? 'مجاني · بدون إعلانات' : lang === 'fr' ? 'Gratuit · Sans pub' : 'Free · No ads'}
+              </p>
+            </div>
           </div>
         </div>
       </aside>

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Search, Sun, Moon, X, Menu, Zap, ChevronDown } from 'lucide-react'
+import { Search, Sun, Moon, X, Menu, ChevronDown } from 'lucide-react'
+import logo from '../assets/logo.png'
 
 const LANG_META = {
   en: { label: 'EN', flag: '🇬🇧', full: 'English' },
@@ -36,16 +37,14 @@ export default function Navbar({ theme, toggleTheme, lang, setLang, langs, t, on
         </button>
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 shrink-0">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-500 flex items-center justify-center shadow-sm">
-            <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
-          </div>
+        <Link to="/" className="flex items-center gap-2.5 shrink-0">
+          <img src={logo} alt="SmartTools" className="w-8 h-8 rounded-lg object-contain" />
           <span className="font-bold text-[17px] tracking-tight hidden sm:block text-gray-900 dark:text-white">
             Smart<span className="text-blue-600">Tools</span>
           </span>
         </Link>
 
-        {/* Search bar — center */}
+        {/* Search bar */}
         <form onSubmit={handleSearch} className="flex-1 max-w-xl mx-auto">
           <div className={`relative flex items-center h-10 rounded-xl border-2 transition-all duration-200 bg-gray-50 dark:bg-gray-900 ${searchFocus ? 'border-blue-500 bg-white dark:bg-gray-800 shadow-sm shadow-blue-500/10' : 'border-gray-200 dark:border-gray-700'}`}>
             <Search className="absolute start-3 w-4 h-4 text-gray-400" />
@@ -79,7 +78,7 @@ export default function Navbar({ theme, toggleTheme, lang, setLang, langs, t, on
               <ChevronDown className={`w-3.5 h-3.5 text-gray-400 transition-transform ${langOpen ? 'rotate-180' : ''}`} />
             </button>
             {langOpen && (
-              <div className="absolute end-0 top-full mt-2 w-40 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl shadow-card-lg overflow-hidden py-1 animate-fade-in">
+              <div className="absolute end-0 top-full mt-2 w-40 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl shadow-lg overflow-hidden py-1 z-50">
                 {langs.map(l => (
                   <button
                     key={l}
