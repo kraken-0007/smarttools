@@ -1,19 +1,38 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { getIcon } from '../lib/icons'
 import { Home, X, ChevronDown } from 'lucide-react'
 import categories from '../data/categories.json'
 import tools from '../data/tools.json'
-import logo from '../assets/logo.png'
+
+/* ── NEW badge: show for 7 days after created_at ── */
+function isNew(tool) {
+  if (!tool.created_at) return false
+  const created = new Date(tool.created_at)
+  const now = new Date()
+  const diff = (now - created) / (1000 * 60 * 60 * 24)
+  return diff <= 7
+}
 
 export default function Sidebar({ lang, t, isOpen, onClose }) {
   const { pathname } = useLocation()
   const isHome = pathname === '/'
-  const [expanded, setExpanded] = useState(null)
   const dir = document.documentElement.getAttribute('dir') || 'ltr'
 
+  // Persist expanded category in localStorage
+  const [expanded, setExpanded] = useState(() => {
+    try { return localStorage.getItem('sidebar_expanded') } catch { return null }
+  })
+
+  useEffect(() => {
+    try {
+      if (expanded) localStorage.setItem('sidebar_expanded', expanded)
+      else localStorage.removeItem('sidebar_expanded')
+    } catch {}
+  }, [expanded])
+
   const toggleCategory = (catId) => {
-    setExpanded(expanded === catId ? null : catId)
+    setExpanded(prev => (prev === catId ? null : catId))
   }
 
   return (
@@ -21,7 +40,7 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
       {/* Mobile overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden animate-fade-in"
           onClick={onClose}
         />
       )}
@@ -39,11 +58,8 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
         `}
       >
         {/* Mobile header */}
-        <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-gray-800">
-          <div className="flex items-center gap-2">
-            <img src={logo} alt="SmartTools" className="w-6 h-6 object-contain" />
-            <span className="text-sm font-semibold text-gray-900 dark:text-white">SmartTools</span>
-          </div>
+        <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-gray-800 shrink-0">
+          <span className="text-sm font-semibold text-gray-900 dark:text-white">SmartTools</span>
           <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
             <X className="w-4 h-4" />
           </button>
@@ -89,9 +105,12 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
                   />
                 </button>
 
-                {/* Accordion tools list */}
-                {isExpanded && (
-                  <ul className="mt-0.5 mb-1 space-y-0.5 overflow-hidden">
+                {/* Accordion tools list — smooth height animation */}
+                <div
+                  className="overflow-hidden transition-all duration-300 ease-in-out"
+                  style={{ maxHeight: isExpanded ? '800px' : '0px', opacity: isExpanded ? 1 : 0 }}
+                >
+                  <ul className="mt-0.5 mb-1 space-y-0.5">
                     {catTools.length > 0 ? (
                       catTools.map(tool => {
                         const ToolIcon = getIcon(tool.icon)
@@ -103,7 +122,12 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
                               className="group flex items-center gap-2.5 ps-9 pe-3 py-2 rounded-lg text-[13px] text-gray-600 dark:text-gray-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
                             >
                               <ToolIcon className="w-3.5 h-3.5 shrink-0 opacity-60 group-hover:opacity-100 transition-opacity" strokeWidth={1.8} />
-                              <span className="truncate">{tool.name[lang]}</span>
+                              <span className="truncate flex-1">{tool.name[lang]}</span>
+                              {isNew(tool) && (
+                                <span className="shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-red-500 text-white leading-none">
+                                  NEW
+                                </span>
+                              )}
                             </Link>
                           </li>
                         )
@@ -114,24 +138,11 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
                       </li>
                     )}
                   </ul>
-                )}
+                </div>
               </div>
             )
           })}
         </nav>
-
-        {/* Bottom promo card */}
-        <div className="p-3 border-t border-gray-100 dark:border-gray-800 shrink-0">
-          <div className="rounded-xl bg-gradient-to-br from-blue-600 to-blue-500 p-4 text-white flex items-center gap-3">
-            <img src={logo} alt="SmartTools" className="w-9 h-9 object-contain rounded-lg bg-white/20 p-1" />
-            <div>
-              <p className="text-xs font-bold leading-snug">SmartTools</p>
-              <p className="text-[11px] opacity-70 leading-relaxed">
-                {lang === 'ar' ? 'مجاني · بدون إعلانات' : lang === 'fr' ? 'Gratuit · Sans pub' : 'Free · No ads'}
-              </p>
-            </div>
-          </div>
-        </div>
       </aside>
     </>
   )

@@ -2,12 +2,29 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { getIcon } from '../lib/icons'
 
+/* ── NEW badge: show for 7 days after created_at ── */
+function isNew(tool) {
+  if (!tool.created_at) return false
+  const created = new Date(tool.created_at)
+  const now = new Date()
+  const diff = (now - created) / (1000 * 60 * 60 * 24)
+  return diff <= 7
+}
+
 export default function ToolCard({ tool, lang, t, category }) {
   const Icon = getIcon(tool.icon)
   const cat = category || {}
+  const showNew = isNew(tool)
 
   return (
     <Link to={`/tools/${tool.slug}`} className="tool-card">
+      {/* NEW badge — top right corner */}
+      {showNew && (
+        <span className="absolute top-4 end-4 text-[9px] font-bold px-2 py-0.5 rounded-full bg-red-500 text-white leading-none shadow-sm">
+          NEW
+        </span>
+      )}
+
       {/* Icon */}
       <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${cat.bg || 'bg-blue-50 dark:bg-blue-950/30'}`}>
         <Icon className={`w-6 h-6 ${cat.text || 'text-blue-600 dark:text-blue-400'}`} strokeWidth={1.8} />

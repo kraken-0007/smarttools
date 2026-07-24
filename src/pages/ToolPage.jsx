@@ -1,62 +1,217 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { CheckCircle2, Wrench, HelpCircle, ChevronDown, UploadCloud, FileText, File } from 'lucide-react'
+import { CheckCircle2, Wrench, HelpCircle, ChevronDown, UploadCloud, FileText, Image as ImageIcon, X } from 'lucide-react'
 import tools from '../data/tools.json'
 import categories from '../data/categories.json'
 import ToolCard from '../components/ToolCard'
 import Breadcrumb from '../components/Breadcrumb'
 import { getIcon } from '../lib/icons'
 
-/* ─── Upload Box Component ─────────────────────── */
+/* ─── Constants ────────────────────────────────── */
+const IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif']
+const IMAGE_EXTS = ['.jpg', '.jpeg', '.png', '.webp', '.gif']
+const MAX_FILE_SIZE = 50 * 1024 * 1024 // 50 MB
+
+/* ─── Upload Box Component (fixed) ─────────────── */
 function UploadBox({ tool, lang, t }) {
   const [dragOver, setDragOver] = useState(false)
-  const [fileName, setFileName] = useState(null)
+  const [selectedFile, setSelectedFile] = useState(null) // File object
+  const [previewUrl, setPreviewUrl] = useState(null)     // Object URL for image preview
+  const [error, setError] = useState(null)
   const inputRef = useRef(null)
+
+  // Determine accepted file types
+  const isImageTool = tool.type === 'file-image'
+  const acceptString = isImageTool
+    ? IMAGE_EXTS.join(',')
+    : tool.formats
+      ? '.' + tool.formats.toLowerCase().replace(/,\s*/g, ',.')
+      : '*'
+
+  // Cleanup object URL to prevent memory leaks
+  useEffect(() => {
+    return () => {
+      if (previewUrl) URL.revokeObjectURL(previewUrl)
+    }
+  }, [previewUrl])
+
+  const validateFile = (file) => {
+    setError(null)
+
+    // Size check
+    if (file.size > MAX_FILE_SIZE) {
+      const sizeMB = (MAX_FILE_SIZE / 1024 / 1024).toFixed(0)
+      setError(lang === 'ar'
+        ? `حجم الملف كبير جدا. الحد الأقصى ${sizeMB} ميجابايت.`
+        : lang === 'fr'
+          ? `Fichier trop volumineux. Maximum ${sizeMB} Mo.`
+          : `File too large. Maximum ${sizeMB} MB.`)
+      return false
+    }
+
+    // For image tools, validate type
+    if (isImageTool) {
+      const ext = '.' + file.name.split('.').pop().toLowerCase()
+      const isValidType = IMAGE_TYPES.includes(file.type) || IMAGE_EXTS.includes(ext)
+      if (!isValidType) {
+        setError(lang === 'ar'
+          ? 'صيغة غير مدعومة. المدعومة: JPG, JPEG, PNG, WEBP, GIF'
+          : lang === 'fr'
+            ? 'Format non supporté. Supportés: JPG, JPEG, PNG, WEBP, GIF'
+            : 'Unsupported format. Supported: JPG, JPEG, PNG, WEBP, GIF')
+        return false
+      }
+    }
+
+    return true
+  }
+
+  const handleFile = (file) => {
+    if (!file) return
+    if (!validateFile(file)) {
+      setSelectedFile(null)
+      setPreviewUrl(null)
+      return
+    }
+
+    // Cleanup previous preview
+    if (previewUrl) URL.revokeObjectURL(previewUrl)
+
+    // Create preview for images
+    const ext = '.' + file.name.split('.').pop().toLowerCase()
+    const isImage = IMAGE_TYPES.includes(file.type) || IMAGE_EXTS.includes(ext)
+
+    if (isImage) {
+      const url = URL.createObjectURL(file)
+      setPreviewUrl(url)
+    } else {
+      setPreviewUrl(null)
+    }
+
+    setSelectedFile(file)
+  }
 
   const handleDrop = (e) => {
     e.preventDefault()
     setDragOver(false)
     const file = e.dataTransfer.files[0]
-    if (file) setFileName(file.name)
+    if (file) handleFile(file)
   }
 
   const handleSelect = (e) => {
     const file = e.target.files[0]
-    if (file) setFileName(file.name)
+    if (file) handleFile(file)
   }
 
-  return (
-    <div
-      className={`upload-box p-10 md:p-14 text-center ${dragOver ? 'dragover' : ''}`}
-      onDragOver={(e) => { e.preventDefault(); setDragOver(true) }}
-      onDragLeave={() => setDragOver(false)}
-      onDrop={handleDrop}
-      onClick={() => inputRef.current?.click()}
-      role="button"
-      tabIndex={0}
-    >
-      <input
-        ref={inputRef}
-        type="file"
-        className="hidden"
-        onChange={handleSelect}
-        accept={tool.formats?.toLowerCase().replace(/,\s*/g, ',.')}
-      />
+  const handleRemove = (e) => {
+    e.stopPropagation()
+    if (previewUrl) URL.revokeObjectURL(previewUrl)
+    setSelectedFile(null)
+    setPreviewUrl(null)
+    setError(null)
+    if (inputRef.current) inputRef.current.value = ''
+  }
 
-      {fileName ? (
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center">
-            <FileText className="w-8 h-8 text-blue-600 dark:text-blue-400" strokeWidth={1.6} />
+  // Format file size
+  const formatSize = (bytes) => {
+    if (bytes < 1024) return bytes + ' B'
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB'
+    return (bytes / 1024 / 1024).toFixed(1) + ' MB'
+  }
+
+  /* ── File selected view ── */
+  if (selectedFile) {
+    return (
+      <div className="space-y-4">
+        {/* Error message */}
+        {error && (
+          <div className="flex items-center gap-2 p-3 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 text-sm">
+            <X className="w-4 h-4 shrink-0" />
+            {error}
           </div>
-          <p className="text-sm font-semibold text-gray-900 dark:text-white">{fileName}</p>
-          <button
-            onClick={(e) => { e.stopPropagation(); setFileName(null); inputRef.current.value = '' }}
-            className="text-xs text-gray-500 hover:text-red-500 transition-colors"
-          >
-            {lang === 'ar' ? 'إزالة' : lang === 'fr' ? 'Supprimer' : 'Remove'}
-          </button>
+        )}
+
+        {/* Image preview */}
+        {previewUrl ? (
+          <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
+            <img
+              src={previewUrl}
+              alt={selectedFile.name}
+              className="w-full max-h-80 object-contain"
+            />
+            <button
+              onClick={handleRemove}
+              className="absolute top-3 end-3 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        ) : (
+          <div className="flex items-center gap-4 p-5 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
+            <div className="w-14 h-14 rounded-xl bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center shrink-0">
+              <FileText className="w-7 h-7 text-blue-600 dark:text-blue-400" strokeWidth={1.6} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">{selectedFile.name}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{formatSize(selectedFile.size)}</p>
+            </div>
+            <button onClick={handleRemove} className="shrink-0 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/30 text-gray-400 hover:text-red-500 transition-colors">
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+        )}
+
+        {/* File info + action bar */}
+        {previewUrl && (
+          <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800">
+            <div className="flex items-center gap-2 min-w-0">
+              <ImageIcon className="w-4 h-4 text-gray-400 shrink-0" />
+              <span className="text-xs text-gray-600 dark:text-gray-400 truncate">{selectedFile.name}</span>
+              <span className="text-xs text-gray-400 shrink-0">· {formatSize(selectedFile.size)}</span>
+            </div>
+            <button onClick={handleRemove} className="shrink-0 text-xs text-gray-500 hover:text-red-500 transition-colors font-medium">
+              {lang === 'ar' ? 'إزالة' : lang === 'fr' ? 'Supprimer' : 'Remove'}
+            </button>
+          </div>
+        )}
+
+        {/* Process button */}
+        <button className="btn-primary w-full justify-center py-3.5 text-sm">
+          {lang === 'ar' ? 'معالجة' : lang === 'fr' ? 'Traiter' : 'Process'}
+        </button>
+      </div>
+    )
+  }
+
+  /* ── Empty upload view ── */
+  return (
+    <div>
+      {/* Error message */}
+      {error && (
+        <div className="flex items-center gap-2 p-3 mb-4 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 text-sm">
+          <X className="w-4 h-4 shrink-0" />
+          {error}
         </div>
-      ) : (
+      )}
+
+      <div
+        className={`upload-box p-10 md:p-14 text-center cursor-pointer ${dragOver ? 'dragover' : ''}`}
+        onDragOver={(e) => { e.preventDefault(); setDragOver(true) }}
+        onDragLeave={() => setDragOver(false)}
+        onDrop={handleDrop}
+        onClick={() => inputRef.current?.click()}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter') inputRef.current?.click() }}
+      >
+        <input
+          ref={inputRef}
+          type="file"
+          className="hidden"
+          onChange={handleSelect}
+          accept={acceptString}
+        />
+
         <div className="flex flex-col items-center gap-4">
           <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center">
             <UploadCloud className="w-8 h-8 text-blue-600 dark:text-blue-400" strokeWidth={1.6} />
@@ -77,8 +232,13 @@ function UploadBox({ tool, lang, t }) {
               {t.tools.uploadFormats}: {tool.formats}
             </p>
           )}
+          {isImageTool && (
+            <p className="text-xs text-gray-400 dark:text-gray-500">
+              {lang === 'ar' ? 'اسحب وأفلت الصورة هنا' : lang === 'fr' ? 'Glissez-déposez votre image ici' : 'Drag & drop your image here'}
+            </p>
+          )}
         </div>
-      )}
+      </div>
     </div>
   )
 }
@@ -265,12 +425,10 @@ function ToolInterface({ tool, lang, t }) {
   const LiveTool = LIVE_TOOLS[tool.slug]
   if (LiveTool) return <LiveTool lang={lang} />
 
-  // Show upload box for file-type tools
-  if (tool.type === 'file-pdf' || tool.type === 'file-image' || tool.type === 'file-doc') {
+  if (tool.type === 'file-pdf' || tool.type === 'file-image' || tool.type === 'file-doc' || tool.type === 'file-video' || tool.type === 'file-audio') {
     return <UploadBox tool={tool} lang={lang} t={t} />
   }
 
-  // Show textarea for text tools
   if (tool.type === 'text') {
     return (
       <div className="space-y-4">
@@ -283,7 +441,6 @@ function ToolInterface({ tool, lang, t }) {
     )
   }
 
-  // Show input fields for calculators
   if (tool.type === 'calculator') {
     return (
       <div className="py-16 text-center">
@@ -296,17 +453,24 @@ function ToolInterface({ tool, lang, t }) {
     )
   }
 
-  // Default fallback
-  return <UploadBox tool={tool} lang={lang} t={t} />
+  return (
+    <div className="py-16 text-center">
+      <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mx-auto mb-5">
+        <Wrench className="w-7 h-7 text-gray-400" />
+      </div>
+      <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">{t.tools.comingSoon}</h3>
+      <p className="text-sm text-gray-500 dark:text-gray-400">{t.tools.comingSoonDesc}</p>
+    </div>
+  )
 }
 
-/* ─── FAQ Accordion ───────────────────────────── */
+/* ─── FAQ Item ─────────────────────────────────── */
 function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false)
   return (
     <div className="border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden">
       <button
-        onClick={() => setOpen(!open)}
+        onClick={() => setOpen(o => !o)}
         className="w-full flex items-center justify-between px-5 py-4 text-start bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
       >
         <span className="text-sm font-semibold text-gray-900 dark:text-white">{question}</span>
@@ -367,7 +531,6 @@ export default function ToolPage({ slug, lang, t }) {
 
   return (
     <div className="max-w-3xl mx-auto px-4 md:px-6 py-8 animate-fade-in">
-      {/* Breadcrumb */}
       <Breadcrumb items={[
         { label: t.breadcrumb.home, href: '/' },
         { label: t.nav.categories, href: '/categories' },
@@ -375,7 +538,6 @@ export default function ToolPage({ slug, lang, t }) {
         { label: tool.name[lang] },
       ].filter(Boolean)} />
 
-      {/* Tool header */}
       <div className="flex items-start gap-4 mb-8">
         <div className={`shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${category?.color || 'from-blue-600 to-blue-500'} flex items-center justify-center shadow-sm`}>
           <Icon className="w-7 h-7 text-white" strokeWidth={1.6} />
@@ -391,12 +553,10 @@ export default function ToolPage({ slug, lang, t }) {
         </div>
       </div>
 
-      {/* Tool Interface */}
       <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 md:p-8 mb-6 shadow-card">
         <ToolInterface tool={tool} lang={lang} t={t} />
       </div>
 
-      {/* How to use */}
       {tool.howTo?.[lang] && (
         <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 mb-6 shadow-card">
           <h2 className="font-bold text-base text-gray-900 dark:text-white mb-4 flex items-center gap-2">
@@ -416,7 +576,6 @@ export default function ToolPage({ slug, lang, t }) {
         </div>
       )}
 
-      {/* FAQ */}
       <div className="mb-8">
         <h2 className="font-bold text-base text-gray-900 dark:text-white mb-4 flex items-center gap-2">
           <HelpCircle className="w-5 h-5 text-blue-500" />
@@ -429,7 +588,6 @@ export default function ToolPage({ slug, lang, t }) {
         </div>
       </div>
 
-      {/* Related Tools */}
       {relatedTools.length > 0 && (
         <div>
           <h2 className="font-bold text-base text-gray-900 dark:text-white mb-4">{t.tools.related}</h2>

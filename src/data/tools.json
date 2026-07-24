@@ -1,101 +1,3147 @@
 [
-  {"id":"pdf-to-word","slug":"pdf-to-word","categoryId":"pdf-tools","icon":"FileText","type":"file-pdf","formats":"PDF","featured":true,"name":{"en":"PDF to Word","fr":"PDF vers Word","ar":"تحويل PDF إلى Word"},"description":{"en":"Convert PDF files to editable Word documents instantly.","fr":"Convertissez vos PDF en documents Word modifiables.","ar":"حوّل ملفات PDF إلى مستندات Word قابلة للتحرير."},"howTo":{"en":["Upload your PDF file","Click Convert","Download your Word document"],"fr":["Téléchargez votre PDF","Cliquez sur Convertir","Téléchargez le Word"],"ar":["ارفع ملف PDF","انقر على تحويل","حمّل مستند Word"]}},
-  {"id":"word-to-pdf","slug":"word-to-pdf","categoryId":"pdf-tools","icon":"FilePlus","type":"file-doc","formats":"DOC, DOCX","featured":false,"name":{"en":"Word to PDF","fr":"Word vers PDF","ar":"تحويل Word إلى PDF"},"description":{"en":"Convert Word documents to PDF with perfect formatting.","fr":"Convertissez Word en PDF avec mise en forme parfaite.","ar":"حوّل مستندات Word إلى PDF مع الحفاظ على التنسيق."},"howTo":{"en":["Upload your Word file","Click Convert","Download your PDF"],"fr":["Téléchargez votre Word","Cliquez sur Convertir","Téléchargez le PDF"],"ar":["ارفع ملف Word","انقر على تحويل","حمّل ملف PDF"]}},
-  {"id":"pdf-to-jpg","slug":"pdf-to-jpg","categoryId":"pdf-tools","icon":"FileImage","type":"file-pdf","formats":"PDF","featured":false,"name":{"en":"PDF to JPG","fr":"PDF vers JPG","ar":"تحويل PDF إلى JPG"},"description":{"en":"Extract pages from PDF as JPG images.","fr":"Extrayez les pages d'un PDF en images JPG.","ar":"استخرج صفحات PDF كصور JPG."},"howTo":{"en":["Upload your PDF","Click Convert","Download JPG images"],"fr":["Téléchargez votre PDF","Cliquez sur Convertir","Téléchargez les JPG"],"ar":["ارفع ملف PDF","انقر على تحويل","حمّل صور JPG"]}},
-  {"id":"jpg-to-pdf","slug":"jpg-to-pdf","categoryId":"pdf-tools","icon":"FileText","type":"file-image","formats":"JPG, PNG","featured":false,"name":{"en":"JPG to PDF","fr":"JPG vers PDF","ar":"تحويل JPG إلى PDF"},"description":{"en":"Combine JPG images into a single PDF document.","fr":"Combinez des images JPG en un seul PDF.","ar":"اجمع صور JPG في ملف PDF واحد."},"howTo":{"en":["Upload your images","Click Convert","Download your PDF"],"fr":["Téléchargez vos images","Cliquez sur Convertir","Téléchargez le PDF"],"ar":["ارفع صورك","انقر على تحويل","حمّل ملف PDF"]}},
-  {"id":"merge-pdf","slug":"merge-pdf","categoryId":"pdf-tools","icon":"Files","type":"file-pdf","formats":"PDF","featured":true,"name":{"en":"Merge PDF","fr":"Fusionner PDF","ar":"دمج PDF"},"description":{"en":"Combine multiple PDF files into one document.","fr":"Fusionnez plusieurs PDF en un seul document.","ar":"ادمج عدة ملفات PDF في مستند واحد."},"howTo":{"en":["Upload multiple PDFs","Arrange order","Download merged PDF"],"fr":["Téléchargez plusieurs PDF","Réorganisez","Téléchargez le PDF fusionné"],"ar":["ارفع عدة ملفات PDF","رتب الترتيب","حمّل الملف المدمج"]}},
-  {"id":"split-pdf","slug":"split-pdf","categoryId":"pdf-tools","icon":"Scissors","type":"file-pdf","formats":"PDF","featured":false,"name":{"en":"Split PDF","fr":"Diviser PDF","ar":"تقسيم PDF"},"description":{"en":"Extract or split PDF pages into separate files.","fr":"Extrayez ou divisez les pages d'un PDF.","ar":"استخرج أو قسم صفحات PDF إلى ملفات منفصلة."},"howTo":{"en":["Upload your PDF","Select pages to extract","Download split files"],"fr":["Téléchargez votre PDF","Sélectionnez les pages","Téléchargez"],"ar":["ارفع ملف PDF","اختر الصفحات","حمّل الملفات"]}},
-  {"id":"compress-pdf","slug":"compress-pdf","categoryId":"pdf-tools","icon":"Minimize2","type":"file-pdf","formats":"PDF","featured":false,"name":{"en":"Compress PDF","fr":"Compresser PDF","ar":"ضغط PDF"},"description":{"en":"Reduce PDF file size without losing quality.","fr":"Réduisez la taille de vos PDF sans perte de qualité.","ar":"قلّل حجم ملفات PDF دون فقدان الجودة."},"howTo":{"en":["Upload your PDF","Choose compression level","Download compressed PDF"],"fr":["Téléchargez votre PDF","Choisissez le niveau","Téléchargez"],"ar":["ارفع ملف PDF","اختر مستوى الضغط","حمّل الملف"]}},
-  {"id":"protect-pdf","slug":"protect-pdf","categoryId":"pdf-tools","icon":"Lock","type":"file-pdf","formats":"PDF","featured":false,"name":{"en":"Protect PDF","fr":"Protéger PDF","ar":"حماية PDF"},"description":{"en":"Add a password to your PDF file for security.","fr":"Ajoutez un mot de passe à votre PDF.","ar":"أضف كلمة مرور إلى ملف PDF للحماية."},"howTo":{"en":["Upload your PDF","Set a password","Download protected PDF"],"fr":["Téléchargez votre PDF","Définissez un mot de passe","Téléchargez"],"ar":["ارفع ملف PDF","حدد كلمة مرور","حمّل الملف"]}},
-  {"id":"unlock-pdf","slug":"unlock-pdf","categoryId":"pdf-tools","icon":"Unlock","type":"file-pdf","formats":"PDF","featured":false,"name":{"en":"Unlock PDF","fr":"Déverrouiller PDF","ar":"فتح PDF"},"description":{"en":"Remove password protection from PDF files.","fr":"Retirez la protection par mot de passe d'un PDF.","ar":"احذف الحماية بكلمة المرور من ملفات PDF."},"howTo":{"en":["Upload your PDF","Enter the password","Download unlocked PDF"],"fr":["Téléchargez votre PDF","Entrez le mot de passe","Téléchargez"],"ar":["ارفع ملف PDF","أدخل كلمة المرور","حمّل الملف"]}},
-  {"id":"rotate-pdf","slug":"rotate-pdf","categoryId":"pdf-tools","icon":"RotateCw","type":"file-pdf","formats":"PDF","featured":false,"name":{"en":"Rotate PDF","fr":"Faire pivoter PDF","ar":"تدوير PDF"},"description":{"en":"Rotate PDF pages to any orientation.","fr":"Faites pivoter les pages de votre PDF.","ar":"دوّر صفحات PDF بأي اتجاه."},"howTo":{"en":["Upload your PDF","Select rotation angle","Download rotated PDF"],"fr":["Téléchargez votre PDF","Choisissez l'angle","Téléchargez"],"ar":["ارفع ملف PDF","اختر الزاوية","حمّل الملف"]}},
-
-  {"id":"compress-image","slug":"compress-image","categoryId":"image-tools","icon":"Minimize2","type":"file-image","formats":"JPG, PNG, WebP","featured":true,"name":{"en":"Compress Image","fr":"Compresser une image","ar":"ضغط الصورة"},"description":{"en":"Reduce image file size without losing quality.","fr":"Réduisez la taille sans perte de qualité.","ar":"قلّل حجم الصورة دون فقدان الجودة."},"howTo":{"en":["Upload your image","Choose compression level","Download"],"fr":["Téléchargez votre image","Choisissez le niveau","Téléchargez"],"ar":["ارفع صورتك","اختر مستوى الضغط","حمّل الصورة"]}},
-  {"id":"resize-image","slug":"resize-image","categoryId":"image-tools","icon":"Maximize","type":"file-image","formats":"JPG, PNG, WebP","featured":false,"name":{"en":"Resize Image","fr":"Redimensionner une image","ar":"تغيير حجم الصورة"},"description":{"en":"Resize images to exact dimensions in seconds.","fr":"Redimensionnez vos images aux dimensions exactes.","ar":"غيّر حجم الصور إلى أبعاد محددة بثوانٍ."},"howTo":{"en":["Upload your image","Enter desired dimensions","Download"],"fr":["Téléchargez votre image","Entrez les dimensions","Téléchargez"],"ar":["ارفع صورتك","أدخل الأبعاد","حمّل الصورة"]}},
-  {"id":"crop-image","slug":"crop-image","categoryId":"image-tools","icon":"Crop","type":"file-image","formats":"JPG, PNG, WebP","featured":false,"name":{"en":"Crop Image","fr":"Recadrer une image","ar":"اقتصاص الصورة"},"description":{"en":"Crop images to remove unwanted areas.","fr":"Recadrez vos images pour supprimer les zones indésirables.","ar":"اقتص الصور لإزالة الأجزاء غير المرغوبة."},"howTo":{"en":["Upload your image","Select crop area","Download cropped image"],"fr":["Téléchargez votre image","Sélectionnez la zone","Téléchargez"],"ar":["ارفع صورتك","حدد منطقة الاقتصاص","حمّل الصورة"]}},
-  {"id":"jpg-to-png","slug":"jpg-to-png","categoryId":"image-tools","icon":"FileImage","type":"file-image","formats":"JPG","featured":false,"name":{"en":"JPG to PNG","fr":"JPG vers PNG","ar":"تحويل JPG إلى PNG"},"description":{"en":"Convert JPG images to PNG with transparency.","fr":"Convertissez JPG en PNG avec transparence.","ar":"حوّل صور JPG إلى PNG مع الشفافية."},"howTo":{"en":["Upload your JPG","Click Convert","Download PNG"],"fr":["Téléchargez votre JPG","Cliquez sur Convertir","Téléchargez le PNG"],"ar":["ارفع ملف JPG","انقر على تحويل","حمّل PNG"]}},
-  {"id":"png-to-jpg","slug":"png-to-jpg","categoryId":"image-tools","icon":"FileImage","type":"file-image","formats":"PNG","featured":false,"name":{"en":"PNG to JPG","fr":"PNG vers JPG","ar":"تحويل PNG إلى JPG"},"description":{"en":"Convert PNG images to JPG format.","fr":"Convertissez PNG en JPG.","ar":"حوّل صور PNG إلى صيغة JPG."},"howTo":{"en":["Upload your PNG","Click Convert","Download JPG"],"fr":["Téléchargez votre PNG","Cliquez sur Convertir","Téléchargez le JPG"],"ar":["ارفع ملف PNG","انقر على تحويل","حمّل JPG"]}},
-  {"id":"webp-to-jpg","slug":"webp-to-jpg","categoryId":"image-tools","icon":"FileImage","type":"file-image","formats":"WebP","featured":false,"name":{"en":"WEBP to JPG","fr":"WEBP vers JPG","ar":"تحويل WEBP إلى JPG"},"description":{"en":"Convert WebP images to JPG format.","fr":"Convertissez WebP en JPG.","ar":"حوّل صور WebP إلى صيغة JPG."},"howTo":{"en":["Upload your WebP","Click Convert","Download JPG"],"fr":["Téléchargez votre WebP","Cliquez sur Convertir","Téléchargez"],"ar":["ارفع ملف WebP","انقر على تحويل","حمّل JPG"]}},
-  {"id":"remove-background","slug":"remove-background","categoryId":"image-tools","icon":"Scissors","type":"file-image","formats":"JPG, PNG","featured":true,"name":{"en":"Remove Background","fr":"Supprimer l'arrière-plan","ar":"إزالة الخلفية"},"description":{"en":"Remove image backgrounds automatically in seconds.","fr":"Supprimez l'arrière-plan automatiquement.","ar":"احذف خلفية الصور تلقائياً بثوانٍ."},"howTo":{"en":["Upload your image","Click Remove Background","Download result"],"fr":["Téléchargez votre image","Cliquez sur Supprimer","Téléchargez"],"ar":["ارفع صورتك","انقر على إزالة الخلفية","حمّل النتيجة"]}},
-  {"id":"image-converter","slug":"image-converter","categoryId":"image-tools","icon":"Repeat","type":"file-image","formats":"JPG, PNG, WebP, GIF","featured":false,"name":{"en":"Image Converter","fr":"Convertisseur d'images","ar":"محوّل الصور"},"description":{"en":"Convert images between any format.","fr":"Convertissez les images entre tous les formats.","ar":"حوّل الصور بين أي صيغة."},"howTo":{"en":["Upload your image","Select target format","Download"],"fr":["Téléchargez votre image","Choisissez le format","Téléchargez"],"ar":["ارفع صورتك","اختر الصيغة","حمّل الصورة"]}},
-  {"id":"image-upscaler","slug":"image-upscaler","categoryId":"image-tools","icon":"Maximize","type":"file-image","formats":"JPG, PNG","featured":false,"name":{"en":"Image Upscaler","fr":"Agrandir une image","ar":"تكبير الصورة"},"description":{"en":"Enlarge images without losing quality using AI.","fr":"Agrandissez les images sans perte de qualité.","ar":"كبّر الصور دون فقدان الجودة."},"howTo":{"en":["Upload your image","Choose scale factor","Download upscaled image"],"fr":["Téléchargez votre image","Choisissez le facteur","Téléchargez"],"ar":["ارفع صورتك","اختر عامل التكبير","حمّل الصورة"]}},
-  {"id":"watermark-image","slug":"watermark-image","categoryId":"image-tools","icon":"Stamp","type":"file-image","formats":"JPG, PNG","featured":false,"name":{"en":"Watermark Image","fr":"Filigrane d'image","ar":"علامة مائية للصورة"},"description":{"en":"Add text or logo watermark to your images.","fr":"Ajoutez un filigrane texte ou logo à vos images.","ar":"أضف علامة مائية نصية أو شعار لصورك."},"howTo":{"en":["Upload your image","Add watermark text or logo","Download"],"fr":["Téléchargez votre image","Ajoutez le filigrane","Téléchargez"],"ar":["ارفع صورتك","أضف العلامة المائية","حمّل الصورة"]}},
-
-  {"id":"video-compressor","slug":"video-compressor","categoryId":"video-tools","icon":"Minimize2","type":"file-video","formats":"MP4, AVI, MOV","featured":true,"name":{"en":"Video Compressor","fr":"Compresseur Vidéo","ar":"ضاغط الفيديو"},"description":{"en":"Compress video files without losing quality.","fr":"Compressez vos vidéos sans perte de qualité.","ar":"اضغط ملفات الفيديو دون فقدان الجودة."},"howTo":{"en":["Upload your video","Choose compression level","Download"],"fr":["Téléchargez votre vidéo","Choisissez le niveau","Téléchargez"],"ar":["ارفع الفيديو","اختر مستوى الضغط","حمّل الفيديو"]}},
-  {"id":"mp4-converter","slug":"mp4-converter","categoryId":"video-tools","icon":"Repeat","type":"file-video","formats":"AVI, MOV, MKV, WMV","featured":false,"name":{"en":"MP4 Converter","fr":"Convertisseur MP4","ar":"محوّل MP4"},"description":{"en":"Convert any video format to MP4.","fr":"Convertissez n'importe quelle vidéo en MP4.","ar":"حوّل أي صيغة فيديو إلى MP4."},"howTo":{"en":["Upload your video","Click Convert","Download MP4"],"fr":["Téléchargez votre vidéo","Cliquez sur Convertir","Téléchargez"],"ar":["ارفع الفيديو","انقر على تحويل","حمّل MP4"]}},
-  {"id":"video-trimmer","slug":"video-trimmer","categoryId":"video-tools","icon":"Scissors","type":"file-video","formats":"MP4, MOV, AVI","featured":false,"name":{"en":"Video Trimmer","fr":"Découpeur Vidéo","ar":"قاص الفيديو"},"description":{"en":"Trim and cut video to any length.","fr":"Découpez et coupez vos vidéos.","ar":"قص وقطع الفيديو إلى أي طول."},"howTo":{"en":["Upload your video","Select start and end points","Download trimmed video"],"fr":["Téléchargez votre vidéo","Sélectionnez les points","Téléchargez"],"ar":["ارفع الفيديو","حدد نقاط البداية والنهاية","حمّل الفيديو"]}},
-  {"id":"extract-audio","slug":"extract-audio","categoryId":"video-tools","icon":"Music","type":"file-video","formats":"MP4, MOV, AVI","featured":false,"name":{"en":"Extract Audio","fr":"Extraire l'audio","ar":"استخراج الصوت"},"description":{"en":"Extract audio track from any video file.","fr":"Extrayez la piste audio d'une vidéo.","ar":"استخرج المسار الصوتي من أي فيديو."},"howTo":{"en":["Upload your video","Click Extract","Download audio file"],"fr":["Téléchargez votre vidéo","Cliquez sur Extraire","Téléchargez"],"ar":["ارفع الفيديو","انقر على استخراج","حمّل الملف الصوتي"]}},
-  {"id":"gif-maker","slug":"gif-maker","categoryId":"video-tools","icon":"Film","type":"file-video","formats":"MP4, MOV","featured":false,"name":{"en":"GIF Maker","fr":"Créateur de GIF","ar":"صانع GIF"},"description":{"en":"Create animated GIFs from video files.","fr":"Créez des GIFs animés à partir de vidéos.","ar":"أنشئ صور GIF متحركة من ملفات الفيديو."},"howTo":{"en":["Upload your video","Select segment","Download GIF"],"fr":["Téléchargez votre vidéo","Sélectionnez le segment","Téléchargez le GIF"],"ar":["ارفع الفيديو","اختر المقطع","حمّل GIF"]}},
-
-  {"id":"mp3-converter","slug":"mp3-converter","categoryId":"audio-tools","icon":"Music","type":"file-audio","formats":"WAV, AAC, OGG, FLAC","featured":true,"name":{"en":"MP3 Converter","fr":"Convertisseur MP3","ar":"محوّل MP3"},"description":{"en":"Convert any audio format to MP3.","fr":"Convertissez n'importe quel audio en MP3.","ar":"حوّل أي صيغة صوت إلى MP3."},"howTo":{"en":["Upload your audio","Click Convert","Download MP3"],"fr":["Téléchargez votre audio","Cliquez sur Convertir","Téléchargez"],"ar":["ارفع الملف الصوتي","انقر على تحويل","حمّل MP3"]}},
-  {"id":"audio-cutter","slug":"audio-cutter","categoryId":"audio-tools","icon":"Scissors","type":"file-audio","formats":"MP3, WAV, AAC","featured":false,"name":{"en":"Audio Cutter","fr":"Découpeur Audio","ar":"قاص الصوت"},"description":{"en":"Cut and trim audio files to any length.","fr":"Coupez et découpez vos fichiers audio.","ar":"قص وقطع الملفات الصوتية."},"howTo":{"en":["Upload your audio","Select start and end","Download"],"fr":["Téléchargez votre audio","Sélectionnez les points","Téléchargez"],"ar":["ارفع الملف الصوتي","حدد البداية والنهاية","حمّل"]}},
-  {"id":"audio-merger","slug":"audio-merger","categoryId":"audio-tools","icon":"Files","type":"file-audio","formats":"MP3, WAV","featured":false,"name":{"en":"Audio Merger","fr":"Fusionner Audio","ar":"دمج الصوت"},"description":{"en":"Merge multiple audio files into one.","fr":"Fusionnez plusieurs fichiers audio en un seul.","ar":"ادمج عدة ملفات صوتية في ملف واحد."},"howTo":{"en":["Upload multiple audio files","Arrange order","Download merged file"],"fr":["Téléchargez plusieurs fichiers","Réorganisez","Téléchargez"],"ar":["ارفع عدة ملفات","رتب الترتيب","حمّل الملف"]}},
-  {"id":"volume-booster","slug":"volume-booster","categoryId":"audio-tools","icon":"Volume2","type":"file-audio","formats":"MP3, WAV","featured":false,"name":{"en":"Volume Booster","fr":"Amplificateur de volume","ar":"مضخّم الصوت"},"description":{"en":"Increase the volume of audio files.","fr":"Augmentez le volume de vos fichiers audio.","ar":"زد مستوى صوت الملفات الصوتية."},"howTo":{"en":["Upload your audio","Set volume level","Download"],"fr":["Téléchargez votre audio","Réglez le volume","Téléchargez"],"ar":["ارفع الملف الصوتي","اضبط مستوى الصوت","حمّل"]}},
-  {"id":"voice-recorder","slug":"voice-recorder","categoryId":"audio-tools","icon":"Mic","type":"text","formats":null,"featured":false,"name":{"en":"Voice Recorder","fr":"Enregistreur vocal","ar":"مسجّل الصوت"},"description":{"en":"Record audio directly from your browser.","fr":"Enregistrez l'audio directement depuis votre navigateur.","ar":"سجّل الصوت مباشرة من متصفحك."},"howTo":{"en":["Click Record","Speak into your mic","Download recording"],"fr":["Cliquez sur Enregistrer","Parlez dans le micro","Téléchargez"],"ar":["انقر على تسجيل","تحدث في الميكروفون","حمّل التسجيل"]}},
-
-  {"id":"word-counter","slug":"word-counter","categoryId":"text-tools","icon":"AlignLeft","type":"text","formats":null,"featured":true,"name":{"en":"Word Counter","fr":"Compteur de mots","ar":"عدّاد الكلمات"},"description":{"en":"Count words, characters, sentences and paragraphs instantly.","fr":"Comptez les mots, caractères, phrases instantanément.","ar":"احسب الكلمات والحروف والجمل والفقرات فوراً."},"howTo":{"en":["Paste or type your text","See live statistics below","Copy results if needed"],"fr":["Collez ou tapez votre texte","Voir les statistiques","Copiez les résultats"],"ar":["الصق أو اكتب نصك","شاهد الإحصائيات","انسخ النتائج"]}},
-  {"id":"character-counter","slug":"character-counter","categoryId":"text-tools","icon":"Type","type":"text","formats":null,"featured":false,"name":{"en":"Character Counter","fr":"Compteur de caractères","ar":"عدّاد الأحرف"},"description":{"en":"Count characters with and without spaces.","fr":"Comptez les caractères avec et sans espaces.","ar":"احسب الأحرف مع المسافات وبدونها."},"howTo":{"en":["Paste your text","See character count","Copy if needed"],"fr":["Collez votre texte","Voir le comptage","Copiez"],"ar":["الصق نصك","شاهد العدد","انسخ"]}},
-  {"id":"case-converter","slug":"case-converter","categoryId":"text-tools","icon":"CaseSensitive","type":"text","formats":null,"featured":false,"name":{"en":"Case Converter","fr":"Convertisseur de casse","ar":"محول حالة الأحرف"},"description":{"en":"Convert text to upper, lower, title or sentence case.","fr":"Convertissez en majuscules, minuscules, titre.","ar":"حوّل النص إلى أحرف كبيرة أو صغيرة أو عنوان."},"howTo":{"en":["Paste your text","Choose case format","Copy result"],"fr":["Collez votre texte","Choisissez le format","Copiez"],"ar":["الصق نصك","اختر الصيغة","انسخ"]}},
-  {"id":"remove-duplicate-lines","slug":"remove-duplicate-lines","categoryId":"text-tools","icon":"ListFilter","type":"text","formats":null,"featured":false,"name":{"en":"Remove Duplicate Lines","fr":"Supprimer doublons","ar":"حذف الأسطر المكررة"},"description":{"en":"Remove duplicate lines from any text.","fr":"Supprimez les lignes en double de votre texte.","ar":"احذف الأسطر المكررة من أي نص."},"howTo":{"en":["Paste your text","Click Remove Duplicates","Copy result"],"fr":["Collez votre texte","Cliquez sur Supprimer","Copiez"],"ar":["الصق نصك","انقر على حذف المكرر","انسخ"]}},
-  {"id":"text-compare","slug":"text-compare","categoryId":"text-tools","icon":"GitCompare","type":"text","formats":null,"featured":false,"name":{"en":"Text Compare","fr":"Comparer du texte","ar":"مقارنة النصوص"},"description":{"en":"Compare two texts and highlight differences.","fr":"Comparez deux textes et surlignez les différences.","ar":"قارن نصين وأبرز الاختلافات."},"howTo":{"en":["Paste first text","Paste second text","See differences"],"fr":["Collez le premier texte","Collez le second","Voir les différences"],"ar":["الصق النص الأول","الصق النص الثاني","شاهد الاختلافات"]}},
-
-  {"id":"ai-writer","slug":"ai-writer","categoryId":"ai-tools","icon":"PenLine","type":"text","formats":null,"featured":true,"name":{"en":"AI Writer","fr":"Rédacteur IA","ar":"كاتب الذكاء الاصطناعي"},"description":{"en":"Generate text content with AI assistance.","fr":"Générez du contenu textuel avec l'IA.","ar":"أنشئ محتوى نصي بمساعدة الذكاء الاصطناعي."},"howTo":{"en":["Enter your topic","Click Generate","Copy your content"],"fr":["Entrez votre sujet","Cliquez sur Générer","Copiez"],"ar":["أدخل موضوعك","انقر على توليد","انسخ المحتوى"]}},
-  {"id":"ai-summarizer","slug":"ai-summarizer","categoryId":"ai-tools","icon":"FileSearch","type":"text","formats":null,"featured":false,"name":{"en":"AI Summarizer","fr":"Résumé IA","ar":"ملخّص الذكاء الاصطناعي"},"description":{"en":"Summarize long texts into key points.","fr":"Résumez de longs textes en points clés.","ar":"لخّص النصوص الطويلة إلى نقاط رئيسية."},"howTo":{"en":["Paste your text","Click Summarize","Read summary"],"fr":["Collez votre texte","Cliquez sur Résumer","Lisez"],"ar":["الصق نصك","انقر على تلخيص","اقرأ الملخص"]}},
-  {"id":"ai-translator","slug":"ai-translator","categoryId":"ai-tools","icon":"Languages","type":"text","formats":null,"featured":false,"name":{"en":"AI Translator","fr":"Traducteur IA","ar":"مترجم الذكاء الاصطناعي"},"description":{"en":"Translate text between any languages.","fr":"Traduisez du texte entre toutes les langues.","ar":"ترجم النص بين أي لغات."},"howTo":{"en":["Paste your text","Select languages","Get translation"],"fr":["Collez votre texte","Sélectionnez les langues","Obtenez la traduction"],"ar":["الصق نصك","اختر اللغات","احصل على الترجمة"]}},
-  {"id":"ai-rewriter","slug":"ai-rewriter","categoryId":"ai-tools","icon":"RefreshCw","type":"text","formats":null,"featured":false,"name":{"en":"AI Rewriter","fr":"Réécriture IA","ar":"إعادة كتابة بالذكاء الاصطناعي"},"description":{"en":"Rewrite and rephrase text with AI.","fr":"Réécrivez et reformulez du texte avec l'IA.","ar":"أعد كتابة وإعادة صياغة النص بالذكاء الاصطناعي."},"howTo":{"en":["Paste your text","Click Rewrite","Copy result"],"fr":["Collez votre texte","Cliquez sur Réécrire","Copiez"],"ar":["الصق نصك","انقر على إعادة الكتابة","انسخ النتيجة"]}},
-  {"id":"ai-grammar-fixer","slug":"ai-grammar-fixer","categoryId":"ai-tools","icon":"SpellCheck","type":"text","formats":null,"featured":false,"name":{"en":"AI Grammar Fixer","fr":"Correcteur IA","ar":"مصحح الذكاء الاصطناعي"},"description":{"en":"Fix grammar and spelling mistakes instantly.","fr":"Corrigez la grammaire et l'orthographe.","ar":"أصلح أخطاء القواعد والإملاء فوراً."},"howTo":{"en":["Paste your text","Click Fix Grammar","Copy corrected text"],"fr":["Collez votre texte","Cliquez sur Corriger","Copiez"],"ar":["الصق نصك","انقر على إصلاح","انسخ النص المصحح"]}},
-
-  {"id":"bmi-calculator","slug":"bmi-calculator","categoryId":"calculators","icon":"Activity","type":"calculator","formats":null,"featured":false,"name":{"en":"BMI Calculator","fr":"Calculatrice IMC","ar":"حاسبة مؤشر كتلة الجسم"},"description":{"en":"Calculate your Body Mass Index and ideal weight range.","fr":"Calculez votre IMC et poids idéal.","ar":"احسب مؤشر كتلة جسمك ووزنك المثالي."},"howTo":{"en":["Enter your height","Enter your weight","See your BMI result"],"fr":["Entrez votre taille","Entrez votre poids","Voir votre IMC"],"ar":["أدخل طولك","أدخل وزنك","شاهد النتيجة"]}},
-  {"id":"age-calculator","slug":"age-calculator","categoryId":"calculators","icon":"Calendar","type":"calculator","formats":null,"featured":true,"name":{"en":"Age Calculator","fr":"Calculatrice d'âge","ar":"حاسبة العمر"},"description":{"en":"Calculate your exact age in years, months, and days.","fr":"Calculez votre âge exact en années, mois et jours.","ar":"احسب عمرك بالضبط بالسنوات والأشهر والأيام."},"howTo":{"en":["Enter your date of birth","See your exact age","View detailed breakdown"],"fr":["Entrez votre date de naissance","Voir votre âge","Voir les détails"],"ar":["أدخل تاريخ ميلادك","شاهد عمرك","اعرض التفاصيل"]}},
-  {"id":"percentage-calculator","slug":"percentage-calculator","categoryId":"calculators","icon":"Percent","type":"calculator","formats":null,"featured":false,"name":{"en":"Percentage Calculator","fr":"Calculatrice de pourcentage","ar":"حاسبة النسبة المئوية"},"description":{"en":"Calculate percentages, increases and decreases.","fr":"Calculez pourcentages, augmentations et réductions.","ar":"احسب النسب المئوية والزيادات والنقصان."},"howTo":{"en":["Enter values","Click Calculate","See result"],"fr":["Entrez les valeurs","Cliquez sur Calculer","Voir le résultat"],"ar":["أدخل القيم","انقر على حساب","شاهد النتيجة"]}},
-  {"id":"loan-calculator","slug":"loan-calculator","categoryId":"calculators","icon":"Banknote","type":"calculator","formats":null,"featured":false,"name":{"en":"Loan Calculator","fr":"Calculatrice de prêt","ar":"حاسبة القرض"},"description":{"en":"Calculate monthly payments and total interest.","fr":"Calculez les mensualités et les intérêts totaux.","ar":"احسب الدفعات الشهرية وإجمالي الفائدة."},"howTo":{"en":["Enter loan amount","Enter interest rate","See monthly payment"],"fr":["Entrez le montant","Entrez le taux","Voir les mensualités"],"ar":["أدخل مبلغ القرض","أدخل معدل الفائدة","شاهد الدفعات"]}},
-  {"id":"currency-converter","slug":"currency-converter","categoryId":"calculators","icon":"DollarSign","type":"calculator","formats":null,"featured":true,"name":{"en":"Currency Converter","fr":"Convertisseur de devises","ar":"محوّل العملات"},"description":{"en":"Convert between currencies with live exchange rates.","fr":"Convertissez entre devises avec taux en direct.","ar":"حوّل بين العملات بأسعار صرف مباشرة."},"howTo":{"en":["Enter amount","Select currencies","See converted amount"],"fr":["Entrez le montant","Sélectionnez les devises","Voir le résultat"],"ar":["أدخل المبلغ","اختر العملات","شاهد النتيجة"]}},
-
-  {"id":"json-formatter","slug":"json-formatter","categoryId":"developer-tools","icon":"Braces","type":"text","formats":null,"featured":true,"name":{"en":"JSON Formatter","fr":"Formateur JSON","ar":"منسّق JSON"},"description":{"en":"Format and beautify JSON data instantly.","fr":"Formatez et embellissez vos données JSON.","ar":"نسّق وجمّل بيانات JSON فوراً."},"howTo":{"en":["Paste your JSON","Click Format","Copy formatted result"],"fr":["Collez votre JSON","Cliquez sur Formater","Copiez"],"ar":["الصق JSON","انقر على تنسيق","انسخ النتيجة"]}},
-  {"id":"json-validator","slug":"json-validator","categoryId":"developer-tools","icon":"CheckSquare","type":"text","formats":null,"featured":false,"name":{"en":"JSON Validator","fr":"Validateur JSON","ar":"مدقق JSON"},"description":{"en":"Validate JSON and find syntax errors.","fr":"Validez votre JSON et trouvez les erreurs.","ar":"تحقق من JSON واعثر على الأخطاء."},"howTo":{"en":["Paste your JSON","Click Validate","See validation result"],"fr":["Collez votre JSON","Cliquez sur Valider","Voir le résultat"],"ar":["الصق JSON","انقر على تحقق","شاهد النتيجة"]}},
-  {"id":"base64-encoder","slug":"base64-encoder","categoryId":"developer-tools","icon":"Lock","type":"text","formats":null,"featured":false,"name":{"en":"Base64 Encoder","fr":"Encodeur Base64","ar":"مشفر Base64"},"description":{"en":"Encode text or files to Base64 format.","fr":"Encodez du texte en Base64.","ar":"شفّر النص أو الملفات إلى Base64."},"howTo":{"en":["Paste your text","Click Encode","Copy Base64 result"],"fr":["Collez votre texte","Cliquez sur Encoder","Copiez"],"ar":["الصق نصك","انقر على ترميز","انسخ النتيجة"]}},
-  {"id":"base64-decoder","slug":"base64-decoder","categoryId":"developer-tools","icon":"Unlock","type":"text","formats":null,"featured":false,"name":{"en":"Base64 Decoder","fr":"Décodeur Base64","ar":"فاك تشفير Base64"},"description":{"en":"Decode Base64 strings back to text.","fr":"Décodez les chaînes Base64 en texte.","ar":"فك تشفير سلاسل Base64 إلى نص."},"howTo":{"en":["Paste Base64 string","Click Decode","See decoded text"],"fr":["Collez la chaîne Base64","Cliquez sur Décoder","Voir le texte"],"ar":["الصق سلسلة Base64","انقر على فك الترميز","شاهد النص"]}},
-  {"id":"url-encoder","slug":"url-encoder","categoryId":"developer-tools","icon":"Link","type":"text","formats":null,"featured":false,"name":{"en":"URL Encoder","fr":"Encodeur URL","ar":"مشفر URL"},"description":{"en":"Encode URLs and text for safe transmission.","fr":"Encodez les URL et le texte pour transmission sûre.","ar":"شفّر الروابط والنص للنقل الآمن."},"howTo":{"en":["Paste your URL or text","Click Encode","Copy result"],"fr":["Collez votre URL","Cliquez sur Encoder","Copiez"],"ar":["الصق الرابط أو النص","انقر على ترميز","انسخ"]}},
-  {"id":"url-decoder","slug":"url-decoder","categoryId":"developer-tools","icon":"Unlink","type":"text","formats":null,"featured":false,"name":{"en":"URL Decoder","fr":"Décodeur URL","ar":"فاك تشفير URL"},"description":{"en":"Decode encoded URLs back to readable text.","fr":"Décodez les URL encodées en texte lisible.","ar":"فك تشفير الروابط المشفرة إلى نص مقروء."},"howTo":{"en":["Paste encoded URL","Click Decode","Copy decoded result"],"fr":["Collez l'URL encodée","Cliquez sur Décoder","Copiez"],"ar":["الصق الرابط المشفر","انقر على فك الترميز","انسخ"]}},
-  {"id":"html-minifier","slug":"html-minifier","categoryId":"developer-tools","icon":"Code","type":"text","formats":null,"featured":false,"name":{"en":"HTML Minifier","fr":"Minificateur HTML","ar":"مضغط HTML"},"description":{"en":"Minify HTML code to reduce file size.","fr":"Minifiez votre code HTML pour réduire la taille.","ar":"ضغط كود HTML لتقليل الحجم."},"howTo":{"en":["Paste your HTML","Click Minify","Copy result"],"fr":["Collez votre HTML","Cliquez sur Minifier","Copiez"],"ar":["الصق HTML","انقر على ضغط","انسخ"]}},
-  {"id":"css-minifier","slug":"css-minifier","categoryId":"developer-tools","icon":"Palette","type":"text","formats":null,"featured":false,"name":{"en":"CSS Minifier","fr":"Minificateur CSS","ar":"مضغط CSS"},"description":{"en":"Minify CSS code to reduce file size.","fr":"Minifiez votre code CSS pour réduire la taille.","ar":"ضغط كود CSS لتقليل الحجم."},"howTo":{"en":["Paste your CSS","Click Minify","Copy result"],"fr":["Collez votre CSS","Cliquez sur Minifier","Copiez"],"ar":["الصق CSS","انقر على ضغط","انسخ"]}},
-
-  {"id":"meta-tag-generator","slug":"meta-tag-generator","categoryId":"seo-tools","icon":"Tag","type":"text","formats":null,"featured":true,"name":{"en":"Meta Tag Generator","fr":"Générateur de balises meta","ar":"مولّد وسوم Meta"},"description":{"en":"Generate meta tags for SEO optimization.","fr":"Générez des balises meta pour le SEO.","ar":"أنشئ وسوم Meta لتحسين محركات البحث."},"howTo":{"en":["Enter page details","Click Generate","Copy meta tags"],"fr":["Entrez les détails","Cliquez sur Générer","Copiez"],"ar":["أدخل تفاصيل الصفحة","انقر على توليد","انسخ الوسوم"]}},
-  {"id":"keyword-density-checker","slug":"keyword-density-checker","categoryId":"seo-tools","icon":"Search","type":"text","formats":null,"featured":false,"name":{"en":"Keyword Density Checker","fr":"Vérificateur de densité","ar":"مدقق كثافة الكلمات"},"description":{"en":"Check keyword density in any text.","fr":"Vérifiez la densité des mots-clés dans un texte.","ar":"تحقق من كثافة الكلمات المفتاحية في أي نص."},"howTo":{"en":["Paste your text","Click Check","See keyword analysis"],"fr":["Collez votre texte","Cliquez sur Vérifier","Voir l'analyse"],"ar":["الصق نصك","انقر على تحقق","شاهد التحليل"]}},
-  {"id":"sitemap-generator","slug":"sitemap-generator","categoryId":"seo-tools","icon":"Map","type":"text","formats":null,"featured":false,"name":{"en":"Sitemap Generator","fr":"Générateur de sitemap","ar":"مولّد خريطة الموقع"},"description":{"en":"Generate XML sitemaps for your website.","fr":"Générez des sitemaps XML pour votre site.","ar":"أنشئ خرائط موقع XML لموقعك."},"howTo":{"en":["Enter your URLs","Click Generate","Download sitemap"],"fr":["Entrez vos URL","Cliquez sur Générer","Téléchargez"],"ar":["أدخل روابطك","انقر على توليد","حمّل خريطة الموقع"]}},
-  {"id":"robots-txt-generator","slug":"robots-txt-generator","categoryId":"seo-tools","icon":"FileText","type":"text","formats":null,"featured":false,"name":{"en":"Robots.txt Generator","fr":"Générateur robots.txt","ar":"مولّد robots.txt"},"description":{"en":"Generate robots.txt files for search engines.","fr":"Générez des fichiers robots.txt.","ar":"أنشئ ملفات robots.txt لمحركات البحث."},"howTo":{"en":["Set your rules","Click Generate","Download robots.txt"],"fr":["Définissez vos règles","Cliquez sur Générer","Téléchargez"],"ar":["حدد قواعدك","انقر على توليد","حمّل الملف"]}},
-
-  {"id":"ip-lookup","slug":"ip-lookup","categoryId":"network-tools","icon":"Globe","type":"text","formats":null,"featured":true,"name":{"en":"IP Lookup","fr":"Recherche IP","ar":"بحث IP"},"description":{"en":"Find location and details of any IP address.","fr":"Trouvez la localisation et les détails d'une IP.","ar":"اعثر على موقع وتفاصيل أي عنوان IP."},"howTo":{"en":["Enter an IP address","Click Lookup","See details"],"fr":["Entrez une adresse IP","Cliquez sur Rechercher","Voir les détails"],"ar":["أدخل عنوان IP","انقر على بحث","شاهد التفاصيل"]}},
-  {"id":"dns-lookup","slug":"dns-lookup","categoryId":"network-tools","icon":"Server","type":"text","formats":null,"featured":false,"name":{"en":"DNS Lookup","fr":"Recherche DNS","ar":"بحث DNS"},"description":{"en":"Query DNS records for any domain.","fr":"Recherchez les enregistrements DNS d'un domaine.","ar":"استعلم سجلات DNS لأي نطاق."},"howTo":{"en":["Enter a domain name","Click Lookup","See DNS records"],"fr":["Entrez un nom de domaine","Cliquez sur Rechercher","Voir les enregistrements"],"ar":["أدخل اسم النطاق","انقر على بحث","شاهد السجلات"]}},
-  {"id":"whois-lookup","slug":"whois-lookup","categoryId":"network-tools","icon":"FileSearch","type":"text","formats":null,"featured":false,"name":{"en":"Whois Lookup","fr":"Recherche Whois","ar":"بحث Whois"},"description":{"en":"Find registration details for any domain.","fr":"Trouvez les informations d'enregistrement d'un domaine.","ar":"اعثر على معلومات التسجيل لأي نطاق."},"howTo":{"en":["Enter a domain name","Click Lookup","See whois data"],"fr":["Entrez un nom de domaine","Cliquez sur Rechercher","Voir les données"],"ar":["أدخل اسم النطاق","انقر على بحث","شاهد البيانات"]}},
-  {"id":"ping-test","slug":"ping-test","categoryId":"network-tools","icon":"Activity","type":"text","formats":null,"featured":false,"name":{"en":"Ping Test","fr":"Test de ping","ar":"اختبار Ping"},"description":{"en":"Test connectivity and response time to any server.","fr":"Testez la connectivité et le temps de réponse.","ar":"اختبر الاتصال وزمن الاستجابة لأي خادم."},"howTo":{"en":["Enter a domain or IP","Click Ping","See results"],"fr":["Entrez un domaine ou IP","Cliquez sur Ping","Voir les résultats"],"ar":["أدخل نطاق أو IP","انقر على Ping","شاهد النتائجة"]}},
-
-  {"id":"social-post-generator","slug":"social-post-generator","categoryId":"social-media-tools","icon":"Share2","type":"text","formats":null,"featured":false,"name":{"en":"Social Post Generator","fr":"Générateur de posts","ar":"مولّد المنشورات"},"description":{"en":"Generate engaging posts for social media.","fr":"Générez des posts engageants pour les réseaux sociaux.","ar":"أنشئ منشورات جذابة لوسائل التواصل الاجتماعي."},"howTo":{"en":["Enter your topic","Click Generate","Copy your post"],"fr":["Entrez votre sujet","Cliquez sur Générer","Copiez"],"ar":["أدخل موضوعك","انقر على توليد","انسخ المنشور"]}},
-  {"id":"hashtag-generator","slug":"hashtag-generator","categoryId":"social-media-tools","icon":"Hash","type":"text","formats":null,"featured":false,"name":{"en":"Hashtag Generator","fr":"Générateur de hashtags","ar":"مولّد الوسوم"},"description":{"en":"Generate trending hashtags for your content.","fr":"Générez des hashtags tendance pour votre contenu.","ar":"أنشئ وسوم رائجة لمحتواك."},"howTo":{"en":["Enter your keyword","Click Generate","Copy hashtags"],"fr":["Entrez votre mot-clé","Cliquez sur Générer","Copiez"],"ar":["أدخل كلمتك المفتاحية","انقر على توليد","انسخ الوسوم"]}},
-  {"id":"instagram-caption-generator","slug":"instagram-caption-generator","categoryId":"social-media-tools","icon":"Camera","type":"text","formats":null,"featured":false,"name":{"en":"Instagram Caption Generator","fr":"Générateur de légendes Instagram","ar":"مولّد تعليقات إنستغرام"},"description":{"en":"Create catchy captions for Instagram posts.","fr":"Créez des légendes accrocheuses pour Instagram.","ar":"أنشئ تعليقات جذابة لمنشورات إنستغرام."},"howTo":{"en":["Describe your photo","Click Generate","Copy caption"],"fr":["Décrivez votre photo","Cliquez sur Générer","Copiez"],"ar":["صف صورتك","انقر على توليد","انسخ التعليق"]}},
-  {"id":"twitter-character-counter","slug":"twitter-character-counter","categoryId":"social-media-tools","icon":"Type","type":"text","formats":null,"featured":false,"name":{"en":"Twitter Character Counter","fr":"Compteur Twitter","ar":"عدّاد تويتر"},"description":{"en":"Count characters for tweets with 280 limit.","fr":"Comptez les caractères pour vos tweets (280 max).","ar":"احسب أحرف التغريدات بحد 280 حرف."},"howTo":{"en":["Type your tweet","See character count","Post when ready"],"fr":["Tapez votre tweet","Voir le comptage","Publiez"],"ar":["اكتب تغريدتك","شاهد العدد","انشر"]}},
-  {"id":"social-image-resizer","slug":"social-image-resizer","categoryId":"social-media-tools","icon":"Maximize","type":"file-image","formats":"JPG, PNG","featured":false,"name":{"en":"Social Image Resizer","fr":"Redimensionner pour réseaux sociaux","ar":"تغيير حجم صور التواصل"},"description":{"en":"Resize images for each social media platform.","fr":"Redimensionnez pour chaque réseau social.","ar":"غيّر حجم الصور لكل منصة تواصل اجتماعي."},"howTo":{"en":["Upload your image","Select platform","Download resized image"],"fr":["Téléchargez votre image","Sélectionnez la plateforme","Téléchargez"],"ar":["ارفع صورتك","اختر المنصة","حمّل الصورة"]}},
-
-  {"id":"docx-converter","slug":"docx-converter","categoryId":"file-converter-tools","icon":"FileText","type":"file-doc","formats":"DOCX, PDF, ODT","featured":false,"name":{"en":"DOCX Converter","fr":"Convertisseur DOCX","ar":"محوّل DOCX"},"description":{"en":"Convert DOCX files to and from various formats.","fr":"Convertissez les fichiers DOCX vers divers formats.","ar":"حوّل ملفات DOCX من وإلى صيغ مختلفة."},"howTo":{"en":["Upload your DOCX","Select target format","Download"],"fr":["Téléchargez votre DOCX","Choisissez le format","Téléchargez"],"ar":["ارفع ملف DOCX","اختر الصيغة","حمّل"]}},
-  {"id":"xlsx-converter","slug":"xlsx-converter","categoryId":"file-converter-tools","icon":"Table","type":"file-doc","formats":"XLSX, CSV, PDF","featured":false,"name":{"en":"XLSX Converter","fr":"Convertisseur XLSX","ar":"محوّل XLSX"},"description":{"en":"Convert Excel spreadsheets to CSV, PDF and more.","fr":"Convertissez les fichiers Excel en CSV, PDF.","ar":"حوّل ملفات Excel إلى CSV و PDF."},"howTo":{"en":["Upload your XLSX","Select target format","Download"],"fr":["Téléchargez votre XLSX","Choisissez le format","Téléchargez"],"ar":["ارفع ملف XLSX","اختر الصيغة","حمّل"]}},
-  {"id":"pptx-converter","slug":"pptx-converter","categoryId":"file-converter-tools","icon":"Monitor","type":"file-doc","formats":"PPTX, PDF","featured":false,"name":{"en":"PPTX Converter","fr":"Convertisseur PPTX","ar":"محوّل PPTX"},"description":{"en":"Convert PowerPoint presentations to PDF.","fr":"Convertissez les présentations PowerPoint en PDF.","ar":"حوّل عروض PowerPoint إلى PDF."},"howTo":{"en":["Upload your PPTX","Click Convert","Download"],"fr":["Téléchargez votre PPTX","Cliquez sur Convertir","Téléchargez"],"ar":["ارفع ملف PPTX","انقر على تحويل","حمّل"]}},
-  {"id":"csv-converter","slug":"csv-converter","categoryId":"file-converter-tools","icon":"Table","type":"file-doc","formats":"CSV, JSON, XLSX","featured":false,"name":{"en":"CSV Converter","fr":"Convertisseur CSV","ar":"محوّل CSV"},"description":{"en":"Convert CSV to JSON, Excel and other formats.","fr":"Convertissez CSV en JSON, Excel et autres.","ar":"حوّل CSV إلى JSON و Excel وغيرها."},"howTo":{"en":["Upload your CSV","Select target format","Download"],"fr":["Téléchargez votre CSV","Choisissez le format","Téléchargez"],"ar":["ارفع ملف CSV","اختر الصيغة","حمّل"]}},
-
-  {"id":"password-strength-checker","slug":"password-strength-checker","categoryId":"security-tools","icon":"Shield","type":"text","formats":null,"featured":true,"name":{"en":"Password Strength Checker","fr":"Vérificateur de mot de passe","ar":"مدقق قوة كلمة المرور"},"description":{"en":"Check how strong your password is.","fr":"Vérifiez la force de votre mot de passe.","ar":"تحقق من قوة كلمة المرور."},"howTo":{"en":["Enter your password","See strength analysis","Get recommendations"],"fr":["Entrez votre mot de passe","Voir l'analyse","Obtenez des recommandations"],"ar":["أدخل كلمة المرور","شاهد التحليل","احصل على توصيات"]}},
-  {"id":"password-generator","slug":"password-generator","categoryId":"security-tools","icon":"Lock","type":"text","formats":null,"featured":false,"name":{"en":"Password Generator","fr":"Générateur de mot de passe","ar":"مولّد كلمات المرور"},"description":{"en":"Generate strong, secure passwords instantly.","fr":"Générez des mots de passe forts et sécurisés.","ar":"أنشئ كلمات مرور قوية وآمنة فوراً."},"howTo":{"en":["Choose password length","Select character types","Copy your password"],"fr":["Choisissez la longueur","Sélectionnez les types","Copiez"],"ar":["اختر طول كلمة المرور","اختر أنواع الأحرف","انسخ"]}},
-  {"id":"hash-generator","slug":"hash-generator","categoryId":"security-tools","icon":"Hash","type":"text","formats":null,"featured":false,"name":{"en":"Hash Generator","fr":"Générateur de hash","ar":"مولّد الهاش"},"description":{"en":"Generate MD5, SHA1, SHA256 hashes from text.","fr":"Générez des hash MD5, SHA1, SHA256.","ar":"أنشئ هاش MD5 وSHA1 وSHA256 من النص."},"howTo":{"en":["Paste your text","Select hash type","Copy hash"],"fr":["Collez votre texte","Choisissez le type","Copiez"],"ar":["الصق نصك","اختر نوع الهاش","انسخ"]}},
-  {"id":"qr-code-generator","slug":"qr-code-generator","categoryId":"security-tools","icon":"QrCode","type":"text","formats":null,"featured":false,"name":{"en":"QR Code Generator","fr":"Générateur de QR Code","ar":"مولّد رمز QR"},"description":{"en":"Generate QR codes for URLs, text and more.","fr":"Générez des QR codes pour URL et texte.","ar":"أنشئ رموز QR للروابط والنصوص."},"howTo":{"en":["Enter your content","Click Generate","Download QR code"],"fr":["Entrez votre contenu","Cliquez sur Générer","Téléchargez"],"ar":["أدخل المحتوى","انقر على توليد","حمّل رمز QR"]}},
-  {"id":"ssl-checker","slug":"ssl-checker","categoryId":"security-tools","icon":"Lock","type":"text","formats":null,"featured":false,"name":{"en":"SSL Checker","fr":"Vérificateur SSL","ar":"مدقق SSL"},"description":{"en":"Check SSL certificate details for any website.","fr":"Vérifiez les certificats SSL d'un site.","ar":"تحقق من شهادات SSL لأي موقع."},"howTo":{"en":["Enter a domain name","Click Check","See SSL details"],"fr":["Entrez un nom de domaine","Cliquez sur Vérifier","Voir les détails"],"ar":["أدخل اسم النطاق","انقر على فحص","شاهد التفاصيل"]}},
-
-  {"id":"pomodoro-timer","slug":"pomodoro-timer","categoryId":"productivity-tools","icon":"Timer","type":"text","formats":null,"featured":true,"name":{"en":"Pomodoro Timer","fr":"Minuteur Pomodoro","ar":"مؤقت بومودورو"},"description":{"en":"Boost productivity with the Pomodoro technique.","fr":"Boostez votre productivité avec la technique Pomodoro.","ar":"عزّز إنتاجيتك بتقنية بومودورو."},"howTo":{"en":["Set work duration","Click Start","Take breaks automatically"],"fr":["Définissez la durée","Cliquez sur Démarrer","Faites des pauses"],"ar":["اضبط مدة العمل","انقر على ابدأ","خذ فترات راحة"]}},
-  {"id":"task-manager","slug":"task-manager","categoryId":"productivity-tools","icon":"ListChecks","type":"text","formats":null,"featured":false,"name":{"en":"Task Manager","fr":"Gestionnaire de tâches","ar":"مدير المهام"},"description":{"en":"Create and manage your task list efficiently.","fr":"Créez et gérez votre liste de tâches.","ar":"أنشئ وأدر قائمة مهامك بكفاءة."},"howTo":{"en":["Add your tasks","Mark as complete","Track progress"],"fr":["Ajoutez vos tâches","Marquez comme terminé","Suivez"],"ar":["أضف مهامك","حددها كمكتملة","تابع التقدم"]}},
-  {"id":"note-pad","slug":"note-pad","categoryId":"productivity-tools","icon":"StickyNote","type":"text","formats":null,"featured":false,"name":{"en":"Note Pad","fr":"Bloc-notes","ar":"مفكرة"},"description":{"en":"Quick online notepad with auto-save.","fr":"Bloc-notes en ligne avec sauvegarde automatique.","ar":"مفكرة سريعة عبر الإنترنت مع حفظ تلقائي."},"howTo":{"en":["Start typing","Auto-saves as you go","Copy or download"],"fr":["Commencez à taper","Sauvegarde auto","Copiez ou téléchargez"],"ar":["ابدأ بالكتابة","حفظ تلقائي","انسخ أو حمّل"]}},
-  {"id":"countdown-timer","slug":"countdown-timer","categoryId":"productivity-tools","icon":"Timer","type":"text","formats":null,"featured":false,"name":{"en":"Countdown Timer","fr":"Compte à rebours","ar":"عدّاد تنازلي"},"description":{"en":"Set a countdown for any event or task.","fr":"Définissez un compte à rebours.","ar":"ضبط عدّاد تنازلي لأي حدث أو مهمة."},"howTo":{"en":["Set duration","Click Start","Get notified"],"fr":["Définissez la durée","Cliquez sur Démarrer","Soyez notifié"],"ar":["اضبط المدة","انقر على ابدأ","احصل على إشعار"]}},
-  {"id":"random-picker","slug":"random-picker","categoryId":"productivity-tools","icon":"Shuffle","type":"text","formats":null,"featured":false,"name":{"en":"Random Picker","fr":"Tirage au sort","ar":"اختيار عشوائي"},"description":{"en":"Pick a random item from your list.","fr":"Tirez au sort un élément de votre liste.","ar":"اختر عنصراً عشوائياً من قائمتك."},"howTo":{"en":["Enter your options","Click Pick","See random result"],"fr":["Entrez vos options","Cliquez sur Tirer","Voir le résultat"],"ar":["أدخل خياراتك","انقر على اختيار","شاهد النتيجة"]}},
-
-  {"id":"length-converter","slug":"length-converter","categoryId":"unit-converter-tools","icon":"Ruler","type":"calculator","formats":null,"featured":true,"name":{"en":"Length Converter","fr":"Convertisseur de longueur","ar":"محوّل الطول"},"description":{"en":"Convert between meters, feet, miles, km and more.","fr":"Convertissez entre mètres, pieds, miles, km.","ar":"حوّل بين متر وقدم وميل وكيلومتر."},"howTo":{"en":["Enter value","Select units","See result"],"fr":["Entrez la valeur","Choisissez les unités","Voir le résultat"],"ar":["أدخل القيمة","اختر الوحدات","شاهد النتيجة"]}},
-  {"id":"weight-converter","slug":"weight-converter","categoryId":"unit-converter-tools","icon":"Scale","type":"calculator","formats":null,"featured":false,"name":{"en":"Weight Converter","fr":"Convertisseur de poids","ar":"محوّل الوزن"},"description":{"en":"Convert between kg, lbs, oz, grams and more.","fr":"Convertissez entre kg, lbs, oz, grammes.","ar":"حوّل بين كجم ورطل وأونصة وجرام."},"howTo":{"en":["Enter value","Select units","See result"],"fr":["Entrez la valeur","Choisissez les unités","Voir le résultat"],"ar":["أدخل القيمة","اختر الوحدات","شاهد النتيجة"]}},
-  {"id":"temperature-converter","slug":"temperature-converter","categoryId":"unit-converter-tools","icon":"Thermometer","type":"calculator","formats":null,"featured":false,"name":{"en":"Temperature Converter","fr":"Convertisseur de température","ar":"محوّل درجة الحرارة"},"description":{"en":"Convert between Celsius, Fahrenheit and Kelvin.","fr":"Convertissez entre Celsius, Fahrenheit et Kelvin.","ar":"حوّل بين مئوية وفهرنهايت وكلفن."},"howTo":{"en":["Enter temperature","Select units","See result"],"fr":["Entrez la température","Choisissez les unités","Voir le résultat"],"ar":["أدخل الحرارة","اختر الوحدات","شاهد النتيجة"]}},
-  {"id":"speed-converter","slug":"speed-converter","categoryId":"unit-converter-tools","icon":"Gauge","type":"calculator","formats":null,"featured":false,"name":{"en":"Speed Converter","fr":"Convertisseur de vitesse","ar":"محوّل السرعة"},"description":{"en":"Convert between km/h, mph, m/s and knots.","fr":"Convertissez entre km/h, mph, m/s et nœuds.","ar":"حوّل بين كم/ساعة وميل/ساعة وعقدة."},"howTo":{"en":["Enter speed","Select units","See result"],"fr":["Entrez la vitesse","Choisissez les unités","Voir le résultat"],"ar":["أدخل السرعة","اختر الوحدات","شاهد النتيجة"]}},
-  {"id":"time-converter","slug":"time-converter","categoryId":"unit-converter-tools","icon":"Clock","type":"calculator","formats":null,"featured":false,"name":{"en":"Time Converter","fr":"Convertisseur de temps","ar":"محوّل الوقت"},"description":{"en":"Convert between time zones instantly.","fr":"Convertissez entre fuseaux horaires.","ar":"حوّل بين المناطق الزمنية فوراً."},"howTo":{"en":["Enter time","Select time zones","See result"],"fr":["Entrez l'heure","Choisissez les fuseaux","Voir le résultat"],"ar":["أدخل الوقت","اختر المناطق","شاهد النتيجة"]}}
+  {
+    "id": "pdf-to-word",
+    "slug": "pdf-to-word",
+    "categoryId": "pdf-tools",
+    "icon": "FileText",
+    "type": "file-pdf",
+    "formats": "PDF",
+    "featured": true,
+    "name": {
+      "en": "PDF to Word",
+      "fr": "PDF vers Word",
+      "ar": "تحويل PDF إلى Word"
+    },
+    "description": {
+      "en": "Convert PDF files to editable Word documents instantly.",
+      "fr": "Convertissez vos PDF en documents Word modifiables.",
+      "ar": "حوّل ملفات PDF إلى مستندات Word قابلة للتحرير."
+    },
+    "howTo": {
+      "en": [
+        "Upload your PDF file",
+        "Click Convert",
+        "Download your Word document"
+      ],
+      "fr": [
+        "Téléchargez votre PDF",
+        "Cliquez sur Convertir",
+        "Téléchargez le Word"
+      ],
+      "ar": [
+        "ارفع ملف PDF",
+        "انقر على تحويل",
+        "حمّل مستند Word"
+      ]
+    },
+    "created_at": "2026-07-21"
+  },
+  {
+    "id": "word-to-pdf",
+    "slug": "word-to-pdf",
+    "categoryId": "pdf-tools",
+    "icon": "FilePlus",
+    "type": "file-doc",
+    "formats": "DOC, DOCX",
+    "featured": false,
+    "name": {
+      "en": "Word to PDF",
+      "fr": "Word vers PDF",
+      "ar": "تحويل Word إلى PDF"
+    },
+    "description": {
+      "en": "Convert Word documents to PDF with perfect formatting.",
+      "fr": "Convertissez Word en PDF avec mise en forme parfaite.",
+      "ar": "حوّل مستندات Word إلى PDF مع الحفاظ على التنسيق."
+    },
+    "howTo": {
+      "en": [
+        "Upload your Word file",
+        "Click Convert",
+        "Download your PDF"
+      ],
+      "fr": [
+        "Téléchargez votre Word",
+        "Cliquez sur Convertir",
+        "Téléchargez le PDF"
+      ],
+      "ar": [
+        "ارفع ملف Word",
+        "انقر على تحويل",
+        "حمّل ملف PDF"
+      ]
+    },
+    "created_at": "2026-07-21"
+  },
+  {
+    "id": "pdf-to-jpg",
+    "slug": "pdf-to-jpg",
+    "categoryId": "pdf-tools",
+    "icon": "FileImage",
+    "type": "file-pdf",
+    "formats": "PDF",
+    "featured": false,
+    "name": {
+      "en": "PDF to JPG",
+      "fr": "PDF vers JPG",
+      "ar": "تحويل PDF إلى JPG"
+    },
+    "description": {
+      "en": "Extract pages from PDF as JPG images.",
+      "fr": "Extrayez les pages d'un PDF en images JPG.",
+      "ar": "استخرج صفحات PDF كصور JPG."
+    },
+    "howTo": {
+      "en": [
+        "Upload your PDF",
+        "Click Convert",
+        "Download JPG images"
+      ],
+      "fr": [
+        "Téléchargez votre PDF",
+        "Cliquez sur Convertir",
+        "Téléchargez les JPG"
+      ],
+      "ar": [
+        "ارفع ملف PDF",
+        "انقر على تحويل",
+        "حمّل صور JPG"
+      ]
+    },
+    "created_at": "2026-07-21"
+  },
+  {
+    "id": "jpg-to-pdf",
+    "slug": "jpg-to-pdf",
+    "categoryId": "pdf-tools",
+    "icon": "FileText",
+    "type": "file-image",
+    "formats": "JPG, PNG",
+    "featured": false,
+    "name": {
+      "en": "JPG to PDF",
+      "fr": "JPG vers PDF",
+      "ar": "تحويل JPG إلى PDF"
+    },
+    "description": {
+      "en": "Combine JPG images into a single PDF document.",
+      "fr": "Combinez des images JPG en un seul PDF.",
+      "ar": "اجمع صور JPG في ملف PDF واحد."
+    },
+    "howTo": {
+      "en": [
+        "Upload your images",
+        "Click Convert",
+        "Download your PDF"
+      ],
+      "fr": [
+        "Téléchargez vos images",
+        "Cliquez sur Convertir",
+        "Téléchargez le PDF"
+      ],
+      "ar": [
+        "ارفع صورك",
+        "انقر على تحويل",
+        "حمّل ملف PDF"
+      ]
+    },
+    "created_at": "2026-07-21"
+  },
+  {
+    "id": "merge-pdf",
+    "slug": "merge-pdf",
+    "categoryId": "pdf-tools",
+    "icon": "Files",
+    "type": "file-pdf",
+    "formats": "PDF",
+    "featured": true,
+    "name": {
+      "en": "Merge PDF",
+      "fr": "Fusionner PDF",
+      "ar": "دمج PDF"
+    },
+    "description": {
+      "en": "Combine multiple PDF files into one document.",
+      "fr": "Fusionnez plusieurs PDF en un seul document.",
+      "ar": "ادمج عدة ملفات PDF في مستند واحد."
+    },
+    "howTo": {
+      "en": [
+        "Upload multiple PDFs",
+        "Arrange order",
+        "Download merged PDF"
+      ],
+      "fr": [
+        "Téléchargez plusieurs PDF",
+        "Réorganisez",
+        "Téléchargez le PDF fusionné"
+      ],
+      "ar": [
+        "ارفع عدة ملفات PDF",
+        "رتب الترتيب",
+        "حمّل الملف المدمج"
+      ]
+    },
+    "created_at": "2026-07-21"
+  },
+  {
+    "id": "split-pdf",
+    "slug": "split-pdf",
+    "categoryId": "pdf-tools",
+    "icon": "Scissors",
+    "type": "file-pdf",
+    "formats": "PDF",
+    "featured": false,
+    "name": {
+      "en": "Split PDF",
+      "fr": "Diviser PDF",
+      "ar": "تقسيم PDF"
+    },
+    "description": {
+      "en": "Extract or split PDF pages into separate files.",
+      "fr": "Extrayez ou divisez les pages d'un PDF.",
+      "ar": "استخرج أو قسم صفحات PDF إلى ملفات منفصلة."
+    },
+    "howTo": {
+      "en": [
+        "Upload your PDF",
+        "Select pages to extract",
+        "Download split files"
+      ],
+      "fr": [
+        "Téléchargez votre PDF",
+        "Sélectionnez les pages",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع ملف PDF",
+        "اختر الصفحات",
+        "حمّل الملفات"
+      ]
+    },
+    "created_at": "2026-07-21"
+  },
+  {
+    "id": "compress-pdf",
+    "slug": "compress-pdf",
+    "categoryId": "pdf-tools",
+    "icon": "Minimize2",
+    "type": "file-pdf",
+    "formats": "PDF",
+    "featured": false,
+    "name": {
+      "en": "Compress PDF",
+      "fr": "Compresser PDF",
+      "ar": "ضغط PDF"
+    },
+    "description": {
+      "en": "Reduce PDF file size without losing quality.",
+      "fr": "Réduisez la taille de vos PDF sans perte de qualité.",
+      "ar": "قلّل حجم ملفات PDF دون فقدان الجودة."
+    },
+    "howTo": {
+      "en": [
+        "Upload your PDF",
+        "Choose compression level",
+        "Download compressed PDF"
+      ],
+      "fr": [
+        "Téléchargez votre PDF",
+        "Choisissez le niveau",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع ملف PDF",
+        "اختر مستوى الضغط",
+        "حمّل الملف"
+      ]
+    },
+    "created_at": "2026-07-21"
+  },
+  {
+    "id": "protect-pdf",
+    "slug": "protect-pdf",
+    "categoryId": "pdf-tools",
+    "icon": "Lock",
+    "type": "file-pdf",
+    "formats": "PDF",
+    "featured": false,
+    "name": {
+      "en": "Protect PDF",
+      "fr": "Protéger PDF",
+      "ar": "حماية PDF"
+    },
+    "description": {
+      "en": "Add a password to your PDF file for security.",
+      "fr": "Ajoutez un mot de passe à votre PDF.",
+      "ar": "أضف كلمة مرور إلى ملف PDF للحماية."
+    },
+    "howTo": {
+      "en": [
+        "Upload your PDF",
+        "Set a password",
+        "Download protected PDF"
+      ],
+      "fr": [
+        "Téléchargez votre PDF",
+        "Définissez un mot de passe",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع ملف PDF",
+        "حدد كلمة مرور",
+        "حمّل الملف"
+      ]
+    },
+    "created_at": "2026-07-21"
+  },
+  {
+    "id": "unlock-pdf",
+    "slug": "unlock-pdf",
+    "categoryId": "pdf-tools",
+    "icon": "Unlock",
+    "type": "file-pdf",
+    "formats": "PDF",
+    "featured": false,
+    "name": {
+      "en": "Unlock PDF",
+      "fr": "Déverrouiller PDF",
+      "ar": "فتح PDF"
+    },
+    "description": {
+      "en": "Remove password protection from PDF files.",
+      "fr": "Retirez la protection par mot de passe d'un PDF.",
+      "ar": "احذف الحماية بكلمة المرور من ملفات PDF."
+    },
+    "howTo": {
+      "en": [
+        "Upload your PDF",
+        "Enter the password",
+        "Download unlocked PDF"
+      ],
+      "fr": [
+        "Téléchargez votre PDF",
+        "Entrez le mot de passe",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع ملف PDF",
+        "أدخل كلمة المرور",
+        "حمّل الملف"
+      ]
+    },
+    "created_at": "2026-07-21"
+  },
+  {
+    "id": "rotate-pdf",
+    "slug": "rotate-pdf",
+    "categoryId": "pdf-tools",
+    "icon": "RotateCw",
+    "type": "file-pdf",
+    "formats": "PDF",
+    "featured": false,
+    "name": {
+      "en": "Rotate PDF",
+      "fr": "Faire pivoter PDF",
+      "ar": "تدوير PDF"
+    },
+    "description": {
+      "en": "Rotate PDF pages to any orientation.",
+      "fr": "Faites pivoter les pages de votre PDF.",
+      "ar": "دوّر صفحات PDF بأي اتجاه."
+    },
+    "howTo": {
+      "en": [
+        "Upload your PDF",
+        "Select rotation angle",
+        "Download rotated PDF"
+      ],
+      "fr": [
+        "Téléchargez votre PDF",
+        "Choisissez l'angle",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع ملف PDF",
+        "اختر الزاوية",
+        "حمّل الملف"
+      ]
+    },
+    "created_at": "2026-07-21"
+  },
+  {
+    "id": "compress-image",
+    "slug": "compress-image",
+    "categoryId": "image-tools",
+    "icon": "Minimize2",
+    "type": "file-image",
+    "formats": "JPG, PNG, WebP",
+    "featured": true,
+    "name": {
+      "en": "Compress Image",
+      "fr": "Compresser une image",
+      "ar": "ضغط الصورة"
+    },
+    "description": {
+      "en": "Reduce image file size without losing quality.",
+      "fr": "Réduisez la taille sans perte de qualité.",
+      "ar": "قلّل حجم الصورة دون فقدان الجودة."
+    },
+    "howTo": {
+      "en": [
+        "Upload your image",
+        "Choose compression level",
+        "Download"
+      ],
+      "fr": [
+        "Téléchargez votre image",
+        "Choisissez le niveau",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع صورتك",
+        "اختر مستوى الضغط",
+        "حمّل الصورة"
+      ]
+    },
+    "created_at": "2026-07-21"
+  },
+  {
+    "id": "resize-image",
+    "slug": "resize-image",
+    "categoryId": "image-tools",
+    "icon": "Maximize",
+    "type": "file-image",
+    "formats": "JPG, PNG, WebP",
+    "featured": false,
+    "name": {
+      "en": "Resize Image",
+      "fr": "Redimensionner une image",
+      "ar": "تغيير حجم الصورة"
+    },
+    "description": {
+      "en": "Resize images to exact dimensions in seconds.",
+      "fr": "Redimensionnez vos images aux dimensions exactes.",
+      "ar": "غيّر حجم الصور إلى أبعاد محددة بثوانٍ."
+    },
+    "howTo": {
+      "en": [
+        "Upload your image",
+        "Enter desired dimensions",
+        "Download"
+      ],
+      "fr": [
+        "Téléchargez votre image",
+        "Entrez les dimensions",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع صورتك",
+        "أدخل الأبعاد",
+        "حمّل الصورة"
+      ]
+    },
+    "created_at": "2026-07-21"
+  },
+  {
+    "id": "crop-image",
+    "slug": "crop-image",
+    "categoryId": "image-tools",
+    "icon": "Crop",
+    "type": "file-image",
+    "formats": "JPG, PNG, WebP",
+    "featured": false,
+    "name": {
+      "en": "Crop Image",
+      "fr": "Recadrer une image",
+      "ar": "اقتصاص الصورة"
+    },
+    "description": {
+      "en": "Crop images to remove unwanted areas.",
+      "fr": "Recadrez vos images pour supprimer les zones indésirables.",
+      "ar": "اقتص الصور لإزالة الأجزاء غير المرغوبة."
+    },
+    "howTo": {
+      "en": [
+        "Upload your image",
+        "Select crop area",
+        "Download cropped image"
+      ],
+      "fr": [
+        "Téléchargez votre image",
+        "Sélectionnez la zone",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع صورتك",
+        "حدد منطقة الاقتصاص",
+        "حمّل الصورة"
+      ]
+    },
+    "created_at": "2026-06-12"
+  },
+  {
+    "id": "jpg-to-png",
+    "slug": "jpg-to-png",
+    "categoryId": "image-tools",
+    "icon": "FileImage",
+    "type": "file-image",
+    "formats": "JPG",
+    "featured": false,
+    "name": {
+      "en": "JPG to PNG",
+      "fr": "JPG vers PNG",
+      "ar": "تحويل JPG إلى PNG"
+    },
+    "description": {
+      "en": "Convert JPG images to PNG with transparency.",
+      "fr": "Convertissez JPG en PNG avec transparence.",
+      "ar": "حوّل صور JPG إلى PNG مع الشفافية."
+    },
+    "howTo": {
+      "en": [
+        "Upload your JPG",
+        "Click Convert",
+        "Download PNG"
+      ],
+      "fr": [
+        "Téléchargez votre JPG",
+        "Cliquez sur Convertir",
+        "Téléchargez le PNG"
+      ],
+      "ar": [
+        "ارفع ملف JPG",
+        "انقر على تحويل",
+        "حمّل PNG"
+      ]
+    },
+    "created_at": "2026-06-11"
+  },
+  {
+    "id": "png-to-jpg",
+    "slug": "png-to-jpg",
+    "categoryId": "image-tools",
+    "icon": "FileImage",
+    "type": "file-image",
+    "formats": "PNG",
+    "featured": false,
+    "name": {
+      "en": "PNG to JPG",
+      "fr": "PNG vers JPG",
+      "ar": "تحويل PNG إلى JPG"
+    },
+    "description": {
+      "en": "Convert PNG images to JPG format.",
+      "fr": "Convertissez PNG en JPG.",
+      "ar": "حوّل صور PNG إلى صيغة JPG."
+    },
+    "howTo": {
+      "en": [
+        "Upload your PNG",
+        "Click Convert",
+        "Download JPG"
+      ],
+      "fr": [
+        "Téléchargez votre PNG",
+        "Cliquez sur Convertir",
+        "Téléchargez le JPG"
+      ],
+      "ar": [
+        "ارفع ملف PNG",
+        "انقر على تحويل",
+        "حمّل JPG"
+      ]
+    },
+    "created_at": "2026-06-10"
+  },
+  {
+    "id": "webp-to-jpg",
+    "slug": "webp-to-jpg",
+    "categoryId": "image-tools",
+    "icon": "FileImage",
+    "type": "file-image",
+    "formats": "WebP",
+    "featured": false,
+    "name": {
+      "en": "WEBP to JPG",
+      "fr": "WEBP vers JPG",
+      "ar": "تحويل WEBP إلى JPG"
+    },
+    "description": {
+      "en": "Convert WebP images to JPG format.",
+      "fr": "Convertissez WebP en JPG.",
+      "ar": "حوّل صور WebP إلى صيغة JPG."
+    },
+    "howTo": {
+      "en": [
+        "Upload your WebP",
+        "Click Convert",
+        "Download JPG"
+      ],
+      "fr": [
+        "Téléchargez votre WebP",
+        "Cliquez sur Convertir",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع ملف WebP",
+        "انقر على تحويل",
+        "حمّل JPG"
+      ]
+    },
+    "created_at": "2026-06-09"
+  },
+  {
+    "id": "remove-background",
+    "slug": "remove-background",
+    "categoryId": "image-tools",
+    "icon": "Scissors",
+    "type": "file-image",
+    "formats": "JPG, PNG",
+    "featured": true,
+    "name": {
+      "en": "Remove Background",
+      "fr": "Supprimer l'arrière-plan",
+      "ar": "إزالة الخلفية"
+    },
+    "description": {
+      "en": "Remove image backgrounds automatically in seconds.",
+      "fr": "Supprimez l'arrière-plan automatiquement.",
+      "ar": "احذف خلفية الصور تلقائياً بثوانٍ."
+    },
+    "howTo": {
+      "en": [
+        "Upload your image",
+        "Click Remove Background",
+        "Download result"
+      ],
+      "fr": [
+        "Téléchargez votre image",
+        "Cliquez sur Supprimer",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع صورتك",
+        "انقر على إزالة الخلفية",
+        "حمّل النتيجة"
+      ]
+    },
+    "created_at": "2026-06-08"
+  },
+  {
+    "id": "image-converter",
+    "slug": "image-converter",
+    "categoryId": "image-tools",
+    "icon": "Repeat",
+    "type": "file-image",
+    "formats": "JPG, PNG, WebP, GIF",
+    "featured": false,
+    "name": {
+      "en": "Image Converter",
+      "fr": "Convertisseur d'images",
+      "ar": "محوّل الصور"
+    },
+    "description": {
+      "en": "Convert images between any format.",
+      "fr": "Convertissez les images entre tous les formats.",
+      "ar": "حوّل الصور بين أي صيغة."
+    },
+    "howTo": {
+      "en": [
+        "Upload your image",
+        "Select target format",
+        "Download"
+      ],
+      "fr": [
+        "Téléchargez votre image",
+        "Choisissez le format",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع صورتك",
+        "اختر الصيغة",
+        "حمّل الصورة"
+      ]
+    },
+    "created_at": "2026-06-07"
+  },
+  {
+    "id": "image-upscaler",
+    "slug": "image-upscaler",
+    "categoryId": "image-tools",
+    "icon": "Maximize",
+    "type": "file-image",
+    "formats": "JPG, PNG",
+    "featured": false,
+    "name": {
+      "en": "Image Upscaler",
+      "fr": "Agrandir une image",
+      "ar": "تكبير الصورة"
+    },
+    "description": {
+      "en": "Enlarge images without losing quality using AI.",
+      "fr": "Agrandissez les images sans perte de qualité.",
+      "ar": "كبّر الصور دون فقدان الجودة."
+    },
+    "howTo": {
+      "en": [
+        "Upload your image",
+        "Choose scale factor",
+        "Download upscaled image"
+      ],
+      "fr": [
+        "Téléchargez votre image",
+        "Choisissez le facteur",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع صورتك",
+        "اختر عامل التكبير",
+        "حمّل الصورة"
+      ]
+    },
+    "created_at": "2026-06-06"
+  },
+  {
+    "id": "watermark-image",
+    "slug": "watermark-image",
+    "categoryId": "image-tools",
+    "icon": "Stamp",
+    "type": "file-image",
+    "formats": "JPG, PNG",
+    "featured": false,
+    "name": {
+      "en": "Watermark Image",
+      "fr": "Filigrane d'image",
+      "ar": "علامة مائية للصورة"
+    },
+    "description": {
+      "en": "Add text or logo watermark to your images.",
+      "fr": "Ajoutez un filigrane texte ou logo à vos images.",
+      "ar": "أضف علامة مائية نصية أو شعار لصورك."
+    },
+    "howTo": {
+      "en": [
+        "Upload your image",
+        "Add watermark text or logo",
+        "Download"
+      ],
+      "fr": [
+        "Téléchargez votre image",
+        "Ajoutez le filigrane",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع صورتك",
+        "أضف العلامة المائية",
+        "حمّل الصورة"
+      ]
+    },
+    "created_at": "2026-06-05"
+  },
+  {
+    "id": "video-compressor",
+    "slug": "video-compressor",
+    "categoryId": "video-tools",
+    "icon": "Minimize2",
+    "type": "file-video",
+    "formats": "MP4, AVI, MOV",
+    "featured": true,
+    "name": {
+      "en": "Video Compressor",
+      "fr": "Compresseur Vidéo",
+      "ar": "ضاغط الفيديو"
+    },
+    "description": {
+      "en": "Compress video files without losing quality.",
+      "fr": "Compressez vos vidéos sans perte de qualité.",
+      "ar": "اضغط ملفات الفيديو دون فقدان الجودة."
+    },
+    "howTo": {
+      "en": [
+        "Upload your video",
+        "Choose compression level",
+        "Download"
+      ],
+      "fr": [
+        "Téléchargez votre vidéo",
+        "Choisissez le niveau",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع الفيديو",
+        "اختر مستوى الضغط",
+        "حمّل الفيديو"
+      ]
+    },
+    "created_at": "2026-06-04"
+  },
+  {
+    "id": "mp4-converter",
+    "slug": "mp4-converter",
+    "categoryId": "video-tools",
+    "icon": "Repeat",
+    "type": "file-video",
+    "formats": "AVI, MOV, MKV, WMV",
+    "featured": false,
+    "name": {
+      "en": "MP4 Converter",
+      "fr": "Convertisseur MP4",
+      "ar": "محوّل MP4"
+    },
+    "description": {
+      "en": "Convert any video format to MP4.",
+      "fr": "Convertissez n'importe quelle vidéo en MP4.",
+      "ar": "حوّل أي صيغة فيديو إلى MP4."
+    },
+    "howTo": {
+      "en": [
+        "Upload your video",
+        "Click Convert",
+        "Download MP4"
+      ],
+      "fr": [
+        "Téléchargez votre vidéo",
+        "Cliquez sur Convertir",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع الفيديو",
+        "انقر على تحويل",
+        "حمّل MP4"
+      ]
+    },
+    "created_at": "2026-06-03"
+  },
+  {
+    "id": "video-trimmer",
+    "slug": "video-trimmer",
+    "categoryId": "video-tools",
+    "icon": "Scissors",
+    "type": "file-video",
+    "formats": "MP4, MOV, AVI",
+    "featured": false,
+    "name": {
+      "en": "Video Trimmer",
+      "fr": "Découpeur Vidéo",
+      "ar": "قاص الفيديو"
+    },
+    "description": {
+      "en": "Trim and cut video to any length.",
+      "fr": "Découpez et coupez vos vidéos.",
+      "ar": "قص وقطع الفيديو إلى أي طول."
+    },
+    "howTo": {
+      "en": [
+        "Upload your video",
+        "Select start and end points",
+        "Download trimmed video"
+      ],
+      "fr": [
+        "Téléchargez votre vidéo",
+        "Sélectionnez les points",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع الفيديو",
+        "حدد نقاط البداية والنهاية",
+        "حمّل الفيديو"
+      ]
+    },
+    "created_at": "2026-06-02"
+  },
+  {
+    "id": "extract-audio",
+    "slug": "extract-audio",
+    "categoryId": "video-tools",
+    "icon": "Music",
+    "type": "file-video",
+    "formats": "MP4, MOV, AVI",
+    "featured": false,
+    "name": {
+      "en": "Extract Audio",
+      "fr": "Extraire l'audio",
+      "ar": "استخراج الصوت"
+    },
+    "description": {
+      "en": "Extract audio track from any video file.",
+      "fr": "Extrayez la piste audio d'une vidéo.",
+      "ar": "استخرج المسار الصوتي من أي فيديو."
+    },
+    "howTo": {
+      "en": [
+        "Upload your video",
+        "Click Extract",
+        "Download audio file"
+      ],
+      "fr": [
+        "Téléchargez votre vidéo",
+        "Cliquez sur Extraire",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع الفيديو",
+        "انقر على استخراج",
+        "حمّل الملف الصوتي"
+      ]
+    },
+    "created_at": "2026-06-01"
+  },
+  {
+    "id": "gif-maker",
+    "slug": "gif-maker",
+    "categoryId": "video-tools",
+    "icon": "Film",
+    "type": "file-video",
+    "formats": "MP4, MOV",
+    "featured": false,
+    "name": {
+      "en": "GIF Maker",
+      "fr": "Créateur de GIF",
+      "ar": "صانع GIF"
+    },
+    "description": {
+      "en": "Create animated GIFs from video files.",
+      "fr": "Créez des GIFs animés à partir de vidéos.",
+      "ar": "أنشئ صور GIF متحركة من ملفات الفيديو."
+    },
+    "howTo": {
+      "en": [
+        "Upload your video",
+        "Select segment",
+        "Download GIF"
+      ],
+      "fr": [
+        "Téléchargez votre vidéo",
+        "Sélectionnez le segment",
+        "Téléchargez le GIF"
+      ],
+      "ar": [
+        "ارفع الفيديو",
+        "اختر المقطع",
+        "حمّل GIF"
+      ]
+    },
+    "created_at": "2026-05-31"
+  },
+  {
+    "id": "mp3-converter",
+    "slug": "mp3-converter",
+    "categoryId": "audio-tools",
+    "icon": "Music",
+    "type": "file-audio",
+    "formats": "WAV, AAC, OGG, FLAC",
+    "featured": true,
+    "name": {
+      "en": "MP3 Converter",
+      "fr": "Convertisseur MP3",
+      "ar": "محوّل MP3"
+    },
+    "description": {
+      "en": "Convert any audio format to MP3.",
+      "fr": "Convertissez n'importe quel audio en MP3.",
+      "ar": "حوّل أي صيغة صوت إلى MP3."
+    },
+    "howTo": {
+      "en": [
+        "Upload your audio",
+        "Click Convert",
+        "Download MP3"
+      ],
+      "fr": [
+        "Téléchargez votre audio",
+        "Cliquez sur Convertir",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع الملف الصوتي",
+        "انقر على تحويل",
+        "حمّل MP3"
+      ]
+    },
+    "created_at": "2026-05-30"
+  },
+  {
+    "id": "audio-cutter",
+    "slug": "audio-cutter",
+    "categoryId": "audio-tools",
+    "icon": "Scissors",
+    "type": "file-audio",
+    "formats": "MP3, WAV, AAC",
+    "featured": false,
+    "name": {
+      "en": "Audio Cutter",
+      "fr": "Découpeur Audio",
+      "ar": "قاص الصوت"
+    },
+    "description": {
+      "en": "Cut and trim audio files to any length.",
+      "fr": "Coupez et découpez vos fichiers audio.",
+      "ar": "قص وقطع الملفات الصوتية."
+    },
+    "howTo": {
+      "en": [
+        "Upload your audio",
+        "Select start and end",
+        "Download"
+      ],
+      "fr": [
+        "Téléchargez votre audio",
+        "Sélectionnez les points",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع الملف الصوتي",
+        "حدد البداية والنهاية",
+        "حمّل"
+      ]
+    },
+    "created_at": "2026-05-29"
+  },
+  {
+    "id": "audio-merger",
+    "slug": "audio-merger",
+    "categoryId": "audio-tools",
+    "icon": "Files",
+    "type": "file-audio",
+    "formats": "MP3, WAV",
+    "featured": false,
+    "name": {
+      "en": "Audio Merger",
+      "fr": "Fusionner Audio",
+      "ar": "دمج الصوت"
+    },
+    "description": {
+      "en": "Merge multiple audio files into one.",
+      "fr": "Fusionnez plusieurs fichiers audio en un seul.",
+      "ar": "ادمج عدة ملفات صوتية في ملف واحد."
+    },
+    "howTo": {
+      "en": [
+        "Upload multiple audio files",
+        "Arrange order",
+        "Download merged file"
+      ],
+      "fr": [
+        "Téléchargez plusieurs fichiers",
+        "Réorganisez",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع عدة ملفات",
+        "رتب الترتيب",
+        "حمّل الملف"
+      ]
+    },
+    "created_at": "2026-05-28"
+  },
+  {
+    "id": "volume-booster",
+    "slug": "volume-booster",
+    "categoryId": "audio-tools",
+    "icon": "Volume2",
+    "type": "file-audio",
+    "formats": "MP3, WAV",
+    "featured": false,
+    "name": {
+      "en": "Volume Booster",
+      "fr": "Amplificateur de volume",
+      "ar": "مضخّم الصوت"
+    },
+    "description": {
+      "en": "Increase the volume of audio files.",
+      "fr": "Augmentez le volume de vos fichiers audio.",
+      "ar": "زد مستوى صوت الملفات الصوتية."
+    },
+    "howTo": {
+      "en": [
+        "Upload your audio",
+        "Set volume level",
+        "Download"
+      ],
+      "fr": [
+        "Téléchargez votre audio",
+        "Réglez le volume",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع الملف الصوتي",
+        "اضبط مستوى الصوت",
+        "حمّل"
+      ]
+    },
+    "created_at": "2026-05-27"
+  },
+  {
+    "id": "voice-recorder",
+    "slug": "voice-recorder",
+    "categoryId": "audio-tools",
+    "icon": "Mic",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Voice Recorder",
+      "fr": "Enregistreur vocal",
+      "ar": "مسجّل الصوت"
+    },
+    "description": {
+      "en": "Record audio directly from your browser.",
+      "fr": "Enregistrez l'audio directement depuis votre navigateur.",
+      "ar": "سجّل الصوت مباشرة من متصفحك."
+    },
+    "howTo": {
+      "en": [
+        "Click Record",
+        "Speak into your mic",
+        "Download recording"
+      ],
+      "fr": [
+        "Cliquez sur Enregistrer",
+        "Parlez dans le micro",
+        "Téléchargez"
+      ],
+      "ar": [
+        "انقر على تسجيل",
+        "تحدث في الميكروفون",
+        "حمّل التسجيل"
+      ]
+    },
+    "created_at": "2026-05-26"
+  },
+  {
+    "id": "word-counter",
+    "slug": "word-counter",
+    "categoryId": "text-tools",
+    "icon": "AlignLeft",
+    "type": "text",
+    "formats": null,
+    "featured": true,
+    "name": {
+      "en": "Word Counter",
+      "fr": "Compteur de mots",
+      "ar": "عدّاد الكلمات"
+    },
+    "description": {
+      "en": "Count words, characters, sentences and paragraphs instantly.",
+      "fr": "Comptez les mots, caractères, phrases instantanément.",
+      "ar": "احسب الكلمات والحروف والجمل والفقرات فوراً."
+    },
+    "howTo": {
+      "en": [
+        "Paste or type your text",
+        "See live statistics below",
+        "Copy results if needed"
+      ],
+      "fr": [
+        "Collez ou tapez votre texte",
+        "Voir les statistiques",
+        "Copiez les résultats"
+      ],
+      "ar": [
+        "الصق أو اكتب نصك",
+        "شاهد الإحصائيات",
+        "انسخ النتائج"
+      ]
+    },
+    "created_at": "2026-05-25"
+  },
+  {
+    "id": "character-counter",
+    "slug": "character-counter",
+    "categoryId": "text-tools",
+    "icon": "Type",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Character Counter",
+      "fr": "Compteur de caractères",
+      "ar": "عدّاد الأحرف"
+    },
+    "description": {
+      "en": "Count characters with and without spaces.",
+      "fr": "Comptez les caractères avec et sans espaces.",
+      "ar": "احسب الأحرف مع المسافات وبدونها."
+    },
+    "howTo": {
+      "en": [
+        "Paste your text",
+        "See character count",
+        "Copy if needed"
+      ],
+      "fr": [
+        "Collez votre texte",
+        "Voir le comptage",
+        "Copiez"
+      ],
+      "ar": [
+        "الصق نصك",
+        "شاهد العدد",
+        "انسخ"
+      ]
+    },
+    "created_at": "2026-05-24"
+  },
+  {
+    "id": "case-converter",
+    "slug": "case-converter",
+    "categoryId": "text-tools",
+    "icon": "CaseSensitive",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Case Converter",
+      "fr": "Convertisseur de casse",
+      "ar": "محول حالة الأحرف"
+    },
+    "description": {
+      "en": "Convert text to upper, lower, title or sentence case.",
+      "fr": "Convertissez en majuscules, minuscules, titre.",
+      "ar": "حوّل النص إلى أحرف كبيرة أو صغيرة أو عنوان."
+    },
+    "howTo": {
+      "en": [
+        "Paste your text",
+        "Choose case format",
+        "Copy result"
+      ],
+      "fr": [
+        "Collez votre texte",
+        "Choisissez le format",
+        "Copiez"
+      ],
+      "ar": [
+        "الصق نصك",
+        "اختر الصيغة",
+        "انسخ"
+      ]
+    },
+    "created_at": "2026-05-23"
+  },
+  {
+    "id": "remove-duplicate-lines",
+    "slug": "remove-duplicate-lines",
+    "categoryId": "text-tools",
+    "icon": "ListFilter",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Remove Duplicate Lines",
+      "fr": "Supprimer doublons",
+      "ar": "حذف الأسطر المكررة"
+    },
+    "description": {
+      "en": "Remove duplicate lines from any text.",
+      "fr": "Supprimez les lignes en double de votre texte.",
+      "ar": "احذف الأسطر المكررة من أي نص."
+    },
+    "howTo": {
+      "en": [
+        "Paste your text",
+        "Click Remove Duplicates",
+        "Copy result"
+      ],
+      "fr": [
+        "Collez votre texte",
+        "Cliquez sur Supprimer",
+        "Copiez"
+      ],
+      "ar": [
+        "الصق نصك",
+        "انقر على حذف المكرر",
+        "انسخ"
+      ]
+    },
+    "created_at": "2026-05-22"
+  },
+  {
+    "id": "text-compare",
+    "slug": "text-compare",
+    "categoryId": "text-tools",
+    "icon": "GitCompare",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Text Compare",
+      "fr": "Comparer du texte",
+      "ar": "مقارنة النصوص"
+    },
+    "description": {
+      "en": "Compare two texts and highlight differences.",
+      "fr": "Comparez deux textes et surlignez les différences.",
+      "ar": "قارن نصين وأبرز الاختلافات."
+    },
+    "howTo": {
+      "en": [
+        "Paste first text",
+        "Paste second text",
+        "See differences"
+      ],
+      "fr": [
+        "Collez le premier texte",
+        "Collez le second",
+        "Voir les différences"
+      ],
+      "ar": [
+        "الصق النص الأول",
+        "الصق النص الثاني",
+        "شاهد الاختلافات"
+      ]
+    },
+    "created_at": "2026-05-21"
+  },
+  {
+    "id": "ai-writer",
+    "slug": "ai-writer",
+    "categoryId": "ai-tools",
+    "icon": "PenLine",
+    "type": "text",
+    "formats": null,
+    "featured": true,
+    "name": {
+      "en": "AI Writer",
+      "fr": "Rédacteur IA",
+      "ar": "كاتب الذكاء الاصطناعي"
+    },
+    "description": {
+      "en": "Generate text content with AI assistance.",
+      "fr": "Générez du contenu textuel avec l'IA.",
+      "ar": "أنشئ محتوى نصي بمساعدة الذكاء الاصطناعي."
+    },
+    "howTo": {
+      "en": [
+        "Enter your topic",
+        "Click Generate",
+        "Copy your content"
+      ],
+      "fr": [
+        "Entrez votre sujet",
+        "Cliquez sur Générer",
+        "Copiez"
+      ],
+      "ar": [
+        "أدخل موضوعك",
+        "انقر على توليد",
+        "انسخ المحتوى"
+      ]
+    },
+    "created_at": "2026-05-20"
+  },
+  {
+    "id": "ai-summarizer",
+    "slug": "ai-summarizer",
+    "categoryId": "ai-tools",
+    "icon": "FileSearch",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "AI Summarizer",
+      "fr": "Résumé IA",
+      "ar": "ملخّص الذكاء الاصطناعي"
+    },
+    "description": {
+      "en": "Summarize long texts into key points.",
+      "fr": "Résumez de longs textes en points clés.",
+      "ar": "لخّص النصوص الطويلة إلى نقاط رئيسية."
+    },
+    "howTo": {
+      "en": [
+        "Paste your text",
+        "Click Summarize",
+        "Read summary"
+      ],
+      "fr": [
+        "Collez votre texte",
+        "Cliquez sur Résumer",
+        "Lisez"
+      ],
+      "ar": [
+        "الصق نصك",
+        "انقر على تلخيص",
+        "اقرأ الملخص"
+      ]
+    },
+    "created_at": "2026-05-19"
+  },
+  {
+    "id": "ai-translator",
+    "slug": "ai-translator",
+    "categoryId": "ai-tools",
+    "icon": "Languages",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "AI Translator",
+      "fr": "Traducteur IA",
+      "ar": "مترجم الذكاء الاصطناعي"
+    },
+    "description": {
+      "en": "Translate text between any languages.",
+      "fr": "Traduisez du texte entre toutes les langues.",
+      "ar": "ترجم النص بين أي لغات."
+    },
+    "howTo": {
+      "en": [
+        "Paste your text",
+        "Select languages",
+        "Get translation"
+      ],
+      "fr": [
+        "Collez votre texte",
+        "Sélectionnez les langues",
+        "Obtenez la traduction"
+      ],
+      "ar": [
+        "الصق نصك",
+        "اختر اللغات",
+        "احصل على الترجمة"
+      ]
+    },
+    "created_at": "2026-05-18"
+  },
+  {
+    "id": "ai-rewriter",
+    "slug": "ai-rewriter",
+    "categoryId": "ai-tools",
+    "icon": "RefreshCw",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "AI Rewriter",
+      "fr": "Réécriture IA",
+      "ar": "إعادة كتابة بالذكاء الاصطناعي"
+    },
+    "description": {
+      "en": "Rewrite and rephrase text with AI.",
+      "fr": "Réécrivez et reformulez du texte avec l'IA.",
+      "ar": "أعد كتابة وإعادة صياغة النص بالذكاء الاصطناعي."
+    },
+    "howTo": {
+      "en": [
+        "Paste your text",
+        "Click Rewrite",
+        "Copy result"
+      ],
+      "fr": [
+        "Collez votre texte",
+        "Cliquez sur Réécrire",
+        "Copiez"
+      ],
+      "ar": [
+        "الصق نصك",
+        "انقر على إعادة الكتابة",
+        "انسخ النتيجة"
+      ]
+    },
+    "created_at": "2026-05-17"
+  },
+  {
+    "id": "ai-grammar-fixer",
+    "slug": "ai-grammar-fixer",
+    "categoryId": "ai-tools",
+    "icon": "SpellCheck",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "AI Grammar Fixer",
+      "fr": "Correcteur IA",
+      "ar": "مصحح الذكاء الاصطناعي"
+    },
+    "description": {
+      "en": "Fix grammar and spelling mistakes instantly.",
+      "fr": "Corrigez la grammaire et l'orthographe.",
+      "ar": "أصلح أخطاء القواعد والإملاء فوراً."
+    },
+    "howTo": {
+      "en": [
+        "Paste your text",
+        "Click Fix Grammar",
+        "Copy corrected text"
+      ],
+      "fr": [
+        "Collez votre texte",
+        "Cliquez sur Corriger",
+        "Copiez"
+      ],
+      "ar": [
+        "الصق نصك",
+        "انقر على إصلاح",
+        "انسخ النص المصحح"
+      ]
+    },
+    "created_at": "2026-05-16"
+  },
+  {
+    "id": "bmi-calculator",
+    "slug": "bmi-calculator",
+    "categoryId": "calculators",
+    "icon": "Activity",
+    "type": "calculator",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "BMI Calculator",
+      "fr": "Calculatrice IMC",
+      "ar": "حاسبة مؤشر كتلة الجسم"
+    },
+    "description": {
+      "en": "Calculate your Body Mass Index and ideal weight range.",
+      "fr": "Calculez votre IMC et poids idéal.",
+      "ar": "احسب مؤشر كتلة جسمك ووزنك المثالي."
+    },
+    "howTo": {
+      "en": [
+        "Enter your height",
+        "Enter your weight",
+        "See your BMI result"
+      ],
+      "fr": [
+        "Entrez votre taille",
+        "Entrez votre poids",
+        "Voir votre IMC"
+      ],
+      "ar": [
+        "أدخل طولك",
+        "أدخل وزنك",
+        "شاهد النتيجة"
+      ]
+    },
+    "created_at": "2026-05-15"
+  },
+  {
+    "id": "age-calculator",
+    "slug": "age-calculator",
+    "categoryId": "calculators",
+    "icon": "Calendar",
+    "type": "calculator",
+    "formats": null,
+    "featured": true,
+    "name": {
+      "en": "Age Calculator",
+      "fr": "Calculatrice d'âge",
+      "ar": "حاسبة العمر"
+    },
+    "description": {
+      "en": "Calculate your exact age in years, months, and days.",
+      "fr": "Calculez votre âge exact en années, mois et jours.",
+      "ar": "احسب عمرك بالضبط بالسنوات والأشهر والأيام."
+    },
+    "howTo": {
+      "en": [
+        "Enter your date of birth",
+        "See your exact age",
+        "View detailed breakdown"
+      ],
+      "fr": [
+        "Entrez votre date de naissance",
+        "Voir votre âge",
+        "Voir les détails"
+      ],
+      "ar": [
+        "أدخل تاريخ ميلادك",
+        "شاهد عمرك",
+        "اعرض التفاصيل"
+      ]
+    },
+    "created_at": "2026-05-14"
+  },
+  {
+    "id": "percentage-calculator",
+    "slug": "percentage-calculator",
+    "categoryId": "calculators",
+    "icon": "Percent",
+    "type": "calculator",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Percentage Calculator",
+      "fr": "Calculatrice de pourcentage",
+      "ar": "حاسبة النسبة المئوية"
+    },
+    "description": {
+      "en": "Calculate percentages, increases and decreases.",
+      "fr": "Calculez pourcentages, augmentations et réductions.",
+      "ar": "احسب النسب المئوية والزيادات والنقصان."
+    },
+    "howTo": {
+      "en": [
+        "Enter values",
+        "Click Calculate",
+        "See result"
+      ],
+      "fr": [
+        "Entrez les valeurs",
+        "Cliquez sur Calculer",
+        "Voir le résultat"
+      ],
+      "ar": [
+        "أدخل القيم",
+        "انقر على حساب",
+        "شاهد النتيجة"
+      ]
+    },
+    "created_at": "2026-05-13"
+  },
+  {
+    "id": "loan-calculator",
+    "slug": "loan-calculator",
+    "categoryId": "calculators",
+    "icon": "Banknote",
+    "type": "calculator",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Loan Calculator",
+      "fr": "Calculatrice de prêt",
+      "ar": "حاسبة القرض"
+    },
+    "description": {
+      "en": "Calculate monthly payments and total interest.",
+      "fr": "Calculez les mensualités et les intérêts totaux.",
+      "ar": "احسب الدفعات الشهرية وإجمالي الفائدة."
+    },
+    "howTo": {
+      "en": [
+        "Enter loan amount",
+        "Enter interest rate",
+        "See monthly payment"
+      ],
+      "fr": [
+        "Entrez le montant",
+        "Entrez le taux",
+        "Voir les mensualités"
+      ],
+      "ar": [
+        "أدخل مبلغ القرض",
+        "أدخل معدل الفائدة",
+        "شاهد الدفعات"
+      ]
+    },
+    "created_at": "2026-05-12"
+  },
+  {
+    "id": "currency-converter",
+    "slug": "currency-converter",
+    "categoryId": "calculators",
+    "icon": "DollarSign",
+    "type": "calculator",
+    "formats": null,
+    "featured": true,
+    "name": {
+      "en": "Currency Converter",
+      "fr": "Convertisseur de devises",
+      "ar": "محوّل العملات"
+    },
+    "description": {
+      "en": "Convert between currencies with live exchange rates.",
+      "fr": "Convertissez entre devises avec taux en direct.",
+      "ar": "حوّل بين العملات بأسعار صرف مباشرة."
+    },
+    "howTo": {
+      "en": [
+        "Enter amount",
+        "Select currencies",
+        "See converted amount"
+      ],
+      "fr": [
+        "Entrez le montant",
+        "Sélectionnez les devises",
+        "Voir le résultat"
+      ],
+      "ar": [
+        "أدخل المبلغ",
+        "اختر العملات",
+        "شاهد النتيجة"
+      ]
+    },
+    "created_at": "2026-05-11"
+  },
+  {
+    "id": "json-formatter",
+    "slug": "json-formatter",
+    "categoryId": "developer-tools",
+    "icon": "Braces",
+    "type": "text",
+    "formats": null,
+    "featured": true,
+    "name": {
+      "en": "JSON Formatter",
+      "fr": "Formateur JSON",
+      "ar": "منسّق JSON"
+    },
+    "description": {
+      "en": "Format and beautify JSON data instantly.",
+      "fr": "Formatez et embellissez vos données JSON.",
+      "ar": "نسّق وجمّل بيانات JSON فوراً."
+    },
+    "howTo": {
+      "en": [
+        "Paste your JSON",
+        "Click Format",
+        "Copy formatted result"
+      ],
+      "fr": [
+        "Collez votre JSON",
+        "Cliquez sur Formater",
+        "Copiez"
+      ],
+      "ar": [
+        "الصق JSON",
+        "انقر على تنسيق",
+        "انسخ النتيجة"
+      ]
+    },
+    "created_at": "2026-05-10"
+  },
+  {
+    "id": "json-validator",
+    "slug": "json-validator",
+    "categoryId": "developer-tools",
+    "icon": "CheckSquare",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "JSON Validator",
+      "fr": "Validateur JSON",
+      "ar": "مدقق JSON"
+    },
+    "description": {
+      "en": "Validate JSON and find syntax errors.",
+      "fr": "Validez votre JSON et trouvez les erreurs.",
+      "ar": "تحقق من JSON واعثر على الأخطاء."
+    },
+    "howTo": {
+      "en": [
+        "Paste your JSON",
+        "Click Validate",
+        "See validation result"
+      ],
+      "fr": [
+        "Collez votre JSON",
+        "Cliquez sur Valider",
+        "Voir le résultat"
+      ],
+      "ar": [
+        "الصق JSON",
+        "انقر على تحقق",
+        "شاهد النتيجة"
+      ]
+    },
+    "created_at": "2026-05-09"
+  },
+  {
+    "id": "base64-encoder",
+    "slug": "base64-encoder",
+    "categoryId": "developer-tools",
+    "icon": "Lock",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Base64 Encoder",
+      "fr": "Encodeur Base64",
+      "ar": "مشفر Base64"
+    },
+    "description": {
+      "en": "Encode text or files to Base64 format.",
+      "fr": "Encodez du texte en Base64.",
+      "ar": "شفّر النص أو الملفات إلى Base64."
+    },
+    "howTo": {
+      "en": [
+        "Paste your text",
+        "Click Encode",
+        "Copy Base64 result"
+      ],
+      "fr": [
+        "Collez votre texte",
+        "Cliquez sur Encoder",
+        "Copiez"
+      ],
+      "ar": [
+        "الصق نصك",
+        "انقر على ترميز",
+        "انسخ النتيجة"
+      ]
+    },
+    "created_at": "2026-05-08"
+  },
+  {
+    "id": "base64-decoder",
+    "slug": "base64-decoder",
+    "categoryId": "developer-tools",
+    "icon": "Unlock",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Base64 Decoder",
+      "fr": "Décodeur Base64",
+      "ar": "فاك تشفير Base64"
+    },
+    "description": {
+      "en": "Decode Base64 strings back to text.",
+      "fr": "Décodez les chaînes Base64 en texte.",
+      "ar": "فك تشفير سلاسل Base64 إلى نص."
+    },
+    "howTo": {
+      "en": [
+        "Paste Base64 string",
+        "Click Decode",
+        "See decoded text"
+      ],
+      "fr": [
+        "Collez la chaîne Base64",
+        "Cliquez sur Décoder",
+        "Voir le texte"
+      ],
+      "ar": [
+        "الصق سلسلة Base64",
+        "انقر على فك الترميز",
+        "شاهد النص"
+      ]
+    },
+    "created_at": "2026-05-07"
+  },
+  {
+    "id": "url-encoder",
+    "slug": "url-encoder",
+    "categoryId": "developer-tools",
+    "icon": "Link",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "URL Encoder",
+      "fr": "Encodeur URL",
+      "ar": "مشفر URL"
+    },
+    "description": {
+      "en": "Encode URLs and text for safe transmission.",
+      "fr": "Encodez les URL et le texte pour transmission sûre.",
+      "ar": "شفّر الروابط والنص للنقل الآمن."
+    },
+    "howTo": {
+      "en": [
+        "Paste your URL or text",
+        "Click Encode",
+        "Copy result"
+      ],
+      "fr": [
+        "Collez votre URL",
+        "Cliquez sur Encoder",
+        "Copiez"
+      ],
+      "ar": [
+        "الصق الرابط أو النص",
+        "انقر على ترميز",
+        "انسخ"
+      ]
+    },
+    "created_at": "2026-05-06"
+  },
+  {
+    "id": "url-decoder",
+    "slug": "url-decoder",
+    "categoryId": "developer-tools",
+    "icon": "Unlink",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "URL Decoder",
+      "fr": "Décodeur URL",
+      "ar": "فاك تشفير URL"
+    },
+    "description": {
+      "en": "Decode encoded URLs back to readable text.",
+      "fr": "Décodez les URL encodées en texte lisible.",
+      "ar": "فك تشفير الروابط المشفرة إلى نص مقروء."
+    },
+    "howTo": {
+      "en": [
+        "Paste encoded URL",
+        "Click Decode",
+        "Copy decoded result"
+      ],
+      "fr": [
+        "Collez l'URL encodée",
+        "Cliquez sur Décoder",
+        "Copiez"
+      ],
+      "ar": [
+        "الصق الرابط المشفر",
+        "انقر على فك الترميز",
+        "انسخ"
+      ]
+    },
+    "created_at": "2026-05-05"
+  },
+  {
+    "id": "html-minifier",
+    "slug": "html-minifier",
+    "categoryId": "developer-tools",
+    "icon": "Code",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "HTML Minifier",
+      "fr": "Minificateur HTML",
+      "ar": "مضغط HTML"
+    },
+    "description": {
+      "en": "Minify HTML code to reduce file size.",
+      "fr": "Minifiez votre code HTML pour réduire la taille.",
+      "ar": "ضغط كود HTML لتقليل الحجم."
+    },
+    "howTo": {
+      "en": [
+        "Paste your HTML",
+        "Click Minify",
+        "Copy result"
+      ],
+      "fr": [
+        "Collez votre HTML",
+        "Cliquez sur Minifier",
+        "Copiez"
+      ],
+      "ar": [
+        "الصق HTML",
+        "انقر على ضغط",
+        "انسخ"
+      ]
+    },
+    "created_at": "2026-05-04"
+  },
+  {
+    "id": "css-minifier",
+    "slug": "css-minifier",
+    "categoryId": "developer-tools",
+    "icon": "Palette",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "CSS Minifier",
+      "fr": "Minificateur CSS",
+      "ar": "مضغط CSS"
+    },
+    "description": {
+      "en": "Minify CSS code to reduce file size.",
+      "fr": "Minifiez votre code CSS pour réduire la taille.",
+      "ar": "ضغط كود CSS لتقليل الحجم."
+    },
+    "howTo": {
+      "en": [
+        "Paste your CSS",
+        "Click Minify",
+        "Copy result"
+      ],
+      "fr": [
+        "Collez votre CSS",
+        "Cliquez sur Minifier",
+        "Copiez"
+      ],
+      "ar": [
+        "الصق CSS",
+        "انقر على ضغط",
+        "انسخ"
+      ]
+    },
+    "created_at": "2026-05-03"
+  },
+  {
+    "id": "meta-tag-generator",
+    "slug": "meta-tag-generator",
+    "categoryId": "seo-tools",
+    "icon": "Tag",
+    "type": "text",
+    "formats": null,
+    "featured": true,
+    "name": {
+      "en": "Meta Tag Generator",
+      "fr": "Générateur de balises meta",
+      "ar": "مولّد وسوم Meta"
+    },
+    "description": {
+      "en": "Generate meta tags for SEO optimization.",
+      "fr": "Générez des balises meta pour le SEO.",
+      "ar": "أنشئ وسوم Meta لتحسين محركات البحث."
+    },
+    "howTo": {
+      "en": [
+        "Enter page details",
+        "Click Generate",
+        "Copy meta tags"
+      ],
+      "fr": [
+        "Entrez les détails",
+        "Cliquez sur Générer",
+        "Copiez"
+      ],
+      "ar": [
+        "أدخل تفاصيل الصفحة",
+        "انقر على توليد",
+        "انسخ الوسوم"
+      ]
+    },
+    "created_at": "2026-05-02"
+  },
+  {
+    "id": "keyword-density-checker",
+    "slug": "keyword-density-checker",
+    "categoryId": "seo-tools",
+    "icon": "Search",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Keyword Density Checker",
+      "fr": "Vérificateur de densité",
+      "ar": "مدقق كثافة الكلمات"
+    },
+    "description": {
+      "en": "Check keyword density in any text.",
+      "fr": "Vérifiez la densité des mots-clés dans un texte.",
+      "ar": "تحقق من كثافة الكلمات المفتاحية في أي نص."
+    },
+    "howTo": {
+      "en": [
+        "Paste your text",
+        "Click Check",
+        "See keyword analysis"
+      ],
+      "fr": [
+        "Collez votre texte",
+        "Cliquez sur Vérifier",
+        "Voir l'analyse"
+      ],
+      "ar": [
+        "الصق نصك",
+        "انقر على تحقق",
+        "شاهد التحليل"
+      ]
+    },
+    "created_at": "2026-05-01"
+  },
+  {
+    "id": "sitemap-generator",
+    "slug": "sitemap-generator",
+    "categoryId": "seo-tools",
+    "icon": "Map",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Sitemap Generator",
+      "fr": "Générateur de sitemap",
+      "ar": "مولّد خريطة الموقع"
+    },
+    "description": {
+      "en": "Generate XML sitemaps for your website.",
+      "fr": "Générez des sitemaps XML pour votre site.",
+      "ar": "أنشئ خرائط موقع XML لموقعك."
+    },
+    "howTo": {
+      "en": [
+        "Enter your URLs",
+        "Click Generate",
+        "Download sitemap"
+      ],
+      "fr": [
+        "Entrez vos URL",
+        "Cliquez sur Générer",
+        "Téléchargez"
+      ],
+      "ar": [
+        "أدخل روابطك",
+        "انقر على توليد",
+        "حمّل خريطة الموقع"
+      ]
+    },
+    "created_at": "2026-04-30"
+  },
+  {
+    "id": "robots-txt-generator",
+    "slug": "robots-txt-generator",
+    "categoryId": "seo-tools",
+    "icon": "FileText",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Robots.txt Generator",
+      "fr": "Générateur robots.txt",
+      "ar": "مولّد robots.txt"
+    },
+    "description": {
+      "en": "Generate robots.txt files for search engines.",
+      "fr": "Générez des fichiers robots.txt.",
+      "ar": "أنشئ ملفات robots.txt لمحركات البحث."
+    },
+    "howTo": {
+      "en": [
+        "Set your rules",
+        "Click Generate",
+        "Download robots.txt"
+      ],
+      "fr": [
+        "Définissez vos règles",
+        "Cliquez sur Générer",
+        "Téléchargez"
+      ],
+      "ar": [
+        "حدد قواعدك",
+        "انقر على توليد",
+        "حمّل الملف"
+      ]
+    },
+    "created_at": "2026-04-29"
+  },
+  {
+    "id": "ip-lookup",
+    "slug": "ip-lookup",
+    "categoryId": "network-tools",
+    "icon": "Globe",
+    "type": "text",
+    "formats": null,
+    "featured": true,
+    "name": {
+      "en": "IP Lookup",
+      "fr": "Recherche IP",
+      "ar": "بحث IP"
+    },
+    "description": {
+      "en": "Find location and details of any IP address.",
+      "fr": "Trouvez la localisation et les détails d'une IP.",
+      "ar": "اعثر على موقع وتفاصيل أي عنوان IP."
+    },
+    "howTo": {
+      "en": [
+        "Enter an IP address",
+        "Click Lookup",
+        "See details"
+      ],
+      "fr": [
+        "Entrez une adresse IP",
+        "Cliquez sur Rechercher",
+        "Voir les détails"
+      ],
+      "ar": [
+        "أدخل عنوان IP",
+        "انقر على بحث",
+        "شاهد التفاصيل"
+      ]
+    },
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "dns-lookup",
+    "slug": "dns-lookup",
+    "categoryId": "network-tools",
+    "icon": "Server",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "DNS Lookup",
+      "fr": "Recherche DNS",
+      "ar": "بحث DNS"
+    },
+    "description": {
+      "en": "Query DNS records for any domain.",
+      "fr": "Recherchez les enregistrements DNS d'un domaine.",
+      "ar": "استعلم سجلات DNS لأي نطاق."
+    },
+    "howTo": {
+      "en": [
+        "Enter a domain name",
+        "Click Lookup",
+        "See DNS records"
+      ],
+      "fr": [
+        "Entrez un nom de domaine",
+        "Cliquez sur Rechercher",
+        "Voir les enregistrements"
+      ],
+      "ar": [
+        "أدخل اسم النطاق",
+        "انقر على بحث",
+        "شاهد السجلات"
+      ]
+    },
+    "created_at": "2026-04-27"
+  },
+  {
+    "id": "whois-lookup",
+    "slug": "whois-lookup",
+    "categoryId": "network-tools",
+    "icon": "FileSearch",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Whois Lookup",
+      "fr": "Recherche Whois",
+      "ar": "بحث Whois"
+    },
+    "description": {
+      "en": "Find registration details for any domain.",
+      "fr": "Trouvez les informations d'enregistrement d'un domaine.",
+      "ar": "اعثر على معلومات التسجيل لأي نطاق."
+    },
+    "howTo": {
+      "en": [
+        "Enter a domain name",
+        "Click Lookup",
+        "See whois data"
+      ],
+      "fr": [
+        "Entrez un nom de domaine",
+        "Cliquez sur Rechercher",
+        "Voir les données"
+      ],
+      "ar": [
+        "أدخل اسم النطاق",
+        "انقر على بحث",
+        "شاهد البيانات"
+      ]
+    },
+    "created_at": "2026-04-26"
+  },
+  {
+    "id": "ping-test",
+    "slug": "ping-test",
+    "categoryId": "network-tools",
+    "icon": "Activity",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Ping Test",
+      "fr": "Test de ping",
+      "ar": "اختبار Ping"
+    },
+    "description": {
+      "en": "Test connectivity and response time to any server.",
+      "fr": "Testez la connectivité et le temps de réponse.",
+      "ar": "اختبر الاتصال وزمن الاستجابة لأي خادم."
+    },
+    "howTo": {
+      "en": [
+        "Enter a domain or IP",
+        "Click Ping",
+        "See results"
+      ],
+      "fr": [
+        "Entrez un domaine ou IP",
+        "Cliquez sur Ping",
+        "Voir les résultats"
+      ],
+      "ar": [
+        "أدخل نطاق أو IP",
+        "انقر على Ping",
+        "شاهد النتائجة"
+      ]
+    },
+    "created_at": "2026-04-25"
+  },
+  {
+    "id": "social-post-generator",
+    "slug": "social-post-generator",
+    "categoryId": "social-media-tools",
+    "icon": "Share2",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Social Post Generator",
+      "fr": "Générateur de posts",
+      "ar": "مولّد المنشورات"
+    },
+    "description": {
+      "en": "Generate engaging posts for social media.",
+      "fr": "Générez des posts engageants pour les réseaux sociaux.",
+      "ar": "أنشئ منشورات جذابة لوسائل التواصل الاجتماعي."
+    },
+    "howTo": {
+      "en": [
+        "Enter your topic",
+        "Click Generate",
+        "Copy your post"
+      ],
+      "fr": [
+        "Entrez votre sujet",
+        "Cliquez sur Générer",
+        "Copiez"
+      ],
+      "ar": [
+        "أدخل موضوعك",
+        "انقر على توليد",
+        "انسخ المنشور"
+      ]
+    },
+    "created_at": "2026-04-24"
+  },
+  {
+    "id": "hashtag-generator",
+    "slug": "hashtag-generator",
+    "categoryId": "social-media-tools",
+    "icon": "Hash",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Hashtag Generator",
+      "fr": "Générateur de hashtags",
+      "ar": "مولّد الوسوم"
+    },
+    "description": {
+      "en": "Generate trending hashtags for your content.",
+      "fr": "Générez des hashtags tendance pour votre contenu.",
+      "ar": "أنشئ وسوم رائجة لمحتواك."
+    },
+    "howTo": {
+      "en": [
+        "Enter your keyword",
+        "Click Generate",
+        "Copy hashtags"
+      ],
+      "fr": [
+        "Entrez votre mot-clé",
+        "Cliquez sur Générer",
+        "Copiez"
+      ],
+      "ar": [
+        "أدخل كلمتك المفتاحية",
+        "انقر على توليد",
+        "انسخ الوسوم"
+      ]
+    },
+    "created_at": "2026-04-23"
+  },
+  {
+    "id": "instagram-caption-generator",
+    "slug": "instagram-caption-generator",
+    "categoryId": "social-media-tools",
+    "icon": "Camera",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Instagram Caption Generator",
+      "fr": "Générateur de légendes Instagram",
+      "ar": "مولّد تعليقات إنستغرام"
+    },
+    "description": {
+      "en": "Create catchy captions for Instagram posts.",
+      "fr": "Créez des légendes accrocheuses pour Instagram.",
+      "ar": "أنشئ تعليقات جذابة لمنشورات إنستغرام."
+    },
+    "howTo": {
+      "en": [
+        "Describe your photo",
+        "Click Generate",
+        "Copy caption"
+      ],
+      "fr": [
+        "Décrivez votre photo",
+        "Cliquez sur Générer",
+        "Copiez"
+      ],
+      "ar": [
+        "صف صورتك",
+        "انقر على توليد",
+        "انسخ التعليق"
+      ]
+    },
+    "created_at": "2026-04-22"
+  },
+  {
+    "id": "twitter-character-counter",
+    "slug": "twitter-character-counter",
+    "categoryId": "social-media-tools",
+    "icon": "Type",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Twitter Character Counter",
+      "fr": "Compteur Twitter",
+      "ar": "عدّاد تويتر"
+    },
+    "description": {
+      "en": "Count characters for tweets with 280 limit.",
+      "fr": "Comptez les caractères pour vos tweets (280 max).",
+      "ar": "احسب أحرف التغريدات بحد 280 حرف."
+    },
+    "howTo": {
+      "en": [
+        "Type your tweet",
+        "See character count",
+        "Post when ready"
+      ],
+      "fr": [
+        "Tapez votre tweet",
+        "Voir le comptage",
+        "Publiez"
+      ],
+      "ar": [
+        "اكتب تغريدتك",
+        "شاهد العدد",
+        "انشر"
+      ]
+    },
+    "created_at": "2026-04-21"
+  },
+  {
+    "id": "social-image-resizer",
+    "slug": "social-image-resizer",
+    "categoryId": "social-media-tools",
+    "icon": "Maximize",
+    "type": "file-image",
+    "formats": "JPG, PNG",
+    "featured": false,
+    "name": {
+      "en": "Social Image Resizer",
+      "fr": "Redimensionner pour réseaux sociaux",
+      "ar": "تغيير حجم صور التواصل"
+    },
+    "description": {
+      "en": "Resize images for each social media platform.",
+      "fr": "Redimensionnez pour chaque réseau social.",
+      "ar": "غيّر حجم الصور لكل منصة تواصل اجتماعي."
+    },
+    "howTo": {
+      "en": [
+        "Upload your image",
+        "Select platform",
+        "Download resized image"
+      ],
+      "fr": [
+        "Téléchargez votre image",
+        "Sélectionnez la plateforme",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع صورتك",
+        "اختر المنصة",
+        "حمّل الصورة"
+      ]
+    },
+    "created_at": "2026-04-20"
+  },
+  {
+    "id": "docx-converter",
+    "slug": "docx-converter",
+    "categoryId": "file-converter-tools",
+    "icon": "FileText",
+    "type": "file-doc",
+    "formats": "DOCX, PDF, ODT",
+    "featured": false,
+    "name": {
+      "en": "DOCX Converter",
+      "fr": "Convertisseur DOCX",
+      "ar": "محوّل DOCX"
+    },
+    "description": {
+      "en": "Convert DOCX files to and from various formats.",
+      "fr": "Convertissez les fichiers DOCX vers divers formats.",
+      "ar": "حوّل ملفات DOCX من وإلى صيغ مختلفة."
+    },
+    "howTo": {
+      "en": [
+        "Upload your DOCX",
+        "Select target format",
+        "Download"
+      ],
+      "fr": [
+        "Téléchargez votre DOCX",
+        "Choisissez le format",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع ملف DOCX",
+        "اختر الصيغة",
+        "حمّل"
+      ]
+    },
+    "created_at": "2026-04-19"
+  },
+  {
+    "id": "xlsx-converter",
+    "slug": "xlsx-converter",
+    "categoryId": "file-converter-tools",
+    "icon": "Table",
+    "type": "file-doc",
+    "formats": "XLSX, CSV, PDF",
+    "featured": false,
+    "name": {
+      "en": "XLSX Converter",
+      "fr": "Convertisseur XLSX",
+      "ar": "محوّل XLSX"
+    },
+    "description": {
+      "en": "Convert Excel spreadsheets to CSV, PDF and more.",
+      "fr": "Convertissez les fichiers Excel en CSV, PDF.",
+      "ar": "حوّل ملفات Excel إلى CSV و PDF."
+    },
+    "howTo": {
+      "en": [
+        "Upload your XLSX",
+        "Select target format",
+        "Download"
+      ],
+      "fr": [
+        "Téléchargez votre XLSX",
+        "Choisissez le format",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع ملف XLSX",
+        "اختر الصيغة",
+        "حمّل"
+      ]
+    },
+    "created_at": "2026-04-18"
+  },
+  {
+    "id": "pptx-converter",
+    "slug": "pptx-converter",
+    "categoryId": "file-converter-tools",
+    "icon": "Monitor",
+    "type": "file-doc",
+    "formats": "PPTX, PDF",
+    "featured": false,
+    "name": {
+      "en": "PPTX Converter",
+      "fr": "Convertisseur PPTX",
+      "ar": "محوّل PPTX"
+    },
+    "description": {
+      "en": "Convert PowerPoint presentations to PDF.",
+      "fr": "Convertissez les présentations PowerPoint en PDF.",
+      "ar": "حوّل عروض PowerPoint إلى PDF."
+    },
+    "howTo": {
+      "en": [
+        "Upload your PPTX",
+        "Click Convert",
+        "Download"
+      ],
+      "fr": [
+        "Téléchargez votre PPTX",
+        "Cliquez sur Convertir",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع ملف PPTX",
+        "انقر على تحويل",
+        "حمّل"
+      ]
+    },
+    "created_at": "2026-04-17"
+  },
+  {
+    "id": "csv-converter",
+    "slug": "csv-converter",
+    "categoryId": "file-converter-tools",
+    "icon": "Table",
+    "type": "file-doc",
+    "formats": "CSV, JSON, XLSX",
+    "featured": false,
+    "name": {
+      "en": "CSV Converter",
+      "fr": "Convertisseur CSV",
+      "ar": "محوّل CSV"
+    },
+    "description": {
+      "en": "Convert CSV to JSON, Excel and other formats.",
+      "fr": "Convertissez CSV en JSON, Excel et autres.",
+      "ar": "حوّل CSV إلى JSON و Excel وغيرها."
+    },
+    "howTo": {
+      "en": [
+        "Upload your CSV",
+        "Select target format",
+        "Download"
+      ],
+      "fr": [
+        "Téléchargez votre CSV",
+        "Choisissez le format",
+        "Téléchargez"
+      ],
+      "ar": [
+        "ارفع ملف CSV",
+        "اختر الصيغة",
+        "حمّل"
+      ]
+    },
+    "created_at": "2026-04-16"
+  },
+  {
+    "id": "password-strength-checker",
+    "slug": "password-strength-checker",
+    "categoryId": "security-tools",
+    "icon": "Shield",
+    "type": "text",
+    "formats": null,
+    "featured": true,
+    "name": {
+      "en": "Password Strength Checker",
+      "fr": "Vérificateur de mot de passe",
+      "ar": "مدقق قوة كلمة المرور"
+    },
+    "description": {
+      "en": "Check how strong your password is.",
+      "fr": "Vérifiez la force de votre mot de passe.",
+      "ar": "تحقق من قوة كلمة المرور."
+    },
+    "howTo": {
+      "en": [
+        "Enter your password",
+        "See strength analysis",
+        "Get recommendations"
+      ],
+      "fr": [
+        "Entrez votre mot de passe",
+        "Voir l'analyse",
+        "Obtenez des recommandations"
+      ],
+      "ar": [
+        "أدخل كلمة المرور",
+        "شاهد التحليل",
+        "احصل على توصيات"
+      ]
+    },
+    "created_at": "2026-04-15"
+  },
+  {
+    "id": "password-generator",
+    "slug": "password-generator",
+    "categoryId": "security-tools",
+    "icon": "Lock",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Password Generator",
+      "fr": "Générateur de mot de passe",
+      "ar": "مولّد كلمات المرور"
+    },
+    "description": {
+      "en": "Generate strong, secure passwords instantly.",
+      "fr": "Générez des mots de passe forts et sécurisés.",
+      "ar": "أنشئ كلمات مرور قوية وآمنة فوراً."
+    },
+    "howTo": {
+      "en": [
+        "Choose password length",
+        "Select character types",
+        "Copy your password"
+      ],
+      "fr": [
+        "Choisissez la longueur",
+        "Sélectionnez les types",
+        "Copiez"
+      ],
+      "ar": [
+        "اختر طول كلمة المرور",
+        "اختر أنواع الأحرف",
+        "انسخ"
+      ]
+    },
+    "created_at": "2026-04-14"
+  },
+  {
+    "id": "hash-generator",
+    "slug": "hash-generator",
+    "categoryId": "security-tools",
+    "icon": "Hash",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Hash Generator",
+      "fr": "Générateur de hash",
+      "ar": "مولّد الهاش"
+    },
+    "description": {
+      "en": "Generate MD5, SHA1, SHA256 hashes from text.",
+      "fr": "Générez des hash MD5, SHA1, SHA256.",
+      "ar": "أنشئ هاش MD5 وSHA1 وSHA256 من النص."
+    },
+    "howTo": {
+      "en": [
+        "Paste your text",
+        "Select hash type",
+        "Copy hash"
+      ],
+      "fr": [
+        "Collez votre texte",
+        "Choisissez le type",
+        "Copiez"
+      ],
+      "ar": [
+        "الصق نصك",
+        "اختر نوع الهاش",
+        "انسخ"
+      ]
+    },
+    "created_at": "2026-04-13"
+  },
+  {
+    "id": "qr-code-generator",
+    "slug": "qr-code-generator",
+    "categoryId": "security-tools",
+    "icon": "QrCode",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "QR Code Generator",
+      "fr": "Générateur de QR Code",
+      "ar": "مولّد رمز QR"
+    },
+    "description": {
+      "en": "Generate QR codes for URLs, text and more.",
+      "fr": "Générez des QR codes pour URL et texte.",
+      "ar": "أنشئ رموز QR للروابط والنصوص."
+    },
+    "howTo": {
+      "en": [
+        "Enter your content",
+        "Click Generate",
+        "Download QR code"
+      ],
+      "fr": [
+        "Entrez votre contenu",
+        "Cliquez sur Générer",
+        "Téléchargez"
+      ],
+      "ar": [
+        "أدخل المحتوى",
+        "انقر على توليد",
+        "حمّل رمز QR"
+      ]
+    },
+    "created_at": "2026-04-12"
+  },
+  {
+    "id": "ssl-checker",
+    "slug": "ssl-checker",
+    "categoryId": "security-tools",
+    "icon": "Lock",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "SSL Checker",
+      "fr": "Vérificateur SSL",
+      "ar": "مدقق SSL"
+    },
+    "description": {
+      "en": "Check SSL certificate details for any website.",
+      "fr": "Vérifiez les certificats SSL d'un site.",
+      "ar": "تحقق من شهادات SSL لأي موقع."
+    },
+    "howTo": {
+      "en": [
+        "Enter a domain name",
+        "Click Check",
+        "See SSL details"
+      ],
+      "fr": [
+        "Entrez un nom de domaine",
+        "Cliquez sur Vérifier",
+        "Voir les détails"
+      ],
+      "ar": [
+        "أدخل اسم النطاق",
+        "انقر على فحص",
+        "شاهد التفاصيل"
+      ]
+    },
+    "created_at": "2026-04-11"
+  },
+  {
+    "id": "pomodoro-timer",
+    "slug": "pomodoro-timer",
+    "categoryId": "productivity-tools",
+    "icon": "Timer",
+    "type": "text",
+    "formats": null,
+    "featured": true,
+    "name": {
+      "en": "Pomodoro Timer",
+      "fr": "Minuteur Pomodoro",
+      "ar": "مؤقت بومودورو"
+    },
+    "description": {
+      "en": "Boost productivity with the Pomodoro technique.",
+      "fr": "Boostez votre productivité avec la technique Pomodoro.",
+      "ar": "عزّز إنتاجيتك بتقنية بومودورو."
+    },
+    "howTo": {
+      "en": [
+        "Set work duration",
+        "Click Start",
+        "Take breaks automatically"
+      ],
+      "fr": [
+        "Définissez la durée",
+        "Cliquez sur Démarrer",
+        "Faites des pauses"
+      ],
+      "ar": [
+        "اضبط مدة العمل",
+        "انقر على ابدأ",
+        "خذ فترات راحة"
+      ]
+    },
+    "created_at": "2026-04-10"
+  },
+  {
+    "id": "task-manager",
+    "slug": "task-manager",
+    "categoryId": "productivity-tools",
+    "icon": "ListChecks",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Task Manager",
+      "fr": "Gestionnaire de tâches",
+      "ar": "مدير المهام"
+    },
+    "description": {
+      "en": "Create and manage your task list efficiently.",
+      "fr": "Créez et gérez votre liste de tâches.",
+      "ar": "أنشئ وأدر قائمة مهامك بكفاءة."
+    },
+    "howTo": {
+      "en": [
+        "Add your tasks",
+        "Mark as complete",
+        "Track progress"
+      ],
+      "fr": [
+        "Ajoutez vos tâches",
+        "Marquez comme terminé",
+        "Suivez"
+      ],
+      "ar": [
+        "أضف مهامك",
+        "حددها كمكتملة",
+        "تابع التقدم"
+      ]
+    },
+    "created_at": "2026-04-09"
+  },
+  {
+    "id": "note-pad",
+    "slug": "note-pad",
+    "categoryId": "productivity-tools",
+    "icon": "StickyNote",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Note Pad",
+      "fr": "Bloc-notes",
+      "ar": "مفكرة"
+    },
+    "description": {
+      "en": "Quick online notepad with auto-save.",
+      "fr": "Bloc-notes en ligne avec sauvegarde automatique.",
+      "ar": "مفكرة سريعة عبر الإنترنت مع حفظ تلقائي."
+    },
+    "howTo": {
+      "en": [
+        "Start typing",
+        "Auto-saves as you go",
+        "Copy or download"
+      ],
+      "fr": [
+        "Commencez à taper",
+        "Sauvegarde auto",
+        "Copiez ou téléchargez"
+      ],
+      "ar": [
+        "ابدأ بالكتابة",
+        "حفظ تلقائي",
+        "انسخ أو حمّل"
+      ]
+    },
+    "created_at": "2026-04-08"
+  },
+  {
+    "id": "countdown-timer",
+    "slug": "countdown-timer",
+    "categoryId": "productivity-tools",
+    "icon": "Timer",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Countdown Timer",
+      "fr": "Compte à rebours",
+      "ar": "عدّاد تنازلي"
+    },
+    "description": {
+      "en": "Set a countdown for any event or task.",
+      "fr": "Définissez un compte à rebours.",
+      "ar": "ضبط عدّاد تنازلي لأي حدث أو مهمة."
+    },
+    "howTo": {
+      "en": [
+        "Set duration",
+        "Click Start",
+        "Get notified"
+      ],
+      "fr": [
+        "Définissez la durée",
+        "Cliquez sur Démarrer",
+        "Soyez notifié"
+      ],
+      "ar": [
+        "اضبط المدة",
+        "انقر على ابدأ",
+        "احصل على إشعار"
+      ]
+    },
+    "created_at": "2026-04-07"
+  },
+  {
+    "id": "random-picker",
+    "slug": "random-picker",
+    "categoryId": "productivity-tools",
+    "icon": "Shuffle",
+    "type": "text",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Random Picker",
+      "fr": "Tirage au sort",
+      "ar": "اختيار عشوائي"
+    },
+    "description": {
+      "en": "Pick a random item from your list.",
+      "fr": "Tirez au sort un élément de votre liste.",
+      "ar": "اختر عنصراً عشوائياً من قائمتك."
+    },
+    "howTo": {
+      "en": [
+        "Enter your options",
+        "Click Pick",
+        "See random result"
+      ],
+      "fr": [
+        "Entrez vos options",
+        "Cliquez sur Tirer",
+        "Voir le résultat"
+      ],
+      "ar": [
+        "أدخل خياراتك",
+        "انقر على اختيار",
+        "شاهد النتيجة"
+      ]
+    },
+    "created_at": "2026-04-06"
+  },
+  {
+    "id": "length-converter",
+    "slug": "length-converter",
+    "categoryId": "unit-converter-tools",
+    "icon": "Ruler",
+    "type": "calculator",
+    "formats": null,
+    "featured": true,
+    "name": {
+      "en": "Length Converter",
+      "fr": "Convertisseur de longueur",
+      "ar": "محوّل الطول"
+    },
+    "description": {
+      "en": "Convert between meters, feet, miles, km and more.",
+      "fr": "Convertissez entre mètres, pieds, miles, km.",
+      "ar": "حوّل بين متر وقدم وميل وكيلومتر."
+    },
+    "howTo": {
+      "en": [
+        "Enter value",
+        "Select units",
+        "See result"
+      ],
+      "fr": [
+        "Entrez la valeur",
+        "Choisissez les unités",
+        "Voir le résultat"
+      ],
+      "ar": [
+        "أدخل القيمة",
+        "اختر الوحدات",
+        "شاهد النتيجة"
+      ]
+    },
+    "created_at": "2026-04-05"
+  },
+  {
+    "id": "weight-converter",
+    "slug": "weight-converter",
+    "categoryId": "unit-converter-tools",
+    "icon": "Scale",
+    "type": "calculator",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Weight Converter",
+      "fr": "Convertisseur de poids",
+      "ar": "محوّل الوزن"
+    },
+    "description": {
+      "en": "Convert between kg, lbs, oz, grams and more.",
+      "fr": "Convertissez entre kg, lbs, oz, grammes.",
+      "ar": "حوّل بين كجم ورطل وأونصة وجرام."
+    },
+    "howTo": {
+      "en": [
+        "Enter value",
+        "Select units",
+        "See result"
+      ],
+      "fr": [
+        "Entrez la valeur",
+        "Choisissez les unités",
+        "Voir le résultat"
+      ],
+      "ar": [
+        "أدخل القيمة",
+        "اختر الوحدات",
+        "شاهد النتيجة"
+      ]
+    },
+    "created_at": "2026-04-04"
+  },
+  {
+    "id": "temperature-converter",
+    "slug": "temperature-converter",
+    "categoryId": "unit-converter-tools",
+    "icon": "Thermometer",
+    "type": "calculator",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Temperature Converter",
+      "fr": "Convertisseur de température",
+      "ar": "محوّل درجة الحرارة"
+    },
+    "description": {
+      "en": "Convert between Celsius, Fahrenheit and Kelvin.",
+      "fr": "Convertissez entre Celsius, Fahrenheit et Kelvin.",
+      "ar": "حوّل بين مئوية وفهرنهايت وكلفن."
+    },
+    "howTo": {
+      "en": [
+        "Enter temperature",
+        "Select units",
+        "See result"
+      ],
+      "fr": [
+        "Entrez la température",
+        "Choisissez les unités",
+        "Voir le résultat"
+      ],
+      "ar": [
+        "أدخل الحرارة",
+        "اختر الوحدات",
+        "شاهد النتيجة"
+      ]
+    },
+    "created_at": "2026-04-03"
+  },
+  {
+    "id": "speed-converter",
+    "slug": "speed-converter",
+    "categoryId": "unit-converter-tools",
+    "icon": "Gauge",
+    "type": "calculator",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Speed Converter",
+      "fr": "Convertisseur de vitesse",
+      "ar": "محوّل السرعة"
+    },
+    "description": {
+      "en": "Convert between km/h, mph, m/s and knots.",
+      "fr": "Convertissez entre km/h, mph, m/s et nœuds.",
+      "ar": "حوّل بين كم/ساعة وميل/ساعة وعقدة."
+    },
+    "howTo": {
+      "en": [
+        "Enter speed",
+        "Select units",
+        "See result"
+      ],
+      "fr": [
+        "Entrez la vitesse",
+        "Choisissez les unités",
+        "Voir le résultat"
+      ],
+      "ar": [
+        "أدخل السرعة",
+        "اختر الوحدات",
+        "شاهد النتيجة"
+      ]
+    },
+    "created_at": "2026-04-02"
+  },
+  {
+    "id": "time-converter",
+    "slug": "time-converter",
+    "categoryId": "unit-converter-tools",
+    "icon": "Clock",
+    "type": "calculator",
+    "formats": null,
+    "featured": false,
+    "name": {
+      "en": "Time Converter",
+      "fr": "Convertisseur de temps",
+      "ar": "محوّل الوقت"
+    },
+    "description": {
+      "en": "Convert between time zones instantly.",
+      "fr": "Convertissez entre fuseaux horaires.",
+      "ar": "حوّل بين المناطق الزمنية فوراً."
+    },
+    "howTo": {
+      "en": [
+        "Enter time",
+        "Select time zones",
+        "See result"
+      ],
+      "fr": [
+        "Entrez l'heure",
+        "Choisissez les fuseaux",
+        "Voir le résultat"
+      ],
+      "ar": [
+        "أدخل الوقت",
+        "اختر المناطق",
+        "شاهد النتيجة"
+      ]
+    },
+    "created_at": "2026-04-01"
+  }
 ]
