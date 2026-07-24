@@ -37,6 +37,10 @@ export default function App() {
         langs={langs}
         t={t}
         onMenuToggle={() => setSidebarOpen(o => !o)}
+        onSidebarToggle={() => {
+          // Trigger sidebar collapse via custom event
+          window.dispatchEvent(new CustomEvent('sidebar-toggle'))
+        }}
       />
 
       {/* Body: sidebar + main */}

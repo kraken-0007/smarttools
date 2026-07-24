@@ -96,7 +96,7 @@ export default function SearchPage({ lang, t }) {
       ) : results.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {results.map(tool => (
-            <ToolCard key={tool.id} tool={tool} lang={lang} t={t} category={catMap[tool.categoryId]} />
+            <ToolCard key={tool.id} tool={tool} lang={lang} t={t} category={catMap[tool.categoryId]} showNewBadge={false} />
           ))}
         </div>
       ) : query ? (

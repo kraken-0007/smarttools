@@ -608,7 +608,7 @@ export default function ToolPage({ slug, lang, t }) {
           <h2 className="font-bold text-base text-gray-900 dark:text-white mb-4">{t.tools.related}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {relatedTools.map(rt => (
-              <ToolCard key={rt.id} tool={rt} lang={lang} t={t} category={catMap[rt.categoryId]} />
+              <ToolCard key={rt.id} tool={rt} lang={lang} t={t} category={catMap[rt.categoryId]} showNewBadge={false} />
             ))}
           </div>
         </div>

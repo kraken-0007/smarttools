@@ -54,7 +54,7 @@ export default function CategoriesPage({ lang, t, slug }) {
         {catTools.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {catTools.map(tool => (
-              <ToolCard key={tool.id} tool={tool} lang={lang} t={t} category={category} />
+              <ToolCard key={tool.id} tool={tool} lang={lang} t={t} category={category} showNewBadge={false} />
             ))}
           </div>
         ) : (
@@ -108,7 +108,7 @@ export default function CategoriesPage({ lang, t, slug }) {
               {catTools.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {catTools.map(tool => (
-                    <ToolCard key={tool.id} tool={tool} lang={lang} t={t} category={catMap[tool.categoryId]} />
+                    <ToolCard key={tool.id} tool={tool} lang={lang} t={t} category={catMap[tool.categoryId]} showNewBadge={false} />
                   ))}
                 </div>
               ) : (

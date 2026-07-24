@@ -28,7 +28,7 @@
 
   .tool-card {
     @apply relative bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800
-      rounded-2xl p-6 flex flex-col gap-3
+      rounded-xl md:rounded-2xl p-5 md:p-6 flex flex-col gap-2.5 md:gap-3
       hover:border-blue-200 dark:hover:border-blue-800
       hover:shadow-lg hover:shadow-blue-500/5 dark:hover:shadow-blue-900/20
       transition-all duration-200 cursor-pointer;
