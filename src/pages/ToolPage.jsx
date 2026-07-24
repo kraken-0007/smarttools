@@ -1,3 +1,4 @@
+import { useSEO, useToolViews } from "../lib/seo"
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { CheckCircle2, Wrench, HelpCircle, ChevronDown, UploadCloud, FileText, Image as ImageIcon, X } from 'lucide-react'
@@ -525,12 +526,26 @@ export default function ToolPage({ slug, lang, t }) {
 
   const category = categories.find(c => c.id === tool.categoryId)
   const Icon = getIcon(tool.icon)
-  const relatedTools = tools.filter(to => to.categoryId === tool.categoryId && to.id !== tool.id)
+
+  // Related tools: same category, exclude current, limit to 6
+  const relatedTools = tools
+    .filter(to => to.categoryId === tool.categoryId && to.id !== tool.id)
+    .slice(0, 6)
+
   const faqs = getFAQ(tool, lang)
   const catMap = Object.fromEntries(categories.map(c => [c.id, c]))
 
+  // SEO: unique title, description, canonical, OG, Twitter
+  const seoTitle = tool.name[lang]
+  const seoDesc = tool.description[lang]
+  const canonicalUrl = `/tools/${tool.slug}`
+  useSEO({ title: seoTitle, description: seoDesc, canonical: canonicalUrl })
+
+  // Usage counter: increments on every page open
+  const views = useToolViews(tool.slug)
+
   return (
-    <div className="max-w-3xl mx-auto px-4 md:px-6 py-8 animate-fade-in">
+    <div className="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-8 animate-fade-in">
       <Breadcrumb items={[
         { label: t.breadcrumb.home, href: '/' },
         { label: t.nav.categories, href: '/categories' },
@@ -591,7 +606,7 @@ export default function ToolPage({ slug, lang, t }) {
       {relatedTools.length > 0 && (
         <div>
           <h2 className="font-bold text-base text-gray-900 dark:text-white mb-4">{t.tools.related}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {relatedTools.map(rt => (
               <ToolCard key={rt.id} tool={rt} lang={lang} t={t} category={catMap[rt.categoryId]} />
             ))}
