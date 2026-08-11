@@ -16,7 +16,7 @@ function isNew(tool) {
 
 /* Popular Tools slugs */
 const POPULAR_SLUGS = [
-  'pdf-to-word', 'compress-pdf', 'remove-background',
+  'pdf-to-word', 'compress-pdf', 'merge-pdf',
   'resize-image', 'jpg-to-pdf', 'age-calculator',
 ]
 

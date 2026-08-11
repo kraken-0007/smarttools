@@ -7,8 +7,16 @@
     "bg": "bg-red-50 dark:bg-red-950/30",
     "text": "text-red-600 dark:text-red-400",
     "border": "border-red-100 dark:border-red-900/50",
-    "name": { "en": "PDF Tools", "fr": "Outils PDF", "ar": "أدوات PDF" },
-    "description": { "en": "Convert, merge, compress and edit PDF files", "fr": "Convertissez, fusionnez et modifiez vos PDF", "ar": "تحويل ودمج وتحرير ملفات PDF" }
+    "name": {
+      "en": "PDF Tools",
+      "fr": "Outils PDF",
+      "ar": "أدوات PDF"
+    },
+    "description": {
+      "en": "Convert, merge, compress and edit PDF files",
+      "fr": "Convertissez, fusionnez et modifiez vos PDF",
+      "ar": "تحويل ودمج وتحرير ملفات PDF"
+    }
   },
   {
     "id": "image-tools",
@@ -18,30 +26,16 @@
     "bg": "bg-blue-50 dark:bg-blue-950/30",
     "text": "text-blue-600 dark:text-blue-400",
     "border": "border-blue-100 dark:border-blue-900/50",
-    "name": { "en": "Image Tools", "fr": "Outils Image", "ar": "أدوات الصور" },
-    "description": { "en": "Compress, resize and convert your images", "fr": "Compressez, redimensionnez vos images", "ar": "ضغط وتغيير حجم وتحويل صورك" }
-  },
-  {
-    "id": "video-tools",
-    "slug": "video-tools",
-    "icon": "Video",
-    "color": "from-violet-500 to-purple-500",
-    "bg": "bg-violet-50 dark:bg-violet-950/30",
-    "text": "text-violet-600 dark:text-violet-400",
-    "border": "border-violet-100 dark:border-violet-900/50",
-    "name": { "en": "Video Tools", "fr": "Outils Vidéo", "ar": "أدوات الفيديو" },
-    "description": { "en": "Trim, convert and compress video files", "fr": "Découpez, convertissez vos vidéos", "ar": "قص وتحويل وضغط ملفات الفيديو" }
-  },
-  {
-    "id": "audio-tools",
-    "slug": "audio-tools",
-    "icon": "Music",
-    "color": "from-pink-500 to-rose-500",
-    "bg": "bg-pink-50 dark:bg-pink-950/30",
-    "text": "text-pink-600 dark:text-pink-400",
-    "border": "border-pink-100 dark:border-pink-900/50",
-    "name": { "en": "Audio Tools", "fr": "Outils Audio", "ar": "أدوات الصوت" },
-    "description": { "en": "Convert, trim and merge audio files", "fr": "Convertissez et découpez vos audios", "ar": "تحويل وقص ودمج الملفات الصوتية" }
+    "name": {
+      "en": "Image Tools",
+      "fr": "Outils Image",
+      "ar": "أدوات الصور"
+    },
+    "description": {
+      "en": "Compress, resize and convert your images",
+      "fr": "Compressez, redimensionnez vos images",
+      "ar": "ضغط وتغيير حجم وتحويل صورك"
+    }
   },
   {
     "id": "text-tools",
@@ -51,19 +45,16 @@
     "bg": "bg-green-50 dark:bg-green-950/30",
     "text": "text-green-600 dark:text-green-400",
     "border": "border-green-100 dark:border-green-900/50",
-    "name": { "en": "Text Tools", "fr": "Outils Texte", "ar": "أدوات النصوص" },
-    "description": { "en": "Word count, case conversion and text utilities", "fr": "Comptage de mots, conversion de casse", "ar": "عدّ الكلمات وتحويل النصوص" }
-  },
-  {
-    "id": "ai-tools",
-    "slug": "ai-tools",
-    "icon": "Cpu",
-    "color": "from-amber-500 to-orange-500",
-    "bg": "bg-amber-50 dark:bg-amber-950/30",
-    "text": "text-amber-600 dark:text-amber-400",
-    "border": "border-amber-100 dark:border-amber-900/50",
-    "name": { "en": "AI Tools", "fr": "Outils IA", "ar": "أدوات الذكاء الاصطناعي" },
-    "description": { "en": "AI-powered writing, translation and content tools", "fr": "Outils IA pour texte et contenu", "ar": "أدوات الذكاء الاصطناعي للكتابة والترجمة" }
+    "name": {
+      "en": "Text Tools",
+      "fr": "Outils Texte",
+      "ar": "أدوات النصوص"
+    },
+    "description": {
+      "en": "Word count, case conversion and text utilities",
+      "fr": "Comptage de mots, conversion de casse",
+      "ar": "عدّ الكلمات وتحويل النصوص"
+    }
   },
   {
     "id": "calculators",
@@ -73,95 +64,15 @@
     "bg": "bg-purple-50 dark:bg-purple-950/30",
     "text": "text-purple-600 dark:text-purple-400",
     "border": "border-purple-100 dark:border-purple-900/50",
-    "name": { "en": "Calculator Tools", "fr": "Calculatrices", "ar": "الآلات الحاسبة" },
-    "description": { "en": "BMI, age, percentage and loan calculators", "fr": "Calculatrices IMC, âge, pourcentage", "ar": "حاسبة العمر ومؤشر كتلة الجسم والنسبة المئوية" }
-  },
-  {
-    "id": "developer-tools",
-    "slug": "developer-tools",
-    "icon": "Code",
-    "color": "from-slate-500 to-gray-600",
-    "bg": "bg-slate-50 dark:bg-slate-900/60",
-    "text": "text-slate-600 dark:text-slate-400",
-    "border": "border-slate-200 dark:border-slate-800",
-    "name": { "en": "Developer Tools", "fr": "Outils Développeur", "ar": "أدوات المطورين" },
-    "description": { "en": "JSON formatter, Base64, URL encoder and minifiers", "fr": "Formateur JSON, Base64, encodeur URL", "ar": "منسّق JSON وBase64 وURL" }
-  },
-  {
-    "id": "seo-tools",
-    "slug": "seo-tools",
-    "icon": "TrendingUp",
-    "color": "from-teal-500 to-cyan-500",
-    "bg": "bg-teal-50 dark:bg-teal-950/30",
-    "text": "text-teal-600 dark:text-teal-400",
-    "border": "border-teal-100 dark:border-teal-900/50",
-    "name": { "en": "SEO Tools", "fr": "Outils SEO", "ar": "أدوات SEO" },
-    "description": { "en": "Meta tags, keyword density, sitemaps and robots.txt", "fr": "Balises meta, mots-clés et sitemaps", "ar": "وسوم Meta والكلمات المفتاحية وخرائط الموقع" }
-  },
-  {
-    "id": "network-tools",
-    "slug": "network-tools",
-    "icon": "Wifi",
-    "color": "from-cyan-500 to-blue-500",
-    "bg": "bg-cyan-50 dark:bg-cyan-950/30",
-    "text": "text-cyan-600 dark:text-cyan-400",
-    "border": "border-cyan-100 dark:border-cyan-900/50",
-    "name": { "en": "Network Tools", "fr": "Outils Réseau", "ar": "أدوات الشبكة" },
-    "description": { "en": "IP lookup, DNS, whois and ping tests", "fr": "Recherche IP, DNS, whois et ping", "ar": "بحث IP وDNS وWhois وPing" }
-  },
-  {
-    "id": "social-media-tools",
-    "slug": "social-media-tools",
-    "icon": "Share2",
-    "color": "from-fuchsia-500 to-pink-500",
-    "bg": "bg-fuchsia-50 dark:bg-fuchsia-950/30",
-    "text": "text-fuchsia-600 dark:text-fuchsia-400",
-    "border": "border-fuchsia-100 dark:border-fuchsia-900/50",
-    "name": { "en": "Social Media Tools", "fr": "Outils Réseaux Sociaux", "ar": "أدوات التواصل الاجتماعي" },
-    "description": { "en": "Post generators, hashtag tools and social media utilities", "fr": "Générateurs de posts et outils réseaux sociaux", "ar": "مولّد المنشورات وأدوات التواصل الاجتماعي" }
-  },
-  {
-    "id": "file-converter-tools",
-    "slug": "file-converter-tools",
-    "icon": "FileConvert",
-    "color": "from-orange-500 to-amber-500",
-    "bg": "bg-orange-50 dark:bg-orange-950/30",
-    "text": "text-orange-600 dark:text-orange-400",
-    "border": "border-orange-100 dark:border-orange-900/50",
-    "name": { "en": "File Converter Tools", "fr": "Convertisseur de Fichiers", "ar": "أدوات تحويل الملفات" },
-    "description": { "en": "Convert between formats: DOCX, XLSX, PPTX, CSV and more", "fr": "Convertissez entre formats: DOCX, XLSX, PPTX", "ar": "تحويل بين الصيغ: DOCX وXLSX وPPTX" }
-  },
-  {
-    "id": "security-tools",
-    "slug": "security-tools",
-    "icon": "Shield",
-    "color": "from-indigo-500 to-blue-600",
-    "bg": "bg-indigo-50 dark:bg-indigo-950/30",
-    "text": "text-indigo-600 dark:text-indigo-400",
-    "border": "border-indigo-100 dark:border-indigo-900/50",
-    "name": { "en": "Security Tools", "fr": "Outils de Sécurité", "ar": "أدوات الأمان" },
-    "description": { "en": "Password strength, hash generators and encryption tools", "fr": "Force de mot de passe, hash et chiffrement", "ar": "قوة كلمة المرور والتشفير والهاش" }
-  },
-  {
-    "id": "productivity-tools",
-    "slug": "productivity-tools",
-    "icon": "Clock",
-    "color": "from-emerald-500 to-green-600",
-    "bg": "bg-emerald-50 dark:bg-emerald-950/30",
-    "text": "text-emerald-600 dark:text-emerald-400",
-    "border": "border-emerald-100 dark:border-emerald-900/50",
-    "name": { "en": "Productivity Tools", "fr": "Outils de Productivité", "ar": "أدوات الإنتاجية" },
-    "description": { "en": "Pomodoro timer, task manager and focus utilities", "fr": "Minuteur Pomodoro et gestionnaire de tâches", "ar": "مؤقت بومودورو وإدارة المهام" }
-  },
-  {
-    "id": "unit-converter-tools",
-    "slug": "unit-converter-tools",
-    "icon": "Ruler",
-    "color": "from-stone-500 to-amber-600",
-    "bg": "bg-stone-50 dark:bg-stone-950/30",
-    "text": "text-stone-600 dark:text-stone-400",
-    "border": "border-stone-200 dark:border-stone-800",
-    "name": { "en": "Unit Converter Tools", "fr": "Convertisseur d'Unités", "ar": "أدوات تحويل الوحدات" },
-    "description": { "en": "Convert length, weight, temperature, speed and more", "fr": "Convertissez longueur, poids, température", "ar": "تحويل الطول والوزن ودرجة الحرارة" }
+    "name": {
+      "en": "Calculator Tools",
+      "fr": "Calculatrices",
+      "ar": "الآلات الحاسبة"
+    },
+    "description": {
+      "en": "BMI, age, percentage and loan calculators",
+      "fr": "Calculatrices IMC, âge, pourcentage",
+      "ar": "حاسبة العمر ومؤشر كتلة الجسم والنسبة المئوية"
+    }
   }
 ]
