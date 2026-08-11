@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { getIcon } from '../lib/icons'
-import { Home, X, ChevronDown, PanelLeftClose, PanelLeft } from 'lucide-react'
+import { Home, X, ChevronDown, PanelLeftClose, PanelLeft, Star } from 'lucide-react'
 import categories from '../data/categories.json'
 import tools from '../data/tools.json'
 
@@ -14,6 +14,12 @@ function isNew(tool) {
   return diff <= 7
 }
 
+/* Popular Tools slugs */
+const POPULAR_SLUGS = [
+  'pdf-to-word', 'compress-pdf', 'remove-background',
+  'resize-image', 'jpg-to-pdf', 'age-calculator',
+]
+
 const COLLAPSED_KEY = 'sidebar_collapsed'
 const EXPANDED_KEY = 'sidebar_expanded'
 
@@ -22,12 +28,10 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
   const isHome = pathname === '/'
   const dir = document.documentElement.getAttribute('dir') || 'ltr'
 
-  // Persist collapse state
   const [collapsed, setCollapsed] = useState(() => {
     try { return localStorage.getItem(COLLAPSED_KEY) === 'true' } catch { return false }
   })
 
-  // Persist expanded category
   const [expanded, setExpanded] = useState(() => {
     try { return localStorage.getItem(EXPANDED_KEY) } catch { return null }
   })
@@ -36,7 +40,6 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
     try { localStorage.setItem(COLLAPSED_KEY, String(collapsed)) } catch {}
   }, [collapsed])
 
-  // Listen for toggle event from Navbar (desktop)
   useEffect(() => {
     const handler = () => {
       setCollapsed(prev => {
@@ -56,26 +59,28 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
     } catch {}
   }, [expanded])
 
-  // Auto-expand when collapsed (can't show accordion tools when collapsed)
   const toggleCollapse = () => {
     setCollapsed(prev => {
       const next = !prev
-      if (next) setExpanded(null) // collapse accordion when sidebar collapses
+      if (next) setExpanded(null)
       return next
     })
   }
 
   const toggleCategory = (catId) => {
-    if (collapsed) return // don't expand when collapsed
+    if (collapsed) return
     setExpanded(prev => (prev === catId ? null : catId))
   }
 
-  // Width classes
   const widthClass = collapsed ? 'w-[72px]' : 'w-[280px]'
+
+  // Popular tools
+  const popularTools = POPULAR_SLUGS
+    .map(slug => tools.find(t => t.slug === slug))
+    .filter(Boolean)
 
   return (
     <>
-      {/* Mobile overlay */}
       {isOpen && (
         <div
           className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm lg:hidden animate-fade-in"
@@ -132,6 +137,44 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
             {!collapsed && <span className="text-sm">{t.nav.home}</span>}
           </Link>
 
+          {/* ⭐ Popular Tools section */}
+          {!collapsed && (
+            <div className="pt-4 pb-1 px-3">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 flex items-center gap-1.5">
+                <Star className="w-3 h-3 text-amber-400" fill="currentColor" />
+                {lang === 'ar' ? 'أدوات شائعة' : lang === 'fr' ? 'Populaires' : 'Popular Tools'}
+              </span>
+            </div>
+          )}
+          {collapsed && <div className="pt-3" />}
+
+          {popularTools.map(tool => {
+            const ToolIcon = getIcon(tool.icon)
+            const isActive = pathname === `/tools/${tool.slug}`
+            return (
+              <Link
+                key={tool.id}
+                to={`/tools/${tool.slug}`}
+                onClick={onClose}
+                className={`sidebar-link ${isActive ? 'active' : ''} ${collapsed ? 'justify-center !px-0 !py-2.5' : ''} relative group`}
+                title={collapsed ? tool.name[lang] : ''}
+              >
+                <ToolIcon className="w-4.5 h-4.5 shrink-0" strokeWidth={1.8} />
+                {!collapsed && <span className="flex-1 truncate text-sm">{tool.name[lang]}</span>}
+                {!collapsed && <Star className="w-3 h-3 text-amber-400 shrink-0" fill="currentColor" />}
+
+                {/* Collapsed tooltip */}
+                {collapsed && (
+                  <div className="absolute start-full ms-2 top-1/2 -translate-y-1/2 z-50 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-gray-900 dark:bg-gray-700 text-white text-xs font-medium px-2.5 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
+                      {tool.name[lang]}
+                    </div>
+                  </div>
+                )}
+              </Link>
+            )
+          })}
+
           {/* Categories label */}
           {!collapsed && (
             <div className="pt-4 pb-1 px-3">
@@ -151,7 +194,6 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
 
             return (
               <div key={cat.id} className="relative group">
-                {/* Category header button */}
                 <button
                   onClick={() => toggleCategory(cat.id)}
                   className={`sidebar-link ${isActive ? 'active' : ''} w-full text-start ${collapsed ? 'justify-center !px-0 !py-2.5' : ''}`}
@@ -162,23 +204,19 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
                     <>
                       <span className="flex-1 truncate text-sm">{cat.name[lang]}</span>
                       <span className="text-[10px] text-gray-400 dark:text-gray-600 shrink-0">{catTools.length}</span>
-                      <ChevronDown
-                        className={`w-3.5 h-3.5 shrink-0 text-gray-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
-                      />
+                      <ChevronDown className={`w-3.5 h-3.5 shrink-0 text-gray-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
                     </>
                   )}
                 </button>
 
-                {/* Collapsed tooltip */}
                 {collapsed && (
                   <div className="absolute start-full ms-2 top-1/2 -translate-y-1/2 z-50 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="bg-gray-900 dark:bg-gray-700 text-white text-xs font-medium px-2.5 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
-                      {cat.name[lang]}
+                      {cat.name[lang]} ({catTools.length})
                     </div>
                   </div>
                 )}
 
-                {/* Accordion tools list */}
                 {!collapsed && (
                   <div
                     className="overflow-hidden transition-all duration-300 ease-in-out"
@@ -198,18 +236,14 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
                                 <ToolIcon className="w-3.5 h-3.5 shrink-0 opacity-60 group-hover:opacity-100 transition-opacity" strokeWidth={1.8} />
                                 <span className="truncate flex-1">{tool.name[lang]}</span>
                                 {isNew(tool) && (
-                                  <span className="shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-red-500 text-white leading-none">
-                                    NEW
-                                  </span>
+                                  <span className="shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-red-500 text-white leading-none">NEW</span>
                                 )}
                               </Link>
                             </li>
                           )
                         })
                       ) : (
-                        <li className="ps-9 pe-3 py-2 text-[12px] text-gray-400 italic">
-                          {t.category.noTools || 'Coming soon'}
-                        </li>
+                        <li className="ps-9 pe-3 py-2 text-[12px] text-gray-400 italic">{t.category.noTools || 'Coming soon'}</li>
                       )}
                     </ul>
                   </div>

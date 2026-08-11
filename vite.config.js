@@ -65,4 +65,14 @@ ${urls.map(u => `  <url>
 
 export default defineConfig({
   plugins: [react(), sitemapPlugin()],
+  build: {
+    chunkSizeWarningLimit: 1500,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'pdf-vendor': ['pdf-lib', 'pdfjs-dist'],
+        },
+      },
+    },
+  },
 })

@@ -1,261 +1,477 @@
-import { useSEO, useToolViews } from "../lib/seo"
-import { useState, useRef, useEffect } from 'react'
+import { useSEO, useToolViews } from '../lib/seo'
+import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { CheckCircle2, Wrench, HelpCircle, ChevronDown, UploadCloud, FileText, Image as ImageIcon, X } from 'lucide-react'
+import { CheckCircle2, Wrench, HelpCircle, ChevronDown } from 'lucide-react'
 import tools from '../data/tools.json'
 import categories from '../data/categories.json'
 import ToolCard from '../components/ToolCard'
 import Breadcrumb from '../components/Breadcrumb'
 import { getIcon } from '../lib/icons'
 
-/* ─── Constants ────────────────────────────────── */
-const IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif']
-const IMAGE_EXTS = ['.jpg', '.jpeg', '.png', '.webp', '.gif']
-const MAX_FILE_SIZE = 50 * 1024 * 1024 // 50 MB
+/* Import shared components */
+import { FileUploader, ProcessButton, ResultDisplay, ErrorDisplay, useToolProcessor } from '../lib/processors/shared.jsx'
 
-/* ─── Upload Box Component (fixed) ─────────────── */
-function UploadBox({ tool, lang, t }) {
-  const [dragOver, setDragOver] = useState(false)
-  const [selectedFile, setSelectedFile] = useState(null) // File object
-  const [previewUrl, setPreviewUrl] = useState(null)     // Object URL for image preview
-  const [error, setError] = useState(null)
-  const inputRef = useRef(null)
+/* Import real processors */
+import { compressImage, resizeImage, cropImage, convertImage, downloadBlob, getOutputFilename, formatFileSize } from '../lib/processors/image.js'
+import { pdfToJpg, jpgToPdf, mergePDFs, splitPDF, compressPDF, pdfToWord, wordToPdf } from '../lib/processors/pdf.js'
+import { countWords, countCharacters, convertCase } from '../lib/processors/text.js'
+import { calculateAge, calculateBMI, calculatePercentage } from '../lib/processors/calculators.js'
 
-  // Determine accepted file types
-  const isImageTool = tool.type === 'file-image'
-  const acceptString = isImageTool
-    ? IMAGE_EXTS.join(',')
-    : tool.formats
-      ? '.' + tool.formats.toLowerCase().replace(/,\s*/g, ',.')
-      : '*'
+/* ═══════════════════════════════════════════════════
+   PDF TOOLS
+   ═══════════════════════════════════════════════════ */
 
-  // Cleanup object URL to prevent memory leaks
-  useEffect(() => {
-    return () => {
-      if (previewUrl) URL.revokeObjectURL(previewUrl)
-    }
-  }, [previewUrl])
+/* ── PDF to JPG ── */
+function PdfToJpgTool({ lang }) {
+  const [file, setFile] = useState(null)
+  const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
+    const pages = await pdfToJpg(f)
+    return pages.map((p, i) => ({ blob: p.blob, filename: `page-${i + 1}.jpg` }))
+  }, lang)
 
-  const validateFile = (file) => {
-    setError(null)
+  const handleReset = () => { setFile(null); reset() }
 
-    // Size check
-    if (file.size > MAX_FILE_SIZE) {
-      const sizeMB = (MAX_FILE_SIZE / 1024 / 1024).toFixed(0)
-      setError(lang === 'ar'
-        ? `حجم الملف كبير جدا. الحد الأقصى ${sizeMB} ميجابايت.`
-        : lang === 'fr'
-          ? `Fichier trop volumineux. Maximum ${sizeMB} Mo.`
-          : `File too large. Maximum ${sizeMB} MB.`)
-      return false
-    }
-
-    // For image tools, validate type
-    if (isImageTool) {
-      const ext = '.' + file.name.split('.').pop().toLowerCase()
-      const isValidType = IMAGE_TYPES.includes(file.type) || IMAGE_EXTS.includes(ext)
-      if (!isValidType) {
-        setError(lang === 'ar'
-          ? 'صيغة غير مدعومة. المدعومة: JPG, JPEG, PNG, WEBP, GIF'
-          : lang === 'fr'
-            ? 'Format non supporté. Supportés: JPG, JPEG, PNG, WEBP, GIF'
-            : 'Unsupported format. Supported: JPG, JPEG, PNG, WEBP, GIF')
-        return false
-      }
-    }
-
-    return true
-  }
-
-  const handleFile = (file) => {
-    if (!file) return
-    if (!validateFile(file)) {
-      setSelectedFile(null)
-      setPreviewUrl(null)
-      return
-    }
-
-    // Cleanup previous preview
-    if (previewUrl) URL.revokeObjectURL(previewUrl)
-
-    // Create preview for images
-    const ext = '.' + file.name.split('.').pop().toLowerCase()
-    const isImage = IMAGE_TYPES.includes(file.type) || IMAGE_EXTS.includes(ext)
-
-    if (isImage) {
-      const url = URL.createObjectURL(file)
-      setPreviewUrl(url)
-    } else {
-      setPreviewUrl(null)
-    }
-
-    setSelectedFile(file)
-  }
-
-  const handleDrop = (e) => {
-    e.preventDefault()
-    setDragOver(false)
-    const file = e.dataTransfer.files[0]
-    if (file) handleFile(file)
-  }
-
-  const handleSelect = (e) => {
-    const file = e.target.files[0]
-    if (file) handleFile(file)
-  }
-
-  const handleRemove = (e) => {
-    e.stopPropagation()
-    if (previewUrl) URL.revokeObjectURL(previewUrl)
-    setSelectedFile(null)
-    setPreviewUrl(null)
-    setError(null)
-    if (inputRef.current) inputRef.current.value = ''
-  }
-
-  // Format file size
-  const formatSize = (bytes) => {
-    if (bytes < 1024) return bytes + ' B'
-    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB'
-    return (bytes / 1024 / 1024).toFixed(1) + ' MB'
-  }
-
-  /* ── File selected view ── */
-  if (selectedFile) {
-    return (
-      <div className="space-y-4">
-        {/* Error message */}
-        {error && (
-          <div className="flex items-center gap-2 p-3 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 text-sm">
-            <X className="w-4 h-4 shrink-0" />
-            {error}
-          </div>
-        )}
-
-        {/* Image preview */}
-        {previewUrl ? (
-          <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
-            <img
-              src={previewUrl}
-              alt={selectedFile.name}
-              className="w-full max-h-80 object-contain"
-            />
-            <button
-              onClick={handleRemove}
-              className="absolute top-3 end-3 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center transition-colors"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-        ) : (
-          <div className="flex items-center gap-4 p-5 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
-            <div className="w-14 h-14 rounded-xl bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center shrink-0">
-              <FileText className="w-7 h-7 text-blue-600 dark:text-blue-400" strokeWidth={1.6} />
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">{selectedFile.name}</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{formatSize(selectedFile.size)}</p>
-            </div>
-            <button onClick={handleRemove} className="shrink-0 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/30 text-gray-400 hover:text-red-500 transition-colors">
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-        )}
-
-        {/* File info + action bar */}
-        {previewUrl && (
-          <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800">
-            <div className="flex items-center gap-2 min-w-0">
-              <ImageIcon className="w-4 h-4 text-gray-400 shrink-0" />
-              <span className="text-xs text-gray-600 dark:text-gray-400 truncate">{selectedFile.name}</span>
-              <span className="text-xs text-gray-400 shrink-0">· {formatSize(selectedFile.size)}</span>
-            </div>
-            <button onClick={handleRemove} className="shrink-0 text-xs text-gray-500 hover:text-red-500 transition-colors font-medium">
-              {lang === 'ar' ? 'إزالة' : lang === 'fr' ? 'Supprimer' : 'Remove'}
-            </button>
-          </div>
-        )}
-
-        {/* Process button */}
-        <button className="btn-primary w-full justify-center py-3.5 text-sm">
-          {lang === 'ar' ? 'معالجة' : lang === 'fr' ? 'Traiter' : 'Process'}
-        </button>
-      </div>
-    )
-  }
-
-  /* ── Empty upload view ── */
   return (
-    <div>
-      {/* Error message */}
-      {error && (
-        <div className="flex items-center gap-2 p-3 mb-4 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 text-sm">
-          <X className="w-4 h-4 shrink-0" />
-          {error}
-        </div>
+    <div className="space-y-4">
+      {!results && !error && (
+        <>
+          <FileUploader accept="application/pdf" onFiles={setFile} lang={lang} hint="PDF · Max 50MB" />
+          {file && <ProcessButton onClick={() => process(file)} loading={loading} label={lang === 'ar' ? 'تحويل إلى JPG' : lang === 'fr' ? 'Convertir en JPG' : 'Convert to JPG'} />}
+        </>
       )}
-
-      <div
-        className={`upload-box p-10 md:p-14 text-center cursor-pointer ${dragOver ? 'dragover' : ''}`}
-        onDragOver={(e) => { e.preventDefault(); setDragOver(true) }}
-        onDragLeave={() => setDragOver(false)}
-        onDrop={handleDrop}
-        onClick={() => inputRef.current?.click()}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => { if (e.key === 'Enter') inputRef.current?.click() }}
-      >
-        <input
-          ref={inputRef}
-          type="file"
-          className="hidden"
-          onChange={handleSelect}
-          accept={acceptString}
-        />
-
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center">
-            <UploadCloud className="w-8 h-8 text-blue-600 dark:text-blue-400" strokeWidth={1.6} />
-          </div>
-          <div>
-            <p className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-              {t.tools.uploadTitle}
-            </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
-              {t.tools.uploadOr}
-            </p>
-          </div>
-          <span className="btn-primary rounded-xl px-6 py-3 text-sm">
-            {t.tools.uploadBtn}
-          </span>
-          {tool.formats && (
-            <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
-              {t.tools.uploadFormats}: {tool.formats}
-            </p>
-          )}
-          {isImageTool && (
-            <p className="text-xs text-gray-400 dark:text-gray-500">
-              {lang === 'ar' ? 'اسحب وأفلت الصورة هنا' : lang === 'fr' ? 'Glissez-déposez votre image ici' : 'Drag & drop your image here'}
-            </p>
-          )}
-        </div>
-      </div>
+      {loading && <ProcessingIndicator />}
+      {error && <ErrorDisplay message={error} lang={lang} />}
+      {results && <ResultDisplay results={results} lang={lang} />}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
     </div>
   )
 }
 
-/* ─── Live Tool: Word Counter ──────────────────── */
+/* ── JPG to PDF ── */
+function JpgToPdfTool({ lang }) {
+  const [files, setFiles] = useState([])
+  const { loading, results, error, process, reset } = useToolProcessor(async (imgs) => {
+    const blob = await jpgToPdf(imgs)
+    return { blob, filename: 'converted.pdf' }
+  }, lang)
+
+  const handleReset = () => { setFiles([]); reset() }
+
+  return (
+    <div className="space-y-4">
+      {!results && !error && (
+        <>
+          <FileUploader accept="image/jpeg,image/png,image/webp" multiple onFiles={setFiles} lang={lang} hint="JPG, PNG, WEBP · Multiple files supported" />
+          {files.length > 0 && <ProcessButton onClick={() => process(files)} loading={loading} label={lang === 'ar' ? 'تحويل إلى PDF' : lang === 'fr' ? 'Convertir en PDF' : 'Convert to PDF'} />}
+        </>
+      )}
+      {loading && <ProcessingIndicator />}
+      {error && <ErrorDisplay message={error} lang={lang} />}
+      {results && <ResultDisplay results={results} lang={lang} />}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+    </div>
+  )
+}
+
+/* ── Merge PDF ── */
+function MergePdfTool({ lang }) {
+  const [files, setFiles] = useState([])
+  const { loading, results, error, process, reset } = useToolProcessor(async (pdfs) => {
+    const blob = await mergePDFs(pdfs)
+    return { blob, filename: 'merged.pdf' }
+  }, lang)
+
+  const handleReset = () => { setFiles([]); reset() }
+
+  return (
+    <div className="space-y-4">
+      {!results && !error && (
+        <>
+          <FileUploader accept="application/pdf" multiple onFiles={setFiles} lang={lang} hint="Select 2+ PDF files to merge · Order matters" />
+          {files.length >= 2 && <ProcessButton onClick={() => process(files)} loading={loading} label={lang === 'ar' ? 'دمج PDF' : lang === 'fr' ? 'Fusionner PDF' : 'Merge PDF'} />}
+          {files.length === 1 && <p className="text-xs text-gray-400 text-center">{lang === 'ar' ? 'اختر ملف PDF آخر على الأقل' : lang === 'fr' ? 'Sélectionnez au moins un autre PDF' : 'Select at least one more PDF'}</p>}
+        </>
+      )}
+      {loading && <ProcessingIndicator />}
+      {error && <ErrorDisplay message={error} lang={lang} />}
+      {results && <ResultDisplay results={results} lang={lang} />}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+    </div>
+  )
+}
+
+/* ── Split PDF ── */
+function SplitPdfTool({ lang }) {
+  const [file, setFile] = useState(null)
+  const [pageRanges, setPageRanges] = useState('')
+  const { loading, results, error, process, reset } = useToolProcessor(async (input) => {
+    const pdfs = await splitPDF(input.file, input.ranges || null)
+    return pdfs
+  }, lang)
+
+  const handleReset = () => { setFile(null); setPageRanges(''); reset() }
+
+  return (
+    <div className="space-y-4">
+      {!results && !error && (
+        <>
+          <FileUploader accept="application/pdf" onFiles={setFile} lang={lang} hint="PDF · Max 50MB" />
+          {file && (
+            <div className="space-y-3">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                  {lang === 'ar' ? 'نطاقات الصفحات (اختياري)' : lang === 'fr' ? 'Plages de pages (optionnel)' : 'Page ranges (optional)'}
+                </label>
+                <input
+                  type="text"
+                  value={pageRanges}
+                  onChange={e => setPageRanges(e.target.value)}
+                  placeholder="e.g. 1-3, 5, 7-9 (leave empty to split all pages)"
+                  className="input-field"
+                />
+                <p className="text-xs text-gray-400 mt-1">
+                  {lang === 'ar' ? 'اتركه فارغاً لتقسيم كل صفحة على حدة' : lang === 'fr' ? 'Laissez vide pour diviser toutes les pages' : 'Leave empty to split into individual pages'}
+                </p>
+              </div>
+              <ProcessButton onClick={() => process({ file, ranges: pageRanges.trim() || null })} loading={loading} label={lang === 'ar' ? 'تقسيم PDF' : lang === 'fr' ? 'Diviser PDF' : 'Split PDF'} />
+            </div>
+          )}
+        </>
+      )}
+      {loading && <ProcessingIndicator />}
+      {error && <ErrorDisplay message={error} lang={lang} />}
+      {results && <ResultDisplay results={results} lang={lang} />}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+    </div>
+  )
+}
+
+/* ── Compress PDF ── */
+function CompressPdfTool({ lang }) {
+  const [file, setFile] = useState(null)
+  const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
+    const blob = await compressPDF(f)
+    const origSize = f.size
+    const newSize = blob.size
+    const saved = Math.round((1 - newSize / origSize) * 100)
+    return { blob, filename: 'compressed.pdf', saved }
+  }, lang)
+
+  const handleReset = () => { setFile(null); reset() }
+
+  return (
+    <div className="space-y-4">
+      {!results && !error && (
+        <>
+          <FileUploader accept="application/pdf" onFiles={setFile} lang={lang} hint="PDF · Max 50MB" />
+          {file && <ProcessButton onClick={() => process(file)} loading={loading} label={lang === 'ar' ? 'ضغط PDF' : lang === 'fr' ? 'Compresser PDF' : 'Compress PDF'} />}
+        </>
+      )}
+      {loading && <ProcessingIndicator />}
+      {error && <ErrorDisplay message={error} lang={lang} />}
+      {results && (
+        <div className="space-y-3 animate-fade-in">
+          <div className="flex items-center gap-2 p-3 rounded-xl bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900 text-green-700 dark:text-green-400 text-sm font-medium">
+            <CheckCircle2 className="w-4 h-4 shrink-0" />
+            {lang === 'ar' ? 'تم الضغط بنجاح!' : lang === 'fr' ? 'Compression réussie !' : 'Compression complete!'}
+            {results[0].saved > 0 && (
+              <span className="ms-1 text-xs">
+                ({lang === 'ar' ? `تم تقليل الحجم بنسبة ${results[0].saved}%` : lang === 'fr' ? `Réduit de ${results[0].saved}%` : `Reduced by ${results[0].saved}%`})
+              </span>
+            )}
+          </div>
+          <ResultDisplay results={results} lang={lang} />
+        </div>
+      )}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+    </div>
+  )
+}
+
+/* ── PDF to Word ── */
+function PdfToWordTool({ lang }) {
+  const [file, setFile] = useState(null)
+  const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
+    const blob = await pdfToWord(f)
+    return { blob, filename: getOutputFilename(f.name, 'doc') }
+  }, lang)
+
+  const handleReset = () => { setFile(null); reset() }
+
+  return (
+    <div className="space-y-4">
+      {!results && !error && (
+        <>
+          <FileUploader accept="application/pdf" onFiles={setFile} lang={lang} hint="PDF · Extracts text content to Word format" />
+          {file && <ProcessButton onClick={() => process(file)} loading={loading} label={lang === 'ar' ? 'تحويل إلى Word' : lang === 'fr' ? 'Convertir en Word' : 'Convert to Word'} />}
+        </>
+      )}
+      {loading && <ProcessingIndicator />}
+      {error && <ErrorDisplay message={error} lang={lang} />}
+      {results && <ResultDisplay results={results} lang={lang} />}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+    </div>
+  )
+}
+
+/* ── Word to PDF ── */
+function WordToPdfTool({ lang }) {
+  const [file, setFile] = useState(null)
+  const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
+    const blob = await wordToPdf(f)
+    return { blob, filename: getOutputFilename(f.name, 'pdf') }
+  }, lang)
+
+  const handleReset = () => { setFile(null); reset() }
+
+  return (
+    <div className="space-y-4">
+      {!results && !error && (
+        <>
+          <FileUploader accept=".doc,.docx,.txt,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain" onFiles={setFile} lang={lang} hint="DOC, DOCX, TXT · Converts text to PDF" />
+          {file && <ProcessButton onClick={() => process(file)} loading={loading} label={lang === 'ar' ? 'تحويل إلى PDF' : lang === 'fr' ? 'Convertir en PDF' : 'Convert to PDF'} />}
+        </>
+      )}
+      {loading && <ProcessingIndicator />}
+      {error && <ErrorDisplay message={error} lang={lang} />}
+      {results && <ResultDisplay results={results} lang={lang} />}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+    </div>
+  )
+}
+
+/* ═══════════════════════════════════════════════════
+   IMAGE TOOLS
+   ═══════════════════════════════════════════════════ */
+
+/* ── Compress Image ── */
+function CompressImageTool({ lang }) {
+  const [file, setFile] = useState(null)
+  const [quality, setQuality] = useState(60)
+  const { loading, results, error, process, reset } = useToolProcessor(async (input) => {
+    const blob = await compressImage(input.file, input.quality / 100)
+    const saved = Math.round((1 - blob.size / input.file.size) * 100)
+    return { blob, filename: getOutputFilename(input.file.name, 'jpg'), saved }
+  }, lang)
+
+  const handleReset = () => { setFile(null); reset() }
+
+  return (
+    <div className="space-y-4">
+      {!results && !error && (
+        <>
+          <FileUploader accept="image/jpeg,image/png,image/webp" onFiles={setFile} lang={lang} hint="JPG, PNG, WEBP" />
+          {file && (
+            <div className="space-y-3">
+              <div>
+                <label className="flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <span>{lang === 'ar' ? 'جودة الضغط' : lang === 'fr' ? 'Qualité de compression' : 'Compression quality'}</span>
+                  <span className="text-blue-600 dark:text-blue-400 font-bold">{quality}%</span>
+                </label>
+                <input type="range" min="10" max="100" value={quality} onChange={e => setQuality(parseInt(e.target.value))} className="w-full accent-blue-600" />
+                <div className="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>{lang === 'ar' ? 'أصغر حجم' : lang === 'fr' ? 'Plus petit' : 'Smallest'}</span>
+                  <span>{lang === 'ar' ? 'أفضل جودة' : lang === 'fr' ? 'Meilleure qualité' : 'Best quality'}</span>
+                </div>
+              </div>
+              <ProcessButton onClick={() => process({ file, quality })} loading={loading} label={lang === 'ar' ? 'ضغط الصورة' : lang === 'fr' ? 'Compresser' : 'Compress Image'} />
+            </div>
+          )}
+        </>
+      )}
+      {loading && <ProcessingIndicator />}
+      {error && <ErrorDisplay message={error} lang={lang} />}
+      {results && (
+        <div className="space-y-3 animate-fade-in">
+          <div className="flex items-center gap-2 p-3 rounded-xl bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900 text-green-700 dark:text-green-400 text-sm font-medium">
+            <CheckCircle2 className="w-4 h-4 shrink-0" />
+            {lang === 'ar' ? 'تم الضغط بنجاح!' : lang === 'fr' ? 'Compression réussie !' : 'Compression complete!'}
+            {results[0].saved > 0 && (
+              <span className="ms-1 text-xs">
+                ({formatFileSize(file?.size || 0)} → {formatFileSize(results[0].blob.size)}, -{results[0].saved}%)
+              </span>
+            )}
+          </div>
+          <ResultDisplay results={results} lang={lang} />
+        </div>
+      )}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+    </div>
+  )
+}
+
+/* ── Resize Image ── */
+function ResizeImageTool({ lang }) {
+  const [file, setFile] = useState(null)
+  const [width, setWidth] = useState(800)
+  const [height, setHeight] = useState(600)
+  const [maintainRatio, setMaintainRatio] = useState(true)
+  const origDims = useRef({ w: 0, h: 0 })
+
+  const handleFiles = (f) => {
+    setFile(f)
+    if (f) {
+      const img = new Image()
+      img.onload = () => { origDims.current = { w: img.naturalWidth, h: img.naturalHeight }; setWidth(img.naturalWidth); setHeight(img.naturalHeight) }
+      img.src = URL.createObjectURL(f)
+    }
+  }
+
+  const onWidthChange = (v) => {
+    setWidth(v)
+    if (maintainRatio && origDims.current.w > 0) {
+      setHeight(Math.round(v * origDims.current.h / origDims.current.w))
+    }
+  }
+  const onHeightChange = (v) => {
+    setHeight(v)
+    if (maintainRatio && origDims.current.h > 0) {
+      setWidth(Math.round(v * origDims.current.w / origDims.current.h))
+    }
+  }
+
+  const { loading, results, error, process, reset } = useToolProcessor(async (input) => {
+    const blob = await resizeImage(input.file, input.width, input.height)
+    return { blob, filename: getOutputFilename(input.file.name, 'png') }
+  }, lang)
+
+  const handleReset = () => { setFile(null); reset() }
+
+  return (
+    <div className="space-y-4">
+      {!results && !error && (
+        <>
+          <FileUploader accept="image/jpeg,image/png,image/webp" onFiles={handleFiles} lang={lang} hint="JPG, PNG, WEBP" />
+          {file && (
+            <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-medium text-gray-500 mb-1.5">Width (px)</label>
+                  <input type="number" value={width} onChange={e => onWidthChange(parseInt(e.target.value) || 0)} className="input-field" min="1" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-500 mb-1.5">Height (px)</label>
+                  <input type="number" value={height} onChange={e => onHeightChange(parseInt(e.target.value) || 0)} className="input-field" min="1" />
+                </div>
+              </div>
+              <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
+                <input type="checkbox" checked={maintainRatio} onChange={e => setMaintainRatio(e.target.checked)} className="accent-blue-600" />
+                {lang === 'ar' ? 'الحفاظ على نسبة الأبعاد' : lang === 'fr' ? 'Maintenir le ratio' : 'Maintain aspect ratio'}
+              </label>
+              <ProcessButton onClick={() => process({ file, width, height })} loading={loading} label={lang === 'ar' ? 'تغيير الحجم' : lang === 'fr' ? 'Redimensionner' : 'Resize Image'} />
+            </div>
+          )}
+        </>
+      )}
+      {loading && <ProcessingIndicator />}
+      {error && <ErrorDisplay message={error} lang={lang} />}
+      {results && <ResultDisplay results={results} lang={lang} />}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+    </div>
+  )
+}
+
+/* ── Crop Image ── */
+function CropImageTool({ lang }) {
+  const [file, setFile] = useState(null)
+  const [cropSize, setCropSize] = useState(50) // percentage of original
+  const { loading, results, error, process, reset } = useToolProcessor(async (input) => {
+    // Crop center portion based on percentage
+    const img = await loadImage(input.file)
+    const cw = Math.round(img.naturalWidth * input.cropSize / 100)
+    const ch = Math.round(img.naturalHeight * input.cropSize / 100)
+    const x = Math.round((img.naturalWidth - cw) / 2)
+    const y = Math.round((img.naturalHeight - ch) / 2)
+    const blob = await cropImage(input.file, x, y, cw, ch)
+    return { blob, filename: getOutputFilename(input.file.name, 'png') }
+  }, lang)
+
+  const loadImage = (file) => new Promise((resolve, reject) => {
+    const img = new Image()
+    img.onload = () => resolve(img)
+    img.onerror = reject
+    img.src = URL.createObjectURL(file)
+  })
+
+  const handleReset = () => { setFile(null); reset() }
+
+  return (
+    <div className="space-y-4">
+      {!results && !error && (
+        <>
+          <FileUploader accept="image/jpeg,image/png,image/webp" onFiles={setFile} lang={lang} hint="JPG, PNG, WEBP · Crops center portion" />
+          {file && (
+            <div className="space-y-3">
+              <div>
+                <label className="flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <span>{lang === 'ar' ? 'حجم القص' : lang === 'fr' ? 'Taille du recadrage' : 'Crop size'}</span>
+                  <span className="text-blue-600 dark:text-blue-400 font-bold">{cropSize}%</span>
+                </label>
+                <input type="range" min="10" max="100" value={cropSize} onChange={e => setCropSize(parseInt(e.target.value))} className="w-full accent-blue-600" />
+                <p className="text-xs text-gray-400 mt-1">{lang === 'ar' ? 'يقص المنطقة المركزية من الصورة' : lang === 'fr' ? 'Recadre la partie centrale de l\'image' : 'Crops the center portion of the image'}</p>
+              </div>
+              <ProcessButton onClick={() => process({ file, cropSize })} loading={loading} label={lang === 'ar' ? 'قص الصورة' : lang === 'fr' ? 'Recadrer' : 'Crop Image'} />
+            </div>
+          )}
+        </>
+      )}
+      {loading && <ProcessingIndicator />}
+      {error && <ErrorDisplay message={error} lang={lang} />}
+      {results && <ResultDisplay results={results} lang={lang} />}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+    </div>
+  )
+}
+
+/* ── Image Format Converter (shared for JPG→PNG, PNG→JPG, WEBP→JPG) ── */
+function ImageConvertTool({ lang, targetFormat, targetExt, outputMime }) {
+  const [file, setFile] = useState(null)
+  const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
+    const blob = await convertImage(f, outputMime)
+    return { blob, filename: getOutputFilename(f.name, targetExt) }
+  }, lang)
+
+  const handleReset = () => { setFile(null); reset() }
+
+  const labels = {
+    'jpg-to-png': { en: 'Convert to PNG', fr: 'Convertir en PNG', ar: 'تحويل إلى PNG' },
+    'png-to-jpg': { en: 'Convert to JPG', fr: 'Convertir en JPG', ar: 'تحويل إلى JPG' },
+    'webp-to-jpg': { en: 'Convert to JPG', fr: 'Convertir en JPG', ar: 'تحويل إلى JPG' },
+  }
+
+  const labelKey = `${targetExt === 'png' ? 'jpg-to-png' : 'webp-to-jpg'}`
+  const btnLabel = lang === 'ar' ? (targetExt === 'png' ? 'تحويل إلى PNG' : 'تحويل إلى JPG') : lang === 'fr' ? (targetExt === 'png' ? 'Convertir en PNG' : 'Convertir en JPG') : (targetExt === 'png' ? 'Convert to PNG' : 'Convert to JPG')
+
+  return (
+    <div className="space-y-4">
+      {!results && !error && (
+        <>
+          <FileUploader accept={targetExt === 'png' ? 'image/jpeg' : targetExt === 'jpg' ? 'image/png,image/webp' : 'image/webp'} onFiles={setFile} lang={lang} hint={`Input: ${targetExt === 'png' ? 'JPG' : targetExt === 'jpg' ? 'PNG, WEBP' : 'WEBP'}`} />
+          {file && <ProcessButton onClick={() => process(file)} loading={loading} label={btnLabel} />}
+        </>
+      )}
+      {loading && <ProcessingIndicator />}
+      {error && <ErrorDisplay message={error} lang={lang} />}
+      {results && <ResultDisplay results={results} lang={lang} />}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+    </div>
+  )
+}
+
+/* ═══════════════════════════════════════════════════
+   TEXT TOOLS
+   ═══════════════════════════════════════════════════ */
+
+/* ── Word Counter ── */
 function WordCounterTool({ lang }) {
   const [text, setText] = useState('')
-  const words = text.trim() ? text.trim().split(/\s+/).length : 0
-  const chars = text.length
-  const sentences = text.split(/[.!?]+/).filter(s => s.trim()).length
-  const paragraphs = text.split(/\n\n+/).filter(s => s.trim()).length
+  const stats = countWords(text)
   const labels = {
-    en: ['Words', 'Characters', 'Sentences', 'Paragraphs'],
-    fr: ['Mots', 'Caractères', 'Phrases', 'Paragraphes'],
-    ar: ['كلمات', 'أحرف', 'جمل', 'فقرات'],
+    en: ['Words', 'Characters', 'No Spaces', 'Sentences', 'Paragraphs', 'Reading time'],
+    fr: ['Mots', 'Caractères', 'Sans espaces', 'Phrases', 'Paragraphes', 'Temps de lecture'],
+    ar: ['كلمات', 'أحرف', 'بدون مسافات', 'جمل', 'فقرات', 'وقت القراءة'],
   }[lang]
+
   return (
     <div className="space-y-4">
       <textarea
@@ -265,11 +481,18 @@ function WordCounterTool({ lang }) {
         placeholder={lang === 'ar' ? 'اكتب أو الصق النص هنا...' : lang === 'fr' ? 'Tapez ou collez votre texte ici...' : 'Type or paste your text here...'}
         className="input-field resize-none text-sm leading-relaxed"
       />
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        {[words, chars, sentences, paragraphs].map((val, i) => (
-          <div key={i} className="bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/50 rounded-xl p-4 text-center">
-            <div className="text-2xl font-extrabold text-blue-600 dark:text-blue-400">{val}</div>
-            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{labels[i]}</div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        {[
+          { label: labels[0], value: stats.words },
+          { label: labels[1], value: stats.characters },
+          { label: labels[2], value: stats.charactersNoSpaces },
+          { label: labels[3], value: stats.sentences },
+          { label: labels[4], value: stats.paragraphs },
+          { label: labels[5], value: `${stats.readingTime} min` },
+        ].map((s, i) => (
+          <div key={i} className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-3 text-center border border-gray-100 dark:border-gray-800">
+            <p className="text-xl font-bold text-blue-600 dark:text-blue-400">{s.value}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{s.label}</p>
           </div>
         ))}
       </div>
@@ -277,243 +500,401 @@ function WordCounterTool({ lang }) {
   )
 }
 
-/* ─── Live Tool: Password Generator ───────────── */
-function PasswordGeneratorTool({ lang }) {
-  const [length, setLength] = useState(16)
-  const [useUpper, setUpper] = useState(true)
-  const [useNumbers, setNumbers] = useState(true)
-  const [useSymbols, setSymbols] = useState(true)
-  const [password, setPassword] = useState('')
-  const [copied, setCopied] = useState(false)
-  const generate = () => {
-    let chars = 'abcdefghijklmnopqrstuvwxyz'
-    if (useUpper) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    if (useNumbers) chars += '0123456789'
-    if (useSymbols) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?'
-    let pwd = ''
-    for (let i = 0; i < length; i++) pwd += chars[Math.floor(Math.random() * chars.length)]
-    setPassword(pwd); setCopied(false)
-  }
-  const copy = () => { navigator.clipboard.writeText(password); setCopied(true); setTimeout(() => setCopied(false), 2000) }
-  const lbl = {
-    en: { length: 'Length', upper: 'Uppercase', nums: 'Numbers', syms: 'Symbols', gen: 'Generate Password', copy: 'Copy', copied: 'Copied!' },
-    fr: { length: 'Longueur', upper: 'Majuscules', nums: 'Chiffres', syms: 'Symboles', gen: 'Générer', copy: 'Copier', copied: 'Copié !' },
-    ar: { length: 'الطول', upper: 'كبيرة', nums: 'أرقام', syms: 'رموز', gen: 'توليد', copy: 'نسخ', copied: 'تم!' },
+/* ── Character Counter ── */
+function CharacterCounterTool({ lang }) {
+  const [text, setText] = useState('')
+  const stats = countCharacters(text)
+  const labels = {
+    en: ['Characters', 'No Spaces', 'Letters', 'Digits', 'Spaces', 'Lines', 'Special'],
+    fr: ['Caractères', 'Sans espaces', 'Lettres', 'Chiffres', 'Espaces', 'Lignes', 'Spéciaux'],
+    ar: ['أحرف', 'بدون مسافات', 'حروف', 'أرقام', 'مسافات', 'أسطر', 'رموز خاصة'],
   }[lang]
+
   return (
-    <div className="space-y-5">
-      <div className="flex items-center gap-4">
-        <label className="text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">
-          {lbl.length}: <span className="text-blue-600 font-bold">{length}</span>
-        </label>
-        <input type="range" min={8} max={32} value={length} onChange={e => setLength(+e.target.value)} className="flex-1 accent-blue-600 h-2" />
-      </div>
-      <div className="flex flex-wrap gap-5">
-        {[[lbl.upper, useUpper, setUpper], [lbl.nums, useNumbers, setNumbers], [lbl.syms, useSymbols, setSymbols]].map(([label, val, setter]) => (
-          <label key={label} className="flex items-center gap-2 text-sm cursor-pointer select-none text-gray-700 dark:text-gray-300">
-            <input type="checkbox" checked={val} onChange={e => setter(e.target.checked)} className="accent-blue-600 w-4 h-4 rounded" />
-            {label}
-          </label>
+    <div className="space-y-4">
+      <textarea
+        value={text}
+        onChange={e => setText(e.target.value)}
+        rows={8}
+        placeholder={lang === 'ar' ? 'اكتب أو الصق النص هنا...' : lang === 'fr' ? 'Tapez ou collez votre texte ici...' : 'Type or paste your text here...'}
+        className="input-field resize-none text-sm leading-relaxed"
+      />
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {[
+          { label: labels[0], value: stats.characters },
+          { label: labels[1], value: stats.charactersNoSpaces },
+          { label: labels[2], value: stats.letters },
+          { label: labels[3], value: stats.digits },
+          { label: labels[4], value: stats.spaces },
+          { label: labels[5], value: stats.lines },
+          { label: labels[6], value: stats.specialChars },
+        ].map((s, i) => (
+          <div key={i} className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-3 text-center border border-gray-100 dark:border-gray-800">
+            <p className="text-xl font-bold text-blue-600 dark:text-blue-400">{s.value}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{s.label}</p>
+          </div>
         ))}
       </div>
-      <button onClick={generate} className="btn-primary w-full justify-center py-3">{lbl.gen}</button>
-      {password && (
-        <div className="flex items-center gap-3 p-4 rounded-xl bg-gray-50 dark:bg-gray-800 border-2 border-dashed border-gray-200 dark:border-gray-700 font-mono text-sm break-all">
-          <span className="flex-1 select-all text-gray-900 dark:text-white">{password}</span>
-          <button onClick={copy} className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${copied ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' : 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 hover:bg-blue-200'}`}>
-            {copied ? lbl.copied : lbl.copy}
+    </div>
+  )
+}
+
+/* ── Case Converter ── */
+function CaseConverterTool({ lang }) {
+  const [text, setText] = useState('')
+  const [result, setResult] = useState('')
+
+  const modes = [
+    { id: 'upper', label: lang === 'ar' ? 'أحرف كبيرة' : lang === 'fr' ? 'MAJUSCULE' : 'UPPERCASE' },
+    { id: 'lower', label: lang === 'ar' ? 'أحرف صغيرة' : lang === 'fr' ? 'minuscule' : 'lowercase' },
+    { id: 'title', label: lang === 'ar' ? 'حالة العنوان' : lang === 'fr' ? 'Titre' : 'Title Case' },
+    { id: 'sentence', label: lang === 'ar' ? 'حالة الجملة' : lang === 'fr' ? 'Phrase' : 'Sentence case' },
+    { id: 'camel', label: 'camelCase' },
+    { id: 'pascal', label: 'PascalCase' },
+    { id: 'snake', label: 'snake_case' },
+    { id: 'kebab', label: 'kebab-case' },
+    { id: 'alternating', label: lang === 'ar' ? 'متناوب' : lang === 'fr' ? 'Alterné' : 'aLtErNaTiNg' },
+  ]
+
+  const handleConvert = (mode) => {
+    setResult(convertCase(text, mode))
+  }
+
+  const copyResult = () => {
+    navigator.clipboard.writeText(result)
+  }
+
+  const downloadResult = () => {
+    const blob = new Blob([result], { type: 'text/plain' })
+    downloadBlob(blob, 'converted-text.txt')
+  }
+
+  return (
+    <div className="space-y-4">
+      <textarea
+        value={text}
+        onChange={e => { setText(e.target.value); setResult('') }}
+        rows={6}
+        placeholder={lang === 'ar' ? 'اكتب أو الصق النص هنا...' : lang === 'fr' ? 'Tapez ou collez votre texte ici...' : 'Type or paste your text here...'}
+        className="input-field resize-none text-sm leading-relaxed"
+      />
+      <div className="flex flex-wrap gap-2">
+        {modes.map(m => (
+          <button key={m.id} onClick={() => handleConvert(m.id)} className="px-3 py-2 rounded-lg text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+            {m.label}
           </button>
-        </div>
-      )}
-    </div>
-  )
-}
-
-/* ─── Live Tool: Age Calculator ───────────────── */
-function AgeCalculatorTool({ lang }) {
-  const [dob, setDob] = useState('')
-  const [result, setResult] = useState(null)
-  const calculate = () => {
-    if (!dob) return
-    const birth = new Date(dob), now = new Date()
-    let years = now.getFullYear() - birth.getFullYear()
-    let months = now.getMonth() - birth.getMonth()
-    let days = now.getDate() - birth.getDate()
-    if (days < 0) { months--; days += new Date(now.getFullYear(), now.getMonth(), 0).getDate() }
-    if (months < 0) { years--; months += 12 }
-    if (years < 0) return
-    setResult({ years, months, days })
-  }
-  const lbl = {
-    en: { dob: 'Date of Birth', calc: 'Calculate My Age', years: 'Years', months: 'Months', days: 'Days' },
-    fr: { dob: 'Date de naissance', calc: "Calculer mon âge", years: 'Années', months: 'Mois', days: 'Jours' },
-    ar: { dob: 'تاريخ الميلاد', calc: 'احسب عمري', years: 'سنوات', months: 'أشهر', days: 'أيام' },
-  }[lang]
-  return (
-    <div className="space-y-5 max-w-sm mx-auto">
-      <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{lbl.dob}</label>
-        <input type="date" value={dob} max={new Date().toISOString().split('T')[0]} onChange={e => setDob(e.target.value)} className="input-field" />
-      </div>
-      <button onClick={calculate} className="btn-primary w-full justify-center py-3">{lbl.calc}</button>
-      {result && (
-        <div className="grid grid-cols-3 gap-3">
-          {[[result.years, lbl.years], [result.months, lbl.months], [result.days, lbl.days]].map(([val, label], i) => (
-            <div key={i} className="bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/50 rounded-xl p-4 text-center">
-              <div className="text-3xl font-extrabold text-blue-600 dark:text-blue-400">{val}</div>
-              <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{label}</div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
-
-/* ─── Live Tool: BMI Calculator ───────────────── */
-function BMICalculatorTool({ lang }) {
-  const [height, setHeight] = useState('')
-  const [weight, setWeight] = useState('')
-  const [result, setResult] = useState(null)
-  const calculate = () => {
-    const h = parseFloat(height) / 100, w = parseFloat(weight)
-    if (!h || !w || h <= 0 || w <= 0) return
-    const bmi = (w / (h * h)).toFixed(1)
-    let cat, color
-    if (bmi < 18.5) { cat = { en: 'Underweight', fr: 'Sous-poids', ar: 'نقص الوزن' }; color = 'text-blue-500' }
-    else if (bmi < 25) { cat = { en: 'Normal weight', fr: 'Poids normal', ar: 'وزن طبيعي' }; color = 'text-green-500' }
-    else if (bmi < 30) { cat = { en: 'Overweight', fr: 'Surpoids', ar: 'زيادة الوزن' }; color = 'text-amber-500' }
-    else { cat = { en: 'Obese', fr: 'Obèse', ar: 'سمنة' }; color = 'text-red-500' }
-    setResult({ bmi, cat, color })
-  }
-  const lbl = {
-    en: { h: 'Height (cm)', w: 'Weight (kg)', calc: 'Calculate BMI', your: 'Your BMI', range: '18.5 – 24.9 is ideal' },
-    fr: { h: 'Taille (cm)', w: 'Poids (kg)', calc: "Calculer l'IMC", your: 'Votre IMC', range: '18.5 – 24.9 est idéal' },
-    ar: { h: 'الطول (سم)', w: 'الوزن (كجم)', calc: 'احسب المؤشر', your: 'مؤشرك', range: '18.5 – 24.9 مثالي' },
-  }[lang]
-  return (
-    <div className="space-y-4 max-w-sm mx-auto">
-      <div className="grid grid-cols-2 gap-4">
-        {[[lbl.h, height, setHeight, '175'], [lbl.w, weight, setWeight, '70']].map(([label, val, setter, ph]) => (
-          <div key={label}>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{label}</label>
-            <input type="number" value={val} onChange={e => setter(e.target.value)} placeholder={ph} className="input-field" />
-          </div>
         ))}
       </div>
-      <button onClick={calculate} className="btn-primary w-full justify-center py-3">{lbl.calc}</button>
       {result && (
-        <div className="rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 text-center space-y-1">
-          <p className="text-xs text-gray-500 uppercase tracking-widest">{lbl.your}</p>
-          <p className={`text-6xl font-black ${result.color}`}>{result.bmi}</p>
-          <p className={`text-lg font-bold ${result.color}`}>{result.cat[lang]}</p>
-          <p className="text-xs text-gray-400 pt-2">{lbl.range}</p>
+        <div className="space-y-3 animate-fade-in">
+          <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 min-h-[100px]">
+            <p className="text-sm text-gray-900 dark:text-white whitespace-pre-wrap break-words">{result}</p>
+          </div>
+          <div className="flex gap-3">
+            <button onClick={copyResult} className="btn-primary rounded-xl px-5 py-2.5 text-sm flex-1">
+              {lang === 'ar' ? 'نسخ' : lang === 'fr' ? 'Copier' : 'Copy'}
+            </button>
+            <button onClick={downloadResult} className="btn-ghost rounded-xl px-5 py-2.5 text-sm border border-gray-200 dark:border-gray-700">
+              {lang === 'ar' ? 'تحميل' : lang === 'fr' ? 'Télécharger' : 'Download'}
+            </button>
+          </div>
         </div>
       )}
     </div>
   )
 }
 
-const LIVE_TOOLS = {
+/* ═══════════════════════════════════════════════════
+   CALCULATORS
+   ═══════════════════════════════════════════════════ */
+
+/* ── Age Calculator ── */
+function AgeCalculatorTool({ lang }) {
+  const [birthDate, setBirthDate] = useState('')
+  const [result, setResult] = useState(null)
+
+  const calculate = () => {
+    if (!birthDate) return
+    const r = calculateAge(birthDate)
+    setResult(r)
+  }
+
+  const labels = {
+    en: { label: 'Date of Birth', calc: 'Calculate', years: 'Years', months: 'Months', days: 'Days', totalDays: 'Total Days', totalMonths: 'Total Months', totalWeeks: 'Total Weeks', totalHours: 'Total Hours', nextBday: 'Days to next birthday', enter: 'Enter your birth date' },
+    fr: { label: 'Date de naissance', calc: 'Calculer', years: 'Ans', months: 'Mois', days: 'Jours', totalDays: 'Jours totaux', totalMonths: 'Mois totaux', totalWeeks: 'Semaines totales', totalHours: 'Heures totales', nextBday: 'Jours avant anniversaire', enter: 'Entrez votre date de naissance' },
+    ar: { label: 'تاريخ الميلاد', calc: 'احسب', years: 'سنوات', months: 'شهور', days: 'أيام', totalDays: 'إجمالي الأيام', totalMonths: 'إجمالي الشهور', totalWeeks: 'إجمالي الأسابيع', totalHours: 'إجمالي الساعات', nextBday: 'أيام حتى عيد الميلاد', enter: 'أدخل تاريخ ميلادك' },
+  }[lang]
+
+  return (
+    <div className="space-y-4">
+      <div>
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{labels.label}</label>
+        <input type="date" value={birthDate} onChange={e => setBirthDate(e.target.value)} max={new Date().toISOString().split('T')[0]} className="input-field" />
+      </div>
+      <button onClick={calculate} disabled={!birthDate} className="btn-primary w-full justify-center py-3.5 text-sm disabled:opacity-50">
+        {labels.calc}
+      </button>
+      {result && (
+        <div className="space-y-3 animate-fade-in">
+          <div className="grid grid-cols-3 gap-3">
+            <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-4 text-center border border-blue-100 dark:border-blue-900">
+              <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{result.years}</p>
+              <p className="text-xs text-gray-500 mt-1">{labels.years}</p>
+            </div>
+            <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-4 text-center border border-blue-100 dark:border-blue-900">
+              <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{result.months}</p>
+              <p className="text-xs text-gray-500 mt-1">{labels.months}</p>
+            </div>
+            <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-4 text-center border border-blue-100 dark:border-blue-900">
+              <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{result.days}</p>
+              <p className="text-xs text-gray-500 mt-1">{labels.days}</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            {[
+              { label: labels.totalDays, value: result.totalDays.toLocaleString() },
+              { label: labels.totalMonths, value: result.totalMonths.toLocaleString() },
+              { label: labels.totalWeeks, value: result.totalWeeks.toLocaleString() },
+              { label: labels.nextBday, value: result.nextBirthdayDays },
+            ].map((s, i) => (
+              <div key={i} className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-3 text-center border border-gray-100 dark:border-gray-800">
+                <p className="text-lg font-bold text-gray-900 dark:text-white">{s.value}</p>
+                <p className="text-[10px] text-gray-500 mt-0.5">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+/* ── BMI Calculator ── */
+function BMICalculatorTool({ lang }) {
+  const [weight, setWeight] = useState('')
+  const [height, setHeight] = useState('')
+  const [result, setResult] = useState(null)
+
+  const calculate = () => {
+    const w = parseFloat(weight)
+    const h = parseFloat(height)
+    if (!w || !h || w <= 0 || h <= 0) return
+    setResult(calculateBMI(w, h))
+  }
+
+  const labels = {
+    en: { weight: 'Weight (kg)', height: 'Height (cm)', calc: 'Calculate BMI', yourBMI: 'Your BMI', category: 'Category' },
+    fr: { weight: 'Poids (kg)', height: 'Taille (cm)', calc: 'Calculer IMC', yourBMI: 'Votre IMC', category: 'Catégorie' },
+    ar: { weight: 'الوزن (كجم)', height: 'الطول (سم)', calc: 'احسب مؤشر كتلة الجسم', yourBMI: 'مؤشر كتلة جسمك', category: 'الفئة' },
+  }[lang]
+
+  const catLabels = {
+    en: { Underweight: 'Underweight', Normal: 'Normal weight', Overweight: 'Overweight', Obese: 'Obese' },
+    fr: { Underweight: 'Insuffisant', Normal: 'Normal', Overweight: 'Surpoids', Obese: 'Obèse' },
+    ar: { Underweight: 'نحافة', Normal: 'وزن طبيعي', Overweight: 'زيادة وزن', Obese: 'سمنة' },
+  }[lang]
+
+  return (
+    <div className="space-y-4">
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{labels.weight}</label>
+          <input type="number" value={weight} onChange={e => setWeight(e.target.value)} className="input-field" placeholder="70" min="1" />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{labels.height}</label>
+          <input type="number" value={height} onChange={e => setHeight(e.target.value)} className="input-field" placeholder="175" min="1" />
+        </div>
+      </div>
+      <button onClick={calculate} disabled={!weight || !height} className="btn-primary w-full justify-center py-3.5 text-sm disabled:opacity-50">
+        {labels.calc}
+      </button>
+      {result && (
+        <div className="animate-fade-in space-y-3">
+          <div className="rounded-xl p-6 text-center border-2" style={{ borderColor: result.categoryColor }}>
+            <p className="text-sm text-gray-500 mb-1">{labels.yourBMI}</p>
+            <p className="text-5xl font-extrabold" style={{ color: result.categoryColor }}>{result.bmi}</p>
+            <p className="text-sm font-semibold mt-2" style={{ color: result.categoryColor }}>{catLabels[result.category]}</p>
+          </div>
+          <div className="space-y-1.5">
+            {[
+              { range: '< 18.5', label: catLabels.Underweight, color: '#3b82f6' },
+              { range: '18.5 - 24.9', label: catLabels.Normal, color: '#22c55e' },
+              { range: '25 - 29.9', label: catLabels.Overweight, color: '#f59e0b' },
+              { range: '≥ 30', label: catLabels.Obese, color: '#ef4444' },
+            ].map((r, i) => (
+              <div key={i} className={`flex items-center justify-between px-3 py-2 rounded-lg text-xs ${result.category === r.label.split(' ')[0] || (result.category === 'Underweight' && r.label === catLabels.Underweight) || (result.category === 'Normal' && r.label === catLabels.Normal) || (result.category === 'Overweight' && r.label === catLabels.Overweight) || (result.category === 'Obese' && r.label === catLabels.Obese) ? 'bg-gray-100 dark:bg-gray-800 font-semibold' : ''}`}>
+                <span className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full" style={{ background: r.color }} />
+                  {r.label}
+                </span>
+                <span className="text-gray-400">{r.range}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+/* ── Percentage Calculator ── */
+function PercentageCalculatorTool({ lang }) {
+  const [mode, setMode] = useState('of')
+  const [val1, setVal1] = useState('')
+  const [val2, setVal2] = useState('')
+  const [result, setResult] = useState(null)
+
+  const modes = {
+    en: [
+      { id: 'of', label: 'What is X% of Y?', ph1: 'Percentage %', ph2: 'Total' },
+      { id: 'isWhat', label: 'X is what % of Y?', ph1: 'Part', ph2: 'Total' },
+      { id: 'increase', label: '% Increase (X → Y)', ph1: 'From', ph2: 'To' },
+      { id: 'decrease', label: '% Decrease (X → Y)', ph1: 'From', ph2: 'To' },
+    ],
+    fr: [
+      { id: 'of', label: 'X% de Y = ?', ph1: 'Pourcentage %', ph2: 'Total' },
+      { id: 'isWhat', label: 'X est quel % de Y?', ph1: 'Partie', ph2: 'Total' },
+      { id: 'increase', label: '% Augmentation (X → Y)', ph1: 'De', ph2: 'À' },
+      { id: 'decrease', label: '% Diminution (X → Y)', ph1: 'De', ph2: 'À' },
+    ],
+    ar: [
+      { id: 'of', label: 'ما هو X% من Y؟', ph1: 'النسبة %', ph2: 'المجموع' },
+      { id: 'isWhat', label: 'X هو كم % من Y؟', ph1: 'الجزء', ph2: 'المجموع' },
+      { id: 'increase', label: 'نسبة الزيادة (X → Y)', ph1: 'من', ph2: 'إلى' },
+      { id: 'decrease', label: 'نسبة النقص (X → Y)', ph1: 'من', ph2: 'إلى' },
+    ],
+  }[lang]
+
+  const currentMode = modes.find(m => m.id === mode)
+
+  const calculate = () => {
+    const a = parseFloat(val1)
+    const b = parseFloat(val2)
+    if (isNaN(a) || isNaN(b)) return
+    let values
+    if (mode === 'of') values = { percent: a, total: b }
+    else if (mode === 'isWhat') values = { part: a, total: b }
+    else values = { from: a, to: b }
+    setResult(calculatePercentage(mode, values))
+  }
+
+  const labels = { en: { calc: 'Calculate', result: 'Result' }, fr: { calc: 'Calculer', result: 'Résultat' }, ar: { calc: 'احسب', result: 'النتيجة' } }[lang]
+
+  return (
+    <div className="space-y-4">
+      <div className="flex flex-wrap gap-2">
+        {modes.map(m => (
+          <button key={m.id} onClick={() => { setMode(m.id); setResult(null) }} className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${mode === m.id ? 'bg-blue-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-blue-50 dark:hover:bg-blue-950/40'}`}>
+            {m.label}
+          </button>
+        ))}
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        <input type="number" value={val1} onChange={e => setVal1(e.target.value)} className="input-field" placeholder={currentMode.ph1} />
+        <input type="number" value={val2} onChange={e => setVal2(e.target.value)} className="input-field" placeholder={currentMode.ph2} />
+      </div>
+      <button onClick={calculate} disabled={!val1 || !val2} className="btn-primary w-full justify-center py-3.5 text-sm disabled:opacity-50">
+        {labels.calc}
+      </button>
+      {result && (
+        <div className="animate-fade-in">
+          <div className="rounded-xl p-5 text-center bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900">
+            <p className="text-xs text-gray-500 mb-1">{labels.result}</p>
+            <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{result.result}</p>
+            <p className="text-xs text-gray-500 mt-2">{result.formula}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+/* ═══════════════════════════════════════════════════
+   PROCESSING INDICATOR
+   ═══════════════════════════════════════════════════ */
+function ProcessingIndicator() {
+  return (
+    <div className="flex items-center justify-center gap-3 py-8 animate-fade-in">
+      <div className="w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
+      <span className="text-sm text-gray-500">Processing...</span>
+    </div>
+  )
+}
+
+/* ═══════════════════════════════════════════════════
+   TOOL REGISTRY — maps slug → component
+   ═══════════════════════════════════════════════════ */
+const TOOL_COMPONENTS = {
+  // PDF Tools
+  'pdf-to-word': PdfToWordTool,
+  'word-to-pdf': WordToPdfTool,
+  'pdf-to-jpg': PdfToJpgTool,
+  'jpg-to-pdf': JpgToPdfTool,
+  'merge-pdf': MergePdfTool,
+  'split-pdf': SplitPdfTool,
+  'compress-pdf': CompressPdfTool,
+  // Image Tools
+  'compress-image': CompressImageTool,
+  'resize-image': ResizeImageTool,
+  'crop-image': CropImageTool,
+  'jpg-to-png': (props) => <ImageConvertTool {...props} targetExt="png" outputMime="image/png" />,
+  'png-to-jpg': (props) => <ImageConvertTool {...props} targetExt="jpg" outputMime="image/jpeg" />,
+  'webp-to-jpg': (props) => <ImageConvertTool {...props} targetExt="jpg" outputMime="image/jpeg" />,
+  // Text Tools
   'word-counter': WordCounterTool,
-  'password-generator': PasswordGeneratorTool,
+  'character-counter': CharacterCounterTool,
+  'case-converter': CaseConverterTool,
+  // Calculators
   'age-calculator': AgeCalculatorTool,
   'bmi-calculator': BMICalculatorTool,
+  'percentage-calculator': PercentageCalculatorTool,
 }
 
-/* ─── Tool Interface Renderer ──────────────────── */
-function ToolInterface({ tool, lang, t }) {
-  const LiveTool = LIVE_TOOLS[tool.slug]
-  if (LiveTool) return <LiveTool lang={lang} />
-
-  if (tool.type === 'file-pdf' || tool.type === 'file-image' || tool.type === 'file-doc' || tool.type === 'file-video' || tool.type === 'file-audio') {
-    return <UploadBox tool={tool} lang={lang} t={t} />
-  }
-
-  if (tool.type === 'text') {
-    return (
-      <div className="space-y-4">
-        <textarea
-          rows={10}
-          placeholder={lang === 'ar' ? 'اكتب أو الصق النص هنا...' : lang === 'fr' ? 'Tapez ou collez votre texte ici...' : 'Type or paste your text here...'}
-          className="input-field resize-none text-sm leading-relaxed"
-        />
-      </div>
-    )
-  }
-
-  if (tool.type === 'calculator') {
-    return (
-      <div className="py-16 text-center">
-        <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mx-auto mb-5">
-          <Wrench className="w-7 h-7 text-gray-400" />
-        </div>
-        <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">{t.tools.comingSoon}</h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400">{t.tools.comingSoonDesc}</p>
-      </div>
-    )
-  }
-
+/* ── Coming Soon ── */
+function ComingSoon({ lang, t }) {
   return (
-    <div className="py-16 text-center">
+    <div className="py-12 text-center">
       <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mx-auto mb-5">
         <Wrench className="w-7 h-7 text-gray-400" />
       </div>
       <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">{t.tools.comingSoon}</h3>
-      <p className="text-sm text-gray-500 dark:text-gray-400">{t.tools.comingSoonDesc}</p>
+      <p className="text-sm text-gray-500 dark:text-gray-400 max-w-sm mx-auto">{t.tools.comingSoonDesc}</p>
     </div>
   )
 }
 
-/* ─── FAQ Item ─────────────────────────────────── */
+/* ── Tool Interface Renderer ── */
+function ToolInterface({ tool, lang, t }) {
+  const ToolComponent = TOOL_COMPONENTS[tool.slug]
+  if (ToolComponent) return <ToolComponent lang={lang} t={t} />
+  return <ComingSoon lang={lang} t={t} />
+}
+
+/* ═══════════════════════════════════════════════════
+   FAQ + MAIN PAGE
+   ═══════════════════════════════════════════════════ */
 function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false)
   return (
     <div className="border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden">
-      <button
-        onClick={() => setOpen(o => !o)}
-        className="w-full flex items-center justify-between px-5 py-4 text-start bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-      >
+      <button onClick={() => setOpen(o => !o)} className="w-full flex items-center justify-between px-5 py-4 text-start bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
         <span className="text-sm font-semibold text-gray-900 dark:text-white">{question}</span>
         <ChevronDown className={`w-4 h-4 text-gray-400 shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
-      {open && (
-        <div className="px-5 pb-4 pt-0 bg-white dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-gray-800">
-          {answer}
-        </div>
-      )}
+      {open && <div className="px-5 pb-4 pt-0 bg-white dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-gray-800">{answer}</div>}
     </div>
   )
 }
 
 function getFAQ(tool, lang) {
-  const faqs = {
-    'word-counter': {
-      en: [
-        { q: 'Is the word counter accurate?', a: 'Yes, it counts words separated by spaces and handles multiple spaces, tabs, and newlines correctly.' },
-        { q: 'Does it support Arabic text?', a: 'Yes! The word counter works with all languages including Arabic, French and English.' },
-        { q: 'Is my text stored?', a: 'No. All processing happens in your browser. Nothing is sent to any server.' },
-      ],
-      fr: [
-        { q: 'Le compteur est-il précis ?', a: 'Oui, il compte les mots séparés par des espaces et gère correctement les espaces multiples.' },
-        { q: 'Mon texte est-il sauvegardé ?', a: 'Non. Tout se passe dans votre navigateur. Rien n\'est envoyé à un serveur.' },
-        { q: 'Prend-il en charge l\'arabe ?', a: 'Oui, il fonctionne avec toutes les langues.' },
-      ],
-      ar: [
-        { q: 'هل العداد دقيق؟', a: 'نعم، يحسب الكلمات المفصولة بمسافات ويعالج المسافات المتعددة بشكل صحيح.' },
-        { q: 'هل يتم حفظ النص الخاص بي؟', a: 'لا. كل شيء يتم في متصفحك ولا يتم إرسال أي شيء إلى أي خادم.' },
-        { q: 'هل يدعم اللغة العربية؟', a: 'نعم، يعمل مع جميع اللغات.' },
-      ]
-    }
-  }
-  return faqs[tool.slug]?.[lang] || [
+  return [
     { q: lang === 'ar' ? 'هل هذه الأداة مجانية؟' : lang === 'fr' ? 'Cet outil est-il gratuit ?' : 'Is this tool free?', a: lang === 'ar' ? 'نعم، مجانية 100% بدون قيود.' : lang === 'fr' ? 'Oui, 100% gratuit sans aucune restriction.' : 'Yes, 100% free with no restrictions.' },
     { q: lang === 'ar' ? 'هل أحتاج إلى تسجيل؟' : lang === 'fr' ? 'Ai-je besoin de m\'inscrire ?' : 'Do I need to register?', a: lang === 'ar' ? 'لا، يمكنك استخدام الأداة مباشرة.' : lang === 'fr' ? 'Non, utilisez l\'outil directement.' : 'No, just open and use it instantly.' },
-    { q: lang === 'ar' ? 'هل ملفاتي آمنة؟' : lang === 'fr' ? 'Mes fichiers sont-ils sécurisés ?' : 'Are my files safe?', a: lang === 'ar' ? 'نعم، يتم معالجة كل شيء في متصفحك.' : lang === 'fr' ? 'Oui, tout est traité dans votre navigateur.' : 'Yes, everything is processed in your browser.' },
+    { q: lang === 'ar' ? 'هل ملفاتي آمنة؟' : lang === 'fr' ? 'Mes fichiers sont-ils sécurisés ?' : 'Are my files safe?', a: lang === 'ar' ? 'نعم، يتم معالجة كل شيء في متصفحك. لا يتم رفع أي ملفات إلى أي خادم.' : lang === 'fr' ? 'Oui, tout est traité dans votre navigateur. Aucun fichier n\'est envoyé à un serveur.' : 'Yes, everything is processed in your browser. No files are uploaded to any server.' },
   ]
 }
 
-/* ─── Main Page ───────────────────────────────── */
 export default function ToolPage({ slug, lang, t }) {
   const tool = tools.find(to => to.slug === slug)
 
@@ -526,23 +907,12 @@ export default function ToolPage({ slug, lang, t }) {
 
   const category = categories.find(c => c.id === tool.categoryId)
   const Icon = getIcon(tool.icon)
-
-  // Related tools: same category, exclude current, limit to 6
-  const relatedTools = tools
-    .filter(to => to.categoryId === tool.categoryId && to.id !== tool.id)
-    .slice(0, 6)
-
+  const relatedTools = tools.filter(to => to.categoryId === tool.categoryId && to.id !== tool.id).slice(0, 6)
   const faqs = getFAQ(tool, lang)
   const catMap = Object.fromEntries(categories.map(c => [c.id, c]))
 
-  // SEO: unique title, description, canonical, OG, Twitter
-  const seoTitle = tool.name[lang]
-  const seoDesc = tool.description[lang]
-  const canonicalUrl = `/tools/${tool.slug}`
-  useSEO({ title: seoTitle, description: seoDesc, canonical: canonicalUrl })
-
-  // Usage counter: increments on every page open
-  const views = useToolViews(tool.slug)
+  useSEO({ title: tool.name[lang], description: tool.description[lang], canonical: `/tools/${tool.slug}` })
+  useToolViews(tool.slug)
 
   return (
     <div className="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-8 animate-fade-in">
@@ -553,7 +923,7 @@ export default function ToolPage({ slug, lang, t }) {
         { label: tool.name[lang] },
       ].filter(Boolean)} />
 
-      <div className="flex items-start gap-4 mb-8">
+      <div className="flex items-start gap-4 mb-6 md:mb-8">
         <div className={`shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${category?.color || 'from-blue-600 to-blue-500'} flex items-center justify-center shadow-sm`}>
           <Icon className="w-7 h-7 text-white" strokeWidth={1.6} />
         </div>
@@ -568,28 +938,13 @@ export default function ToolPage({ slug, lang, t }) {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 md:p-8 mb-6 shadow-card">
+      <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-5 md:p-8 mb-6 shadow-card">
         <ToolInterface tool={tool} lang={lang} t={t} />
       </div>
 
-      {tool.howTo?.[lang] && (
-        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 mb-6 shadow-card">
-          <h2 className="font-bold text-base text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <CheckCircle2 className="w-5 h-5 text-blue-500" />
-            {t.tools.howTo}
-          </h2>
-          <ol className="space-y-3">
-            {tool.howTo[lang].map((step, i) => (
-              <li key={i} className="flex items-center gap-3">
-                <span className="shrink-0 w-7 h-7 rounded-full bg-blue-100 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 text-xs font-bold flex items-center justify-center">
-                  {i + 1}
-                </span>
-                <span className="text-sm text-gray-700 dark:text-gray-300">{step}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-      )}
+      <div className="mb-8">
+        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{tool.description[lang]}</p>
+      </div>
 
       <div className="mb-8">
         <h2 className="font-bold text-base text-gray-900 dark:text-white mb-4 flex items-center gap-2">
@@ -597,9 +952,7 @@ export default function ToolPage({ slug, lang, t }) {
           {t.tools.faq}
         </h2>
         <div className="space-y-2">
-          {faqs.map((faq, i) => (
-            <FAQItem key={i} question={faq.q} answer={faq.a} />
-          ))}
+          {faqs.map((faq, i) => <FAQItem key={i} question={faq.q} answer={faq.a} />)}
         </div>
       </div>
 
@@ -607,9 +960,7 @@ export default function ToolPage({ slug, lang, t }) {
         <div>
           <h2 className="font-bold text-base text-gray-900 dark:text-white mb-4">{t.tools.related}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-            {relatedTools.map(rt => (
-              <ToolCard key={rt.id} tool={rt} lang={lang} t={t} category={catMap[rt.categoryId]} showNewBadge={false} />
-            ))}
+            {relatedTools.map(rt => <ToolCard key={rt.id} tool={rt} lang={lang} t={t} category={catMap[rt.categoryId]} showNewBadge={false} />)}
           </div>
         </div>
       )}
