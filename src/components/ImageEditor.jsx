@@ -64,7 +64,7 @@ function getPointerPos(e, container) {
 function EditorCanvas({ children, className = '' }) {
   return (
     <div
-      className={`relative flex items-center justify-center overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 ${className}`}
+      className={`relative flex items-center justify-center overflow-hidden rounded-xl border border-[#E5E7EB] dark:border-[#27272A] ${className}`}
       style={{
         minHeight: '280px',
         backgroundImage: `linear-gradient(45deg, #e5e7eb 25%, transparent 25%), linear-gradient(-45deg, #e5e7eb 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e5e7eb 75%), linear-gradient(-45deg, transparent 75%, #e5e7eb 75%)`,
@@ -84,8 +84,8 @@ function EditorCanvas({ children, className = '' }) {
 function ZoomControls({ zoom, setZoom, min = 0.1, max = 3 }) {
   return (
     <div className="flex items-center gap-2">
-      <button onClick={() => setZoom(z => clamp(z - 0.1, min, max))} className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors touch-manipulation">
-        <ZoomOut className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+      <button onClick={() => setZoom(z => clamp(z - 0.1, min, max))} className="p-2 rounded-lg bg-[#F7F8FA] dark:bg-[#18181B] hover:bg-[#F7F8FA] dark:hover:bg-[#18181B] transition-colors touch-manipulation">
+        <ZoomOut className="w-4 h-4 text-[#6B7280] dark:text-[#A1A1AA]" />
       </button>
       <input
         type="range"
@@ -96,10 +96,10 @@ function ZoomControls({ zoom, setZoom, min = 0.1, max = 3 }) {
         onChange={e => setZoom(parseFloat(e.target.value))}
         className="w-24 accent-blue-600 touch-manipulation"
       />
-      <button onClick={() => setZoom(z => clamp(z + 0.1, min, max))} className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors touch-manipulation">
-        <ZoomIn className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+      <button onClick={() => setZoom(z => clamp(z + 0.1, min, max))} className="p-2 rounded-lg bg-[#F7F8FA] dark:bg-[#18181B] hover:bg-[#F7F8FA] dark:hover:bg-[#18181B] transition-colors touch-manipulation">
+        <ZoomIn className="w-4 h-4 text-[#6B7280] dark:text-[#A1A1AA]" />
       </button>
-      <span className="text-xs text-gray-500 dark:text-gray-400 w-10 text-center tabular-nums">{Math.round(zoom * 100)}%</span>
+      <span className="text-xs text-[#6B7280] dark:text-[#A1A1AA] w-10 text-center tabular-nums">{Math.round(zoom * 100)}%</span>
     </div>
   )
 }
@@ -114,7 +114,7 @@ function ToolButton({ icon: Icon, onClick, active, label, disabled }) {
       className={`p-2.5 rounded-lg transition-colors touch-manipulation disabled:opacity-40 disabled:cursor-not-allowed ${
         active
           ? 'bg-blue-600 text-white'
-          : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+          : 'bg-[#F7F8FA] dark:bg-[#18181B] text-[#111111] dark:text-[#FAFAFA] hover:bg-[#F7F8FA] dark:hover:bg-[#18181B]'
       }`}
     >
       <Icon className="w-4 h-4" />
@@ -163,7 +163,7 @@ function ResultPreview({ blob, filename, lang, onReset }) {
           <Download className="w-4 h-4" />
           {labels.download}
         </button>
-        <button onClick={onReset} className="btn-ghost rounded-xl px-5 py-3 text-sm border border-gray-200 dark:border-gray-700 flex items-center gap-2">
+        <button onClick={onReset} className="btn-ghost rounded-xl px-5 py-3 text-sm border border-[#E5E7EB] dark:border-[#27272A] flex items-center gap-2">
           <RefreshCw className="w-4 h-4" />
           {labels.startOver}
         </button>
@@ -175,10 +175,10 @@ function ResultPreview({ blob, filename, lang, onReset }) {
 /** Loading overlay */
 function LoadingOverlay({ label = 'Processing...' }) {
   return (
-    <div className="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-10 rounded-xl">
+    <div className="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-[#0A0A0B]/80 backdrop-blur-sm z-10 rounded-xl">
       <div className="flex flex-col items-center gap-3">
         <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
-        <span className="text-sm text-gray-600 dark:text-gray-400">{label}</span>
+        <span className="text-sm text-[#6B7280] dark:text-[#A1A1AA]">{label}</span>
       </div>
     </div>
   )
@@ -322,7 +322,7 @@ export function ResizeImageEditor({ file, lang, onReset }) {
   return (
     <div className="space-y-4">
       {/* Editor area */}
-      <div ref={containerRef} className="relative flex items-center justify-center overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 touch-none" style={{ minHeight: '350px' }}>
+      <div ref={containerRef} className="relative flex items-center justify-center overflow-hidden rounded-xl border border-[#E5E7EB] dark:border-[#27272A] bg-[#F7F8FA] dark:bg-[#18181B] touch-none" style={{ minHeight: '350px' }}>
         {processing && <LoadingOverlay />}
         {url && (
           <div className="relative" style={{ width: newDispW, height: newDispH }}>
@@ -352,7 +352,7 @@ export function ResizeImageEditor({ file, lang, onReset }) {
               )
             })}
             {/* Dimension label */}
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-bold text-blue-600 dark:text-blue-400 tabular-nums bg-white/90 dark:bg-gray-900/90 px-2 py-0.5 rounded-md whitespace-nowrap z-30">
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-bold text-blue-600 dark:text-blue-400 tabular-nums bg-white/90 dark:bg-[#111113]/90 px-2 py-0.5 rounded-md whitespace-nowrap z-30">
               {newWidth} × {newHeight} px
             </div>
           </div>
@@ -371,11 +371,11 @@ export function ResizeImageEditor({ file, lang, onReset }) {
       </div>
 
       {/* Dimension display */}
-      <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800">
-        <span className="text-sm text-gray-500 dark:text-gray-400">{labels.dims}:</span>
-        <span className="font-bold text-gray-900 dark:text-white tabular-nums text-base">{newWidth}</span>
+      <div className="flex items-center gap-3 p-3 rounded-xl bg-[#F7F8FA] dark:bg-[#18181B] border border-[#E5E7EB] dark:border-[#27272A]">
+        <span className="text-sm text-[#6B7280] dark:text-[#A1A1AA]">{labels.dims}:</span>
+        <span className="font-bold text-[#111111] dark:text-[#FAFAFA] tabular-nums text-base">{newWidth}</span>
         <span className="text-gray-400">×</span>
-        <span className="font-bold text-gray-900 dark:text-white tabular-nums text-base">{newHeight}</span>
+        <span className="font-bold text-[#111111] dark:text-[#FAFAFA] tabular-nums text-base">{newHeight}</span>
         <span className="text-xs text-gray-400">px</span>
       </div>
 
@@ -385,7 +385,7 @@ export function ResizeImageEditor({ file, lang, onReset }) {
           <Check className="w-4 h-4" />
           {labels.resize}
         </button>
-        <button onClick={handleReset} className="btn-ghost rounded-xl px-5 py-3 text-sm border border-gray-200 dark:border-gray-700 flex items-center gap-2">
+        <button onClick={handleReset} className="btn-ghost rounded-xl px-5 py-3 text-sm border border-[#E5E7EB] dark:border-[#27272A] flex items-center gap-2">
           <RotateCcw className="w-4 h-4" />
           {labels.reset}
         </button>
@@ -593,7 +593,7 @@ export function CropImageEditor({ file, lang, onReset }) {
   return (
     <div className="space-y-4">
       {/* Editor area */}
-      <div ref={containerRef} className="relative flex items-center justify-center overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 touch-none" style={{ minHeight: '350px' }}>
+      <div ref={containerRef} className="relative flex items-center justify-center overflow-hidden rounded-xl border border-[#E5E7EB] dark:border-[#27272A] bg-[#F7F8FA] dark:bg-[#18181B] touch-none" style={{ minHeight: '350px' }}>
         {processing && <LoadingOverlay />}
         {url && (
           <div className="relative" style={{ width: dispW, height: dispH }}>
@@ -657,7 +657,7 @@ export function CropImageEditor({ file, lang, onReset }) {
             </div>
             
             {/* Dimension label */}
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-bold text-blue-600 dark:text-blue-400 tabular-nums bg-white/90 dark:bg-gray-900/90 px-2 py-0.5 rounded-md whitespace-nowrap z-30">
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-bold text-blue-600 dark:text-blue-400 tabular-nums bg-white/90 dark:bg-[#111113]/90 px-2 py-0.5 rounded-md whitespace-nowrap z-30">
               {realCropW} × {realCropH} px
             </div>
           </div>
@@ -673,7 +673,7 @@ export function CropImageEditor({ file, lang, onReset }) {
             className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors touch-manipulation ${
               aspectMode === p.id
                 ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-blue-50 dark:hover:bg-blue-950/30'
+                : 'bg-[#F7F8FA] dark:bg-[#18181B] text-[#6B7280] dark:text-[#A1A1AA] hover:bg-blue-50 dark:hover:bg-blue-950/30'
             }`}
           >
             {p.label}
@@ -696,7 +696,7 @@ export function CropImageEditor({ file, lang, onReset }) {
           <Crop className="w-4 h-4" />
           {labels.apply}
         </button>
-        <button onClick={handleReset} className="btn-ghost rounded-xl px-5 py-3 text-sm border border-gray-200 dark:border-gray-700 flex items-center gap-2">
+        <button onClick={handleReset} className="btn-ghost rounded-xl px-5 py-3 text-sm border border-[#E5E7EB] dark:border-[#27272A] flex items-center gap-2">
           <RotateCcw className="w-4 h-4" />
           {labels.reset}
         </button>
@@ -760,15 +760,15 @@ export function CompressImageEditor({ file, lang, onReset }) {
       </EditorCanvas>
 
       {/* Original info */}
-      <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800">
-        <span className="text-sm text-gray-500 dark:text-gray-400">{labels.original}</span>
-        <span className="text-sm font-bold text-gray-900 dark:text-white">{formatBytes(file.size)}</span>
+      <div className="flex items-center justify-between p-3 rounded-xl bg-[#F7F8FA] dark:bg-[#18181B] border border-[#E5E7EB] dark:border-[#27272A]">
+        <span className="text-sm text-[#6B7280] dark:text-[#A1A1AA]">{labels.original}</span>
+        <span className="text-sm font-bold text-[#111111] dark:text-[#FAFAFA]">{formatBytes(file.size)}</span>
       </div>
 
       {/* Quality slider */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">{labels.quality}</label>
+          <label className="text-sm font-medium text-[#111111] dark:text-[#FAFAFA]">{labels.quality}</label>
           <span className="text-sm font-bold text-blue-600 dark:text-blue-400 tabular-nums">{quality}%</span>
         </div>
         <input
@@ -871,7 +871,7 @@ export function ImageConvertEditor({ file, lang, targetExt, outputMime, onReset 
 
       {/* Format badges */}
       <div className="flex items-center justify-center gap-3">
-        <div className="px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-sm font-bold text-gray-700 dark:text-gray-300">
+        <div className="px-4 py-2 rounded-xl bg-[#F7F8FA] dark:bg-[#18181B] text-sm font-bold text-[#111111] dark:text-[#FAFAFA]">
           {sourceFormat}
         </div>
         <span className="text-lg text-gray-400">→</span>
@@ -883,12 +883,12 @@ export function ImageConvertEditor({ file, lang, targetExt, outputMime, onReset 
       {/* PNG → JPG: background selector */}
       {isPngToJpg && (
         <div className="space-y-2">
-          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">{labels.bg}</label>
+          <label className="text-sm font-medium text-[#111111] dark:text-[#FAFAFA]">{labels.bg}</label>
           <div className="flex gap-2">
             <button
               onClick={() => setBgColor('#FFFFFF')}
               className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors touch-manipulation ${
-                bgColor === '#FFFFFF' ? 'bg-blue-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
+                bgColor === '#FFFFFF' ? 'bg-blue-600 text-white' : 'bg-[#F7F8FA] dark:bg-[#18181B] text-[#6B7280] dark:text-[#A1A1AA]'
               }`}
             >
               <span className="flex items-center gap-1.5">
@@ -899,7 +899,7 @@ export function ImageConvertEditor({ file, lang, targetExt, outputMime, onReset 
             <button
               onClick={() => setBgColor('#000000')}
               className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors touch-manipulation ${
-                bgColor === '#000000' ? 'bg-blue-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
+                bgColor === '#000000' ? 'bg-blue-600 text-white' : 'bg-[#F7F8FA] dark:bg-[#18181B] text-[#6B7280] dark:text-[#A1A1AA]'
               }`}
             >
               <span className="flex items-center gap-1.5">
@@ -984,10 +984,10 @@ export function ImageUploadZone({ onFile, lang, hint }) {
           <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center">
             <ImageIcon className="w-7 h-7 text-blue-600 dark:text-blue-400" strokeWidth={1.6} />
           </div>
-          <p className="text-base font-bold text-gray-900 dark:text-white">{labels.drop}</p>
-          <p className="text-sm text-gray-500 dark:text-gray-400">{labels.or}</p>
+          <p className="text-base font-bold text-[#111111] dark:text-[#FAFAFA]">{labels.drop}</p>
+          <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA]">{labels.or}</p>
           <span className="btn-primary rounded-xl px-5 py-2.5 text-sm">{labels.choose}</span>
-          <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">{hint || labels.formats}</p>
+          <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA] mt-1">{hint || labels.formats}</p>
         </div>
       </div>
       {error && (

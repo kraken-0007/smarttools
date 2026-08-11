@@ -72,18 +72,21 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
     setExpanded(prev => (prev === catId ? null : catId))
   }
 
-  const widthClass = collapsed ? 'w-[72px]' : 'w-[280px]'
+  const widthClass = collapsed ? 'w-[72px]' : 'w-[240px]'
 
-  // Popular tools
   const popularTools = POPULAR_SLUGS
     .map(slug => tools.find(t => t.slug === slug))
     .filter(Boolean)
+
+  const popularLabel = lang === 'ar' ? 'أدوات شائعة' : lang === 'fr' ? 'Populaires' : 'Popular'
+  const categoriesLabel = t.nav.categories
+  const collapseLabel = collapsed ? (lang === 'ar' ? 'توسيع' : lang === 'fr' ? 'Développer' : 'Expand') : (lang === 'ar' ? 'طي' : lang === 'fr' ? 'Réduire' : 'Collapse')
 
   return (
     <>
       {isOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm lg:hidden animate-fade-in"
+          className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden animate-fade-in"
           onClick={onClose}
         />
       )}
@@ -91,21 +94,21 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
       <aside
         className={`
           ${widthClass}
-          fixed top-16 h-[calc(100vh-4rem)] z-30
-          bg-white dark:bg-gray-950
-          ${dir === 'rtl' ? 'border-s' : 'border-e'} border-gray-100 dark:border-gray-800
+          fixed top-14 h-[calc(100vh-3.5rem)] z-30
+          bg-white dark:bg-[#0A0A0B]
+          ${dir === 'rtl' ? 'border-s' : 'border-e'} border-[#E5E7EB] dark:border-[#27272A]
           flex flex-col
           transition-all duration-300 ease-in-out
           ${dir === 'rtl' ? 'end-0' : 'start-0'}
           ${isOpen ? 'translate-x-0' : dir === 'rtl' ? 'translate-x-full lg:translate-x-0' : '-translate-x-full lg:translate-x-0'}
-          lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:flex
+          lg:sticky lg:top-14 lg:h-[calc(100vh-3.5rem)] lg:flex
         `}
       >
         {/* Mobile header */}
-        <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-gray-800 shrink-0">
-          <span className="text-sm font-semibold text-gray-900 dark:text-white">SmartTools</span>
-          <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-            <X className="w-4 h-4" />
+        <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-[#E5E7EB] dark:border-[#27272A] shrink-0">
+          <span className="text-sm font-semibold text-[#111111] dark:text-[#FAFAFA]">SmartTools</span>
+          <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-[#F7F8FA] dark:hover:bg-[#18181B] transition-colors">
+            <X className="w-4 h-4 text-[#6B7280] dark:text-[#A1A1AA]" />
           </button>
         </div>
 
@@ -113,36 +116,33 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
         <div className="hidden lg:flex items-center justify-end px-3 py-2 shrink-0">
           <button
             onClick={toggleCollapse}
-            className="p-1.5 rounded-lg text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="p-1.5 rounded-lg text-[#6B7280] dark:text-[#A1A1AA] hover:bg-[#F7F8FA] dark:hover:bg-[#18181B] transition-colors"
             aria-label="Toggle sidebar"
-            title={collapsed ? (lang === 'ar' ? 'توسيع' : lang === 'fr' ? 'Développer' : 'Expand') : (lang === 'ar' ? 'طي' : lang === 'fr' ? 'Réduire' : 'Collapse')}
+            title={collapseLabel}
           >
-            {collapsed
-              ? <PanelLeft className="w-4 h-4" />
-              : <PanelLeftClose className="w-4 h-4" />
-            }
+            {collapsed ? <PanelLeft className="w-4 h-4" /> : <PanelLeftClose className="w-4 h-4" />}
           </button>
         </div>
 
         {/* Scrollable nav */}
         <nav className="flex-1 overflow-y-auto px-2 py-1 space-y-0.5 sidebar-scroll">
-          {/* Home link */}
+          {/* Home */}
           <Link
             to="/"
             onClick={onClose}
             className={`sidebar-link ${isHome ? 'active' : ''} ${collapsed ? 'justify-center !px-0 !py-2.5' : ''}`}
             title={collapsed ? t.nav.home : ''}
           >
-            <Home className="w-4.5 h-4.5 shrink-0" strokeWidth={1.8} />
-            {!collapsed && <span className="text-sm">{t.nav.home}</span>}
+            <Home className="w-4 h-4 shrink-0" strokeWidth={1.8} />
+            {!collapsed && <span className="text-[13px]">{t.nav.home}</span>}
           </Link>
 
-          {/* ⭐ Popular Tools section */}
+          {/* Popular Tools */}
           {!collapsed && (
             <div className="pt-4 pb-1 px-3">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 flex items-center gap-1.5">
-                <Star className="w-3 h-3 text-amber-400" fill="currentColor" />
-                {lang === 'ar' ? 'أدوات شائعة' : lang === 'fr' ? 'Populaires' : 'Popular Tools'}
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] dark:text-[#A1A1AA] flex items-center gap-1.5">
+                <Star className="w-3 h-3 text-blue-600" fill="currentColor" />
+                {popularLabel}
               </span>
             </div>
           )}
@@ -159,14 +159,13 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
                 className={`sidebar-link ${isActive ? 'active' : ''} ${collapsed ? 'justify-center !px-0 !py-2.5' : ''} relative group`}
                 title={collapsed ? tool.name[lang] : ''}
               >
-                <ToolIcon className="w-4.5 h-4.5 shrink-0" strokeWidth={1.8} />
-                {!collapsed && <span className="flex-1 truncate text-sm">{tool.name[lang]}</span>}
-                {!collapsed && <Star className="w-3 h-3 text-amber-400 shrink-0" fill="currentColor" />}
+                <ToolIcon className="w-4 h-4 shrink-0" strokeWidth={1.8} />
+                {!collapsed && <span className="flex-1 truncate text-[13px]">{tool.name[lang]}</span>}
+                {!collapsed && <Star className="w-2.5 h-2.5 text-blue-600 dark:text-blue-500 shrink-0" fill="currentColor" />}
 
-                {/* Collapsed tooltip */}
                 {collapsed && (
                   <div className="absolute start-full ms-2 top-1/2 -translate-y-1/2 z-50 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="bg-gray-900 dark:bg-gray-700 text-white text-xs font-medium px-2.5 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
+                    <div className="bg-[#111113] text-[#FAFAFA] dark:bg-[#18181B] text-xs font-medium px-2.5 py-1.5 rounded-lg whitespace-nowrap shadow-card-lg">
                       {tool.name[lang]}
                     </div>
                   </div>
@@ -175,17 +174,16 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
             )
           })}
 
-          {/* Categories label */}
+          {/* Categories */}
           {!collapsed && (
             <div className="pt-4 pb-1 px-3">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600">
-                {t.nav.categories}
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] dark:text-[#A1A1AA]">
+                {categoriesLabel}
               </span>
             </div>
           )}
           {collapsed && <div className="pt-3" />}
 
-          {/* Expandable categories */}
           {categories.map(cat => {
             const Icon = getIcon(cat.icon)
             const isActive = pathname === `/categories/${cat.slug}`
@@ -199,19 +197,19 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
                   className={`sidebar-link ${isActive ? 'active' : ''} w-full text-start ${collapsed ? 'justify-center !px-0 !py-2.5' : ''}`}
                   title={collapsed ? cat.name[lang] : ''}
                 >
-                  <Icon className="w-4.5 h-4.5 shrink-0" strokeWidth={1.8} />
+                  <Icon className="w-4 h-4 shrink-0" strokeWidth={1.8} />
                   {!collapsed && (
                     <>
-                      <span className="flex-1 truncate text-sm">{cat.name[lang]}</span>
-                      <span className="text-[10px] text-gray-400 dark:text-gray-600 shrink-0">{catTools.length}</span>
-                      <ChevronDown className={`w-3.5 h-3.5 shrink-0 text-gray-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+                      <span className="flex-1 truncate text-[13px]">{cat.name[lang]}</span>
+                      <span className="text-[10px] text-[#6B7280] dark:text-[#A1A1AA] shrink-0 tabular-nums">{catTools.length}</span>
+                      <ChevronDown className={`w-3 h-3 shrink-0 text-[#6B7280] dark:text-[#A1A1AA] transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
                     </>
                   )}
                 </button>
 
                 {collapsed && (
                   <div className="absolute start-full ms-2 top-1/2 -translate-y-1/2 z-50 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="bg-gray-900 dark:bg-gray-700 text-white text-xs font-medium px-2.5 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
+                    <div className="bg-[#111113] text-[#FAFAFA] dark:bg-[#18181B] text-xs font-medium px-2.5 py-1.5 rounded-lg whitespace-nowrap shadow-card-lg">
                       {cat.name[lang]} ({catTools.length})
                     </div>
                   </div>
@@ -226,24 +224,23 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
                       {catTools.length > 0 ? (
                         catTools.map(tool => {
                           const ToolIcon = getIcon(tool.icon)
+                          const toolActive = pathname === `/tools/${tool.slug}`
                           return (
                             <li key={tool.id}>
                               <Link
                                 to={`/tools/${tool.slug}`}
                                 onClick={onClose}
-                                className="group flex items-center gap-2.5 ps-9 pe-3 py-2 rounded-lg text-[13px] text-gray-600 dark:text-gray-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                                className={`group flex items-center gap-2.5 ps-9 pe-3 py-2 rounded-lg text-[12px] transition-colors ${toolActive ? 'bg-blue-50 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300 font-medium' : 'text-[#6B7280] dark:text-[#A1A1AA] hover:bg-[#F7F8FA] dark:hover:bg-[#18181B] hover:text-[#111111] dark:hover:text-[#FAFAFA]'}`}
                               >
                                 <ToolIcon className="w-3.5 h-3.5 shrink-0 opacity-60 group-hover:opacity-100 transition-opacity" strokeWidth={1.8} />
-                                <span className="truncate flex-1">{tool.name[lang]}</span>
-                                {isNew(tool) && (
-                                  <span className="shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-red-500 text-white leading-none">NEW</span>
-                                )}
+                                <span className="truncate">{tool.name[lang]}</span>
+                                {isNew(tool) && <span className="badge-new shrink-0">NEW</span>}
                               </Link>
                             </li>
                           )
                         })
                       ) : (
-                        <li className="ps-9 pe-3 py-2 text-[12px] text-gray-400 italic">{t.category.noTools || 'Coming soon'}</li>
+                        <li className="ps-9 py-2 text-[11px] text-[#6B7280] dark:text-[#A1A1AA]">{t.category.noTools}</li>
                       )}
                     </ul>
                   </div>

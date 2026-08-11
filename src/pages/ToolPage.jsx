@@ -46,7 +46,7 @@ function PdfToJpgTool({ lang }) {
       {loading && <ProcessingIndicator />}
       {error && <ErrorDisplay message={error} lang={lang} />}
       {results && <ResultDisplay results={results} lang={lang} />}
-      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
     </div>
   )
 }
@@ -72,7 +72,7 @@ function JpgToPdfTool({ lang }) {
       {loading && <ProcessingIndicator />}
       {error && <ErrorDisplay message={error} lang={lang} />}
       {results && <ResultDisplay results={results} lang={lang} />}
-      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
     </div>
   )
 }
@@ -99,7 +99,7 @@ function MergePdfTool({ lang }) {
       {loading && <ProcessingIndicator />}
       {error && <ErrorDisplay message={error} lang={lang} />}
       {results && <ResultDisplay results={results} lang={lang} />}
-      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
     </div>
   )
 }
@@ -123,7 +123,7 @@ function SplitPdfTool({ lang }) {
           {file && (
             <div className="space-y-3">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                <label className="block text-sm font-medium text-[#111111] dark:text-[#FAFAFA] mb-1.5">
                   {lang === 'ar' ? 'نطاقات الصفحات (اختياري)' : lang === 'fr' ? 'Plages de pages (optionnel)' : 'Page ranges (optional)'}
                 </label>
                 <input
@@ -145,7 +145,7 @@ function SplitPdfTool({ lang }) {
       {loading && <ProcessingIndicator />}
       {error && <ErrorDisplay message={error} lang={lang} />}
       {results && <ResultDisplay results={results} lang={lang} />}
-      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
     </div>
   )
 }
@@ -187,7 +187,7 @@ function CompressPdfTool({ lang }) {
           <ResultDisplay results={results} lang={lang} />
         </div>
       )}
-      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
     </div>
   )
 }
@@ -213,7 +213,7 @@ function PdfToWordTool({ lang }) {
       {loading && <ProcessingIndicator />}
       {error && <ErrorDisplay message={error} lang={lang} />}
       {results && <ResultDisplay results={results} lang={lang} />}
-      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
     </div>
   )
 }
@@ -239,7 +239,7 @@ function WordToPdfTool({ lang }) {
       {loading && <ProcessingIndicator />}
       {error && <ErrorDisplay message={error} lang={lang} />}
       {results && <ResultDisplay results={results} lang={lang} />}
-      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
+      {(results || error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
     </div>
   )
 }
@@ -308,9 +308,9 @@ function WordCounterTool({ lang }) {
           { label: labels[4], value: stats.paragraphs },
           { label: labels[5], value: `${stats.readingTime} min` },
         ].map((s, i) => (
-          <div key={i} className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-3 text-center border border-gray-100 dark:border-gray-800">
+          <div key={i} className="bg-[#F7F8FA] dark:bg-[#18181B] rounded-xl p-3 text-center border border-[#E5E7EB] dark:border-[#27272A]">
             <p className="text-xl font-bold text-blue-600 dark:text-blue-400">{s.value}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{s.label}</p>
+            <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA] mt-0.5">{s.label}</p>
           </div>
         ))}
       </div>
@@ -347,9 +347,9 @@ function CharacterCounterTool({ lang }) {
           { label: labels[5], value: stats.lines },
           { label: labels[6], value: stats.specialChars },
         ].map((s, i) => (
-          <div key={i} className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-3 text-center border border-gray-100 dark:border-gray-800">
+          <div key={i} className="bg-[#F7F8FA] dark:bg-[#18181B] rounded-xl p-3 text-center border border-[#E5E7EB] dark:border-[#27272A]">
             <p className="text-xl font-bold text-blue-600 dark:text-blue-400">{s.value}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{s.label}</p>
+            <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA] mt-0.5">{s.label}</p>
           </div>
         ))}
       </div>
@@ -398,21 +398,21 @@ function CaseConverterTool({ lang }) {
       />
       <div className="flex flex-wrap gap-2">
         {modes.map(m => (
-          <button key={m.id} onClick={() => handleConvert(m.id)} className="px-3 py-2 rounded-lg text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+          <button key={m.id} onClick={() => handleConvert(m.id)} className="px-3 py-2 rounded-lg text-xs font-medium bg-[#F7F8FA] dark:bg-[#18181B] text-[#111111] dark:text-[#FAFAFA] hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
             {m.label}
           </button>
         ))}
       </div>
       {result && (
         <div className="space-y-3 animate-fade-in">
-          <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 min-h-[100px]">
-            <p className="text-sm text-gray-900 dark:text-white whitespace-pre-wrap break-words">{result}</p>
+          <div className="p-4 rounded-xl bg-[#F7F8FA] dark:bg-[#18181B] border border-[#E5E7EB] dark:border-[#27272A] min-h-[100px]">
+            <p className="text-sm text-[#111111] dark:text-[#FAFAFA] whitespace-pre-wrap break-words">{result}</p>
           </div>
           <div className="flex gap-3">
             <button onClick={copyResult} className="btn-primary rounded-xl px-5 py-2.5 text-sm flex-1">
               {lang === 'ar' ? 'نسخ' : lang === 'fr' ? 'Copier' : 'Copy'}
             </button>
-            <button onClick={downloadResult} className="btn-ghost rounded-xl px-5 py-2.5 text-sm border border-gray-200 dark:border-gray-700">
+            <button onClick={downloadResult} className="btn-ghost rounded-xl px-5 py-2.5 text-sm border border-[#E5E7EB] dark:border-[#27272A]">
               {lang === 'ar' ? 'تحميل' : lang === 'fr' ? 'Télécharger' : 'Download'}
             </button>
           </div>
@@ -446,7 +446,7 @@ function AgeCalculatorTool({ lang }) {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{labels.label}</label>
+        <label className="block text-sm font-medium text-[#111111] dark:text-[#FAFAFA] mb-2">{labels.label}</label>
         <input type="date" value={birthDate} onChange={e => setBirthDate(e.target.value)} max={new Date().toISOString().split('T')[0]} className="input-field" />
       </div>
       <button onClick={calculate} disabled={!birthDate} className="btn-primary w-full justify-center py-3.5 text-sm disabled:opacity-50">
@@ -457,15 +457,15 @@ function AgeCalculatorTool({ lang }) {
           <div className="grid grid-cols-3 gap-3">
             <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-4 text-center border border-blue-100 dark:border-blue-900">
               <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{result.years}</p>
-              <p className="text-xs text-gray-500 mt-1">{labels.years}</p>
+              <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA] mt-1">{labels.years}</p>
             </div>
             <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-4 text-center border border-blue-100 dark:border-blue-900">
               <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{result.months}</p>
-              <p className="text-xs text-gray-500 mt-1">{labels.months}</p>
+              <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA] mt-1">{labels.months}</p>
             </div>
             <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-4 text-center border border-blue-100 dark:border-blue-900">
               <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{result.days}</p>
-              <p className="text-xs text-gray-500 mt-1">{labels.days}</p>
+              <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA] mt-1">{labels.days}</p>
             </div>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -475,9 +475,9 @@ function AgeCalculatorTool({ lang }) {
               { label: labels.totalWeeks, value: result.totalWeeks.toLocaleString() },
               { label: labels.nextBday, value: result.nextBirthdayDays },
             ].map((s, i) => (
-              <div key={i} className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-3 text-center border border-gray-100 dark:border-gray-800">
-                <p className="text-lg font-bold text-gray-900 dark:text-white">{s.value}</p>
-                <p className="text-[10px] text-gray-500 mt-0.5">{s.label}</p>
+              <div key={i} className="bg-[#F7F8FA] dark:bg-[#18181B] rounded-xl p-3 text-center border border-[#E5E7EB] dark:border-[#27272A]">
+                <p className="text-lg font-bold text-[#111111] dark:text-[#FAFAFA]">{s.value}</p>
+                <p className="text-[10px] text-[#6B7280] dark:text-[#A1A1AA] mt-0.5">{s.label}</p>
               </div>
             ))}
           </div>
@@ -516,11 +516,11 @@ function BMICalculatorTool({ lang }) {
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{labels.weight}</label>
+          <label className="block text-sm font-medium text-[#111111] dark:text-[#FAFAFA] mb-2">{labels.weight}</label>
           <input type="number" value={weight} onChange={e => setWeight(e.target.value)} className="input-field" placeholder="70" min="1" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{labels.height}</label>
+          <label className="block text-sm font-medium text-[#111111] dark:text-[#FAFAFA] mb-2">{labels.height}</label>
           <input type="number" value={height} onChange={e => setHeight(e.target.value)} className="input-field" placeholder="175" min="1" />
         </div>
       </div>
@@ -530,7 +530,7 @@ function BMICalculatorTool({ lang }) {
       {result && (
         <div className="animate-fade-in space-y-3">
           <div className="rounded-xl p-6 text-center border-2" style={{ borderColor: result.categoryColor }}>
-            <p className="text-sm text-gray-500 mb-1">{labels.yourBMI}</p>
+            <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] mb-1">{labels.yourBMI}</p>
             <p className="text-5xl font-extrabold" style={{ color: result.categoryColor }}>{result.bmi}</p>
             <p className="text-sm font-semibold mt-2" style={{ color: result.categoryColor }}>{catLabels[result.category]}</p>
           </div>
@@ -541,7 +541,7 @@ function BMICalculatorTool({ lang }) {
               { range: '25 - 29.9', label: catLabels.Overweight, color: '#f59e0b' },
               { range: '≥ 30', label: catLabels.Obese, color: '#ef4444' },
             ].map((r, i) => (
-              <div key={i} className={`flex items-center justify-between px-3 py-2 rounded-lg text-xs ${result.category === r.label.split(' ')[0] || (result.category === 'Underweight' && r.label === catLabels.Underweight) || (result.category === 'Normal' && r.label === catLabels.Normal) || (result.category === 'Overweight' && r.label === catLabels.Overweight) || (result.category === 'Obese' && r.label === catLabels.Obese) ? 'bg-gray-100 dark:bg-gray-800 font-semibold' : ''}`}>
+              <div key={i} className={`flex items-center justify-between px-3 py-2 rounded-lg text-xs ${result.category === r.label.split(' ')[0] || (result.category === 'Underweight' && r.label === catLabels.Underweight) || (result.category === 'Normal' && r.label === catLabels.Normal) || (result.category === 'Overweight' && r.label === catLabels.Overweight) || (result.category === 'Obese' && r.label === catLabels.Obese) ? 'bg-[#F7F8FA] dark:bg-[#18181B] font-semibold' : ''}`}>
                 <span className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full" style={{ background: r.color }} />
                   {r.label}
@@ -603,7 +603,7 @@ function PercentageCalculatorTool({ lang }) {
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
         {modes.map(m => (
-          <button key={m.id} onClick={() => { setMode(m.id); setResult(null) }} className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${mode === m.id ? 'bg-blue-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-blue-50 dark:hover:bg-blue-950/40'}`}>
+          <button key={m.id} onClick={() => { setMode(m.id); setResult(null) }} className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${mode === m.id ? 'bg-blue-600 text-white' : 'bg-[#F7F8FA] dark:bg-[#18181B] text-[#6B7280] dark:text-[#A1A1AA] hover:bg-blue-50 dark:hover:bg-blue-950/40'}`}>
             {m.label}
           </button>
         ))}
@@ -618,9 +618,9 @@ function PercentageCalculatorTool({ lang }) {
       {result && (
         <div className="animate-fade-in">
           <div className="rounded-xl p-5 text-center bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900">
-            <p className="text-xs text-gray-500 mb-1">{labels.result}</p>
+            <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA] mb-1">{labels.result}</p>
             <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{result.result}</p>
-            <p className="text-xs text-gray-500 mt-2">{result.formula}</p>
+            <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA] mt-2">{result.formula}</p>
           </div>
         </div>
       )}
@@ -635,7 +635,7 @@ function ProcessingIndicator() {
   return (
     <div className="flex items-center justify-center gap-3 py-8 animate-fade-in">
       <div className="w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
-      <span className="text-sm text-gray-500">Processing...</span>
+      <span className="text-sm text-[#6B7280] dark:text-[#A1A1AA]">Processing...</span>
     </div>
   )
 }
@@ -673,11 +673,11 @@ const TOOL_COMPONENTS = {
 function ComingSoon({ lang, t }) {
   return (
     <div className="py-12 text-center">
-      <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mx-auto mb-5">
+      <div className="w-16 h-16 rounded-full bg-[#F7F8FA] dark:bg-[#18181B] flex items-center justify-center mx-auto mb-5">
         <Wrench className="w-7 h-7 text-gray-400" />
       </div>
-      <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">{t.tools.comingSoon}</h3>
-      <p className="text-sm text-gray-500 dark:text-gray-400 max-w-sm mx-auto">{t.tools.comingSoonDesc}</p>
+      <h3 className="font-bold text-lg text-[#111111] dark:text-[#FAFAFA] mb-2">{t.tools.comingSoon}</h3>
+      <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] max-w-sm mx-auto">{t.tools.comingSoonDesc}</p>
     </div>
   )
 }
@@ -695,12 +695,12 @@ function ToolInterface({ tool, lang, t }) {
 function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false)
   return (
-    <div className="border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden">
-      <button onClick={() => setOpen(o => !o)} className="w-full flex items-center justify-between px-5 py-4 text-start bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-        <span className="text-sm font-semibold text-gray-900 dark:text-white">{question}</span>
+    <div className="border border-[#E5E7EB] dark:border-[#27272A] rounded-xl overflow-hidden">
+      <button onClick={() => setOpen(o => !o)} className="w-full flex items-center justify-between px-5 py-4 text-start bg-white dark:bg-[#111113] hover:bg-gray-50 dark:hover:bg-[#18181B] transition-colors">
+        <span className="text-sm font-semibold text-[#111111] dark:text-[#FAFAFA]">{question}</span>
         <ChevronDown className={`w-4 h-4 text-gray-400 shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
-      {open && <div className="px-5 pb-4 pt-0 bg-white dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-gray-800">{answer}</div>}
+      {open && <div className="px-5 pb-4 pt-0 bg-white dark:bg-[#111113] text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed border-t border-[#E5E7EB] dark:border-[#27272A]">{answer}</div>}
     </div>
   )
 }
@@ -718,7 +718,7 @@ export default function ToolPage({ slug, lang, t }) {
 
   if (!tool) return (
     <div className="p-8 text-center">
-      <p className="text-gray-500 mb-4">Tool not found.</p>
+      <p className="text-[#6B7280] dark:text-[#A1A1AA] mb-4">Tool not found.</p>
       <Link to="/" className="text-blue-600 hover:underline text-sm">{t.breadcrumb.home}</Link>
     </div>
   )
@@ -733,7 +733,7 @@ export default function ToolPage({ slug, lang, t }) {
   useToolViews(tool.slug)
 
   return (
-    <div className="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-8 animate-fade-in">
+    <div className="max-w-3xl mx-auto px-4 py-6 md:py-8 animate-fade-in">
       <Breadcrumb items={[
         { label: t.breadcrumb.home, href: '/' },
         { label: t.nav.categories, href: '/categories' },
@@ -746,8 +746,8 @@ export default function ToolPage({ slug, lang, t }) {
           <Icon className="w-7 h-7 text-white" strokeWidth={1.6} />
         </div>
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">{tool.name[lang]}</h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 leading-relaxed">{tool.description[lang]}</p>
+          <h1 className="text-2xl font-bold text-[#111111] dark:text-[#FAFAFA] leading-tight">{tool.name[lang]}</h1>
+          <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] mt-1 leading-relaxed">{tool.description[lang]}</p>
           {category && (
             <Link to={`/categories/${category.slug}`} className={`inline-flex items-center gap-1 mt-2 text-xs font-semibold px-2.5 py-1 rounded-full ${category.bg} ${category.text} ${category.border} border`}>
               <Icon className="w-3 h-3" strokeWidth={2} /> {category.name[lang]}
@@ -756,16 +756,16 @@ export default function ToolPage({ slug, lang, t }) {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-5 md:p-8 mb-6 shadow-card">
+      <div className="bg-white dark:bg-[#111113] border border-[#E5E7EB] dark:border-[#27272A] rounded-xl p-5 md:p-8 mb-6 shadow-card">
         <ToolInterface tool={tool} lang={lang} t={t} />
       </div>
 
       <div className="mb-8">
-        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{tool.description[lang]}</p>
+        <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed">{tool.description[lang]}</p>
       </div>
 
       <div className="mb-8">
-        <h2 className="font-bold text-base text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+        <h2 className="font-bold text-base text-[#111111] dark:text-[#FAFAFA] mb-4 flex items-center gap-2">
           <HelpCircle className="w-5 h-5 text-blue-500" />
           {t.tools.faq}
         </h2>
@@ -776,7 +776,7 @@ export default function ToolPage({ slug, lang, t }) {
 
       {relatedTools.length > 0 && (
         <div>
-          <h2 className="font-bold text-base text-gray-900 dark:text-white mb-4">{t.tools.related}</h2>
+          <h2 className="font-bold text-base text-[#111111] dark:text-[#FAFAFA] mb-4">{t.tools.related}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {relatedTools.map(rt => <ToolCard key={rt.id} tool={rt} lang={lang} t={t} category={catMap[rt.categoryId]} showNewBadge={false} />)}
           </div>

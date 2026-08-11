@@ -18,32 +18,34 @@ export default function ToolCard({ tool, lang, t, category, showNewBadge = true 
 
   return (
     <Link to={`/tools/${tool.slug}`} className="tool-card group">
-      {/* NEW badge — only shown when showNewBadge is true (homepage/sidebar) */}
+      {/* NEW badge — subtle blue, top-right corner */}
       {showNew && (
-        <span className="absolute top-3 end-3 text-[9px] font-bold px-2 py-0.5 rounded-full bg-red-500 text-white leading-none shadow-sm z-10">
+        <span className="badge-new absolute top-3 end-3 z-10">
           NEW
         </span>
       )}
 
       {/* Icon */}
-      <div className={`w-11 h-11 md:w-12 md:h-12 rounded-xl flex items-center justify-center shrink-0 ${cat.bg || 'bg-blue-50 dark:bg-blue-950/30'}`}>
-        <Icon className={`w-5 h-5 md:w-6 md:h-6 ${cat.text || 'text-blue-600 dark:text-blue-400'}`} strokeWidth={1.8} />
+      <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${cat.bg || 'bg-blue-50 dark:bg-blue-950/30'} group-hover:scale-105 transition-transform duration-200`}>
+        <Icon className={`w-5 h-5 ${cat.text || 'text-blue-600 dark:text-blue-400'}`} strokeWidth={1.8} />
       </div>
 
       {/* Text */}
       <div className="flex-1 min-w-0">
-        <h3 className="font-semibold text-[14px] md:text-[15px] text-gray-900 dark:text-white mb-1 leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+        <h3 className="font-semibold text-[14px] text-[#111111] dark:text-[#FAFAFA] mb-1 leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
           {tool.name[lang]}
         </h3>
-        <p className="text-[12px] md:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">
+        <p className="text-[12px] text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed line-clamp-2">
           {tool.description[lang]}
         </p>
       </div>
 
-      {/* CTA */}
-      <div className={`mt-1 inline-flex items-center gap-1.5 text-xs font-semibold ${cat.text || 'text-blue-600 dark:text-blue-400'} group-hover:gap-2.5 transition-all`}>
-        {t.tools.open}
-        <ArrowRight className="w-3.5 h-3.5" />
+      {/* Category + arrow */}
+      <div className="flex items-center justify-between mt-1">
+        <span className="text-[11px] text-[#6B7280] dark:text-[#A1A1AA] font-medium">
+          {cat.name?.[lang] || ''}
+        </span>
+        <ArrowRight className="w-3.5 h-3.5 text-[#6B7280] dark:text-[#A1A1AA] group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all" />
       </div>
     </Link>
   )

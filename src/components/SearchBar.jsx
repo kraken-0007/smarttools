@@ -21,12 +21,12 @@ export default function SearchBar({ placeholder, size = 'hero' }) {
           onChange={e => setQuery(e.target.value)}
           placeholder={placeholder}
           className={`
-            w-full h-full rounded-2xl border-2 border-gray-200 dark:border-gray-700
-            bg-white dark:bg-gray-900
+            w-full h-full rounded-2xl border-2 border-[#E5E7EB] dark:border-[#27272A]
+            bg-white dark:bg-[#111113]
             ${size === 'hero' ? 'ps-12 pe-36 text-base' : 'ps-10 pe-28 text-sm'}
             outline-none focus:border-blue-500 focus:shadow-lg focus:shadow-blue-500/10
             transition-all duration-200
-            text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500
+            text-[#111111] dark:text-[#FAFAFA] placeholder-gray-400 dark:placeholder-gray-500
           `}
         />
         <button

@@ -3,11 +3,29 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-bg: #FFFFFF;
+    --color-bg-secondary: #F7F8FA;
+    --color-text: #111111;
+    --color-text-secondary: #6B7280;
+    --color-border: #E5E7EB;
+    --color-accent: #2563EB;
+  }
+
+  .dark {
+    --color-bg: #0A0A0B;
+    --color-bg-secondary: #18181B;
+    --color-text: #FAFAFA;
+    --color-text-secondary: #A1A1AA;
+    --color-border: #27272A;
+    --color-accent: #2563EB;
+  }
+
   html { scroll-behavior: smooth; }
 
   body {
-    @apply bg-slate-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased;
-    transition: background-color 0.25s, color 0.25s;
+    @apply bg-white dark:bg-[#0A0A0B] text-[#111111] dark:text-[#FAFAFA] antialiased;
+    transition: background-color 0.2s, color 0.2s;
   }
 
   [dir="rtl"] * { font-family: 'Cairo', 'Inter', sans-serif; }
@@ -16,57 +34,64 @@
 
 @layer components {
   .sidebar-link {
-    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
-      text-gray-600 dark:text-gray-400
-      hover:bg-blue-50 dark:hover:bg-blue-950/40
-      hover:text-blue-700 dark:hover:text-blue-300
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
+      text-[#6B7280] dark:text-[#A1A1AA]
+      hover:bg-[#F7F8FA] dark:hover:bg-[#18181B]
+      hover:text-[#111111] dark:hover:text-[#FAFAFA]
       transition-all duration-150 cursor-pointer w-full;
   }
   .sidebar-link.active {
-    @apply bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 font-semibold;
+    @apply bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 font-semibold;
   }
 
   .tool-card {
-    @apply relative bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800
-      rounded-xl md:rounded-2xl p-5 md:p-6 flex flex-col gap-2.5 md:gap-3
-      hover:border-blue-200 dark:hover:border-blue-800
-      hover:shadow-lg hover:shadow-blue-500/5 dark:hover:shadow-blue-900/20
+    @apply relative bg-white dark:bg-[#111113] border border-[#E5E7EB] dark:border-[#27272A]
+      rounded-xl p-5 flex flex-col gap-3
+      hover:border-blue-300 dark:hover:border-blue-700
+      hover:shadow-sm hover:shadow-blue-500/5
       transition-all duration-200 cursor-pointer;
   }
 
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-5 py-2.5
       bg-blue-600 hover:bg-blue-700 active:bg-blue-800
-      text-white text-sm font-semibold rounded-xl
-      transition-all duration-150 shadow-sm hover:shadow-md;
+      text-white text-sm font-semibold rounded-lg
+      transition-all duration-150 shadow-sm;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2
-      text-gray-600 dark:text-gray-400 text-sm font-medium rounded-xl
-      hover:bg-gray-100 dark:hover:bg-gray-800
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5
+      text-[#6B7280] dark:text-[#A1A1AA] text-sm font-medium rounded-lg
+      border border-[#E5E7EB] dark:border-[#27272A]
+      hover:bg-[#F7F8FA] dark:hover:bg-[#18181B]
       transition-all duration-150;
   }
 
   .input-field {
-    @apply w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700
-      bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100
+    @apply w-full px-4 py-3 rounded-lg border border-[#E5E7EB] dark:border-[#27272A]
+      bg-white dark:bg-[#111113] text-[#111111] dark:text-[#FAFAFA]
       placeholder-gray-400 dark:placeholder-gray-500
-      outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500
+      outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500
       transition-all duration-150 text-sm;
   }
 
-  /* Upload box */
   .upload-box {
-    @apply relative border-2 border-dashed rounded-2xl
-      border-gray-300 dark:border-gray-700
-      bg-gray-50 dark:bg-gray-900/50
+    @apply relative border-2 border-dashed rounded-xl
+      border-[#E5E7EB] dark:border-[#27272A]
+      bg-[#F7F8FA] dark:bg-[#18181B]
       hover:border-blue-400 dark:hover:border-blue-600
       transition-all duration-200;
   }
   .upload-box.dragover {
-    @apply border-blue-500 bg-blue-50 dark:bg-blue-950/30
-      shadow-lg shadow-blue-500/10;
+    @apply border-blue-500 bg-blue-50 dark:bg-blue-950/30;
+  }
+
+  .badge-new {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full bg-blue-600 text-white text-[9px] font-bold leading-none;
+  }
+
+  .card {
+    @apply bg-white dark:bg-[#111113] border border-[#E5E7EB] dark:border-[#27272A] rounded-xl;
   }
 }
 
@@ -74,23 +99,31 @@
   .scrollbar-hide::-webkit-scrollbar { display: none; }
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-  /* Fade-in animation */
-  .animate-fade-in {
-    animation: fadeIn 0.3s ease-out;
-  }
+  .animate-fade-in { animation: fadeIn 0.25s ease-out; }
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Sidebar custom scrollbar */
+  .animate-slide-in { animation: slideIn 0.3s ease-out; }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .animate-scale-in { animation: scaleIn 0.2s ease-out; }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
   .sidebar-scroll::-webkit-scrollbar { width: 4px; }
   .sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
   .sidebar-scroll::-webkit-scrollbar-thumb {
-    background: rgba(156, 163, 175, 0.3);
+    background: rgba(156, 163, 175, 0.2);
     border-radius: 4px;
   }
   .sidebar-scroll::-webkit-scrollbar-thumb:hover {
-    background: rgba(156, 163, 175, 0.5);
+    background: rgba(156, 163, 175, 0.4);
   }
 }

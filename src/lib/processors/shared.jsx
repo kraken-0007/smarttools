@@ -56,7 +56,7 @@ export function FileUploader({ accept, multiple, onFiles, lang, hint }) {
     return (
       <div className="space-y-3">
         {files.map((file, i) => (
-          <div key={i} className="flex items-center gap-3 p-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
+          <div key={i} className="flex items-center gap-3 p-3.5 rounded-xl border border-[#E5E7EB] dark:border-[#27272A] bg-[#F7F8FA] dark:bg-[#18181B]">
             {previews[i] ? (
               <img src={previews[i]} alt={file.name} className="w-12 h-12 rounded-lg object-cover shrink-0" />
             ) : (
@@ -65,10 +65,10 @@ export function FileUploader({ accept, multiple, onFiles, lang, hint }) {
               </div>
             )}
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{file.name}</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">{formatSize(file.size)}</p>
+              <p className="text-sm font-medium text-[#111111] dark:text-[#FAFAFA] truncate">{file.name}</p>
+              <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA]">{formatSize(file.size)}</p>
             </div>
-            <button onClick={() => removeFile(i)} className="shrink-0 p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors">
+            <button onClick={() => removeFile(i)} className="shrink-0 p-1.5 rounded-lg text-[#6B7280] dark:text-[#A1A1AA] hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors">
               <X className="w-4 h-4" />
             </button>
           </div>
@@ -97,10 +97,10 @@ export function FileUploader({ accept, multiple, onFiles, lang, hint }) {
         <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center">
           <UploadCloud className="w-7 h-7 text-blue-600 dark:text-blue-400" strokeWidth={1.6} />
         </div>
-        <p className="text-base font-bold text-gray-900 dark:text-white">{labels.drop}</p>
-        <p className="text-sm text-gray-500 dark:text-gray-400">{labels.or}</p>
+        <p className="text-base font-bold text-[#111111] dark:text-[#FAFAFA]">{labels.drop}</p>
+        <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA]">{labels.or}</p>
         <span className="btn-primary rounded-xl px-5 py-2.5 text-sm">{labels.choose}</span>
-        {hint && <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">{hint}</p>}
+        {hint && <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA] mt-1">{hint}</p>}
       </div>
     </div>
   )
@@ -148,12 +148,12 @@ export function ResultDisplay({ results, lang }) {
         {labels.success}
       </div>
       {results.map((r, i) => (
-        <div key={i} className="flex items-center justify-between gap-3 p-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <div key={i} className="flex items-center justify-between gap-3 p-3.5 rounded-xl border border-[#E5E7EB] dark:border-[#27272A] bg-white dark:bg-[#111113]">
           <div className="flex items-center gap-3 min-w-0">
             <div className="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center shrink-0">
               <Download className="w-5 h-5 text-blue-600 dark:text-blue-400" />
             </div>
-            <span className="text-sm font-medium text-gray-900 dark:text-white truncate">{r.filename}</span>
+            <span className="text-sm font-medium text-[#111111] dark:text-[#FAFAFA] truncate">{r.filename}</span>
           </div>
           <button
             onClick={() => downloadFile(r.blob, r.filename)}

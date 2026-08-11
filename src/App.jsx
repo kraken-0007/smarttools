@@ -27,8 +27,7 @@ export default function App() {
   const shared = { lang, t }
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-gray-950">
-      {/* Top Navbar */}
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0A0A0B]">
       <Navbar
         theme={theme}
         toggleTheme={toggleTheme}
@@ -38,14 +37,11 @@ export default function App() {
         t={t}
         onMenuToggle={() => setSidebarOpen(o => !o)}
         onSidebarToggle={() => {
-          // Trigger sidebar collapse via custom event
           window.dispatchEvent(new CustomEvent('sidebar-toggle'))
         }}
       />
 
-      {/* Body: sidebar + main */}
       <div className="flex flex-1 overflow-hidden">
-        {/* Left Sidebar */}
         <Sidebar
           lang={lang}
           t={t}
@@ -53,7 +49,6 @@ export default function App() {
           onClose={() => setSidebarOpen(false)}
         />
 
-        {/* Main content */}
         <main className="flex-1 min-w-0 overflow-y-auto">
           <Routes>
             <Route path="/" element={<HomePage {...shared} />} />
