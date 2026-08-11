@@ -346,3 +346,164 @@ export function getOutputFilename(inputName, newExt) {
   const baseName = inputName.substring(0, lastDotIndex);
   return `${baseName}.${cleanExt}`;
 }
+
+/**
+ * 5. Rotate Image (90° increments)
+ * Rotates an image by 90, 180, or 270 degrees.
+ * 
+ * @param {File|Blob} file - The image file.
+ * @param {number} degrees - Rotation in degrees (90, 180, 270, -90, -180, -270).
+ * @returns {Promise<Blob>} Rotated image blob.
+ */
+export async function rotateImage(file, degrees) {
+  try {
+    const img = await loadImage(file);
+    const origW = img.naturalWidth || img.width;
+    const origH = img.naturalHeight || img.height;
+    
+    const normalized = ((degrees % 360) + 360) % 360;
+    const swap = normalized === 90 || normalized === 270;
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = swap ? origH : origW;
+    canvas.height = swap ? origW : origH;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Failed to obtain canvas 2D rendering context.');
+    
+    const format = file.type || 'image/png';
+    if (format === 'image/jpeg' || format === 'image/jpg') {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.rotate(normalized * Math.PI / 180);
+    ctx.drawImage(img, -origW / 2, -origH / 2);
+    
+    const quality = (format === 'image/jpeg' || format === 'image/jpg' || format === 'image/webp') ? 0.92 : undefined;
+    return await canvasToBlob(canvas, format, quality);
+  } catch (error) {
+    throw new Error(`rotateImage failed: ${error.message}`);
+  }
+}
+
+/**
+ * 6. Convert Image with Background Color
+ * Like convertImage but allows specifying a background fill color
+ * (useful for PNG→JPG where transparency needs a fill).
+ * 
+ * @param {File|Blob} file - Source image.
+ * @param {string} targetFormat - Target MIME type.
+ * @param {string} bgColor - CSS color string for background fill (e.g. '#FFFFFF', '#000000').
+ * @param {number} [quality=0.92] - Quality for lossy formats.
+ * @returns {Promise<Blob>} Converted blob.
+ */
+export async function convertImageWithBackground(file, targetFormat, bgColor, quality = 0.92) {
+  try {
+    const validFormats = ['image/jpeg', 'image/png', 'image/webp'];
+    if (!validFormats.includes(targetFormat)) {
+      throw new Error(`Unsupported target format: "${targetFormat}".`);
+    }
+    
+    const img = await loadImage(file);
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth || img.width;
+    canvas.height = img.naturalHeight || img.height;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Failed to obtain canvas 2D rendering context.');
+    
+    // Fill background if provided and target doesn't support transparency
+    if (bgColor && (targetFormat === 'image/jpeg' || bgColor !== 'transparent')) {
+      if (bgColor !== 'transparent') {
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+    
+    ctx.drawImage(img, 0, 0);
+    
+    const exportQuality = (targetFormat === 'image/jpeg' || targetFormat === 'image/webp') ? quality : undefined;
+    return await canvasToBlob(canvas, targetFormat, exportQuality);
+  } catch (error) {
+    throw new Error(`convertImageWithBackground failed: ${error.message}`);
+  }
+}
+
+/**
+ * 7. Crop and Rotate in one pass
+ * Crops a region from the image after applying rotation.
+ * 
+ * @param {File|Blob} file - Source image.
+ * @param {number} x - Crop X (in rotated image space).
+ * @param {number} y - Crop Y (in rotated image space).
+ * @param {number} width - Crop width.
+ * @param {number} height - Crop height.
+ * @param {number} [degrees=0] - Rotation to apply before cropping.
+ * @returns {Promise<Blob>} Cropped (and optionally rotated) blob.
+ */
+export async function cropAndRotate(file, x, y, width, height, degrees = 0) {
+  try {
+    const img = await loadImage(file);
+    const origW = img.naturalWidth || img.width;
+    const origH = img.naturalHeight || img.height;
+    
+    let sourceImg = img;
+    let srcW = origW;
+    let srcH = origH;
+    
+    // Apply rotation first if needed
+    const normalized = ((degrees % 360) + 360) % 360;
+    if (normalized !== 0) {
+      const swap = normalized === 90 || normalized === 270;
+      const rotCanvas = document.createElement('canvas');
+      rotCanvas.width = swap ? origH : origW;
+      rotCanvas.height = swap ? origW : origH;
+      const rotCtx = rotCanvas.getContext('2d');
+      
+      const format = file.type || 'image/png';
+      if (format === 'image/jpeg' || format === 'image/jpg') {
+        rotCtx.fillStyle = '#FFFFFF';
+        rotCtx.fillRect(0, 0, rotCanvas.width, rotCanvas.height);
+      }
+      
+      rotCtx.translate(rotCanvas.width / 2, rotCanvas.height / 2);
+      rotCtx.rotate(normalized * Math.PI / 180);
+      rotCtx.drawImage(img, -origW / 2, -origH / 2);
+      
+      // Convert rotated canvas back to image
+      const rotBlob = await canvasToBlob(rotCanvas, format, 0.92);
+      sourceImg = await loadImage(rotBlob);
+      srcW = sourceImg.naturalWidth || sourceImg.width;
+      srcH = sourceImg.naturalHeight || sourceImg.height;
+    }
+    
+    // Now crop
+    const cx = Math.max(0, Math.min(srcW - 1, Math.round(x)));
+    const cy = Math.max(0, Math.min(srcH - 1, Math.round(y)));
+    let cw = Math.max(1, Math.round(width));
+    let ch = Math.max(1, Math.round(height));
+    cw = Math.min(srcW - cx, cw);
+    ch = Math.min(srcH - cy, ch);
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = cw;
+    canvas.height = ch;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Failed to obtain canvas 2D rendering context.');
+    
+    const format = file.type || 'image/png';
+    if (format === 'image/jpeg' || format === 'image/jpg') {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, cw, ch);
+    }
+    
+    ctx.drawImage(sourceImg, cx, cy, cw, ch, 0, 0, cw, ch);
+    
+    const quality = (format === 'image/jpeg' || format === 'image/jpg' || format === 'image/webp') ? 0.92 : undefined;
+    return await canvasToBlob(canvas, format, quality);
+  } catch (error) {
+    throw new Error(`cropAndRotate failed: ${error.message}`);
+  }
+}

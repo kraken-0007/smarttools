@@ -1,4 +1,8 @@
 import { useSEO, useToolViews } from '../lib/seo'
+import {
+  ResizeImageEditor, CropImageEditor, CompressImageEditor,
+  ImageConvertEditor, ImageUploadZone,
+} from '../components/ImageEditor.jsx'
 import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { CheckCircle2, Wrench, HelpCircle, ChevronDown } from 'lucide-react'
@@ -12,7 +16,7 @@ import { getIcon } from '../lib/icons'
 import { FileUploader, ProcessButton, ResultDisplay, ErrorDisplay, useToolProcessor } from '../lib/processors/shared.jsx'
 
 /* Import real processors */
-import { compressImage, resizeImage, cropImage, convertImage, downloadBlob, getOutputFilename, formatFileSize } from '../lib/processors/image.js'
+import { downloadBlob, getOutputFilename, formatFileSize } from '../lib/processors/image.js'
 import { pdfToJpg, jpgToPdf, mergePDFs, splitPDF, compressPDF, pdfToWord, wordToPdf } from '../lib/processors/pdf.js'
 import { countWords, countCharacters, convertCase } from '../lib/processors/text.js'
 import { calculateAge, calculateBMI, calculatePercentage } from '../lib/processors/calculators.js'
@@ -247,215 +251,29 @@ function WordToPdfTool({ lang }) {
 /* ── Compress Image ── */
 function CompressImageTool({ lang }) {
   const [file, setFile] = useState(null)
-  const [quality, setQuality] = useState(60)
-  const { loading, results, error, process, reset } = useToolProcessor(async (input) => {
-    const blob = await compressImage(input.file, input.quality / 100)
-    const saved = Math.round((1 - blob.size / input.file.size) * 100)
-    return { blob, filename: getOutputFilename(input.file.name, 'jpg'), saved }
-  }, lang)
-
-  const handleReset = () => { setFile(null); reset() }
-
-  return (
-    <div className="space-y-4">
-      {!results && !error && (
-        <>
-          <FileUploader accept="image/jpeg,image/png,image/webp" onFiles={setFile} lang={lang} hint="JPG, PNG, WEBP" />
-          {file && (
-            <div className="space-y-3">
-              <div>
-                <label className="flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  <span>{lang === 'ar' ? 'جودة الضغط' : lang === 'fr' ? 'Qualité de compression' : 'Compression quality'}</span>
-                  <span className="text-blue-600 dark:text-blue-400 font-bold">{quality}%</span>
-                </label>
-                <input type="range" min="10" max="100" value={quality} onChange={e => setQuality(parseInt(e.target.value))} className="w-full accent-blue-600" />
-                <div className="flex justify-between text-xs text-gray-400 mt-1">
-                  <span>{lang === 'ar' ? 'أصغر حجم' : lang === 'fr' ? 'Plus petit' : 'Smallest'}</span>
-                  <span>{lang === 'ar' ? 'أفضل جودة' : lang === 'fr' ? 'Meilleure qualité' : 'Best quality'}</span>
-                </div>
-              </div>
-              <ProcessButton onClick={() => process({ file, quality })} loading={loading} label={lang === 'ar' ? 'ضغط الصورة' : lang === 'fr' ? 'Compresser' : 'Compress Image'} />
-            </div>
-          )}
-        </>
-      )}
-      {loading && <ProcessingIndicator />}
-      {error && <ErrorDisplay message={error} lang={lang} />}
-      {results && (
-        <div className="space-y-3 animate-fade-in">
-          <div className="flex items-center gap-2 p-3 rounded-xl bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900 text-green-700 dark:text-green-400 text-sm font-medium">
-            <CheckCircle2 className="w-4 h-4 shrink-0" />
-            {lang === 'ar' ? 'تم الضغط بنجاح!' : lang === 'fr' ? 'Compression réussie !' : 'Compression complete!'}
-            {results[0].saved > 0 && (
-              <span className="ms-1 text-xs">
-                ({formatFileSize(file?.size || 0)} → {formatFileSize(results[0].blob.size)}, -{results[0].saved}%)
-              </span>
-            )}
-          </div>
-          <ResultDisplay results={results} lang={lang} />
-        </div>
-      )}
-      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
-    </div>
-  )
+  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
+  return <CompressImageEditor file={file} lang={lang} onReset={() => setFile(null)} />
 }
 
 /* ── Resize Image ── */
 function ResizeImageTool({ lang }) {
   const [file, setFile] = useState(null)
-  const [width, setWidth] = useState(800)
-  const [height, setHeight] = useState(600)
-  const [maintainRatio, setMaintainRatio] = useState(true)
-  const origDims = useRef({ w: 0, h: 0 })
-
-  const handleFiles = (f) => {
-    setFile(f)
-    if (f) {
-      const img = new Image()
-      img.onload = () => { origDims.current = { w: img.naturalWidth, h: img.naturalHeight }; setWidth(img.naturalWidth); setHeight(img.naturalHeight) }
-      img.src = URL.createObjectURL(f)
-    }
-  }
-
-  const onWidthChange = (v) => {
-    setWidth(v)
-    if (maintainRatio && origDims.current.w > 0) {
-      setHeight(Math.round(v * origDims.current.h / origDims.current.w))
-    }
-  }
-  const onHeightChange = (v) => {
-    setHeight(v)
-    if (maintainRatio && origDims.current.h > 0) {
-      setWidth(Math.round(v * origDims.current.w / origDims.current.h))
-    }
-  }
-
-  const { loading, results, error, process, reset } = useToolProcessor(async (input) => {
-    const blob = await resizeImage(input.file, input.width, input.height)
-    return { blob, filename: getOutputFilename(input.file.name, 'png') }
-  }, lang)
-
-  const handleReset = () => { setFile(null); reset() }
-
-  return (
-    <div className="space-y-4">
-      {!results && !error && (
-        <>
-          <FileUploader accept="image/jpeg,image/png,image/webp" onFiles={handleFiles} lang={lang} hint="JPG, PNG, WEBP" />
-          {file && (
-            <div className="space-y-3">
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-medium text-gray-500 mb-1.5">Width (px)</label>
-                  <input type="number" value={width} onChange={e => onWidthChange(parseInt(e.target.value) || 0)} className="input-field" min="1" />
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-gray-500 mb-1.5">Height (px)</label>
-                  <input type="number" value={height} onChange={e => onHeightChange(parseInt(e.target.value) || 0)} className="input-field" min="1" />
-                </div>
-              </div>
-              <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
-                <input type="checkbox" checked={maintainRatio} onChange={e => setMaintainRatio(e.target.checked)} className="accent-blue-600" />
-                {lang === 'ar' ? 'الحفاظ على نسبة الأبعاد' : lang === 'fr' ? 'Maintenir le ratio' : 'Maintain aspect ratio'}
-              </label>
-              <ProcessButton onClick={() => process({ file, width, height })} loading={loading} label={lang === 'ar' ? 'تغيير الحجم' : lang === 'fr' ? 'Redimensionner' : 'Resize Image'} />
-            </div>
-          )}
-        </>
-      )}
-      {loading && <ProcessingIndicator />}
-      {error && <ErrorDisplay message={error} lang={lang} />}
-      {results && <ResultDisplay results={results} lang={lang} />}
-      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
-    </div>
-  )
+  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
+  return <ResizeImageEditor file={file} lang={lang} onReset={() => setFile(null)} />
 }
 
 /* ── Crop Image ── */
 function CropImageTool({ lang }) {
   const [file, setFile] = useState(null)
-  const [cropSize, setCropSize] = useState(50) // percentage of original
-  const { loading, results, error, process, reset } = useToolProcessor(async (input) => {
-    // Crop center portion based on percentage
-    const img = await loadImage(input.file)
-    const cw = Math.round(img.naturalWidth * input.cropSize / 100)
-    const ch = Math.round(img.naturalHeight * input.cropSize / 100)
-    const x = Math.round((img.naturalWidth - cw) / 2)
-    const y = Math.round((img.naturalHeight - ch) / 2)
-    const blob = await cropImage(input.file, x, y, cw, ch)
-    return { blob, filename: getOutputFilename(input.file.name, 'png') }
-  }, lang)
-
-  const loadImage = (file) => new Promise((resolve, reject) => {
-    const img = new Image()
-    img.onload = () => resolve(img)
-    img.onerror = reject
-    img.src = URL.createObjectURL(file)
-  })
-
-  const handleReset = () => { setFile(null); reset() }
-
-  return (
-    <div className="space-y-4">
-      {!results && !error && (
-        <>
-          <FileUploader accept="image/jpeg,image/png,image/webp" onFiles={setFile} lang={lang} hint="JPG, PNG, WEBP · Crops center portion" />
-          {file && (
-            <div className="space-y-3">
-              <div>
-                <label className="flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  <span>{lang === 'ar' ? 'حجم القص' : lang === 'fr' ? 'Taille du recadrage' : 'Crop size'}</span>
-                  <span className="text-blue-600 dark:text-blue-400 font-bold">{cropSize}%</span>
-                </label>
-                <input type="range" min="10" max="100" value={cropSize} onChange={e => setCropSize(parseInt(e.target.value))} className="w-full accent-blue-600" />
-                <p className="text-xs text-gray-400 mt-1">{lang === 'ar' ? 'يقص المنطقة المركزية من الصورة' : lang === 'fr' ? 'Recadre la partie centrale de l\'image' : 'Crops the center portion of the image'}</p>
-              </div>
-              <ProcessButton onClick={() => process({ file, cropSize })} loading={loading} label={lang === 'ar' ? 'قص الصورة' : lang === 'fr' ? 'Recadrer' : 'Crop Image'} />
-            </div>
-          )}
-        </>
-      )}
-      {loading && <ProcessingIndicator />}
-      {error && <ErrorDisplay message={error} lang={lang} />}
-      {results && <ResultDisplay results={results} lang={lang} />}
-      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
-    </div>
-  )
+  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
+  return <CropImageEditor file={file} lang={lang} onReset={() => setFile(null)} />
 }
 
 /* ── Image Format Converter (shared for JPG→PNG, PNG→JPG, WEBP→JPG) ── */
-function ImageConvertTool({ lang, targetFormat, targetExt, outputMime }) {
+function ImageConvertTool({ lang, targetExt, outputMime }) {
   const [file, setFile] = useState(null)
-  const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
-    const blob = await convertImage(f, outputMime)
-    return { blob, filename: getOutputFilename(f.name, targetExt) }
-  }, lang)
-
-  const handleReset = () => { setFile(null); reset() }
-
-  const labels = {
-    'jpg-to-png': { en: 'Convert to PNG', fr: 'Convertir en PNG', ar: 'تحويل إلى PNG' },
-    'png-to-jpg': { en: 'Convert to JPG', fr: 'Convertir en JPG', ar: 'تحويل إلى JPG' },
-    'webp-to-jpg': { en: 'Convert to JPG', fr: 'Convertir en JPG', ar: 'تحويل إلى JPG' },
-  }
-
-  const labelKey = `${targetExt === 'png' ? 'jpg-to-png' : 'webp-to-jpg'}`
-  const btnLabel = lang === 'ar' ? (targetExt === 'png' ? 'تحويل إلى PNG' : 'تحويل إلى JPG') : lang === 'fr' ? (targetExt === 'png' ? 'Convertir en PNG' : 'Convertir en JPG') : (targetExt === 'png' ? 'Convert to PNG' : 'Convert to JPG')
-
-  return (
-    <div className="space-y-4">
-      {!results && !error && (
-        <>
-          <FileUploader accept={targetExt === 'png' ? 'image/jpeg' : targetExt === 'jpg' ? 'image/png,image/webp' : 'image/webp'} onFiles={setFile} lang={lang} hint={`Input: ${targetExt === 'png' ? 'JPG' : targetExt === 'jpg' ? 'PNG, WEBP' : 'WEBP'}`} />
-          {file && <ProcessButton onClick={() => process(file)} loading={loading} label={btnLabel} />}
-        </>
-      )}
-      {loading && <ProcessingIndicator />}
-      {error && <ErrorDisplay message={error} lang={lang} />}
-      {results && <ResultDisplay results={results} lang={lang} />}
-      {(results || error) && <button onClick={handleReset} className="text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium">{lang === 'ar' ? 'ابدأ من جديد' : lang === 'fr' ? 'Recommencer' : 'Start over'}</button>}
-    </div>
-  )
+  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
+  return <ImageConvertEditor file={file} lang={lang} targetExt={targetExt} outputMime={outputMime} onReset={() => setFile(null)} />
 }
 
 /* ═══════════════════════════════════════════════════
