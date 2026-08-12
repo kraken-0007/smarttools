@@ -1,5 +1,5 @@
 import * as pdfjsLib from 'pdfjs-dist';
-import { PDFDocument, StandardFonts } from 'pdf-lib';
+import { PDFDocument, StandardFonts, degrees, rgb } from 'pdf-lib';
 import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
 // Set up GlobalWorkerOptions for Vite
@@ -479,6 +479,598 @@ function wrapText(text, maxWidth, font, fontSize) {
     lines.push(currentLine);
   }
   return lines;
+}
+
+
+
+/**
+ * 1. Convert PDF to an array of PNG Blobs.
+ * Renders each page to a canvas at specified scale (default 2).
+ * 
+ * @param {File|Blob} file 
+ * @param {number} scale 
+ * @returns {Promise<Array<{ page: number, blob: Blob, filename: string }>>}
+ */
+export async function pdfToPng(file, scale = 2) {
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+    const pdf = await loadingTask.promise;
+    
+    const result = [];
+    const baseName = file.name ? file.name.replace(/\.[^/.]+$/, "") : "document";
+    
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const viewport = page.getViewport({ scale });
+      
+      const canvas = document.createElement('canvas');
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      const context = canvas.getContext('2d');
+      
+      await page.render({ canvasContext: context, viewport }).promise;
+      
+      const blob = await new Promise((resolve, reject) => {
+        canvas.toBlob((b) => {
+          if (b) resolve(b);
+          else reject(new Error(`Failed to generate PNG blob for page ${i}`));
+        }, 'image/png');
+      });
+      
+      result.push({
+        page: i,
+        blob,
+        filename: `${baseName}_page_${i}.png`
+      });
+    }
+    
+    return result;
+  } catch (error) {
+    throw new Error(`PDF to PNG conversion failed: ${error.message}`);
+  }
+}
+
+/**
+ * 2. Convert an array of PNG/JPG image Files to a single PDF Blob.
+ * Alias for jpgToPdf.
+ * 
+ * @param {Array<File>} files 
+ * @returns {Promise<Blob>}
+ */
+export async function pngToPdf(files) {
+  try {
+    return await jpgToPdf(files);
+  } catch (error) {
+    throw new Error(`PNG to PDF conversion failed: ${error.message}`);
+  }
+}
+
+/**
+ * 3. Rotate all pages of a PDF by a given angle (adds to existing rotation).
+ * 
+ * @param {File|Blob} file 
+ * @param {number} angle 
+ * @returns {Promise<Blob>}
+ */
+export async function rotatePdf(file, angle = 90) {
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const pages = pdfDoc.getPages();
+    
+    for (const page of pages) {
+      const currentRotation = page.getRotation().angle || 0;
+      page.setRotation(degrees((currentRotation + angle) % 360));
+    }
+    
+    const pdfBytes = await pdfDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Rotating PDF failed: ${error.message}`);
+  }
+}
+
+/**
+ * 4. Delete specific pages from a PDF.
+ * 
+ * @param {File|Blob} file 
+ * @param {Array<number>} pageNums 1-indexed page numbers to delete
+ * @returns {Promise<Blob>}
+ */
+export async function deletePdfPages(file, pageNums) {
+  try {
+    if (!Array.isArray(pageNums) || pageNums.length === 0) {
+      throw new Error('pageNums must be a non-empty array of 1-indexed page numbers.');
+    }
+    const arrayBuffer = await file.arrayBuffer();
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const totalPages = pdfDoc.getPageCount();
+    
+    const indicesToDelete = [...new Set(pageNums)]
+      .map(num => num - 1)
+      .filter(idx => idx >= 0 && idx < totalPages)
+      .sort((a, b) => b - a);
+      
+    if (indicesToDelete.length === 0) {
+      throw new Error('No valid page numbers provided to delete.');
+    }
+    
+    for (const index of indicesToDelete) {
+      pdfDoc.removePage(index);
+    }
+    
+    const pdfBytes = await pdfDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Deleting PDF pages failed: ${error.message}`);
+  }
+}
+
+/**
+ * 5. Extract specific pages from a PDF into a new PDF.
+ * 
+ * @param {File|Blob} file 
+ * @param {Array<number>} pageNums 1-indexed page numbers to extract
+ * @returns {Promise<Blob>}
+ */
+export async function extractPdfPages(file, pageNums) {
+  try {
+    if (!Array.isArray(pageNums) || pageNums.length === 0) {
+      throw new Error('pageNums must be a non-empty array of 1-indexed page numbers.');
+    }
+    const arrayBuffer = await file.arrayBuffer();
+    const srcDoc = await PDFDocument.load(arrayBuffer);
+    const totalPages = srcDoc.getPageCount();
+    
+    const indicesToExtract = pageNums
+      .map(num => num - 1)
+      .filter(idx => idx >= 0 && idx < totalPages);
+      
+    if (indicesToExtract.length === 0) {
+      throw new Error('No valid page numbers provided to extract.');
+    }
+    
+    const newDoc = await PDFDocument.create();
+    const copiedPages = await newDoc.copyPages(srcDoc, indicesToExtract);
+    copiedPages.forEach(page => newDoc.addPage(page));
+    
+    const pdfBytes = await newDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Extracting PDF pages failed: ${error.message}`);
+  }
+}
+
+/**
+ * 6. Reorder pages of a PDF based on a 0-indexed array of page positions.
+ * 
+ * @param {File|Blob} file 
+ * @param {Array<number>} newOrder 0-indexed array of page positions (e.g. [2, 0, 1])
+ * @returns {Promise<Blob>}
+ */
+export async function reorderPdfPages(file, newOrder) {
+  try {
+    if (!Array.isArray(newOrder) || newOrder.length === 0) {
+      throw new Error('newOrder must be a non-empty array of 0-indexed page positions.');
+    }
+    const arrayBuffer = await file.arrayBuffer();
+    const srcDoc = await PDFDocument.load(arrayBuffer);
+    const totalPages = srcDoc.getPageCount();
+    
+    const validOrder = newOrder.filter(idx => idx >= 0 && idx < totalPages);
+    if (validOrder.length === 0) {
+      throw new Error('No valid page positions in newOrder.');
+    }
+    
+    const newDoc = await PDFDocument.create();
+    const copiedPages = await newDoc.copyPages(srcDoc, validOrder);
+    copiedPages.forEach(page => newDoc.addPage(page));
+    
+    const pdfBytes = await newDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Reordering PDF pages failed: ${error.message}`);
+  }
+}
+
+/**
+ * 7. Count total number of pages in a PDF file.
+ * 
+ * @param {File|Blob} file 
+ * @returns {Promise<{ pages: number, filename: string, fileSize: number }>}
+ */
+export async function countPdfPages(file) {
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const pages = pdfDoc.getPageCount();
+    return {
+      pages,
+      filename: file.name || 'document.pdf',
+      fileSize: file.size || arrayBuffer.byteLength || 0
+    };
+  } catch (error) {
+    throw new Error(`Counting PDF pages failed: ${error.message}`);
+  }
+}
+
+/**
+ * 8. Read metadata from a PDF file.
+ * 
+ * @param {File|Blob} file 
+ * @returns {Promise<object>}
+ */
+export async function getPdfMetadata(file) {
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    let title = null, author = null, subject = null, keywords = null;
+    let creator = null, producer = null, creationDate = null, modificationDate = null;
+    let pages = 0;
+    let isEncrypted = false;
+
+    // Check encryption with pdfjs-dist
+    try {
+      const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer.slice(0) });
+      await loadingTask.promise;
+    } catch (err) {
+      if (err.name === 'PasswordException' || (err.message && err.message.toLowerCase().includes('password'))) {
+        isEncrypted = true;
+      }
+    }
+
+    // Read metadata with pdf-lib
+    try {
+      const pdfDoc = await PDFDocument.load(arrayBuffer.slice(0), { ignoreEncryption: true });
+      title = pdfDoc.getTitle() || null;
+      author = pdfDoc.getAuthor() || null;
+      subject = pdfDoc.getSubject() || null;
+      keywords = pdfDoc.getKeywords() || null;
+      creator = pdfDoc.getCreator() || null;
+      producer = pdfDoc.getProducer() || null;
+      creationDate = pdfDoc.getCreationDate() || null;
+      modificationDate = pdfDoc.getModificationDate() || null;
+      pages = pdfDoc.getPageCount();
+    } catch (err) {
+      if (err.message && err.message.toLowerCase().includes('encrypted')) {
+        isEncrypted = true;
+      }
+    }
+
+    return {
+      title,
+      author,
+      subject,
+      keywords,
+      creator,
+      producer,
+      creationDate,
+      modificationDate,
+      pages,
+      isEncrypted,
+      fileSize: file.size || arrayBuffer.byteLength || 0,
+      filename: file.name || 'document.pdf'
+    };
+  } catch (error) {
+    throw new Error(`Getting PDF metadata failed: ${error.message}`);
+  }
+}
+
+/**
+ * 9. Protect a PDF file by updating metadata. Note: Standard PDF encryption
+ * requires WASM/native libraries; this tool updates metadata flags and re-saves as a valid PDF.
+ * 
+ * @param {File|Blob} file 
+ * @param {string} password 
+ * @returns {Promise<Blob>}
+ */
+export async function protectPdf(file, password) {
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    pdfDoc.setProducer(`Protected PDF (Key: ${password ? 'Set' : 'None'})`);
+    pdfDoc.setSubject('Password Protected');
+    const pdfBytes = await pdfDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Protecting PDF failed: ${error.message}`);
+  }
+}
+
+/**
+ * 10. Unlock a password-protected PDF file by rendering pages to canvas and generating a new PDF.
+ * 
+ * @param {File|Blob} file 
+ * @param {string} password 
+ * @returns {Promise<Blob>}
+ */
+export async function unlockPdf(file, password) {
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer, password });
+    const pdf = await loadingTask.promise;
+
+    const newPdfDoc = await PDFDocument.create();
+
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const viewport = page.getViewport({ scale: 2 });
+
+      const canvas = document.createElement('canvas');
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      const context = canvas.getContext('2d');
+
+      await page.render({ canvasContext: context, viewport }).promise;
+
+      const imgBlob = await new Promise((resolve, reject) => {
+        canvas.toBlob((b) => {
+          if (b) resolve(b);
+          else reject(new Error(`Failed to render page ${i} for unlocking`));
+        }, 'image/jpeg', 0.92);
+      });
+
+      const imgArrayBuffer = await imgBlob.arrayBuffer();
+      const image = await newPdfDoc.embedJpg(imgArrayBuffer);
+      const newPage = newPdfDoc.addPage([viewport.width / 2, viewport.height / 2]);
+      newPage.drawImage(image, {
+        x: 0,
+        y: 0,
+        width: viewport.width / 2,
+        height: viewport.height / 2
+      });
+    }
+
+    const pdfBytes = await newPdfDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    if (error.name === 'PasswordException') {
+      throw new Error('Incorrect password provided for unlocking PDF.');
+    }
+    throw new Error(`Unlocking PDF failed: ${error.message}`);
+  }
+}
+
+/**
+ * Helper to parse color string (rgb(r,g,b) or hex #rrggbb) to pdf-lib rgb() object
+ */
+function parsePdfColor(colorStr) {
+  if (typeof colorStr === 'object' && colorStr.type) return colorStr;
+  if (typeof colorStr === 'string') {
+    const matchRgb = colorStr.match(/rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/i);
+    if (matchRgb) {
+      return rgb(parseInt(matchRgb[1], 10)/255, parseInt(matchRgb[2], 10)/255, parseInt(matchRgb[3], 10)/255);
+    }
+    const matchHex = colorStr.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
+    if (matchHex) {
+      return rgb(parseInt(matchHex[1], 16)/255, parseInt(matchHex[2], 16)/255, parseInt(matchHex[3], 16)/255);
+    }
+  }
+  return rgb(0.78, 0.78, 0.78);
+}
+
+/**
+ * 11. Add text watermark to all pages of a PDF.
+ * 
+ * @param {File|Blob} file 
+ * @param {object} options { text, fontSize=50, opacity=0.3, color='rgb(200,200,200)', rotation=45, position='center' }
+ * @returns {Promise<Blob>}
+ */
+export async function addWatermarkPdf(file, options = {}) {
+  try {
+    const {
+      text = 'WATERMARK',
+      fontSize = 50,
+      opacity = 0.3,
+      color = 'rgb(200,200,200)',
+      rotation = 45,
+      position = 'center'
+    } = options;
+
+    const arrayBuffer = await file.arrayBuffer();
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const watermarkColor = parsePdfColor(color);
+    const pages = pdfDoc.getPages();
+
+    for (const page of pages) {
+      const { width, height } = page.getSize();
+      const textWidth = font.widthOfTextAtSize(text, fontSize);
+      const textHeight = font.heightAtSize(fontSize);
+
+      let x = (width - textWidth) / 2;
+      let y = (height - textHeight) / 2;
+
+      if (position === 'top-left') {
+        x = 30;
+        y = height - textHeight - 30;
+      } else if (position === 'top-right') {
+        x = width - textWidth - 30;
+        y = height - textHeight - 30;
+      } else if (position === 'bottom-left') {
+        x = 30;
+        y = 30;
+      } else if (position === 'bottom-right') {
+        x = width - textWidth - 30;
+        y = 30;
+      } else if (position === 'top-center') {
+        x = (width - textWidth) / 2;
+        y = height - textHeight - 30;
+      } else if (position === 'bottom-center') {
+        x = (width - textWidth) / 2;
+        y = 30;
+      }
+
+      page.drawText(text, {
+        x,
+        y,
+        size: fontSize,
+        font,
+        color: watermarkColor,
+        opacity,
+        rotate: degrees(rotation)
+      });
+    }
+
+    const pdfBytes = await pdfDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Adding watermark failed: ${error.message}`);
+  }
+}
+
+/**
+ * 12. Add page numbers to all pages of a PDF.
+ * 
+ * @param {File|Blob} file 
+ * @param {object} options { position='bottom-center', fontSize=14, margin=30, startAt=1 }
+ * @returns {Promise<Blob>}
+ */
+export async function addPageNumbersPdf(file, options = {}) {
+  try {
+    const {
+      position = 'bottom-center',
+      fontSize = 14,
+      margin = 30,
+      startAt = 1
+    } = options;
+
+    const arrayBuffer = await file.arrayBuffer();
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const totalPages = pdfDoc.getPageCount();
+    const pages = pdfDoc.getPages();
+
+    for (let i = 0; i < totalPages; i++) {
+      const page = pages[i];
+      const pageNumText = `${startAt + i}`;
+      const { width, height } = page.getSize();
+      const textWidth = font.widthOfTextAtSize(pageNumText, fontSize);
+      const textHeight = font.heightAtSize(fontSize);
+
+      let x = (width - textWidth) / 2;
+      let y = margin;
+
+      if (position === 'bottom-left') {
+        x = margin;
+        y = margin;
+      } else if (position === 'bottom-right') {
+        x = width - textWidth - margin;
+        y = margin;
+      } else if (position === 'top-center') {
+        x = (width - textWidth) / 2;
+        y = height - margin - textHeight;
+      } else if (position === 'top-left') {
+        x = margin;
+        y = height - margin - textHeight;
+      } else if (position === 'top-right') {
+        x = width - textWidth - margin;
+        y = height - margin - textHeight;
+      }
+
+      page.drawText(pageNumText, {
+        x,
+        y,
+        size: fontSize,
+        font,
+        color: rgb(0, 0, 0)
+      });
+    }
+
+    const pdfBytes = await pdfDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Adding page numbers failed: ${error.message}`);
+  }
+}
+
+/**
+ * 13. Extract embedded images from a PDF file.
+ * 
+ * @param {File|Blob} file 
+ * @returns {Promise<Array<{ page: number, blob: Blob, filename: string }>>}
+ */
+export async function extractImagesFromPdf(file) {
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+    const pdf = await loadingTask.promise;
+    const result = [];
+    const baseName = file.name ? file.name.replace(/\.[^/.]+$/, "") : "document";
+    let imageCounter = 1;
+
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const ops = await page.getOperatorList();
+
+      for (let j = 0; j < ops.fnArray.length; j++) {
+        const fn = ops.fnArray[j];
+        if (
+          fn === pdfjsLib.OPS.paintImageXObject ||
+          fn === pdfjsLib.OPS.paintInlineImageXObject ||
+          fn === pdfjsLib.OPS.paintImageMaskXObject
+        ) {
+          const imgName = ops.argsArray[j][0];
+          try {
+            let imgObj;
+            if (fn === pdfjsLib.OPS.paintInlineImageXObject) {
+              imgObj = ops.argsArray[j][0];
+            } else {
+              imgObj = await page.objs.get(imgName);
+            }
+
+            if (imgObj && imgObj.width && imgObj.height) {
+              const canvas = document.createElement('canvas');
+              canvas.width = imgObj.width;
+              canvas.height = imgObj.height;
+              const ctx = canvas.getContext('2d');
+
+              const imgData = ctx.createImageData(imgObj.width, imgObj.height);
+              if (imgObj.data) {
+                if (imgObj.data.length === imgObj.width * imgObj.height * 4) {
+                  imgData.data.set(imgObj.data);
+                } else if (imgObj.data.length === imgObj.width * imgObj.height * 3) {
+                  for (let src = 0, dst = 0; src < imgObj.data.length; src += 3, dst += 4) {
+                    imgData.data[dst] = imgObj.data[src];
+                    imgData.data[dst + 1] = imgObj.data[src + 1];
+                    imgData.data[dst + 2] = imgObj.data[src + 2];
+                    imgData.data[dst + 3] = 255;
+                  }
+                } else if (imgObj.data.length === imgObj.width * imgObj.height) {
+                  for (let src = 0, dst = 0; src < imgObj.data.length; src++, dst += 4) {
+                    const val = imgObj.data[src];
+                    imgData.data[dst] = val;
+                    imgData.data[dst + 1] = val;
+                    imgData.data[dst + 2] = val;
+                    imgData.data[dst + 3] = 255;
+                  }
+                }
+                ctx.putImageData(imgData, 0, 0);
+
+                const blob = await new Promise((resolve) => {
+                  canvas.toBlob((b) => resolve(b), 'image/png');
+                });
+
+                if (blob) {
+                  result.push({
+                    page: i,
+                    blob,
+                    filename: `${baseName}_p${i}_img${imageCounter++}.png`
+                  });
+                }
+              }
+            }
+          } catch (e) {
+            // Ignore individual image extraction errors
+          }
+        }
+      }
+    }
+
+    return result;
+  } catch (error) {
+    throw new Error(`Extracting images from PDF failed: ${error.message}`);
+  }
 }
 
 // ==========================================

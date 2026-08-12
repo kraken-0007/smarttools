@@ -3,703 +3,782 @@
     "id": "pdf-to-word",
     "slug": "pdf-to-word",
     "categoryId": "pdf-tools",
-    "icon": "FileText",
-    "type": "file-pdf",
-    "formats": "PDF",
-    "featured": true,
     "name": {
       "en": "PDF to Word",
       "fr": "PDF vers Word",
-      "ar": "تحويل PDF إلى Word"
+      "ar": "PDF إلى Word"
     },
     "description": {
-      "en": "Convert PDF files to editable Word documents instantly.",
-      "fr": "Convertissez vos PDF en documents Word modifiables.",
-      "ar": "حوّل ملفات PDF إلى مستندات Word قابلة للتحرير."
+      "en": "Convert PDF documents to editable Word files",
+      "fr": "Convertir des PDF en fichiers Word modifiables",
+      "ar": "تحويل مستندات PDF إلى ملفات Word قابلة للتحرير"
     },
-    "howTo": {
-      "en": [
-        "Upload your PDF file",
-        "Click Convert",
-        "Download your Word document"
-      ],
-      "fr": [
-        "Téléchargez votre PDF",
-        "Cliquez sur Convertir",
-        "Téléchargez le Word"
-      ],
-      "ar": [
-        "ارفع ملف PDF",
-        "انقر على تحويل",
-        "حمّل مستند Word"
-      ]
-    },
-    "created_at": "2026-07-21"
+    "icon": "FileType",
+    "created_at": "2026-07-24"
   },
   {
     "id": "word-to-pdf",
     "slug": "word-to-pdf",
     "categoryId": "pdf-tools",
-    "icon": "FilePlus",
-    "type": "file-doc",
-    "formats": "DOC, DOCX",
-    "featured": false,
     "name": {
       "en": "Word to PDF",
       "fr": "Word vers PDF",
-      "ar": "تحويل Word إلى PDF"
+      "ar": "Word إلى PDF"
     },
     "description": {
-      "en": "Convert Word documents to PDF with perfect formatting.",
-      "fr": "Convertissez Word en PDF avec mise en forme parfaite.",
-      "ar": "حوّل مستندات Word إلى PDF مع الحفاظ على التنسيق."
+      "en": "Convert Word documents to PDF format",
+      "fr": "Convertir des documents Word en PDF",
+      "ar": "تحويل مستندات Word إلى صيغة PDF"
     },
-    "howTo": {
-      "en": [
-        "Upload your Word file",
-        "Click Convert",
-        "Download your PDF"
-      ],
-      "fr": [
-        "Téléchargez votre Word",
-        "Cliquez sur Convertir",
-        "Téléchargez le PDF"
-      ],
-      "ar": [
-        "ارفع ملف Word",
-        "انقر على تحويل",
-        "حمّل ملف PDF"
-      ]
-    },
-    "created_at": "2026-07-21"
+    "icon": "FileText",
+    "created_at": "2026-07-24"
   },
   {
     "id": "pdf-to-jpg",
     "slug": "pdf-to-jpg",
     "categoryId": "pdf-tools",
-    "icon": "FileImage",
-    "type": "file-pdf",
-    "formats": "PDF",
-    "featured": false,
     "name": {
       "en": "PDF to JPG",
       "fr": "PDF vers JPG",
-      "ar": "تحويل PDF إلى JPG"
+      "ar": "PDF إلى JPG"
     },
     "description": {
-      "en": "Extract pages from PDF as JPG images.",
-      "fr": "Extrayez les pages d'un PDF en images JPG.",
-      "ar": "استخرج صفحات PDF كصور JPG."
+      "en": "Convert PDF pages to JPG images",
+      "fr": "Convertir des pages PDF en images JPG",
+      "ar": "تحويل صفحات PDF إلى صور JPG"
     },
-    "howTo": {
-      "en": [
-        "Upload your PDF",
-        "Click Convert",
-        "Download JPG images"
-      ],
-      "fr": [
-        "Téléchargez votre PDF",
-        "Cliquez sur Convertir",
-        "Téléchargez les JPG"
-      ],
-      "ar": [
-        "ارفع ملف PDF",
-        "انقر على تحويل",
-        "حمّل صور JPG"
-      ]
+    "icon": "Image",
+    "created_at": "2026-07-24"
+  },
+  {
+    "id": "pdf-to-png",
+    "slug": "pdf-to-png",
+    "categoryId": "pdf-tools",
+    "name": {
+      "en": "PDF to PNG",
+      "fr": "PDF vers PNG",
+      "ar": "PDF إلى PNG"
     },
-    "created_at": "2026-07-21"
+    "description": {
+      "en": "Convert PDF pages to PNG images",
+      "fr": "Convertir des pages PDF en images PNG",
+      "ar": "تحويل صفحات PDF إلى صور PNG"
+    },
+    "icon": "Image",
+    "created_at": "2026-08-12"
   },
   {
     "id": "jpg-to-pdf",
     "slug": "jpg-to-pdf",
     "categoryId": "pdf-tools",
-    "icon": "FileText",
-    "type": "file-image",
-    "formats": "JPG, PNG",
-    "featured": false,
     "name": {
       "en": "JPG to PDF",
       "fr": "JPG vers PDF",
-      "ar": "تحويل JPG إلى PDF"
+      "ar": "JPG إلى PDF"
     },
     "description": {
-      "en": "Combine JPG images into a single PDF document.",
-      "fr": "Combinez des images JPG en un seul PDF.",
-      "ar": "اجمع صور JPG في ملف PDF واحد."
+      "en": "Convert JPG images to a single PDF",
+      "fr": "Convertir des images JPG en un seul PDF",
+      "ar": "تحويل صور JPG إلى ملف PDF واحد"
     },
-    "howTo": {
-      "en": [
-        "Upload your images",
-        "Click Convert",
-        "Download your PDF"
-      ],
-      "fr": [
-        "Téléchargez vos images",
-        "Cliquez sur Convertir",
-        "Téléchargez le PDF"
-      ],
-      "ar": [
-        "ارفع صورك",
-        "انقر على تحويل",
-        "حمّل ملف PDF"
-      ]
+    "icon": "FileText",
+    "created_at": "2026-07-24"
+  },
+  {
+    "id": "png-to-pdf",
+    "slug": "png-to-pdf",
+    "categoryId": "pdf-tools",
+    "name": {
+      "en": "PNG to PDF",
+      "fr": "PNG vers PDF",
+      "ar": "PNG إلى PDF"
     },
-    "created_at": "2026-07-21"
+    "description": {
+      "en": "Convert PNG images to a single PDF",
+      "fr": "Convertir des images PNG en un seul PDF",
+      "ar": "تحويل صور PNG إلى ملف PDF واحد"
+    },
+    "icon": "FileText",
+    "created_at": "2026-08-12"
   },
   {
     "id": "merge-pdf",
     "slug": "merge-pdf",
     "categoryId": "pdf-tools",
-    "icon": "Files",
-    "type": "file-pdf",
-    "formats": "PDF",
-    "featured": true,
     "name": {
       "en": "Merge PDF",
       "fr": "Fusionner PDF",
       "ar": "دمج PDF"
     },
     "description": {
-      "en": "Combine multiple PDF files into one document.",
-      "fr": "Fusionnez plusieurs PDF en un seul document.",
-      "ar": "ادمج عدة ملفات PDF في مستند واحد."
+      "en": "Combine multiple PDF files into one",
+      "fr": "Combiner plusieurs fichiers PDF en un seul",
+      "ar": "دمج ملفات PDF متعددة في ملف واحد"
     },
-    "howTo": {
-      "en": [
-        "Upload multiple PDFs",
-        "Arrange order",
-        "Download merged PDF"
-      ],
-      "fr": [
-        "Téléchargez plusieurs PDF",
-        "Réorganisez",
-        "Téléchargez le PDF fusionné"
-      ],
-      "ar": [
-        "ارفع عدة ملفات PDF",
-        "رتب الترتيب",
-        "حمّل الملف المدمج"
-      ]
-    },
-    "created_at": "2026-07-21"
+    "icon": "Combine",
+    "created_at": "2026-07-24"
   },
   {
     "id": "split-pdf",
     "slug": "split-pdf",
     "categoryId": "pdf-tools",
-    "icon": "Scissors",
-    "type": "file-pdf",
-    "formats": "PDF",
-    "featured": false,
     "name": {
       "en": "Split PDF",
       "fr": "Diviser PDF",
       "ar": "تقسيم PDF"
     },
     "description": {
-      "en": "Extract or split PDF pages into separate files.",
-      "fr": "Extrayez ou divisez les pages d'un PDF.",
-      "ar": "استخرج أو قسم صفحات PDF إلى ملفات منفصلة."
+      "en": "Split a PDF into separate pages or ranges",
+      "fr": "Diviser un PDF en pages ou plages séparées",
+      "ar": "تقسيم PDF إلى صفحات أو نطاقات منفصلة"
     },
-    "howTo": {
-      "en": [
-        "Upload your PDF",
-        "Select pages to extract",
-        "Download split files"
-      ],
-      "fr": [
-        "Téléchargez votre PDF",
-        "Sélectionnez les pages",
-        "Téléchargez"
-      ],
-      "ar": [
-        "ارفع ملف PDF",
-        "اختر الصفحات",
-        "حمّل الملفات"
-      ]
-    },
-    "created_at": "2026-07-21"
+    "icon": "Scissors",
+    "created_at": "2026-07-24"
   },
   {
     "id": "compress-pdf",
     "slug": "compress-pdf",
     "categoryId": "pdf-tools",
-    "icon": "Minimize2",
-    "type": "file-pdf",
-    "formats": "PDF",
-    "featured": false,
     "name": {
       "en": "Compress PDF",
       "fr": "Compresser PDF",
       "ar": "ضغط PDF"
     },
     "description": {
-      "en": "Reduce PDF file size without losing quality.",
-      "fr": "Réduisez la taille de vos PDF sans perte de qualité.",
-      "ar": "قلّل حجم ملفات PDF دون فقدان الجودة."
+      "en": "Reduce PDF file size while maintaining quality",
+      "fr": "Réduire la taille du fichier PDF",
+      "ar": "تقليل حجم ملف PDF مع الحفاظ على الجودة"
     },
-    "howTo": {
-      "en": [
-        "Upload your PDF",
-        "Choose compression level",
-        "Download compressed PDF"
-      ],
-      "fr": [
-        "Téléchargez votre PDF",
-        "Choisissez le niveau",
-        "Téléchargez"
-      ],
-      "ar": [
-        "ارفع ملف PDF",
-        "اختر مستوى الضغط",
-        "حمّل الملف"
-      ]
+    "icon": "Archive",
+    "created_at": "2026-07-24"
+  },
+  {
+    "id": "rotate-pdf",
+    "slug": "rotate-pdf",
+    "categoryId": "pdf-tools",
+    "name": {
+      "en": "Rotate PDF",
+      "fr": "Pivoter PDF",
+      "ar": "تدوير PDF"
     },
-    "created_at": "2026-07-21"
+    "description": {
+      "en": "Rotate all pages in a PDF document",
+      "fr": "Pivoter toutes les pages d'un document PDF",
+      "ar": "تدوير جميع الصفحات في مستند PDF"
+    },
+    "icon": "RotateCw",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "delete-pdf-pages",
+    "slug": "delete-pdf-pages",
+    "categoryId": "pdf-tools",
+    "name": {
+      "en": "Delete PDF Pages",
+      "fr": "Supprimer des pages PDF",
+      "ar": "حذف صفحات PDF"
+    },
+    "description": {
+      "en": "Remove unwanted pages from a PDF",
+      "fr": "Supprimer les pages indésirables d'un PDF",
+      "ar": "إزالة الصفحات غير المرغوبة من PDF"
+    },
+    "icon": "Trash2",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "extract-pdf-pages",
+    "slug": "extract-pdf-pages",
+    "categoryId": "pdf-tools",
+    "name": {
+      "en": "Extract PDF Pages",
+      "fr": "Extraire des pages PDF",
+      "ar": "استخراج صفحات PDF"
+    },
+    "description": {
+      "en": "Extract specific pages from a PDF",
+      "fr": "Extraire des pages spécifiques d'un PDF",
+      "ar": "استخراج صفحات محددة من PDF"
+    },
+    "icon": "FileOutput",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "reorder-pdf-pages",
+    "slug": "reorder-pdf-pages",
+    "categoryId": "pdf-tools",
+    "name": {
+      "en": "Reorder PDF Pages",
+      "fr": "Réorganiser les pages PDF",
+      "ar": "إعادة ترتيب صفحات PDF"
+    },
+    "description": {
+      "en": "Rearrange pages in a PDF document",
+      "fr": "Réorganiser les pages d'un document PDF",
+      "ar": "إعادة ترتيب الصفحات في مستند PDF"
+    },
+    "icon": "ArrowUpDown",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "pdf-page-counter",
+    "slug": "pdf-page-counter",
+    "categoryId": "pdf-tools",
+    "name": {
+      "en": "PDF Page Counter",
+      "fr": "Compteur de pages PDF",
+      "ar": "عدّاد صفحات PDF"
+    },
+    "description": {
+      "en": "Count the number of pages in a PDF",
+      "fr": "Compter le nombre de pages d'un PDF",
+      "ar": "عدّ عدد الصفحات في ملف PDF"
+    },
+    "icon": "Hash",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "pdf-metadata-viewer",
+    "slug": "pdf-metadata-viewer",
+    "categoryId": "pdf-tools",
+    "name": {
+      "en": "PDF Metadata Viewer",
+      "fr": "Visionneuse de métadonnées PDF",
+      "ar": "عارض بيانات PDF الوصفية"
+    },
+    "description": {
+      "en": "View metadata and properties of a PDF",
+      "fr": "Voir les métadonnées et propriétés d'un PDF",
+      "ar": "عرض البيانات الوصفية وخصائص PDF"
+    },
+    "icon": "Info",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "protect-pdf",
+    "slug": "protect-pdf",
+    "categoryId": "pdf-tools",
+    "name": {
+      "en": "Protect PDF",
+      "fr": "Protéger PDF",
+      "ar": "حماية PDF"
+    },
+    "description": {
+      "en": "Add password protection to a PDF",
+      "fr": "Ajouter une protection par mot de passe à un PDF",
+      "ar": "إضافة حماية بكلمة مرور إلى PDF"
+    },
+    "icon": "Lock",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "unlock-pdf",
+    "slug": "unlock-pdf",
+    "categoryId": "pdf-tools",
+    "name": {
+      "en": "Unlock PDF",
+      "fr": "Déverrouiller PDF",
+      "ar": "إلغاء قفل PDF"
+    },
+    "description": {
+      "en": "Remove password protection from a PDF",
+      "fr": "Supprimer la protection par mot de passe d'un PDF",
+      "ar": "إزالة الحماية بكلمة مرور من PDF"
+    },
+    "icon": "Unlock",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "add-pdf-watermark",
+    "slug": "add-pdf-watermark",
+    "categoryId": "pdf-tools",
+    "name": {
+      "en": "Add Watermark to PDF",
+      "fr": "Ajouter un filigrane au PDF",
+      "ar": "إضافة علامة مائية إلى PDF"
+    },
+    "description": {
+      "en": "Add text watermark to PDF pages",
+      "fr": "Ajouter un filigrane texte aux pages PDF",
+      "ar": "إضافة علامة مائية نصية إلى صفحات PDF"
+    },
+    "icon": "Stamp",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "add-page-numbers-pdf",
+    "slug": "add-page-numbers-pdf",
+    "categoryId": "pdf-tools",
+    "name": {
+      "en": "Add Page Numbers",
+      "fr": "Ajouter des numéros de page",
+      "ar": "إضافة أرقام الصفحات"
+    },
+    "description": {
+      "en": "Add page numbers to a PDF document",
+      "fr": "Ajouter des numéros de page à un document PDF",
+      "ar": "إضافة أرقام الصفحات إلى مستند PDF"
+    },
+    "icon": "ListOrdered",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "extract-images-from-pdf",
+    "slug": "extract-images-from-pdf",
+    "categoryId": "pdf-tools",
+    "name": {
+      "en": "Extract Images from PDF",
+      "fr": "Extraire les images d'un PDF",
+      "ar": "استخراج الصور من PDF"
+    },
+    "description": {
+      "en": "Extract embedded images from a PDF",
+      "fr": "Extraire les images intégrées d'un PDF",
+      "ar": "استخراج الصور المضمنة من PDF"
+    },
+    "icon": "ImagePlus",
+    "created_at": "2026-08-12"
   },
   {
     "id": "compress-image",
     "slug": "compress-image",
     "categoryId": "image-tools",
-    "icon": "Minimize2",
-    "type": "file-image",
-    "formats": "JPG, PNG, WebP",
-    "featured": true,
     "name": {
       "en": "Compress Image",
-      "fr": "Compresser une image",
+      "fr": "Compresser l'image",
       "ar": "ضغط الصورة"
     },
     "description": {
-      "en": "Reduce image file size without losing quality.",
-      "fr": "Réduisez la taille sans perte de qualité.",
-      "ar": "قلّل حجم الصورة دون فقدان الجودة."
+      "en": "Reduce image file size with quality control",
+      "fr": "Réduire la taille de l'image avec contrôle qualité",
+      "ar": "تقليل حجم الصورة مع التحكم في الجودة"
     },
-    "howTo": {
-      "en": [
-        "Upload your image",
-        "Choose compression level",
-        "Download"
-      ],
-      "fr": [
-        "Téléchargez votre image",
-        "Choisissez le niveau",
-        "Téléchargez"
-      ],
-      "ar": [
-        "ارفع صورتك",
-        "اختر مستوى الضغط",
-        "حمّل الصورة"
-      ]
-    },
-    "created_at": "2026-07-21"
+    "icon": "Archive",
+    "created_at": "2026-07-24"
   },
   {
     "id": "resize-image",
     "slug": "resize-image",
     "categoryId": "image-tools",
-    "icon": "Maximize",
-    "type": "file-image",
-    "formats": "JPG, PNG, WebP",
-    "featured": false,
     "name": {
       "en": "Resize Image",
-      "fr": "Redimensionner une image",
+      "fr": "Redimensionner l'image",
       "ar": "تغيير حجم الصورة"
     },
     "description": {
-      "en": "Resize images to exact dimensions in seconds.",
-      "fr": "Redimensionnez vos images aux dimensions exactes.",
-      "ar": "غيّر حجم الصور إلى أبعاد محددة بثوانٍ."
+      "en": "Resize images to any dimensions",
+      "fr": "Redimensionner les images à n'importe quelle taille",
+      "ar": "تغيير حجم الصور إلى أي أبعاد"
     },
-    "howTo": {
-      "en": [
-        "Upload your image",
-        "Enter desired dimensions",
-        "Download"
-      ],
-      "fr": [
-        "Téléchargez votre image",
-        "Entrez les dimensions",
-        "Téléchargez"
-      ],
-      "ar": [
-        "ارفع صورتك",
-        "أدخل الأبعاد",
-        "حمّل الصورة"
-      ]
-    },
-    "created_at": "2026-07-21"
+    "icon": "Maximize",
+    "created_at": "2026-07-24"
   },
   {
     "id": "crop-image",
     "slug": "crop-image",
     "categoryId": "image-tools",
-    "icon": "Crop",
-    "type": "file-image",
-    "formats": "JPG, PNG, WebP",
-    "featured": false,
     "name": {
       "en": "Crop Image",
-      "fr": "Recadrer une image",
+      "fr": "Recadrer l'image",
       "ar": "اقتصاص الصورة"
     },
     "description": {
-      "en": "Crop images to remove unwanted areas.",
-      "fr": "Recadrez vos images pour supprimer les zones indésirables.",
-      "ar": "اقتص الصور لإزالة الأجزاء غير المرغوبة."
+      "en": "Crop images with visual selection",
+      "fr": "Recadrer les images avec sélection visuelle",
+      "ar": "اقتصاص الصور مع تحديد مرئي"
     },
-    "howTo": {
-      "en": [
-        "Upload your image",
-        "Select crop area",
-        "Download cropped image"
-      ],
-      "fr": [
-        "Téléchargez votre image",
-        "Sélectionnez la zone",
-        "Téléchargez"
-      ],
-      "ar": [
-        "ارفع صورتك",
-        "حدد منطقة الاقتصاص",
-        "حمّل الصورة"
-      ]
+    "icon": "Crop",
+    "created_at": "2026-07-24"
+  },
+  {
+    "id": "rotate-image",
+    "slug": "rotate-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Rotate Image",
+      "fr": "Pivoter l'image",
+      "ar": "تدوير الصورة"
     },
-    "created_at": "2026-06-12"
+    "description": {
+      "en": "Rotate and flip images visually",
+      "fr": "Pivoter et retourner les images visuellement",
+      "ar": "تدوير وقلب الصور بصرياً"
+    },
+    "icon": "RotateCw",
+    "created_at": "2026-08-12"
   },
   {
     "id": "jpg-to-png",
     "slug": "jpg-to-png",
     "categoryId": "image-tools",
-    "icon": "FileImage",
-    "type": "file-image",
-    "formats": "JPG",
-    "featured": false,
     "name": {
       "en": "JPG to PNG",
       "fr": "JPG vers PNG",
-      "ar": "تحويل JPG إلى PNG"
+      "ar": "JPG إلى PNG"
     },
     "description": {
-      "en": "Convert JPG images to PNG with transparency.",
-      "fr": "Convertissez JPG en PNG avec transparence.",
-      "ar": "حوّل صور JPG إلى PNG مع الشفافية."
+      "en": "Convert JPG images to PNG format",
+      "fr": "Convertir des images JPG en PNG",
+      "ar": "تحويل صور JPG إلى صيغة PNG"
     },
-    "howTo": {
-      "en": [
-        "Upload your JPG",
-        "Click Convert",
-        "Download PNG"
-      ],
-      "fr": [
-        "Téléchargez votre JPG",
-        "Cliquez sur Convertir",
-        "Téléchargez le PNG"
-      ],
-      "ar": [
-        "ارفع ملف JPG",
-        "انقر على تحويل",
-        "حمّل PNG"
-      ]
-    },
-    "created_at": "2026-06-11"
+    "icon": "Image",
+    "created_at": "2026-07-24"
   },
   {
     "id": "png-to-jpg",
     "slug": "png-to-jpg",
     "categoryId": "image-tools",
-    "icon": "FileImage",
-    "type": "file-image",
-    "formats": "PNG",
-    "featured": false,
     "name": {
       "en": "PNG to JPG",
       "fr": "PNG vers JPG",
-      "ar": "تحويل PNG إلى JPG"
+      "ar": "PNG إلى JPG"
     },
     "description": {
-      "en": "Convert PNG images to JPG format.",
-      "fr": "Convertissez PNG en JPG.",
-      "ar": "حوّل صور PNG إلى صيغة JPG."
+      "en": "Convert PNG images to JPG format",
+      "fr": "Convertir des images PNG en JPG",
+      "ar": "تحويل صور PNG إلى صيغة JPG"
     },
-    "howTo": {
-      "en": [
-        "Upload your PNG",
-        "Click Convert",
-        "Download JPG"
-      ],
-      "fr": [
-        "Téléchargez votre PNG",
-        "Cliquez sur Convertir",
-        "Téléchargez le JPG"
-      ],
-      "ar": [
-        "ارفع ملف PNG",
-        "انقر على تحويل",
-        "حمّل JPG"
-      ]
-    },
-    "created_at": "2026-06-10"
+    "icon": "Image",
+    "created_at": "2026-07-24"
   },
   {
     "id": "webp-to-jpg",
     "slug": "webp-to-jpg",
     "categoryId": "image-tools",
-    "icon": "FileImage",
-    "type": "file-image",
-    "formats": "WebP",
-    "featured": false,
     "name": {
       "en": "WEBP to JPG",
       "fr": "WEBP vers JPG",
-      "ar": "تحويل WEBP إلى JPG"
+      "ar": "WEBP إلى JPG"
     },
     "description": {
-      "en": "Convert WebP images to JPG format.",
-      "fr": "Convertissez WebP en JPG.",
-      "ar": "حوّل صور WebP إلى صيغة JPG."
+      "en": "Convert WEBP images to JPG format",
+      "fr": "Convertir des images WEBP en JPG",
+      "ar": "تحويل صور WEBP إلى صيغة JPG"
     },
-    "howTo": {
-      "en": [
-        "Upload your WebP",
-        "Click Convert",
-        "Download JPG"
-      ],
-      "fr": [
-        "Téléchargez votre WebP",
-        "Cliquez sur Convertir",
-        "Téléchargez"
-      ],
-      "ar": [
-        "ارفع ملف WebP",
-        "انقر على تحويل",
-        "حمّل JPG"
-      ]
+    "icon": "Image",
+    "created_at": "2026-07-24"
+  },
+  {
+    "id": "image-converter",
+    "slug": "image-converter",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Image Converter",
+      "fr": "Convertisseur d'images",
+      "ar": "محول الصور"
     },
-    "created_at": "2026-06-09"
+    "description": {
+      "en": "Convert images between JPG, PNG, WEBP and GIF",
+      "fr": "Convertir des images entre JPG, PNG, WEBP et GIF",
+      "ar": "تحويل الصور بين JPG و PNG و WEBP و GIF"
+    },
+    "icon": "Repeat",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "image-to-base64",
+    "slug": "image-to-base64",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Image to Base64",
+      "fr": "Image vers Base64",
+      "ar": "صورة إلى Base64"
+    },
+    "description": {
+      "en": "Convert images to Base64 string encoding",
+      "fr": "Convertir des images en chaîne Base64",
+      "ar": "تحويل الصور إلى ترميز Base64"
+    },
+    "icon": "Binary",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "base64-to-image",
+    "slug": "base64-to-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Base64 to Image",
+      "fr": "Base64 vers Image",
+      "ar": "Base64 إلى صورة"
+    },
+    "description": {
+      "en": "Decode Base64 string to image file",
+      "fr": "Décoder une chaîne Base64 en fichier image",
+      "ar": "فك ترميز Base64 إلى ملف صورة"
+    },
+    "icon": "ImageDown",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "grayscale-image",
+    "slug": "grayscale-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Grayscale Image",
+      "fr": "Image en niveaux de gris",
+      "ar": "صورة بتدرج الرمادي"
+    },
+    "description": {
+      "en": "Convert images to black and white",
+      "fr": "Convertir des images en noir et blanc",
+      "ar": "تحويل الصور إلى أبيض وأسود"
+    },
+    "icon": "Contrast",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "blur-image",
+    "slug": "blur-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Blur Image",
+      "fr": "Flouter l'image",
+      "ar": "تشويش الصورة"
+    },
+    "description": {
+      "en": "Apply blur effect to images",
+      "fr": "Appliquer un effet de flou aux images",
+      "ar": "تطبيق تأثير التشويش على الصور"
+    },
+    "icon": "Aperture",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "image-watermark",
+    "slug": "image-watermark",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Image Watermark",
+      "fr": "Filigrane d'image",
+      "ar": "علامة مائية للصورة"
+    },
+    "description": {
+      "en": "Add text watermark to images",
+      "fr": "Ajouter un filigrane texte aux images",
+      "ar": "إضافة علامة مائية نصية إلى الصور"
+    },
+    "icon": "Stamp",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "image-metadata-viewer",
+    "slug": "image-metadata-viewer",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Image Metadata Viewer",
+      "fr": "Visionneuse de métadonnées d'image",
+      "ar": "عارض بيانات الصورة الوصفية"
+    },
+    "description": {
+      "en": "View EXIF and image properties",
+      "fr": "Voir les propriétés EXIF et de l'image",
+      "ar": "عرض بيانات EXIF وخصائص الصورة"
+    },
+    "icon": "Info",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "flip-image",
+    "slug": "flip-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Flip Image",
+      "fr": "Retourner l'image",
+      "ar": "قلب الصورة"
+    },
+    "description": {
+      "en": "Flip images horizontally or vertically",
+      "fr": "Retourner les images horizontalement ou verticalement",
+      "ar": "قلب الصور أفقياً أو عمودياً"
+    },
+    "icon": "FlipHorizontal",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "add-image-border",
+    "slug": "add-image-border",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Add Image Border",
+      "fr": "Ajouter une bordure",
+      "ar": "إضافة حد للصورة"
+    },
+    "description": {
+      "en": "Add custom borders to images",
+      "fr": "Ajouter des bordures personnalisées aux images",
+      "ar": "إضافة حدود مخصصة للصور"
+    },
+    "icon": "Square",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "rounded-corners",
+    "slug": "rounded-corners",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Rounded Corners",
+      "fr": "Coins arrondis",
+      "ar": "زوايا دائرية"
+    },
+    "description": {
+      "en": "Add rounded corners to images",
+      "fr": "Ajouter des coins arrondis aux images",
+      "ar": "إضافة زوايا دائرية للصور"
+    },
+    "icon": "SquareDashedBottom",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "image-brightness",
+    "slug": "image-brightness",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Image Brightness",
+      "fr": "Luminosité de l'image",
+      "ar": "سطوع الصورة"
+    },
+    "description": {
+      "en": "Adjust image brightness levels",
+      "fr": "Ajuster les niveaux de luminosité de l'image",
+      "ar": "ضبط مستويات سطوع الصورة"
+    },
+    "icon": "Sun",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "image-contrast",
+    "slug": "image-contrast",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Image Contrast",
+      "fr": "Contraste de l'image",
+      "ar": "تباين الصورة"
+    },
+    "description": {
+      "en": "Adjust image contrast levels",
+      "fr": "Ajuster les niveaux de contraste de l'image",
+      "ar": "ضبط مستويات تباين الصورة"
+    },
+    "icon": "CircleSlash",
+    "created_at": "2026-08-12"
+  },
+  {
+    "id": "image-saturation",
+    "slug": "image-saturation",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Image Saturation",
+      "fr": "Saturation de l'image",
+      "ar": "تشبع الصورة"
+    },
+    "description": {
+      "en": "Adjust image color saturation",
+      "fr": "Ajuster la saturation des couleurs de l'image",
+      "ar": "ضبط تشبع ألوان الصورة"
+    },
+    "icon": "Palette",
+    "created_at": "2026-08-12"
   },
   {
     "id": "word-counter",
     "slug": "word-counter",
     "categoryId": "text-tools",
-    "icon": "AlignLeft",
-    "type": "text",
-    "formats": null,
-    "featured": true,
     "name": {
       "en": "Word Counter",
       "fr": "Compteur de mots",
       "ar": "عدّاد الكلمات"
     },
     "description": {
-      "en": "Count words, characters, sentences and paragraphs instantly.",
-      "fr": "Comptez les mots, caractères, phrases instantanément.",
-      "ar": "احسب الكلمات والحروف والجمل والفقرات فوراً."
+      "en": "Count words, characters, sentences and paragraphs",
+      "fr": "Compter les mots, caractères, phrases et paragraphes",
+      "ar": "عدّ الكلمات والأحرف والجمل والفقرات"
     },
-    "howTo": {
-      "en": [
-        "Paste or type your text",
-        "See live statistics below",
-        "Copy results if needed"
-      ],
-      "fr": [
-        "Collez ou tapez votre texte",
-        "Voir les statistiques",
-        "Copiez les résultats"
-      ],
-      "ar": [
-        "الصق أو اكتب نصك",
-        "شاهد الإحصائيات",
-        "انسخ النتائج"
-      ]
-    },
-    "created_at": "2026-05-25"
+    "icon": "Type",
+    "created_at": "2026-07-24"
   },
   {
     "id": "character-counter",
     "slug": "character-counter",
     "categoryId": "text-tools",
-    "icon": "Type",
-    "type": "text",
-    "formats": null,
-    "featured": false,
     "name": {
       "en": "Character Counter",
       "fr": "Compteur de caractères",
       "ar": "عدّاد الأحرف"
     },
     "description": {
-      "en": "Count characters with and without spaces.",
-      "fr": "Comptez les caractères avec et sans espaces.",
-      "ar": "احسب الأحرف مع المسافات وبدونها."
+      "en": "Count characters with detailed breakdown",
+      "fr": "Compter les caractères avec analyse détaillée",
+      "ar": "عدّ الأحرف مع تحليل مفصل"
     },
-    "howTo": {
-      "en": [
-        "Paste your text",
-        "See character count",
-        "Copy if needed"
-      ],
-      "fr": [
-        "Collez votre texte",
-        "Voir le comptage",
-        "Copiez"
-      ],
-      "ar": [
-        "الصق نصك",
-        "شاهد العدد",
-        "انسخ"
-      ]
-    },
-    "created_at": "2026-05-24"
+    "icon": "Hash",
+    "created_at": "2026-07-24"
   },
   {
     "id": "case-converter",
     "slug": "case-converter",
     "categoryId": "text-tools",
-    "icon": "CaseSensitive",
-    "type": "text",
-    "formats": null,
-    "featured": false,
     "name": {
       "en": "Case Converter",
       "fr": "Convertisseur de casse",
       "ar": "محول حالة الأحرف"
     },
     "description": {
-      "en": "Convert text to upper, lower, title or sentence case.",
-      "fr": "Convertissez en majuscules, minuscules, titre.",
-      "ar": "حوّل النص إلى أحرف كبيرة أو صغيرة أو عنوان."
+      "en": "Convert text to different cases",
+      "fr": "Convertir du texte en différentes casses",
+      "ar": "تحويل النص إلى حالات مختلفة"
     },
-    "howTo": {
-      "en": [
-        "Paste your text",
-        "Choose case format",
-        "Copy result"
-      ],
-      "fr": [
-        "Collez votre texte",
-        "Choisissez le format",
-        "Copiez"
-      ],
-      "ar": [
-        "الصق نصك",
-        "اختر الصيغة",
-        "انسخ"
-      ]
-    },
-    "created_at": "2026-05-23"
+    "icon": "Type",
+    "created_at": "2026-07-24"
   },
   {
     "id": "bmi-calculator",
     "slug": "bmi-calculator",
     "categoryId": "calculators",
-    "icon": "Activity",
-    "type": "calculator",
-    "formats": null,
-    "featured": false,
     "name": {
       "en": "BMI Calculator",
-      "fr": "Calculatrice IMC",
+      "fr": "Calculateur IMC",
       "ar": "حاسبة مؤشر كتلة الجسم"
     },
     "description": {
-      "en": "Calculate your Body Mass Index and ideal weight range.",
-      "fr": "Calculez votre IMC et poids idéal.",
-      "ar": "احسب مؤشر كتلة جسمك ووزنك المثالي."
+      "en": "Calculate Body Mass Index",
+      "fr": "Calculer l'Indice de Masse Corporelle",
+      "ar": "حساب مؤشر كتلة الجسم"
     },
-    "howTo": {
-      "en": [
-        "Enter your height",
-        "Enter your weight",
-        "See your BMI result"
-      ],
-      "fr": [
-        "Entrez votre taille",
-        "Entrez votre poids",
-        "Voir votre IMC"
-      ],
-      "ar": [
-        "أدخل طولك",
-        "أدخل وزنك",
-        "شاهد النتيجة"
-      ]
-    },
-    "created_at": "2026-05-15"
+    "icon": "Calculator",
+    "created_at": "2026-07-24"
   },
   {
     "id": "age-calculator",
     "slug": "age-calculator",
     "categoryId": "calculators",
-    "icon": "Calendar",
-    "type": "calculator",
-    "formats": null,
-    "featured": true,
     "name": {
       "en": "Age Calculator",
-      "fr": "Calculatrice d'âge",
+      "fr": "Calculateur d'âge",
       "ar": "حاسبة العمر"
     },
     "description": {
-      "en": "Calculate your exact age in years, months, and days.",
-      "fr": "Calculez votre âge exact en années, mois et jours.",
-      "ar": "احسب عمرك بالضبط بالسنوات والأشهر والأيام."
+      "en": "Calculate exact age from birth date",
+      "fr": "Calculer l'âge exact à partir de la date de naissance",
+      "ar": "حساب العمر الدقيق من تاريخ الميلاد"
     },
-    "howTo": {
-      "en": [
-        "Enter your date of birth",
-        "See your exact age",
-        "View detailed breakdown"
-      ],
-      "fr": [
-        "Entrez votre date de naissance",
-        "Voir votre âge",
-        "Voir les détails"
-      ],
-      "ar": [
-        "أدخل تاريخ ميلادك",
-        "شاهد عمرك",
-        "اعرض التفاصيل"
-      ]
-    },
-    "created_at": "2026-05-14"
+    "icon": "Calendar",
+    "created_at": "2026-07-24"
   },
   {
     "id": "percentage-calculator",
     "slug": "percentage-calculator",
     "categoryId": "calculators",
-    "icon": "Percent",
-    "type": "calculator",
-    "formats": null,
-    "featured": false,
     "name": {
       "en": "Percentage Calculator",
-      "fr": "Calculatrice de pourcentage",
+      "fr": "Calculateur de pourcentage",
       "ar": "حاسبة النسبة المئوية"
     },
     "description": {
-      "en": "Calculate percentages, increases and decreases.",
-      "fr": "Calculez pourcentages, augmentations et réductions.",
-      "ar": "احسب النسب المئوية والزيادات والنقصان."
+      "en": "Calculate percentages quickly",
+      "fr": "Calculer des pourcentages rapidement",
+      "ar": "حساب النسب المئوية بسرعة"
     },
-    "howTo": {
-      "en": [
-        "Enter values",
-        "Click Calculate",
-        "See result"
-      ],
-      "fr": [
-        "Entrez les valeurs",
-        "Cliquez sur Calculer",
-        "Voir le résultat"
-      ],
-      "ar": [
-        "أدخل القيم",
-        "انقر على حساب",
-        "شاهد النتيجة"
-      ]
-    },
-    "created_at": "2026-05-13"
+    "icon": "Percent",
+    "created_at": "2026-07-24"
   }
 ]

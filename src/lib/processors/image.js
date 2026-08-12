@@ -507,3 +507,711 @@ export async function cropAndRotate(file, x, y, width, height, degrees = 0) {
     throw new Error(`cropAndRotate failed: ${error.message}`);
   }
 }
+
+
+/**
+ * Internal helper to parse EXIF orientation from a JPEG ArrayBuffer.
+ * Returns orientation integer (1-8) or null if not found/invalid.
+ */
+function parseExifOrientation(arrayBuffer) {
+  try {
+    const view = new DataView(arrayBuffer);
+    if (view.byteLength < 2 || view.getUint16(0, false) !== 0xFFD8) {
+      return null;
+    }
+    const length = view.byteLength;
+    let offset = 2;
+    while (offset + 4 <= length) {
+      const marker = view.getUint16(offset, false);
+      if (marker === 0xFFE1) {
+        const app1Length = view.getUint16(offset + 2, false);
+        const exifHeaderOffset = offset + 4;
+        if (
+          exifHeaderOffset + 6 <= length &&
+          view.getUint32(exifHeaderOffset, false) === 0x45786966 &&
+          view.getUint16(exifHeaderOffset + 4, false) === 0x0000
+        ) {
+          const tiffOffset = exifHeaderOffset + 6;
+          if (tiffOffset + 8 > length) return null;
+          const endianness = view.getUint16(tiffOffset, false);
+          const littleEndian = endianness === 0x4949; // 'II'
+          if (!littleEndian && endianness !== 0x4D4D) { // 'MM'
+            return null;
+          }
+          if (view.getUint16(tiffOffset + 2, littleEndian) !== 0x002A) {
+            return null;
+          }
+          const firstIfdOffset = view.getUint32(tiffOffset + 4, littleEndian);
+          if (firstIfdOffset < 8) return null;
+
+          let dirOffset = tiffOffset + firstIfdOffset;
+          if (dirOffset + 2 > length) return null;
+          const entries = view.getUint16(dirOffset, littleEndian);
+          dirOffset += 2;
+
+          for (let i = 0; i < entries; i++) {
+            const entryOffset = dirOffset + i * 12;
+            if (entryOffset + 12 > length) break;
+            const tag = view.getUint16(entryOffset, littleEndian);
+            if (tag === 0x0112) { // Orientation tag
+              const value = view.getUint16(entryOffset + 8, littleEndian);
+              return value;
+            }
+          }
+        }
+        offset += 2 + app1Length;
+      } else if ((marker & 0xFF00) === 0xFF00) {
+        if (offset + 4 > length) break;
+        const markerLength = view.getUint16(offset + 2, false);
+        offset += 2 + markerLength;
+      } else {
+        break;
+      }
+    }
+    return null;
+  } catch (e) {
+    return null;
+  }
+}
+
+/**
+ * 8. Flip Image
+ * Flips an image horizontally or vertically.
+ * 
+ * @param {File|Blob} file - Source image.
+ * @param {string} direction - 'horizontal' or 'vertical'.
+ * @returns {Promise<Blob>} Flipped image blob.
+ */
+export async function flipImage(file, direction) {
+  try {
+    if (direction !== 'horizontal' && direction !== 'vertical') {
+      throw new Error('Direction must be "horizontal" or "vertical".');
+    }
+    const img = await loadImage(file);
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Failed to obtain canvas 2D rendering context.');
+
+    const format = file.type || 'image/png';
+    if (format === 'image/jpeg' || format === 'image/jpg') {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    if (direction === 'horizontal') {
+      ctx.translate(width, 0);
+      ctx.scale(-1, 1);
+    } else {
+      ctx.translate(0, height);
+      ctx.scale(1, -1);
+    }
+
+    ctx.drawImage(img, 0, 0);
+    const quality = (format === 'image/jpeg' || format === 'image/jpg' || format === 'image/webp') ? 0.92 : undefined;
+    return await canvasToBlob(canvas, format, quality);
+  } catch (error) {
+    throw new Error(`flipImage failed: ${error.message}`);
+  }
+}
+
+/**
+ * 9. Image to Base64
+ * Reads an image file and converts it to a Data URL base64 string with metadata.
+ * 
+ * @param {File|Blob} file - Source image file.
+ * @returns {Promise<{base64: string, filename: string, fileSize: number, mimeType: string}>}
+ */
+export async function imageToBase64(file) {
+  try {
+    if (!file || !(file instanceof Blob)) {
+      throw new Error('Invalid image file provided.');
+    }
+    const base64 = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error('Failed to read file as Data URL.'));
+      reader.readAsDataURL(file);
+    });
+    return {
+      base64,
+      filename: file.name || 'image',
+      fileSize: file.size || 0,
+      mimeType: file.type || 'image/png'
+    };
+  } catch (error) {
+    throw new Error(`imageToBase64 failed: ${error.message}`);
+  }
+}
+
+/**
+ * 10. Base64 to Image
+ * Takes a base64 string (with or without data URL prefix), validates it, converts to Blob, and loads metadata.
+ * 
+ * @param {string} base64String - Base64 encoded string or Data URL.
+ * @returns {Promise<{blob: Blob, width: number, height: number, mimeType: string}>}
+ */
+export async function base64ToImage(base64String) {
+  try {
+    if (!base64String || typeof base64String !== 'string') {
+      throw new Error('Invalid base64 string provided.');
+    }
+    let mimeType = 'image/png';
+    let base64Data = base64String.trim();
+
+    // Handle data URL prefix if present
+    const dataUrlMatch = base64Data.match(/^data:(image\/[a-zA-Z0-9+-]+);base64,(.*)$/s);
+    if (dataUrlMatch) {
+      mimeType = dataUrlMatch[1];
+      base64Data = dataUrlMatch[2];
+    } else if (base64Data.includes(',')) {
+      const parts = base64Data.split(',');
+      const headerMatch = parts[0].match(/data:(.*?);base64/);
+      if (headerMatch) mimeType = headerMatch[1] || mimeType;
+      base64Data = parts[1];
+    }
+
+    base64Data = base64Data.replace(/\s/g, '');
+
+    if (!base64Data) {
+      throw new Error('Empty base64 data.');
+    }
+
+    let byteCharacters;
+    try {
+      byteCharacters = atob(base64Data);
+    } catch (err) {
+      throw new Error('Invalid base64 string.');
+    }
+
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    const blob = new Blob([byteArray], { type: mimeType });
+
+    const img = await loadImage(blob);
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+
+    return { blob, width, height, mimeType };
+  } catch (error) {
+    throw new Error(`base64ToImage failed: ${error.message}`);
+  }
+}
+
+/**
+ * 11. Grayscale Image
+ * Converts image to grayscale using CSS filters.
+ * 
+ * @param {File|Blob} file - Source image.
+ * @returns {Promise<Blob>} Grayscale image blob.
+ */
+export async function grayscaleImage(file) {
+  try {
+    const img = await loadImage(file);
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Failed to obtain canvas 2D rendering context.');
+
+    const format = file.type || 'image/png';
+    if (format === 'image/jpeg' || format === 'image/jpg') {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    ctx.filter = 'grayscale(1)';
+    ctx.drawImage(img, 0, 0);
+
+    const quality = (format === 'image/jpeg' || format === 'image/jpg' || format === 'image/webp') ? 0.92 : undefined;
+    return await canvasToBlob(canvas, format, quality);
+  } catch (error) {
+    throw new Error(`grayscaleImage failed: ${error.message}`);
+  }
+}
+
+/**
+ * 12. Blur Image
+ * Applies blur filter to image.
+ * 
+ * @param {File|Blob} file - Source image.
+ * @param {number} [radius=5] - Blur radius in pixels.
+ * @returns {Promise<Blob>} Blurred image blob.
+ */
+export async function blurImage(file, radius = 5) {
+  try {
+    const img = await loadImage(file);
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Failed to obtain canvas 2D rendering context.');
+
+    const format = file.type || 'image/png';
+    if (format === 'image/jpeg' || format === 'image/jpg') {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    ctx.filter = `blur(${radius}px)`;
+    ctx.drawImage(img, 0, 0);
+
+    const quality = (format === 'image/jpeg' || format === 'image/jpg' || format === 'image/webp') ? 0.92 : undefined;
+    return await canvasToBlob(canvas, format, quality);
+  } catch (error) {
+    throw new Error(`blurImage failed: ${error.message}`);
+  }
+}
+
+/**
+ * 13. Adjust Brightness
+ * Adjusts image brightness from -100 to 100.
+ * 
+ * @param {File|Blob} file - Source image.
+ * @param {number} [value=0] - Brightness adjustment (-100 to 100).
+ * @returns {Promise<Blob>} Adjusted image blob.
+ */
+export async function adjustBrightness(file, value = 0) {
+  try {
+    const img = await loadImage(file);
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Failed to obtain canvas 2D rendering context.');
+
+    const format = file.type || 'image/png';
+    if (format === 'image/jpeg' || format === 'image/jpg') {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    const brightnessFactor = 1 + (value / 100);
+    ctx.filter = `brightness(${brightnessFactor})`;
+    ctx.drawImage(img, 0, 0);
+
+    const quality = (format === 'image/jpeg' || format === 'image/jpg' || format === 'image/webp') ? 0.92 : undefined;
+    return await canvasToBlob(canvas, format, quality);
+  } catch (error) {
+    throw new Error(`adjustBrightness failed: ${error.message}`);
+  }
+}
+
+/**
+ * 14. Adjust Contrast
+ * Adjusts image contrast from -100 to 100.
+ * 
+ * @param {File|Blob} file - Source image.
+ * @param {number} [value=0] - Contrast adjustment (-100 to 100).
+ * @returns {Promise<Blob>} Adjusted image blob.
+ */
+export async function adjustContrast(file, value = 0) {
+  try {
+    const img = await loadImage(file);
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Failed to obtain canvas 2D rendering context.');
+
+    const format = file.type || 'image/png';
+    if (format === 'image/jpeg' || format === 'image/jpg') {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    const contrastFactor = 1 + (value / 100);
+    ctx.filter = `contrast(${contrastFactor})`;
+    ctx.drawImage(img, 0, 0);
+
+    const quality = (format === 'image/jpeg' || format === 'image/jpg' || format === 'image/webp') ? 0.92 : undefined;
+    return await canvasToBlob(canvas, format, quality);
+  } catch (error) {
+    throw new Error(`adjustContrast failed: ${error.message}`);
+  }
+}
+
+/**
+ * 15. Adjust Saturation
+ * Adjusts image saturation from -100 to 100.
+ * 
+ * @param {File|Blob} file - Source image.
+ * @param {number} [value=0] - Saturation adjustment (-100 to 100).
+ * @returns {Promise<Blob>} Adjusted image blob.
+ */
+export async function adjustSaturation(file, value = 0) {
+  try {
+    const img = await loadImage(file);
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Failed to obtain canvas 2D rendering context.');
+
+    const format = file.type || 'image/png';
+    if (format === 'image/jpeg' || format === 'image/jpg') {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    const saturateFactor = 1 + (value / 100);
+    ctx.filter = `saturate(${saturateFactor})`;
+    ctx.drawImage(img, 0, 0);
+
+    const quality = (format === 'image/jpeg' || format === 'image/jpg' || format === 'image/webp') ? 0.92 : undefined;
+    return await canvasToBlob(canvas, format, quality);
+  } catch (error) {
+    throw new Error(`adjustSaturation failed: ${error.message}`);
+  }
+}
+
+/**
+ * 16. Apply Combined Image Filters
+ * Applies multiple image adjustments/filters in one pass.
+ * 
+ * @param {File|Blob} file - Source image.
+ * @param {Object} [filters={}] - Object containing filter options: { brightness, contrast, saturation, blur, grayscale }.
+ * @returns {Promise<Blob>} Adjusted image blob.
+ */
+export async function applyImageFilters(file, filters = {}) {
+  try {
+    const img = await loadImage(file);
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Failed to obtain canvas 2D rendering context.');
+
+    const format = file.type || 'image/png';
+    if (format === 'image/jpeg' || format === 'image/jpg') {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    const filterParts = [];
+    if (filters) {
+      if (typeof filters.brightness === 'number' && filters.brightness !== 0) {
+        filterParts.push(`brightness(${1 + filters.brightness / 100})`);
+      }
+      if (typeof filters.contrast === 'number' && filters.contrast !== 0) {
+        filterParts.push(`contrast(${1 + filters.contrast / 100})`);
+      }
+      if (typeof filters.saturation === 'number' && filters.saturation !== 0) {
+        filterParts.push(`saturate(${1 + filters.saturation / 100})`);
+      }
+      if (typeof filters.blur === 'number' && filters.blur > 0) {
+        filterParts.push(`blur(${filters.blur}px)`);
+      }
+      if (filters.grayscale) {
+        if (typeof filters.grayscale === 'number') {
+          const val = filters.grayscale > 1 ? filters.grayscale / 100 : filters.grayscale;
+          filterParts.push(`grayscale(${val})`);
+        } else if (filters.grayscale === true) {
+          filterParts.push('grayscale(1)');
+        }
+      }
+    }
+
+    if (filterParts.length > 0) {
+      ctx.filter = filterParts.join(' ');
+    }
+
+    ctx.drawImage(img, 0, 0);
+
+    const quality = (format === 'image/jpeg' || format === 'image/jpg' || format === 'image/webp') ? 0.92 : undefined;
+    return await canvasToBlob(canvas, format, quality);
+  } catch (error) {
+    throw new Error(`applyImageFilters failed: ${error.message}`);
+  }
+}
+
+/**
+ * 17. Add Text Watermark
+ * Draws text watermark on the image at specified position with given styling options.
+ * Returns PNG format to preserve transparency if applicable.
+ * 
+ * @param {File|Blob} file - Source image.
+ * @param {Object} [options={}] - Watermark options: { text, fontSize, opacity, color, rotation, position, font }.
+ * @returns {Promise<Blob>} PNG Blob with watermark.
+ */
+export async function addTextWatermark(file, options = {}) {
+  try {
+    const {
+      text = '',
+      fontSize = 48,
+      opacity = 0.5,
+      color = '#ffffff',
+      rotation = 0,
+      position = 'center',
+      font
+    } = options;
+
+    const img = await loadImage(file);
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Failed to obtain canvas 2D rendering context.');
+
+    ctx.drawImage(img, 0, 0);
+
+    if (text) {
+      ctx.save();
+      ctx.font = font || `bold ${fontSize}px Arial`;
+      ctx.fillStyle = color;
+      ctx.globalAlpha = opacity;
+
+      const padding = Math.max(20, fontSize / 2);
+      let x = width / 2;
+      let y = height / 2;
+      let align = 'center';
+      let baseline = 'middle';
+
+      switch (position) {
+        case 'top-left':
+          x = padding;
+          y = padding;
+          align = 'left';
+          baseline = 'top';
+          break;
+        case 'top-center':
+          x = width / 2;
+          y = padding;
+          align = 'center';
+          baseline = 'top';
+          break;
+        case 'top-right':
+          x = width - padding;
+          y = padding;
+          align = 'right';
+          baseline = 'top';
+          break;
+        case 'center':
+          x = width / 2;
+          y = height / 2;
+          align = 'center';
+          baseline = 'middle';
+          break;
+        case 'bottom-left':
+          x = padding;
+          y = height - padding;
+          align = 'left';
+          baseline = 'bottom';
+          break;
+        case 'bottom-center':
+          x = width / 2;
+          y = height - padding;
+          align = 'center';
+          baseline = 'bottom';
+          break;
+        case 'bottom-right':
+          x = width - padding;
+          y = height - padding;
+          align = 'right';
+          baseline = 'bottom';
+          break;
+        default:
+          x = width / 2;
+          y = height / 2;
+          align = 'center';
+          baseline = 'middle';
+          break;
+      }
+
+      ctx.translate(x, y);
+      if (rotation !== 0) {
+        ctx.rotate((rotation * Math.PI) / 180);
+      }
+      ctx.textAlign = align;
+      ctx.textBaseline = baseline;
+      ctx.fillText(text, 0, 0);
+      ctx.restore();
+    }
+
+    return await canvasToBlob(canvas, 'image/png');
+  } catch (error) {
+    throw new Error(`addTextWatermark failed: ${error.message}`);
+  }
+}
+
+/**
+ * 18. Add Image Border
+ * Adds border around image with optional corner radius for inner image.
+ * 
+ * @param {File|Blob} file - Source image.
+ * @param {Object} [options={}] - Options: { width, color, radius }.
+ * @returns {Promise<Blob>} Image blob with border.
+ */
+export async function addImageBorder(file, options = {}) {
+  try {
+    const { width = 10, color = '#000000', radius = 0 } = options;
+    const borderW = Math.max(0, width);
+
+    const img = await loadImage(file);
+    const imgW = img.naturalWidth || img.width;
+    const imgH = img.naturalHeight || img.height;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = imgW + borderW * 2;
+    canvas.height = imgH + borderW * 2;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Failed to obtain canvas 2D rendering context.');
+
+    // Draw border background
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Draw inner image
+    ctx.save();
+    if (radius > 0) {
+      const r = Math.min(radius, imgW / 2, imgH / 2);
+      ctx.beginPath();
+      if (ctx.roundRect) {
+        ctx.roundRect(borderW, borderW, imgW, imgH, r);
+      } else {
+        ctx.moveTo(borderW + r, borderW);
+        ctx.arcTo(borderW + imgW, borderW, borderW + imgW, borderW + imgH, r);
+        ctx.arcTo(borderW + imgW, borderW + imgH, borderW, borderW + imgH, r);
+        ctx.arcTo(borderW, borderW + imgH, borderW, borderW, r);
+        ctx.arcTo(borderW, borderW, borderW + imgW, borderW, r);
+        ctx.closePath();
+      }
+      ctx.clip();
+    }
+    ctx.drawImage(img, borderW, borderW, imgW, imgH);
+    ctx.restore();
+
+    const format = file.type || 'image/png';
+    const quality = (format === 'image/jpeg' || format === 'image/jpg' || format === 'image/webp') ? 0.92 : undefined;
+    return await canvasToBlob(canvas, format, quality);
+  } catch (error) {
+    throw new Error(`addImageBorder failed: ${error.message}`);
+  }
+}
+
+/**
+ * 19. Add Rounded Corners
+ * Clips image with rounded rectangle path and returns PNG blob.
+ * 
+ * @param {File|Blob} file - Source image.
+ * @param {number} [radius=20] - Corner radius in pixels.
+ * @returns {Promise<Blob>} PNG Blob with rounded corners.
+ */
+export async function addRoundedCorners(file, radius = 20) {
+  try {
+    const img = await loadImage(file);
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('Failed to obtain canvas 2D rendering context.');
+
+    const r = Math.min(radius, width / 2, height / 2);
+    ctx.beginPath();
+    if (ctx.roundRect) {
+      ctx.roundRect(0, 0, width, height, r);
+    } else {
+      ctx.moveTo(r, 0);
+      ctx.arcTo(width, 0, width, height, r);
+      ctx.arcTo(width, height, 0, height, r);
+      ctx.arcTo(0, height, 0, 0, r);
+      ctx.arcTo(0, 0, width, 0, r);
+      ctx.closePath();
+    }
+    ctx.clip();
+
+    ctx.drawImage(img, 0, 0);
+
+    return await canvasToBlob(canvas, 'image/png');
+  } catch (error) {
+    throw new Error(`addRoundedCorners failed: ${error.message}`);
+  }
+}
+
+/**
+ * 20. Get Image Metadata
+ * Extracts image metadata (dimensions, aspect ratio, file info) and parses JPEG EXIF orientation.
+ * 
+ * @param {File|Blob} file - Source image.
+ * @returns {Promise<{filename: string, fileType: string, fileSize: number, width: number, height: number, aspectRatio: number, lastModified: number|null, exifOrientation: number|null}>}
+ */
+export async function getImageMetadata(file) {
+  try {
+    if (!file || !(file instanceof Blob)) {
+      throw new Error('Invalid image file provided.');
+    }
+
+    const img = await loadImage(file);
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+
+    let exifOrientation = null;
+    if (file.type === 'image/jpeg' || file.type === 'image/jpg' || (file.name && /\.(jpe?g)$/i.test(file.name))) {
+      try {
+        const arrayBuffer = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = () => reject(new Error('Failed to read array buffer'));
+          reader.readAsArrayBuffer(file);
+        });
+        exifOrientation = parseExifOrientation(arrayBuffer);
+      } catch (e) {
+        exifOrientation = null;
+      }
+    }
+
+    return {
+      filename: file.name || '',
+      fileType: file.type || '',
+      fileSize: file.size || 0,
+      width,
+      height,
+      aspectRatio: width / height,
+      lastModified: file.lastModified || null,
+      exifOrientation
+    };
+  } catch (error) {
+    throw new Error(`getImageMetadata failed: ${error.message}`);
+  }
+}
