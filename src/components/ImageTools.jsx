@@ -16,6 +16,8 @@ import {
 import {
   downloadBlob, getOutputFilename, formatFileSize,
 } from '../lib/processors/image.js'
+import { EditorHistoryToolbar, useEditorHistory } from './EditorHistory'
+import { Undo2, Redo2 } from 'lucide-react' 
 
 /* ═══ Shared helpers ═══ */
 function useImageLoader(file) {
@@ -42,6 +44,7 @@ export function FilterEditor({ file, lang, filters: defaultFilters, singleMode }
   const [processing, setProcessing] = useState(false)
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
+  const history = useEditorHistory(20)
 
   const labels = {
     en: { brightness: 'Brightness', contrast: 'Contrast', saturation: 'Saturation', blur: 'Blur', grayscale: 'Grayscale', reset: 'Reset', apply: 'Apply & Download', preview: 'Preview', processing: 'Processing...' },
@@ -72,7 +75,14 @@ export function FilterEditor({ file, lang, filters: defaultFilters, singleMode }
     ctx.drawImage(img, 0, 0)
   }, [img, filters, width, height, buildFilterString, file])
 
-  const handleReset = () => setFilters(defaultFilters || { brightness: 0, contrast: 0, saturation: 0, blur: 0, grayscale: 0 })
+  const handleReset = () => {
+    setFilters(defaultFilters || { brightness: 0, contrast: 0, saturation: 0, blur: 0, grayscale: 0 })
+    history.reset()
+  }
+
+  const handleSliderRelease = () => {
+    history.pushState({ ...filters })
+  }
 
   const handleApply = async () => {
     setProcessing(true); setError(null)
@@ -117,6 +127,9 @@ export function FilterEditor({ file, lang, filters: defaultFilters, singleMode }
 
   return (
     <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <EditorHistoryToolbar canUndo={history.canUndo} canRedo={history.canRedo} onUndo={history.undo} onRedo={history.redo} lang={lang} />
+      </div>
       {/* Preview */}
       <div className="rounded-xl border border-[#E5E7EB] dark:border-[#27272A] overflow-hidden bg-[#F7F8FA] dark:bg-[#18181B] p-4 flex justify-center">
         <canvas ref={canvasRef} className="max-w-full max-h-[400px] rounded-lg" />
@@ -132,6 +145,7 @@ export function FilterEditor({ file, lang, filters: defaultFilters, singleMode }
             </div>
             <input type="range" min={s.min} max={s.max} step={s.step} value={filters[s.key]}
               onChange={e => setFilters(prev => ({ ...prev, [s.key]: parseFloat(e.target.value) }))}
+              onPointerUp={handleSliderRelease}
               className="w-full accent-blue-600 cursor-pointer" />
           </div>
         ))}
@@ -165,6 +179,7 @@ export function RotateFlipEditor({ file, lang, onProcess }) {
   const [flipV, setFlipV] = useState(false)
   const [processing, setProcessing] = useState(false)
   const [result, setResult] = useState(null)
+  const history = useEditorHistory(20)
 
   const labels = {
     en: { rotateLeft: 'Rotate Left', rotateRight: 'Rotate Right', flipH: 'Flip Horizontal', flipV: 'Flip Vertical', apply: 'Apply & Download', reset: 'Reset', processing: 'Processing...' },
@@ -190,7 +205,7 @@ export function RotateFlipEditor({ file, lang, onProcess }) {
     ctx.restore()
   }, [img, rotation, flipH, flipV, width, height, file])
 
-  const handleReset = () => { setRotation(0); setFlipH(false); setFlipV(false) }
+  const handleReset = () => { setRotation(0); setFlipH(false); setFlipV(false); history.reset() }
 
   const handleApply = async () => {
     setProcessing(true)
@@ -226,24 +241,27 @@ export function RotateFlipEditor({ file, lang, onProcess }) {
 
   return (
     <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <EditorHistoryToolbar canUndo={history.canUndo} canRedo={history.canRedo} onUndo={history.undo} onRedo={history.redo} lang={lang} />
+      </div>
       <div className="rounded-xl border border-[#E5E7EB] dark:border-[#27272A] overflow-hidden bg-[#F7F8FA] dark:bg-[#18181B] p-4 flex justify-center">
         <canvas ref={canvasRef} className="max-w-full max-h-[400px] rounded-lg" />
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <button onClick={() => setRotation(r => r - 90)} className="flex flex-col items-center gap-2 py-4 rounded-xl border border-[#E5E7EB] dark:border-[#27272A] hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20 transition-colors">
+        <button onClick={() => { setRotation(r => r - 90); history.pushState({ rotation: rotation - 90, flipH, flipV }) }} className="flex flex-col items-center gap-2 py-4 rounded-xl border border-[#E5E7EB] dark:border-[#27272A] hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20 transition-colors">
           <RotateCcw className="w-5 h-5 text-[#6B7280] dark:text-[#A1A1AA]" />
           <span className="text-xs font-medium text-[#111111] dark:text-[#FAFAFA]">{labels.rotateLeft}</span>
         </button>
-        <button onClick={() => setRotation(r => r + 90)} className="flex flex-col items-center gap-2 py-4 rounded-xl border border-[#E5E7EB] dark:border-[#27272A] hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20 transition-colors">
+        <button onClick={() => { setRotation(r => r + 90); history.pushState({ rotation: rotation + 90, flipH, flipV }) }} className="flex flex-col items-center gap-2 py-4 rounded-xl border border-[#E5E7EB] dark:border-[#27272A] hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20 transition-colors">
           <RotateCw className="w-5 h-5 text-[#6B7280] dark:text-[#A1A1AA]" />
           <span className="text-xs font-medium text-[#111111] dark:text-[#FAFAFA]">{labels.rotateRight}</span>
         </button>
-        <button onClick={() => setFlipH(v => !v)} className={`flex flex-col items-center gap-2 py-4 rounded-xl border transition-colors ${flipH ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/20' : 'border-[#E5E7EB] dark:border-[#27272A] hover:border-blue-400'}`}>
+        <button onClick={() => { setFlipH(v => !v); history.pushState({ rotation, flipH: !flipH, flipV }) }} className={`flex flex-col items-center gap-2 py-4 rounded-xl border transition-colors ${flipH ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/20' : 'border-[#E5E7EB] dark:border-[#27272A] hover:border-blue-400'}`}>
           <FlipHorizontal className="w-5 h-5 text-[#6B7280] dark:text-[#A1A1AA]" />
           <span className="text-xs font-medium text-[#111111] dark:text-[#FAFAFA]">{labels.flipH}</span>
         </button>
-        <button onClick={() => setFlipV(v => !v)} className={`flex flex-col items-center gap-2 py-4 rounded-xl border transition-colors ${flipV ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/20' : 'border-[#E5E7EB] dark:border-[#27272A] hover:border-blue-400'}`}>
+        <button onClick={() => { setFlipV(v => !v); history.pushState({ rotation, flipH, flipV: !flipV }) }} className={`flex flex-col items-center gap-2 py-4 rounded-xl border transition-colors ${flipV ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/20' : 'border-[#E5E7EB] dark:border-[#27272A] hover:border-blue-400'}`}>
           <FlipVertical className="w-5 h-5 text-[#6B7280] dark:text-[#A1A1AA]" />
           <span className="text-xs font-medium text-[#111111] dark:text-[#FAFAFA]">{labels.flipV}</span>
         </button>
@@ -271,6 +289,7 @@ export function WatermarkEditor({ file, lang, onProcess }) {
   const [position, setPosition] = useState('center')
   const [processing, setProcessing] = useState(false)
   const [result, setResult] = useState(null)
+  const history = useEditorHistory(20)
 
   const labels = {
     en: { text: 'Watermark Text', fontSize: 'Font Size', opacity: 'Opacity', color: 'Color', rotation: 'Rotation', position: 'Position', apply: 'Apply & Download', reset: 'Reset', processing: 'Processing...', topLeft: 'Top Left', topCenter: 'Top Center', topRight: 'Top Right', center: 'Center', bottomLeft: 'Bottom Left', bottomCenter: 'Bottom Center', bottomRight: 'Bottom Right' },
@@ -349,6 +368,9 @@ export function WatermarkEditor({ file, lang, onProcess }) {
 
   return (
     <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <EditorHistoryToolbar canUndo={history.canUndo} canRedo={history.canRedo} onUndo={history.undo} onRedo={history.redo} lang={lang} />
+      </div>
       <div className="rounded-xl border border-[#E5E7EB] dark:border-[#27272A] overflow-hidden bg-[#F7F8FA] dark:bg-[#18181B] p-4 flex justify-center">
         <canvas ref={canvasRef} className="max-w-full max-h-[400px] rounded-lg" />
       </div>
@@ -356,7 +378,7 @@ export function WatermarkEditor({ file, lang, onProcess }) {
       <div className="space-y-3">
         <div>
           <label className="block text-sm font-medium text-[#111111] dark:text-[#FAFAFA] mb-1.5">{labels.text}</label>
-          <input type="text" value={text} onChange={e => setText(e.target.value)} className="input-field" />
+          <input type="text" value={text} onChange={e => setText(e.target.value)} onBlur={() => history.pushState({ text, fontSize, opacity, color, rotation, position })} className="input-field" />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div>
@@ -405,6 +427,7 @@ export function BorderEditor({ file, lang }) {
   const [cornerRadius, setCornerRadius] = useState(0)
   const [processing, setProcessing] = useState(false)
   const [result, setResult] = useState(null)
+  const history = useEditorHistory(20)
 
   const labels = {
     en: { width: 'Border Width', color: 'Border Color', radius: 'Corner Radius', apply: 'Apply & Download', processing: 'Processing...' },
@@ -478,13 +501,16 @@ export function BorderEditor({ file, lang }) {
 
   return (
     <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <EditorHistoryToolbar canUndo={history.canUndo} canRedo={history.canRedo} onUndo={history.undo} onRedo={history.redo} lang={lang} />
+      </div>
       <div className="rounded-xl border border-[#E5E7EB] dark:border-[#27272A] overflow-hidden bg-[#F7F8FA] dark:bg-[#18181B] p-4 flex justify-center">
         <canvas ref={canvasRef} className="max-w-full max-h-[400px] rounded-lg" />
       </div>
       <div className="space-y-3">
         <div>
           <label className="block text-xs font-medium text-[#6B7280] dark:text-[#A1A1AA] mb-1">{labels.width}: {borderWidth}px</label>
-          <input type="range" min="0" max="100" value={borderWidth} onChange={e => setBorderWidth(parseInt(e.target.value))} className="w-full accent-blue-600" />
+          <input type="range" min="0" max="100" value={borderWidth} onChange={e => setBorderWidth(parseInt(e.target.value))} onPointerUp={() => history.pushState({ borderWidth, borderColor, cornerRadius })} className="w-full accent-blue-600" />
         </div>
         <div>
           <label className="block text-xs font-medium text-[#6B7280] dark:text-[#A1A1AA] mb-1">{labels.color}</label>
@@ -492,7 +518,7 @@ export function BorderEditor({ file, lang }) {
         </div>
         <div>
           <label className="block text-xs font-medium text-[#6B7280] dark:text-[#A1A1AA] mb-1">{labels.radius}: {cornerRadius}px</label>
-          <input type="range" min="0" max="100" value={cornerRadius} onChange={e => setCornerRadius(parseInt(e.target.value))} className="w-full accent-blue-600" />
+          <input type="range" min="0" max="100" value={cornerRadius} onChange={e => setCornerRadius(parseInt(e.target.value))} onPointerUp={() => history.pushState({ borderWidth, borderColor, cornerRadius })} className="w-full accent-blue-600" />
         </div>
       </div>
       <button onClick={handleApply} disabled={processing} className="btn-primary w-full justify-center py-3.5 text-sm disabled:opacity-50">
@@ -509,6 +535,7 @@ export function RoundedCornersEditor({ file, lang }) {
   const [radius, setRadius] = useState(20)
   const [processing, setProcessing] = useState(false)
   const [result, setResult] = useState(null)
+  const history = useEditorHistory(20)
 
   const labels = {
     en: { radius: 'Corner Radius', apply: 'Apply & Download', processing: 'Processing...' },
@@ -562,12 +589,15 @@ export function RoundedCornersEditor({ file, lang }) {
 
   return (
     <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <EditorHistoryToolbar canUndo={history.canUndo} canRedo={history.canRedo} onUndo={history.undo} onRedo={history.redo} lang={lang} />
+      </div>
       <div className="rounded-xl border border-[#E5E7EB] dark:border-[#27272A] overflow-hidden bg-[#F7F8FA] dark:bg-[#18181B] p-4 flex justify-center">
         <canvas ref={canvasRef} className="max-w-full max-h-[400px] rounded-lg" />
       </div>
       <div>
         <label className="block text-xs font-medium text-[#6B7280] dark:text-[#A1A1AA] mb-1">{labels.radius}: {radius}px</label>
-        <input type="range" min="0" max="200" value={radius} onChange={e => setRadius(parseInt(e.target.value))} className="w-full accent-blue-600" />
+        <input type="range" min="0" max="200" value={radius} onChange={e => setRadius(parseInt(e.target.value))} onPointerUp={() => history.pushState({ radius })} className="w-full accent-blue-600" />
       </div>
       <button onClick={handleApply} disabled={processing} className="btn-primary w-full justify-center py-3.5 text-sm disabled:opacity-50">
         {processing ? <><Loader2 className="w-4 h-4 animate-spin" /> {labels.processing}</> : labels.apply}

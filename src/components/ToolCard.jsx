@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { getIcon } from '../lib/icons'
+import FavoriteButton from './FavoriteButton'
 
 /* ── NEW badge: show for 7 days after created_at ── */
 function isNew(tool) {
@@ -17,13 +18,18 @@ export default function ToolCard({ tool, lang, t, category, showNewBadge = true 
   const showNew = showNewBadge && isNew(tool)
 
   return (
-    <Link to={`/tools/${tool.slug}`} className="tool-card group">
+    <Link to={`/tools/${tool.slug}`} className="tool-card group relative">
       {/* NEW badge — subtle blue, top-right corner */}
       {showNew && (
         <span className="badge-new absolute top-3 end-3 z-10">
           NEW
         </span>
       )}
+
+      {/* Favorite button — top-left corner */}
+      <div className="absolute top-2.5 start-2.5 z-10">
+        <FavoriteButton slug={tool.slug} lang={lang} />
+      </div>
 
       {/* Icon */}
       <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${cat.bg || 'bg-blue-50 dark:bg-blue-950/30'} group-hover:scale-105 transition-transform duration-200`}>

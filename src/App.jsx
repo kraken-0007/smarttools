@@ -9,6 +9,8 @@ import HomePage from './pages/HomePage'
 import CategoriesPage from './pages/CategoriesPage'
 import ToolPage from './pages/ToolPage'
 import SearchPage from './pages/SearchPage'
+import FavoritesPage from './pages/FavoritesPage'
+import RecentPage from './pages/RecentPage'
 
 function CategoryRoute({ lang, t }) {
   const { slug } = useParams()
@@ -56,6 +58,8 @@ export default function App() {
             <Route path="/categories/:slug" element={<CategoryRoute {...shared} />} />
             <Route path="/tools/:slug" element={<ToolRoute {...shared} />} />
             <Route path="/search" element={<SearchPage {...shared} />} />
+            <Route path="/favorites" element={<FavoritesPage {...shared} />} />
+            <Route path="/recent" element={<RecentPage {...shared} />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Footer t={t} lang={lang} />

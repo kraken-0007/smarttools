@@ -15,6 +15,7 @@ import {
   compressImage, resizeImage, cropImage, convertImage, convertImageWithBackground,
   cropAndRotate, rotateImage, downloadBlob, getOutputFilename, formatFileSize,
 } from '../lib/processors/image.js'
+import { EditorHistoryToolbar, useEditorHistory } from './EditorHistory'
 
 /* ═══════════════════════════════════════════════════
    SHARED HOOKS & UTILITIES

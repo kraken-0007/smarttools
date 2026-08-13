@@ -8,6 +8,7 @@ import SectionHeader from '../components/SectionHeader'
 import { CategoryGridSkeleton, ToolGridSkeleton } from '../components/Skeletons'
 import { useSEO, getPopularTools } from '../lib/seo'
 import { getIcon } from '../lib/icons'
+import { getRecentToolSlugs } from '../lib/recentHelpers'
 
 /* Popular Today — specific tools */
 const POPULAR_TODAY_SLUGS = [
@@ -58,6 +59,10 @@ export default function HomePage({ lang, t }) {
     return tools.filter(t => t.featured).slice(0, 6)
   }, [])
 
+  const recentlyUsed = useMemo(() => {
+    return getRecentToolSlugs(6).map(slug => tools.find(t => t.slug === slug)).filter(Boolean)
+  }, [])
+
   const recentTools = useMemo(() => {
     return [...tools]
       .sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0))
@@ -65,9 +70,9 @@ export default function HomePage({ lang, t }) {
   }, [])
 
   const heroText = {
-    en: { eyebrow: 'FREE ONLINE TOOLS', title: 'Everything you need,\nin one place.', desc: 'Convert, compress, edit and optimize your files directly in your browser.', explore: 'Explore Tools', categories: 'Browse Categories', free: 'Free Forever', tools: 'Tools', categoriesLabel: 'Categories', popularToday: 'Popular Today', popularSub: 'Most used tools right now', exploreCategories: 'Explore Categories', exploreSub: 'Browse all categories', recentlyAdded: 'Recently Added', recentlySub: 'Newest tools added' },
-    fr: { eyebrow: 'OUTILS EN LIGNE GRATUITS', title: 'Tout ce dont vous avez besoin,\nen un seul endroit.', desc: 'Convertissez, compressez, éditez et optimisez vos fichiers directement dans votre navigateur.', explore: 'Explorer les outils', categories: 'Parcourir les catégories', free: 'Gratuit pour toujours', tools: 'Outils', categoriesLabel: 'Catégories', popularToday: 'Populaire aujourd\'hui', popularSub: 'Les outils les plus utilisés maintenant', exploreCategories: 'Explorer les catégories', exploreSub: 'Parcourir toutes les catégories', recentlyAdded: 'Récemment ajoutés', recentlySub: 'Les outils les plus récents' },
-    ar: { eyebrow: 'أدوات مجانية عبر الإنترنت', title: 'كل ما تحتاجه\nفي مكان واحد.', desc: 'تحويل وضغط وتحرير وتحسين ملفاتك مباشرة في متصفحك.', explore: 'استكشف الأدوات', categories: 'تصفح الفئات', free: 'مجاني للأبد', tools: 'أداة', categoriesLabel: 'فئة', popularToday: 'شائع اليوم', popularSub: 'الأدوات الأكثر استخداماً الآن', exploreCategories: 'استكشف الفئات', exploreSub: 'تصفح جميع الفئات', recentlyAdded: 'أضيفت حديثاً', recentlySub: 'أحدث الأدوات المضافة' },
+    en: { eyebrow: 'FREE ONLINE TOOLS', title: 'Everything you need,\nin one place.', desc: 'Convert, compress, edit and optimize your files directly in your browser.', explore: 'Explore Tools', categories: 'Browse Categories', free: 'Free Forever', tools: 'Tools', categoriesLabel: 'Categories', popularToday: 'Popular Today', popularSub: 'Most used tools right now', exploreCategories: 'Explore Categories', exploreSub: 'Browse all categories', recentlyAdded: 'Recently Added', recentlySub: 'Newest tools added', recentlyUsed: 'Recently Used', recentlyUsedSub: 'Tools you\'ve opened recently' },
+    fr: { eyebrow: 'OUTILS EN LIGNE GRATUITS', title: 'Tout ce dont vous avez besoin,\nen un seul endroit.', desc: 'Convertissez, compressez, éditez et optimisez vos fichiers directement dans votre navigateur.', explore: 'Explorer les outils', categories: 'Parcourir les catégories', free: 'Gratuit pour toujours', tools: 'Outils', categoriesLabel: 'Catégories', popularToday: 'Populaire aujourd\'hui', popularSub: 'Les outils les plus utilisés maintenant', exploreCategories: 'Explorer les catégories', exploreSub: 'Parcourir toutes les catégories', recentlyAdded: 'Récemment ajoutés', recentlySub: 'Les outils les plus récents', recentlyUsed: 'Récemment utilisés', recentlyUsedSub: 'Outils ouverts récemment' },
+    ar: { eyebrow: 'أدوات مجانية عبر الإنترنت', title: 'كل ما تحتاجه\nفي مكان واحد.', desc: 'تحويل وضغط وتحرير وتحسين ملفاتك مباشرة في متصفحك.', explore: 'استكشف الأدوات', categories: 'تصفح الفئات', free: 'مجاني للأبد', tools: 'أداة', categoriesLabel: 'فئة', popularToday: 'شائع اليوم', popularSub: 'الأدوات الأكثر استخداماً الآن', exploreCategories: 'استكشف الفئات', exploreSub: 'تصفح جميع الفئات', recentlyAdded: 'أضيفت حديثاً', recentlySub: 'أحدث الأدوات المضافة', recentlyUsed: 'المستخدمة مؤخراً', recentlyUsedSub: 'الأدوات التي فتحتها مؤخراً' },
   }[lang]
 
   const stats = useMemo(() => [
@@ -196,6 +201,26 @@ export default function HomePage({ lang, t }) {
             </div>
           )}
         </section>
+
+        {/* ── Recently Used ──────────────────────────── */}
+        {recentlyUsed.length > 0 && (
+          <section>
+            <SectionHeader
+              title={heroText.recentlyUsed}
+              subtitle={heroText.recentlyUsedSub}
+              icon={<Clock className="w-4 h-4 text-blue-600" />}
+            />
+            {loading ? (
+              <ToolGridSkeleton count={6} />
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {recentlyUsed.map(tool => (
+                  <ToolCard key={tool.id} tool={tool} lang={lang} t={t} category={catMap[tool.categoryId]} />
+                ))}
+              </div>
+            )}
+          </section>
+        )}
 
         {/* ── Recently Added ──────────────────────────── */}
         <section>

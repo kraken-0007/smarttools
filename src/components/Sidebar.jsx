@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { getIcon } from '../lib/icons'
-import { Home, X, ChevronDown, PanelLeftClose, PanelLeft, Star } from 'lucide-react'
+import { Home, X, ChevronDown, PanelLeftClose, PanelLeft, Star, Clock } from 'lucide-react'
+import { useFavorites } from '../hooks/useFavorites'
+import { useRecentTools } from '../hooks/useRecentTools'
 import categories from '../data/categories.json'
 import tools from '../data/tools.json'
 
@@ -27,6 +29,8 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
   const { pathname } = useLocation()
   const isHome = pathname === '/'
   const dir = document.documentElement.getAttribute('dir') || 'ltr'
+  const { favorites } = useFavorites()
+  const { recent } = useRecentTools()
 
   const [collapsed, setCollapsed] = useState(() => {
     try { return localStorage.getItem(COLLAPSED_KEY) === 'true' } catch { return false }
@@ -78,9 +82,23 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
     .map(slug => tools.find(t => t.slug === slug))
     .filter(Boolean)
 
+  const favTools = favorites
+    .map(slug => tools.find(to => to.slug === slug))
+    .filter(Boolean)
+    .slice(0, 5)
+
+  const recentTools = recent
+    .map(item => tools.find(to => to.slug === item.slug))
+    .filter(Boolean)
+    .slice(0, 5)
+
   const popularLabel = lang === 'ar' ? 'أدوات شائعة' : lang === 'fr' ? 'Populaires' : 'Popular'
   const categoriesLabel = t.nav.categories
+  const favLabel = lang === 'ar' ? 'المفضلة' : lang === 'fr' ? 'Favoris' : 'Favorites'
+  const recentLabel = lang === 'ar' ? 'الأخيرة' : lang === 'fr' ? 'Récents' : 'Recent'
   const collapseLabel = collapsed ? (lang === 'ar' ? 'توسيع' : lang === 'fr' ? 'Développer' : 'Expand') : (lang === 'ar' ? 'طي' : lang === 'fr' ? 'Réduire' : 'Collapse')
+  const noFavLabel = lang === 'ar' ? 'لا توجد مفضلات' : lang === 'fr' ? 'Aucun favori' : 'No favorites yet'
+  const noRecentLabel = lang === 'ar' ? 'ستظهر هنا أدواتك الأخيرة' : lang === 'fr' ? 'Vos outils récents apparaîtront ici' : 'Your recent tools will appear here'
 
   return (
     <>
@@ -136,6 +154,85 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
             <Home className="w-4 h-4 shrink-0" strokeWidth={1.8} />
             {!collapsed && <span className="text-[13px]">{t.nav.home}</span>}
           </Link>
+
+          {/* ── Favorites section ── */}
+          {!collapsed && favTools.length > 0 && (
+            <div className="pt-4 pb-1 px-3">
+              <Link to="/favorites" className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] dark:text-[#A1A1AA] flex items-center gap-1.5 hover:text-blue-600 transition-colors">
+                <Star className="w-3 h-3 text-blue-600" fill="currentColor" />
+                {favLabel}
+              </Link>
+            </div>
+          )}
+          {collapsed && favTools.length > 0 && <div className="pt-3" />}
+          {favTools.map(tool => {
+            const ToolIcon = getIcon(tool.icon)
+            const isActive = pathname === `/tools/${tool.slug}`
+            return (
+              <Link
+                key={tool.id}
+                to={`/tools/${tool.slug}`}
+                onClick={onClose}
+                className={`sidebar-link ${isActive ? 'active' : ''} ${collapsed ? 'justify-center !px-0 !py-2.5' : ''} relative group`}
+                title={collapsed ? tool.name[lang] : ''}
+              >
+                <ToolIcon className="w-4 h-4 shrink-0" strokeWidth={1.8} />
+                {!collapsed && <span className="flex-1 truncate text-[13px]">{tool.name[lang]}</span>}
+                {!collapsed && <Star className="w-2.5 h-2.5 text-blue-600 dark:text-blue-500 shrink-0" fill="currentColor" />}
+
+                {collapsed && (
+                  <div className="absolute start-full ms-2 top-1/2 -translate-y-1/2 z-50 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-[#111113] text-[#FAFAFA] dark:bg-[#18181B] text-xs font-medium px-2.5 py-1.5 rounded-lg whitespace-nowrap shadow-card-lg">
+                      {tool.name[lang]}
+                    </div>
+                  </div>
+                )}
+              </Link>
+            )
+          })}
+          {!collapsed && favTools.length === 0 && (
+            <div className="pt-4 pb-1 px-3">
+              <Link to="/favorites" className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] dark:text-[#A1A1AA] flex items-center gap-1.5 hover:text-blue-600 transition-colors">
+                <Star className="w-3 h-3" />
+                {favLabel}
+              </Link>
+            </div>
+          )}
+
+          {/* ── Recent section ── */}
+          {!collapsed && recentTools.length > 0 && (
+            <div className="pt-4 pb-1 px-3">
+              <Link to="/recent" className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] dark:text-[#A1A1AA] flex items-center gap-1.5 hover:text-blue-600 transition-colors">
+                <Clock className="w-3 h-3 text-blue-600" />
+                {recentLabel}
+              </Link>
+            </div>
+          )}
+          {collapsed && recentTools.length > 0 && <div className="pt-3" />}
+          {recentTools.map(tool => {
+            const ToolIcon = getIcon(tool.icon)
+            const isActive = pathname === `/tools/${tool.slug}`
+            return (
+              <Link
+                key={tool.id}
+                to={`/tools/${tool.slug}`}
+                onClick={onClose}
+                className={`sidebar-link ${isActive ? 'active' : ''} ${collapsed ? 'justify-center !px-0 !py-2.5' : ''} relative group`}
+                title={collapsed ? tool.name[lang] : ''}
+              >
+                <ToolIcon className="w-4 h-4 shrink-0" strokeWidth={1.8} />
+                {!collapsed && <span className="flex-1 truncate text-[13px]">{tool.name[lang]}</span>}
+
+                {collapsed && (
+                  <div className="absolute start-full ms-2 top-1/2 -translate-y-1/2 z-50 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-[#111113] text-[#FAFAFA] dark:bg-[#18181B] text-xs font-medium px-2.5 py-1.5 rounded-lg whitespace-nowrap shadow-card-lg">
+                      {tool.name[lang]}
+                    </div>
+                  </div>
+                )}
+              </Link>
+            )
+          })}
 
           {/* Popular Tools */}
           {!collapsed && (

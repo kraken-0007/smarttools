@@ -9,9 +9,14 @@ import {
   ImageMetadataViewer, ImageConverterTool,
 } from '../components/ImageTools.jsx'
 import PdfPageEditor from '../components/PdfPageEditor.jsx'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { CheckCircle2, Wrench, HelpCircle, ChevronDown, Loader2 } from 'lucide-react'
+import FavoriteButton from '../components/FavoriteButton'
+import { useRecentTools } from '../hooks/useRecentTools'
+import BatchProcessor from '../components/BatchProcessor'
+import { BATCH_CONFIG, BATCH_SUPPORTED } from '../lib/batchConfig.jsx'
+import { Layers } from 'lucide-react'
 import tools from '../data/tools.json'
 import categories from '../data/categories.json'
 import ToolCard from '../components/ToolCard'
@@ -918,9 +923,46 @@ function ComingSoon({ lang, t }) {
 }
 
 function ToolInterface({ tool, lang, t }) {
+  const [batchMode, setBatchMode] = useState(false)
   const ToolComponent = TOOL_COMPONENTS[tool.slug]
-  if (ToolComponent) return <ToolComponent lang={lang} t={t} />
-  return <ComingSoon lang={lang} t={t} />
+  const supportsBatch = BATCH_SUPPORTED.has(tool.slug)
+  const batchConfig = BATCH_CONFIG[tool.slug]
+
+  if (!ToolComponent) return <ComingSoon lang={lang} t={t} />
+
+  if (batchMode && supportsBatch && batchConfig) {
+    return (
+      <div>
+        <BatchProcessor
+          toolSlug={tool.slug}
+          lang={lang}
+          t={t}
+          accept={batchConfig.accept}
+          hint={batchConfig.hint}
+          processor={batchConfig.processor}
+          settingsComponent={batchConfig.settingsComponent}
+          orderMatters={batchConfig.orderMatters}
+        />
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      {supportsBatch && (
+        <div className="flex items-center justify-end mb-3">
+          <button
+            onClick={() => setBatchMode(true)}
+            className="text-xs font-medium text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1.5 transition-colors px-3 py-1.5 rounded-lg border border-[#E5E7EB] dark:border-[#27272A] hover:border-blue-300 dark:hover:border-blue-700"
+          >
+            <Layers className="w-3.5 h-3.5" />
+            {lang === 'ar' ? 'وضع الدفعات' : lang === 'fr' ? 'Mode Lot' : 'Batch Mode'}
+          </button>
+        </div>
+      )}
+      <ToolComponent lang={lang} t={t} />
+    </div>
+  )
 }
 
 function FAQItem({ question, answer }) {
@@ -956,13 +998,25 @@ export default function ToolPage({ slug, lang, t }) {
   const catMap = Object.fromEntries(categories.map(c => [c.id, c]))
   useSEO({ title: tool.name[lang], description: tool.description[lang], canonical: `/tools/${tool.slug}` })
   useToolViews(tool.slug)
+
+  const { addRecent } = useRecentTools()
+  const recentTrackedRef = useRef(null)
+  useEffect(() => {
+    if (recentTrackedRef.current !== slug) {
+      recentTrackedRef.current = slug
+      addRecent(slug)
+    }
+  }, [slug, addRecent])
   return (
     <div className="max-w-3xl mx-auto px-4 py-6 md:py-8 animate-fade-in">
       <Breadcrumb items={[{label:t.breadcrumb.home,href:'/'},{label:t.nav.categories,href:'/categories'},category&&{label:category.name[lang],href:`/categories/${category.slug}`},{label:tool.name[lang]}].filter(Boolean)} />
       <div className="flex items-start gap-4 mb-6 md:mb-8">
         <div className={`shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${category?.color || 'from-blue-600 to-blue-500'} flex items-center justify-center shadow-sm`}><Icon className="w-7 h-7 text-white" strokeWidth={1.6} /></div>
         <div>
-          <h1 className="text-2xl font-bold text-[#111111] dark:text-[#FAFAFA] leading-tight">{tool.name[lang]}</h1>
+          <div className="flex items-center gap-2">
+            <h1 className="text-2xl font-bold text-[#111111] dark:text-[#FAFAFA] leading-tight">{tool.name[lang]}</h1>
+            <FavoriteButton slug={tool.slug} size="lg" lang={lang} />
+          </div>
           <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] mt-1 leading-relaxed">{tool.description[lang]}</p>
           {category && <Link to={`/categories/${category.slug}`} className={`inline-flex items-center gap-1 mt-2 text-xs font-semibold px-2.5 py-1 rounded-full ${category.bg} ${category.text} ${category.border} border`}><Icon className="w-3 h-3" strokeWidth={2} /> {category.name[lang]}</Link>}
         </div>
