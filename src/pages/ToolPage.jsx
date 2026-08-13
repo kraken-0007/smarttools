@@ -9,6 +9,7 @@ import {
   ImageMetadataViewer, ImageConverterTool,
 } from '../components/ImageTools.jsx'
 import PdfPageEditor from '../components/PdfPageEditor.jsx'
+import AdvancedPdfEditor from '../components/AdvancedPdfEditor.jsx'
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { CheckCircle2, Wrench, HelpCircle, ChevronDown, Loader2 } from 'lucide-react'
@@ -127,61 +128,11 @@ function PngToPdfTool({ lang }) {
 }
 
 function MergePdfTool({ lang }) {
-  const [files, setFiles] = useState([])
-  const { loading, results, error, process, reset } = useToolProcessor(async (pdfs) => {
-    const blob = await mergePDFs(pdfs); return { blob, filename: 'merged.pdf' }
-  }, lang)
-  const handleReset = () => { setFiles([]); reset() }
-  return (
-    <div className="space-y-4">
-      {!results && !error && (<>
-        <FileUploader accept="application/pdf" multiple onFiles={setFiles} lang={lang} hint="Select 2+ PDFs · Order matters" />
-        {files.length >= 2 && <ProcessButton onClick={() => process(files)} loading={loading} label={lang==='ar'?'دمج PDF':lang==='fr'?'Fusionner PDF':'Merge PDF'} />}
-        {files.length === 1 && <p className="text-xs text-gray-400 text-center">{lang==='ar'?'اختر ملف PDF آخر':lang==='fr'?'Sélectionnez un autre PDF':'Select at least one more PDF'}</p>}
-      </>)}
-      {loading && <ProcessingIndicator />}
-      {error && <ErrorDisplay message={error} lang={lang} />}
-      {results && <ResultDisplay results={results} lang={lang} />}
-      {(results||error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 font-medium">{lang==='ar'?'ابدأ من جديد':lang==='fr'?'Recommencer':'Start over'}</button>}
-    </div>
-  )
+  return <AdvancedPdfEditor mode="merge" lang={lang} features={{ merge: true, rotate: true, reorder: true, duplicate: true, delete: true, split: false, extract: false, numbering: false, watermark: false }} />
 }
 
 function SplitPdfTool({ lang }) {
-  const [file, setFile] = useState(null)
-  const [showEditor, setShowEditor] = useState(false)
-  const { loading, results, error, process, reset } = useToolProcessor(async (input) => {
-    const baseName = file.name.replace(/\.[^/.]+$/, '')
-    const outFiles = []
-    for (const idx of input.selectedPages) {
-      const { PDFDocument } = await import('pdf-lib')
-      const srcDoc = await PDFDocument.load(await file.arrayBuffer())
-      const newDoc = await PDFDocument.create()
-      const [page] = await newDoc.copyPages(srcDoc, [idx])
-      newDoc.addPage(page)
-      const bytes = await newDoc.save()
-      outFiles.push({ blob: new Blob([bytes], { type: 'application/pdf' }), filename: `${baseName}_page_${idx+1}.pdf` })
-    }
-    return outFiles
-  }, lang)
-  const handleReset = () => { setFile(null); setShowEditor(false); reset() }
-  return (
-    <div className="space-y-4">
-      {!results && !error && !showEditor && (<>
-        <FileUploader accept="application/pdf" onFiles={setFile} lang={lang} hint="PDF · Max 50MB" />
-        {file && <ProcessButton onClick={() => setShowEditor(true)} label={lang==='ar'?'اختر الصفحات':lang==='fr'?'Choisir pages':'Select Pages'} />}
-      </>)}
-      {!results && !error && showEditor && file && (
-        <PdfPageEditor file={file} mode="select" lang={lang}
-          confirmLabel={lang==='ar'?'تقسيم الصفحات':lang==='fr'?'Diviser pages':'Split Selected Pages'}
-          onConfirm={(data) => process({ selectedPages: data.selectedPages })} />
-      )}
-      {loading && <ProcessingIndicator />}
-      {error && <ErrorDisplay message={error} lang={lang} />}
-      {results && <ResultDisplay results={results} lang={lang} />}
-      {(results||error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 font-medium">{lang==='ar'?'ابدأ من جديد':lang==='fr'?'Recommencer':'Start over'}</button>}
-    </div>
-  )
+  return <AdvancedPdfEditor mode="edit" lang={lang} features={{ split: true, rotate: true, delete: true, reorder: true, extract: false, numbering: false, watermark: false, duplicate: true, merge: false }} />
 }
 
 function CompressPdfTool({ lang }) {
@@ -259,114 +210,19 @@ function WordToPdfTool({ lang }) {
 /* ── PDF page editor tools ── */
 
 function RotatePdfTool({ lang }) {
-  const [file, setFile] = useState(null)
-  const [showEditor, setShowEditor] = useState(false)
-  const { loading, results, error, process, reset } = useToolProcessor(async (input) => {
-    const blob = await rotatePdf(file, input.angles || [90])
-    return { blob, filename: 'rotated.pdf' }
-  }, lang)
-  const handleReset = () => { setFile(null); setShowEditor(false); reset() }
-  return (
-    <div className="space-y-4">
-      {!results && !error && !showEditor && (<>
-        <FileUploader accept="application/pdf" onFiles={setFile} lang={lang} hint="PDF · Max 50MB" />
-        {file && <ProcessButton onClick={() => setShowEditor(true)} label={lang==='ar'?'تدوير الصفحات':lang==='fr'?'Pivoter pages':'Rotate Pages'} />}
-      </>)}
-      {!results && !error && showEditor && file && (
-        <PdfPageEditor file={file} mode="rotate" lang={lang}
-          confirmLabel={lang==='ar'?'تدوير PDF':lang==='fr'?'Pivoter PDF':'Rotate PDF'}
-          onConfirm={(data) => process({ angles: data.rotations })} />
-      )}
-      {loading && <ProcessingIndicator />}
-      {error && <ErrorDisplay message={error} lang={lang} />}
-      {results && <ResultDisplay results={results} lang={lang} />}
-      {(results||error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 font-medium">{lang==='ar'?'ابدأ من جديد':lang==='fr'?'Recommencer':'Start over'}</button>}
-    </div>
-  )
+  return <AdvancedPdfEditor mode="edit" lang={lang} features={{ rotate: true, split: false, delete: false, reorder: false, extract: false, numbering: false, watermark: false, duplicate: false, merge: false }} />
 }
 
 function DeletePdfPagesTool({ lang }) {
-  const [file, setFile] = useState(null)
-  const [showEditor, setShowEditor] = useState(false)
-  const { loading, results, error, process, reset } = useToolProcessor(async (input) => {
-    const all = Array.from({ length: 999 }, (_, i) => i)
-    const toDelete = all.filter(i => !input.remainingPages.includes(i)).map(i => i + 1)
-    const blob = await deletePdfPages(file, toDelete)
-    return { blob, filename: 'deleted-pages.pdf' }
-  }, lang)
-  const handleReset = () => { setFile(null); setShowEditor(false); reset() }
-  return (
-    <div className="space-y-4">
-      {!results && !error && !showEditor && (<>
-        <FileUploader accept="application/pdf" onFiles={setFile} lang={lang} hint="PDF · Max 50MB" />
-        {file && <ProcessButton onClick={() => setShowEditor(true)} label={lang==='ar'?'إدارة الصفحات':lang==='fr'?'Gérer pages':'Manage Pages'} />}
-      </>)}
-      {!results && !error && showEditor && file && (
-        <PdfPageEditor file={file} mode="delete" lang={lang}
-          confirmLabel={lang==='ar'?'حذف الصفحات':lang==='fr'?'Supprimer pages':'Delete Pages'}
-          onConfirm={(data) => process({ remainingPages: data.remainingPages })} />
-      )}
-      {loading && <ProcessingIndicator />}
-      {error && <ErrorDisplay message={error} lang={lang} />}
-      {results && <ResultDisplay results={results} lang={lang} />}
-      {(results||error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 font-medium">{lang==='ar'?'ابدأ من جديد':lang==='fr'?'Recommencer':'Start over'}</button>}
-    </div>
-  )
+  return <AdvancedPdfEditor mode="edit" lang={lang} features={{ delete: true, rotate: true, reorder: true, duplicate: true, split: false, extract: false, numbering: false, watermark: false, merge: false }} />
 }
 
 function ExtractPdfPagesTool({ lang }) {
-  const [file, setFile] = useState(null)
-  const [showEditor, setShowEditor] = useState(false)
-  const { loading, results, error, process, reset } = useToolProcessor(async (input) => {
-    const pageNums = input.selectedPages.map(i => i + 1)
-    const blob = await extractPdfPages(file, pageNums)
-    return { blob, filename: 'extracted-pages.pdf' }
-  }, lang)
-  const handleReset = () => { setFile(null); setShowEditor(false); reset() }
-  return (
-    <div className="space-y-4">
-      {!results && !error && !showEditor && (<>
-        <FileUploader accept="application/pdf" onFiles={setFile} lang={lang} hint="PDF · Max 50MB" />
-        {file && <ProcessButton onClick={() => setShowEditor(true)} label={lang==='ar'?'اختر الصفحات':lang==='fr'?'Choisir pages':'Select Pages'} />}
-      </>)}
-      {!results && !error && showEditor && file && (
-        <PdfPageEditor file={file} mode="select" lang={lang}
-          confirmLabel={lang==='ar'?'استخراج الصفحات':lang==='fr'?'Extraire pages':'Extract Pages'}
-          onConfirm={(data) => process({ selectedPages: data.selectedPages })} />
-      )}
-      {loading && <ProcessingIndicator />}
-      {error && <ErrorDisplay message={error} lang={lang} />}
-      {results && <ResultDisplay results={results} lang={lang} />}
-      {(results||error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 font-medium">{lang==='ar'?'ابدأ من جديد':lang==='fr'?'Recommencer':'Start over'}</button>}
-    </div>
-  )
+  return <AdvancedPdfEditor mode="edit" lang={lang} features={{ extract: true, rotate: true, reorder: true, duplicate: true, delete: false, split: false, numbering: false, watermark: false, merge: false }} />
 }
 
 function ReorderPdfPagesTool({ lang }) {
-  const [file, setFile] = useState(null)
-  const [showEditor, setShowEditor] = useState(false)
-  const { loading, results, error, process, reset } = useToolProcessor(async (input) => {
-    const blob = await reorderPdfPages(file, input.newOrder)
-    return { blob, filename: 'reordered.pdf' }
-  }, lang)
-  const handleReset = () => { setFile(null); setShowEditor(false); reset() }
-  return (
-    <div className="space-y-4">
-      {!results && !error && !showEditor && (<>
-        <FileUploader accept="application/pdf" onFiles={setFile} lang={lang} hint="PDF · Max 50MB" />
-        {file && <ProcessButton onClick={() => setShowEditor(true)} label={lang==='ar'?'إعادة ترتيب':lang==='fr'?'Réorganiser':'Reorder Pages'} />}
-      </>)}
-      {!results && !error && showEditor && file && (
-        <PdfPageEditor file={file} mode="reorder" lang={lang}
-          confirmLabel={lang==='ar'?'حفظ الترتيب':lang==='fr'?'Enregistrer':'Save Order'}
-          onConfirm={(data) => process({ newOrder: data.newOrder })} />
-      )}
-      {loading && <ProcessingIndicator />}
-      {error && <ErrorDisplay message={error} lang={lang} />}
-      {results && <ResultDisplay results={results} lang={lang} />}
-      {(results||error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 font-medium">{lang==='ar'?'ابدأ من جديد':lang==='fr'?'Recommencer':'Start over'}</button>}
-    </div>
-  )
+  return <AdvancedPdfEditor mode="edit" lang={lang} features={{ reorder: true, rotate: true, duplicate: true, delete: true, split: false, extract: false, numbering: false, watermark: false, merge: false }} />
 }
 
 /* ── Simple PDF tools ── */
@@ -500,81 +356,11 @@ function UnlockPdfTool({ lang }) {
 }
 
 function AddWatermarkPdfTool({ lang }) {
-  const [file, setFile] = useState(null)
-  const [watermarkText, setWatermarkText] = useState('CONFIDENTIAL')
-  const [opacity, setOpacity] = useState(30)
-  const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
-    const blob = await addWatermarkPdf(f, { text: watermarkText, opacity: opacity / 100 })
-    return { blob, filename: 'watermarked.pdf' }
-  }, lang)
-  const handleReset = () => { setFile(null); setWatermarkText('CONFIDENTIAL'); setOpacity(30); reset() }
-  return (
-    <div className="space-y-4">
-      {!results && !error && (<>
-        <FileUploader accept="application/pdf" onFiles={setFile} lang={lang} hint="PDF · Max 50MB" />
-        {file && (
-          <div className="space-y-3">
-            <div>
-              <label className="block text-sm font-medium text-[#111111] dark:text-[#FAFAFA] mb-1.5">{lang==='ar'?'نص العلامة المائية':lang==='fr'?'Texte filigrane':'Watermark Text'}</label>
-              <input type="text" value={watermarkText} onChange={e => setWatermarkText(e.target.value)} className="input-field" />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-[#6B7280] dark:text-[#A1A1AA] mb-1">{lang==='ar'?'الشفافية':lang==='fr'?'Opacité':'Opacity'}: {opacity}%</label>
-              <input type="range" min="10" max="80" value={opacity} onChange={e => setOpacity(parseInt(e.target.value))} className="w-full accent-blue-600" />
-            </div>
-            <ProcessButton onClick={() => process(file)} loading={loading} label={lang==='ar'?'إضافة علامة مائية':lang==='fr'?'Ajouter filigrane':'Add Watermark'} />
-          </div>
-        )}
-      </>)}
-      {loading && <ProcessingIndicator />}
-      {error && <ErrorDisplay message={error} lang={lang} />}
-      {results && <ResultDisplay results={results} lang={lang} />}
-      {(results||error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 font-medium">{lang==='ar'?'ابدأ من جديد':lang==='fr'?'Recommencer':'Start over'}</button>}
-    </div>
-  )
+  return <AdvancedPdfEditor mode="edit" lang={lang} features={{ watermark: true, rotate: true, reorder: true, duplicate: true, delete: true, split: false, extract: false, numbering: false, merge: false }} />
 }
 
 function AddPageNumbersPdfTool({ lang }) {
-  const [file, setFile] = useState(null)
-  const [position, setPosition] = useState('bottom-center')
-  const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
-    const blob = await addPageNumbersPdf(f, { position })
-    return { blob, filename: 'page-numbers.pdf' }
-  }, lang)
-  const handleReset = () => { setFile(null); setPosition('bottom-center'); reset() }
-  const positions = [
-    { key: 'bottom-center', label: lang==='ar'?'أسفل الوسط':lang==='fr'?'Bas Centre':'Bottom Center' },
-    { key: 'bottom-right', label: lang==='ar'?'أسفل اليمين':lang==='fr'?'Bas Droite':'Bottom Right' },
-    { key: 'bottom-left', label: lang==='ar'?'أسفل اليسار':lang==='fr'?'Bas Gauche':'Bottom Left' },
-    { key: 'top-center', label: lang==='ar'?'أعلى الوسط':lang==='fr'?'Haut Centre':'Top Center' },
-  ]
-  return (
-    <div className="space-y-4">
-      {!results && !error && (<>
-        <FileUploader accept="application/pdf" onFiles={setFile} lang={lang} hint="PDF · Max 50MB" />
-        {file && (
-          <div className="space-y-3">
-            <div>
-              <label className="block text-sm font-medium text-[#111111] dark:text-[#FAFAFA] mb-2">{lang==='ar'?'موضع الأرقام':lang==='fr'?'Position':'Position'}</label>
-              <div className="grid grid-cols-2 gap-2">
-                {positions.map(p => (
-                  <button key={p.key} onClick={() => setPosition(p.key)}
-                    className={`py-2.5 rounded-lg text-sm font-medium border transition-colors ${position===p.key?'border-blue-500 bg-blue-50 dark:bg-blue-950/20 text-blue-600 dark:text-blue-400':'border-[#E5E7EB] dark:border-[#27272A] text-[#6B7280] dark:text-[#A1A1AA]'}`}>
-                    {p.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <ProcessButton onClick={() => process(file)} loading={loading} label={lang==='ar'?'إضافة أرقام':lang==='fr'?'Ajouter numéros':'Add Page Numbers'} />
-          </div>
-        )}
-      </>)}
-      {loading && <ProcessingIndicator />}
-      {error && <ErrorDisplay message={error} lang={lang} />}
-      {results && <ResultDisplay results={results} lang={lang} />}
-      {(results||error) && <button onClick={handleReset} className="text-sm text-[#6B7280] dark:text-[#A1A1AA] hover:text-blue-600 font-medium">{lang==='ar'?'ابدأ من جديد':lang==='fr'?'Recommencer':'Start over'}</button>}
-    </div>
-  )
+  return <AdvancedPdfEditor mode="edit" lang={lang} features={{ numbering: true, rotate: true, reorder: true, duplicate: true, delete: true, split: false, extract: false, watermark: false, merge: false }} />
 }
 
 function ExtractImagesFromPdfTool({ lang }) {

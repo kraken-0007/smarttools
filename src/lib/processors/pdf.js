@@ -1106,3 +1106,370 @@ export function formatFileSize(bytes) {
   const i = Math.floor(Math.log(bytes) / Math.log(k));
   return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 }
+
+
+/* ═══════════════════════════════════════════════════
+   ADVANCED PDF EDITOR — Reusable Processor Functions
+   These functions take pdf-lib documents or File objects
+   and return Blobs. They are used by the AdvancedPdfEditor.
+   ═══════════════════════════════════════════════════ */
+
+/**
+ * Get page dimensions and orientation from a PDF file.
+ * @param {File} file
+ * @returns {Promise<Array<{width: number, height: number, orientation: string}>>}
+ */
+export async function getPdfPageInfo(file) {
+  try {
+    const { PDFDocument } = await import('pdf-lib');
+    const arrayBuffer = await file.arrayBuffer();
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const pages = pdfDoc.getPages();
+    return pages.map(page => {
+      const { width, height } = page.getSize();
+      const orientation = width > height ? 'landscape' : 'portrait';
+      return { width: Math.round(width), height: Math.round(height), orientation };
+    });
+  } catch (error) {
+    throw new Error(`Failed to get page info: ${error.message}`);
+  }
+}
+
+/**
+ * Rotate specific pages by a given angle.
+ * @param {File|ArrayBuffer} file - PDF file or raw array buffer
+ * @param {Array<number>} pageIndices - zero-based page indices to rotate
+ * @param {number} angle - rotation angle (90, 180, 270)
+ * @returns {Promise<Blob>}
+ */
+export async function rotatePDFPages(file, pageIndices, angle) {
+  try {
+    const { PDFDocument } = await import('pdf-lib');
+    const arrayBuffer = file instanceof File ? await file.arrayBuffer() : file;
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const pages = pdfDoc.getPages();
+    pageIndices.forEach(idx => {
+      if (idx >= 0 && idx < pages.length) {
+        const page = pages[idx];
+        const currentRotation = page.getRotation().angle;
+        page.setRotation({ angle: (currentRotation + angle) % 360 });
+      }
+    });
+    const pdfBytes = await pdfDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Failed to rotate pages: ${error.message}`);
+  }
+}
+
+/**
+ * Delete pages by zero-based indices.
+ * @param {File|ArrayBuffer} file
+ * @param {Array<number>} pageIndices - zero-based indices to DELETE
+ * @returns {Promise<Blob>}
+ */
+export async function deletePDFPagesByIndex(file, pageIndices) {
+  try {
+    const { PDFDocument } = await import('pdf-lib');
+    const arrayBuffer = file instanceof File ? await file.arrayBuffer() : file;
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const pages = pdfDoc.getPages();
+    const toDeleteSet = new Set(pageIndices);
+    const keepIndices = pages.map((_, i) => i).filter(i => !toDeleteSet.has(i));
+    if (keepIndices.length === 0) throw new Error('Cannot delete all pages');
+    const newDoc = await PDFDocument.create();
+    const copiedPages = await newDoc.copyPages(pdfDoc, keepIndices);
+    copiedPages.forEach(page => newDoc.addPage(page));
+    const pdfBytes = await newDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Failed to delete pages: ${error.message}`);
+  }
+}
+
+/**
+ * Extract specific pages by zero-based indices into a new PDF.
+ * @param {File|ArrayBuffer} file
+ * @param {Array<number>} pageIndices - zero-based indices to EXTRACT
+ * @returns {Promise<Blob>}
+ */
+export async function extractPDFPagesByIndex(file, pageIndices) {
+  try {
+    const { PDFDocument } = await import('pdf-lib');
+    const arrayBuffer = file instanceof File ? await file.arrayBuffer() : file;
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const newDoc = await PDFDocument.create();
+    const copiedPages = await newDoc.copyPages(pdfDoc, pageIndices);
+    copiedPages.forEach(page => newDoc.addPage(page));
+    const pdfBytes = await newDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Failed to extract pages: ${error.message}`);
+  }
+}
+
+/**
+ * Duplicate specific pages in a PDF.
+ * @param {File|ArrayBuffer} file
+ * @param {Array<number>} pageIndices - zero-based indices to duplicate (each inserted right after original)
+ * @returns {Promise<Blob>}
+ */
+export async function duplicatePDFPages(file, pageIndices) {
+  try {
+    const { PDFDocument } = await import('pdf-lib');
+    const arrayBuffer = file instanceof File ? await file.arrayBuffer() : file;
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const pages = pdfDoc.getPages();
+    const newDoc = await PDFDocument.create();
+    const toDupSet = new Set(pageIndices);
+    for (let i = 0; i < pages.length; i++) {
+      const [copiedPage] = await newDoc.copyPages(pdfDoc, [i]);
+      newDoc.addPage(copiedPage);
+      if (toDupSet.has(i)) {
+        const [dupPage] = await newDoc.copyPages(pdfDoc, [i]);
+        newDoc.addPage(dupPage);
+      }
+    }
+    const pdfBytes = await newDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Failed to duplicate pages: ${error.message}`);
+  }
+}
+
+/**
+ * Reorder pages by a new order array of zero-based indices.
+ * @param {File|ArrayBuffer} file
+ * @param {Array<number>} newOrder - zero-based indices in desired order
+ * @returns {Promise<Blob>}
+ */
+export async function reorderPDFPagesByIndex(file, newOrder) {
+  try {
+    const { PDFDocument } = await import('pdf-lib');
+    const arrayBuffer = file instanceof File ? await file.arrayBuffer() : file;
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const newDoc = await PDFDocument.create();
+    const copiedPages = await newDoc.copyPages(pdfDoc, newOrder);
+    copiedPages.forEach(page => newDoc.addPage(page));
+    const pdfBytes = await newDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Failed to reorder pages: ${error.message}`);
+  }
+}
+
+/**
+ * Split a PDF into individual page PDFs.
+ * @param {File|ArrayBuffer} file
+ * @param {Array<number>} [pageIndices] - optional: only split these pages. If null, split all.
+ * @param {string} [baseName] - base filename
+ * @returns {Promise<Array<{filename: string, blob: Blob}>>}
+ */
+export async function splitPDFVisually(file, pageIndices, baseName = 'document') {
+  try {
+    const { PDFDocument } = await import('pdf-lib');
+    const arrayBuffer = file instanceof File ? await file.arrayBuffer() : file;
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const totalPages = pdfDoc.getPageCount();
+    const indices = pageIndices || Array.from({ length: totalPages }, (_, i) => i);
+    const results = [];
+    for (const idx of indices) {
+      const newDoc = await PDFDocument.create();
+      const [page] = await newDoc.copyPages(pdfDoc, [idx]);
+      newDoc.addPage(page);
+      const bytes = await newDoc.save();
+      results.push({
+        filename: `${baseName}_page_${idx + 1}.pdf`,
+        blob: new Blob([bytes], { type: 'application/pdf' }),
+      });
+    }
+    return results;
+  } catch (error) {
+    throw new Error(`Failed to split PDF: ${error.message}`);
+  }
+}
+
+/**
+ * Add page numbers with full customization.
+ * @param {File|ArrayBuffer} file
+ * @param {Object} options
+ * @param {string} [options.position] - 'top-left'|'top-center'|'top-right'|'bottom-left'|'bottom-center'|'bottom-right'
+ * @param {string} [options.format] - '1'|'Page 1'|'1 / 10'|'Page 1 of 10'
+ * @param {number} [options.fontSize] - default 12
+ * @param {number} [options.margin] - margin in points, default 30
+ * @param {number} [options.startNum] - starting number, default 1
+ * @param {Array<number>} [options.pageIndices] - zero-based indices to apply to. If null, all pages.
+ * @returns {Promise<Blob>}
+ */
+export async function addPageNumbersAdvanced(file, options = {}) {
+  try {
+    const { PDFDocument, rgb, StandardFonts } = await import('pdf-lib');
+    const arrayBuffer = file instanceof File ? await file.arrayBuffer() : file;
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const pages = pdfDoc.getPages();
+    const total = pages.length;
+    const {
+      position = 'bottom-center',
+      format = '1',
+      fontSize = 12,
+      margin = 30,
+      startNum = 1,
+      pageIndices = null,
+    } = options;
+    const applySet = pageIndices ? new Set(pageIndices) : null;
+    const isTop = position.startsWith('top');
+    const isCenter = position.includes('center');
+    const isRight = position.endsWith('right');
+    const isLeft = position.endsWith('left');
+
+    pages.forEach((page, i) => {
+      if (applySet && !applySet.has(i)) return;
+      const pageNum = startNum + i;
+      let text;
+      switch (format) {
+        case 'Page 1': text = `Page ${pageNum}`; break;
+        case '1 / 10': text = `${pageNum} / ${total}`; break;
+        case 'Page 1 of 10': text = `Page ${pageNum} of ${total}`; break;
+        default: text = String(pageNum);
+      }
+      const { width } = page.getSize();
+      const textWidth = font.widthOfTextAtSize(text, fontSize);
+      let x, y;
+      if (isCenter) x = (width - textWidth) / 2;
+      else if (isRight) x = width - textWidth - margin;
+      else x = margin;
+      y = isTop ? page.getSize().height - margin : margin;
+      page.drawText(text, { x, y, size: fontSize, font, color: rgb(0, 0, 0) });
+    });
+
+    const pdfBytes = await pdfDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Failed to add page numbers: ${error.message}`);
+  }
+}
+
+/**
+ * Add a text watermark with full customization.
+ * @param {File|ArrayBuffer} file
+ * @param {Object} options
+ * @param {string} [options.text] - watermark text
+ * @param {number} [options.fontSize] - default 50
+ * @param {number} [options.opacity] - 0-1, default 0.3
+ * @param {number} [options.rotation] - degrees, default -45
+ * @param {string} [options.color] - hex color, default '#888888'
+ * @param {string} [options.position] - 'center'|'top-left'|'top-right'|'bottom-left'|'bottom-right'
+ * @param {Array<number>} [options.pageIndices] - zero-based indices. If null, all pages.
+ * @returns {Promise<Blob>}
+ */
+export async function addWatermarkAdvanced(file, options = {}) {
+  try {
+    const { PDFDocument, rgb, StandardFonts } = await import('pdf-lib');
+    const arrayBuffer = file instanceof File ? await file.arrayBuffer() : file;
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+    const pages = pdfDoc.getPages();
+    const {
+      text = 'WATERMARK',
+      fontSize = 50,
+      opacity = 0.3,
+      rotation = -45,
+      color = '#888888',
+      position = 'center',
+      pageIndices = null,
+    } = options;
+    const margin = 30;
+    const applySet = pageIndices ? new Set(pageIndices) : null;
+    // Parse hex color
+    const hex = color.replace('#', '');
+    const r = parseInt(hex.substring(0, 2), 16) / 255;
+    const g = parseInt(hex.substring(2, 4), 16) / 255;
+    const b = parseInt(hex.substring(4, 6), 16) / 255;
+
+    pages.forEach((page, i) => {
+      if (applySet && !applySet.has(i)) return;
+      const { width, height } = page.getSize();
+      const textWidth = font.widthOfTextAtSize(text, fontSize);
+      let x, y;
+      switch (position) {
+        case 'top-left': x = margin; y = height - margin - fontSize; break;
+        case 'top-right': x = width - textWidth - margin; y = height - margin - fontSize; break;
+        case 'bottom-left': x = margin; y = margin; break;
+        case 'bottom-right': x = width - textWidth - margin; y = margin; break;
+        default: x = (width - textWidth) / 2; y = (height - fontSize) / 2;
+      }
+      page.drawText(text, {
+        x, y, size: fontSize, font,
+        color: rgb(r, g, b),
+        opacity: opacity,
+        rotate: { angle: rotation * Math.PI / 180 },
+      });
+    });
+
+    const pdfBytes = await pdfDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Failed to add watermark: ${error.message}`);
+  }
+}
+
+/**
+ * Merge multiple PDFs with a custom page order across documents.
+ * @param {Array<{file: File, pageIndices: Array<number>}>} docs
+ * @returns {Promise<Blob>}
+ */
+export async function mergePDFsWithOrder(docs) {
+  try {
+    const { PDFDocument } = await import('pdf-lib');
+    const mergedPdf = await PDFDocument.create();
+    for (const { file, pageIndices } of docs) {
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await PDFDocument.load(arrayBuffer);
+      const indices = pageIndices || pdf.getPageIndices();
+      const copiedPages = await mergedPdf.copyPages(pdf, indices);
+      copiedPages.forEach(page => mergedPdf.addPage(page));
+    }
+    const pdfBytes = await mergedPdf.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Failed to merge PDFs: ${error.message}`);
+  }
+}
+
+/**
+ * Build a final PDF from an editor state.
+ * The editor state is an array of page objects: { file, originalIndex, rotation }
+ * where `file` is the original File and `originalIndex` is the zero-based page index in that file.
+ * @param {Array<{file: File, originalIndex: number, rotation: number}>} editorPages
+ * @returns {Promise<Blob>}
+ */
+export async function buildPDFFromEditorState(editorPages) {
+  try {
+    const { PDFDocument } = await import('pdf-lib');
+    if (!editorPages || editorPages.length === 0) throw new Error('No pages to export');
+    const newDoc = await PDFDocument.create();
+    // Cache loaded PDFs by file reference
+    const pdfCache = new Map();
+    for (const { file, originalIndex, rotation } of editorPages) {
+      let pdfDoc;
+      if (pdfCache.has(file)) {
+        pdfDoc = pdfCache.get(file);
+      } else {
+        const arrayBuffer = await file.arrayBuffer();
+        pdfDoc = await PDFDocument.load(arrayBuffer);
+        pdfCache.set(file, pdfDoc);
+      }
+      const [copiedPage] = await newDoc.copyPages(pdfDoc, [originalIndex]);
+      if (rotation && rotation !== 0) {
+        const currentRotation = copiedPage.getRotation().angle;
+        copiedPage.setRotation({ angle: (currentRotation + rotation) % 360 });
+      }
+      newDoc.addPage(copiedPage);
+    }
+    const pdfBytes = await newDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    throw new Error(`Failed to build PDF: ${error.message}`);
+  }
+}
