@@ -181,9 +181,7 @@ export default function AdvancedPdfEditor({ files: initialFiles, mode = 'edit', 
   const undo = useCallback(() => {
     setHistoryIndex(prevIdx => {
       if (prevIdx <= 0) return prevIdx
-      const newIdx = prevIdx - 1
-      setHistory(h => { setEditorPages(h[newIdx]); return h })
-      return newIdx
+      return prevIdx - 1
     })
     setSelectedIds(new Set())
   }, [])
@@ -191,12 +189,17 @@ export default function AdvancedPdfEditor({ files: initialFiles, mode = 'edit', 
   const redo = useCallback(() => {
     setHistoryIndex(prevIdx => {
       if (prevIdx >= history.length - 1) return prevIdx
-      const newIdx = prevIdx + 1
-      setHistory(h => { setEditorPages(h[newIdx]); return h })
-      return newIdx
+      return prevIdx + 1
     })
     setSelectedIds(new Set())
-  }, [history])
+  }, [history.length])
+
+  // Sync editor pages when history index changes (undo/redo/reset)
+  useEffect(() => {
+    if (historyIndex >= 0 && history[historyIndex]) {
+      setEditorPages(history[historyIndex])
+    }
+  }, [historyIndex]) // intentionally only historyIndex
 
   const loadPdfFiles = useCallback(async (fileList) => {
     setLoading(true); setError(null); setSplitResults(null); setExportResult(null)
@@ -225,6 +228,7 @@ export default function AdvancedPdfEditor({ files: initialFiles, mode = 'edit', 
           allPages.push({ id: uid(), file, fileName: file.name, originalIndex: i - 1, rotation: 0, thumbUrl, width: Math.round(fullVp.width), height: Math.round(fullVp.height), orientation: fullVp.width > fullVp.height ? 'landscape' : 'portrait', docId })
         }
         docId++
+        pdf.destroy()
       }
       setEditorPages(allPages); setOriginalPages(allPages)
       setHistory([allPages]); setHistoryIndex(0)
@@ -361,12 +365,12 @@ export default function AdvancedPdfEditor({ files: initialFiles, mode = 'edit', 
       const results = []
       for (const idx of indices) {
         const page = editorPages[idx]
-        const { PDFDocument } = await import('pdf-lib')
+        const { PDFDocument, degrees } = await import('pdf-lib')
         const arrayBuffer = await page.file.arrayBuffer()
         const srcDoc = await PDFDocument.load(arrayBuffer)
         const newDoc = await PDFDocument.create()
         const [copiedPage] = await newDoc.copyPages(srcDoc, [page.originalIndex])
-        if (page.rotation) copiedPage.setRotation({ angle: (copiedPage.getRotation().angle + page.rotation) % 360 })
+        if (page.rotation) copiedPage.setRotation(degrees((copiedPage.getRotation().angle + page.rotation) % 360))
         newDoc.addPage(copiedPage)
         const bytes = await newDoc.save()
         results.push({ filename: `${baseName}_page_${idx + 1}.pdf`, blob: new Blob([bytes], { type: 'application/pdf' }) })
@@ -413,16 +417,21 @@ export default function AdvancedPdfEditor({ files: initialFiles, mode = 'edit', 
   useEffect(() => {
     if (!previewPageId || !previewCanvasRef.current) return
     let cancelled = false
+    let pdfDoc = null
     async function renderPreview() {
       const page = editorPages.find(p => p.id === previewPageId)
-      if (!page) return
+      if (!page || cancelled) return
       try {
         const pdfjsLib = await loadPdfjs()
+        if (cancelled) return
         const arrayBuffer = await page.file.arrayBuffer()
-        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise
-        const pdfPage = await pdf.getPage(page.originalIndex + 1)
+        if (cancelled) return
+        pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise
+        if (cancelled) { pdfDoc.destroy(); pdfDoc = null; return }
+        const pdfPage = await pdfDoc.getPage(page.originalIndex + 1)
+        if (cancelled) { pdfDoc.destroy(); pdfDoc = null; return }
         const container = previewCanvasRef.current
-        if (!container) return
+        if (!container) { pdfDoc.destroy(); pdfDoc = null; return }
         const containerWidth = container.parentElement?.clientWidth || 600
         const targetWidth = Math.min(containerWidth * zoom, 1200)
         const baseVp = pdfPage.getViewport({ scale: 1 })
@@ -431,10 +440,11 @@ export default function AdvancedPdfEditor({ files: initialFiles, mode = 'edit', 
         container.height = Math.max(1, Math.floor(viewport.height))
         const ctx = container.getContext('2d')
         await pdfPage.render({ canvasContext: ctx, viewport, canvas: container }).promise
-      } catch (err) { console.error('Preview error:', err) }
+        pdfDoc.destroy(); pdfDoc = null
+      } catch (err) { if (pdfDoc) { try { pdfDoc.destroy() } catch(e){} pdfDoc = null } console.error('Preview error:', err) }
     }
     renderPreview()
-    return () => { cancelled = true }
+    return () => { cancelled = true; if (pdfDoc) { try { pdfDoc.destroy() } catch(e){} } }
   }, [previewPageId, zoom, editorPages])
 
   const handleJumpToPage = useCallback(() => {
@@ -525,7 +535,7 @@ export default function AdvancedPdfEditor({ files: initialFiles, mode = 'edit', 
                 <button onClick={() => setZoom(z => Math.max(0.5, z - 0.25))} className="p-1.5 rounded-lg border border-[#E5E7EB] dark:border-[#27272A] hover:bg-white dark:hover:bg-[#111113] transition-colors" aria-label={tr.zoomOut}><ZoomOut className="w-4 h-4 text-[#6B7280] dark:text-[#A1A1AA]" /></button>
                 <span className="text-xs font-medium text-[#6B7280] dark:text-[#A1A1AA] px-2 min-w-[40px] text-center">{Math.round(zoom * 100)}%</span>
                 <button onClick={() => setZoom(z => Math.min(2.0, z + 0.25))} className="p-1.5 rounded-lg border border-[#E5E7EB] dark:border-[#27272A] hover:bg-white dark:hover:bg-[#111113] transition-colors" aria-label={tr.zoomIn}><ZoomIn className="w-4 h-4 text-[#6B7280] dark:text-[#A1A1AA]" /></button>
-                <button onClick={() => setZoom(1.0)} className="p-1.5 rounded-lg border border-[#E5E7EB] dark:border-[#27272A] hover:bg-white dark:hover:bg-[#111113] transition-colors" aria-label={tr.fitToScreen}><Maximize className="w-4 h-4 text-[#6B7280] dark:text-[#A1A1AA]" /></button>
+                <button onClick={() => { const c = previewCanvasRef.current?.parentElement; if (c) { const w = c.clientWidth - 32; setZoom(Math.max(0.5, Math.min(2.0, w / 595))) } else setZoom(1.0) }} className="p-1.5 rounded-lg border border-[#E5E7EB] dark:border-[#27272A] hover:bg-white dark:hover:bg-[#111113] transition-colors" aria-label={tr.fitToScreen}><Maximize className="w-4 h-4 text-[#6B7280] dark:text-[#A1A1AA]" /></button>
               </div>
             </div>
             <div className="flex-1 flex items-center justify-center overflow-auto rounded-lg bg-white dark:bg-[#0a0a0b] p-4 min-h-[300px]">

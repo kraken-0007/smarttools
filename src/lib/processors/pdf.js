@@ -1144,7 +1144,7 @@ export async function getPdfPageInfo(file) {
  */
 export async function rotatePDFPages(file, pageIndices, angle) {
   try {
-    const { PDFDocument } = await import('pdf-lib');
+    const { PDFDocument, degrees } = await import('pdf-lib');
     const arrayBuffer = file instanceof File ? await file.arrayBuffer() : file;
     const pdfDoc = await PDFDocument.load(arrayBuffer);
     const pages = pdfDoc.getPages();
@@ -1152,7 +1152,7 @@ export async function rotatePDFPages(file, pageIndices, angle) {
       if (idx >= 0 && idx < pages.length) {
         const page = pages[idx];
         const currentRotation = page.getRotation().angle;
-        page.setRotation({ angle: (currentRotation + angle) % 360 });
+        page.setRotation(degrees((currentRotation + angle) % 360));
       }
     });
     const pdfBytes = await pdfDoc.save();
@@ -1303,7 +1303,7 @@ export async function splitPDFVisually(file, pageIndices, baseName = 'document')
  */
 export async function addPageNumbersAdvanced(file, options = {}) {
   try {
-    const { PDFDocument, rgb, StandardFonts } = await import('pdf-lib');
+    const { PDFDocument, rgb, StandardFonts, degrees } = await import('pdf-lib');
     const arrayBuffer = file instanceof File ? await file.arrayBuffer() : file;
     const pdfDoc = await PDFDocument.load(arrayBuffer);
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
@@ -1365,7 +1365,7 @@ export async function addPageNumbersAdvanced(file, options = {}) {
  */
 export async function addWatermarkAdvanced(file, options = {}) {
   try {
-    const { PDFDocument, rgb, StandardFonts } = await import('pdf-lib');
+    const { PDFDocument, rgb, StandardFonts, degrees } = await import('pdf-lib');
     const arrayBuffer = file instanceof File ? await file.arrayBuffer() : file;
     const pdfDoc = await PDFDocument.load(arrayBuffer);
     const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
@@ -1403,7 +1403,7 @@ export async function addWatermarkAdvanced(file, options = {}) {
         x, y, size: fontSize, font,
         color: rgb(r, g, b),
         opacity: opacity,
-        rotate: { angle: rotation * Math.PI / 180 },
+        rotate: degrees(rotation),
       });
     });
 
@@ -1421,7 +1421,7 @@ export async function addWatermarkAdvanced(file, options = {}) {
  */
 export async function mergePDFsWithOrder(docs) {
   try {
-    const { PDFDocument } = await import('pdf-lib');
+    const { PDFDocument, degrees } = await import('pdf-lib');
     const mergedPdf = await PDFDocument.create();
     for (const { file, pageIndices } of docs) {
       const arrayBuffer = await file.arrayBuffer();
@@ -1446,7 +1446,7 @@ export async function mergePDFsWithOrder(docs) {
  */
 export async function buildPDFFromEditorState(editorPages) {
   try {
-    const { PDFDocument } = await import('pdf-lib');
+    const { PDFDocument, degrees } = await import('pdf-lib');
     if (!editorPages || editorPages.length === 0) throw new Error('No pages to export');
     const newDoc = await PDFDocument.create();
     // Cache loaded PDFs by file reference
@@ -1463,7 +1463,7 @@ export async function buildPDFFromEditorState(editorPages) {
       const [copiedPage] = await newDoc.copyPages(pdfDoc, [originalIndex]);
       if (rotation && rotation !== 0) {
         const currentRotation = copiedPage.getRotation().angle;
-        copiedPage.setRotation({ angle: (currentRotation + rotation) % 360 });
+        copiedPage.setRotation(degrees((currentRotation + rotation) % 360));
       }
       newDoc.addPage(copiedPage);
     }
