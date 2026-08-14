@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const SITEMAP_PATH = resolve(__dirname, '../dist/sitemap.xml')
-const REQUIRED_DOMAIN = 'https://smarttools.vercel.app'
+const REQUIRED_DOMAIN = 'https://smartools.vercel.app'
 
 let errors = []
 let seen = new Set()

@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // Production domain — every URL in the sitemap MUST use this
-const SITE_URL = 'https://smarttools.vercel.app'
+const SITE_URL = 'https://smartools.vercel.app'
 
 // Routes that should NEVER appear in the sitemap
 const EXCLUDED_ROUTES = ['/favorites', '/recent', '/search']

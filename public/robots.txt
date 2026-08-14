@@ -4,4 +4,4 @@ Allow: /
 Disallow: /favorites
 Disallow: /recent
 
-Sitemap: https://smarttools.vercel.app/sitemap.xml
+Sitemap: https://smartools.vercel.app/sitemap.xml
