@@ -5,7 +5,7 @@ import tools from '../data/tools.json'
 import ToolCard from '../components/ToolCard'
 import Breadcrumb from '../components/Breadcrumb'
 import SectionHeader from '../components/SectionHeader'
-import { useSEO } from '../lib/seo'
+import { useSEO, buildBreadcrumbJsonLd, buildFaqJsonLd } from '../lib/seo'
 import { getIcon } from '../lib/icons'
 
 export default function CategoriesPage({ lang, t, slug }) {
@@ -23,10 +23,38 @@ export default function CategoriesPage({ lang, t, slug }) {
     const Icon = getIcon(category.icon)
     const catTools = tools.filter(to => to.categoryId === category.id)
 
+    const catFaqs = lang === 'ar' ? [
+      { q: 'ما هي أدوات ' + category.name.ar + '؟', a: category.description.ar + ' جميع الأدوات مجانية وتعمل في متصفحك.' },
+      { q: 'هل أحتاج إلى تسجيل الدخول؟', a: 'لا، جميع الأدوات متاحة بدون تسجيل.' },
+      { q: 'هل ملفاتي آمنة؟', a: 'نعم، يتم معالجة كل شيء في متصفحك ولا يتم رفع أي ملفات إلى الخادم.' },
+    ] : lang === 'fr' ? [
+      { q: 'Que sont les ' + category.name.fr + ' ?', a: category.description.fr + ' Tous les outils sont gratuits et fonctionnent dans votre navigateur.' },
+      { q: 'Dois-je me connecter ?', a: 'Non, tous les outils sont accessibles sans inscription.' },
+      { q: 'Mes fichiers sont-ils sécurisés ?', a: 'Oui, tout est traité dans votre navigateur et aucun fichier n\'est téléchargé.' },
+    ] : [
+      { q: 'What are ' + category.name.en + '?', a: category.description.en + ' All tools are free and work in your browser.' },
+      { q: 'Do I need to sign up?', a: 'No, all tools are accessible without registration.' },
+      { q: 'Are my files safe?', a: 'Yes, everything is processed in your browser and no files are uploaded to a server.' },
+    ]
+
+    const catJsonLd = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        buildBreadcrumbJsonLd([
+          { name: 'Home', url: '/' },
+          { name: 'Categories', url: '/categories' },
+          { name: category.name.en, url: `/categories/${category.slug}` },
+        ]),
+        ...(catFaqs.length > 0 ? [buildFaqJsonLd(catFaqs)] : []),
+      ],
+    }
+
     useSEO({
-      title: category.name[lang],
+      title: `${category.name[lang]} - Free Online Tools | SmartTools`,
       description: category.description[lang],
       canonical: `/categories/${category.slug}`,
+      lang,
+      jsonLd: catJsonLd,
     })
 
     return (
@@ -63,14 +91,50 @@ export default function CategoriesPage({ lang, t, slug }) {
             </p>
           </div>
         )}
+
+        {/* Category FAQ */}
+        {catFaqs && catFaqs.length > 0 && (
+          <div className="mt-8">
+            <h2 className="font-bold text-base text-[#111111] dark:text-[#FAFAFA] mb-4">
+              {lang === 'ar' ? 'الأسئلة الشائعة' : lang === 'fr' ? 'Questions fréquentes' : 'FAQ'}
+            </h2>
+            <div className="space-y-2">
+              {catFaqs.map((faq, i) => (
+                <div key={i} className="border border-[#E5E7EB] dark:border-[#27272A] rounded-xl p-4">
+                  <p className="text-sm font-semibold text-[#111111] dark:text-[#FAFAFA] mb-1">{faq.q}</p>
+                  <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Related Categories */}
+        <div className="mt-8">
+          <h2 className="font-bold text-base text-[#111111] dark:text-[#FAFAFA] mb-4">
+            {lang === 'ar' ? 'فئات أخرى' : lang === 'fr' ? 'Autres catégories' : 'Other Categories'}
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {categories.filter(c => c.id !== category.id).map(c => (
+              <Link key={c.id} to={`/categories/${c.slug}`} className="px-3 py-2 rounded-lg text-sm font-medium border border-[#E5E7EB] dark:border-[#27272A] text-[#6B7280] dark:text-[#A1A1AA] hover:border-blue-300 hover:text-blue-600 transition-colors">
+                {c.name[lang]}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     )
   }
 
   useSEO({
-    title: t.nav.categories,
-    description: lang === 'ar' ? 'تصفح جميع فئات أدوات SmartTools' : lang === 'fr' ? 'Parcourez toutes les catégories d\'outils SmartTools' : 'Browse all SmartTools tool categories',
+    title: 'All Tool Categories - Free Online Tools | SmartTools',
+    description: lang === 'ar' ? 'تصفح جميع فئات أدوات SmartTools' : lang === 'fr' ? 'Parcourez toutes les catégories d\'outils SmartTools' : 'Browse all SmartTools tool categories — PDF tools, image tools, text tools and calculators. All free, no sign-up required.',
     canonical: '/categories',
+    lang,
+    jsonLd: buildBreadcrumbJsonLd([
+      { name: 'Home', url: '/' },
+      { name: 'Categories', url: '/categories' },
+    ]),
   })
 
   return (

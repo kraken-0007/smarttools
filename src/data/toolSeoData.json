@@ -1,0 +1,2055 @@
+{
+  "_related": {
+    "pdf-to-word": [
+      "word-to-pdf",
+      "pdf-to-jpg",
+      "pdf-to-png",
+      "merge-pdf",
+      "compress-pdf",
+      "split-pdf"
+    ],
+    "word-to-pdf": [
+      "pdf-to-word",
+      "jpg-to-pdf",
+      "png-to-pdf",
+      "merge-pdf",
+      "compress-pdf",
+      "protect-pdf"
+    ],
+    "pdf-to-jpg": [
+      "pdf-to-png",
+      "jpg-to-pdf",
+      "pdf-to-word",
+      "extract-images-from-pdf",
+      "compress-pdf"
+    ],
+    "pdf-to-png": [
+      "pdf-to-jpg",
+      "png-to-pdf",
+      "pdf-to-word",
+      "extract-images-from-pdf",
+      "compress-pdf"
+    ],
+    "jpg-to-pdf": [
+      "png-to-pdf",
+      "pdf-to-jpg",
+      "word-to-pdf",
+      "merge-pdf",
+      "compress-pdf"
+    ],
+    "png-to-pdf": [
+      "jpg-to-pdf",
+      "pdf-to-png",
+      "word-to-pdf",
+      "merge-pdf",
+      "compress-pdf"
+    ],
+    "merge-pdf": [
+      "split-pdf",
+      "compress-pdf",
+      "reorder-pdf-pages",
+      "delete-pdf-pages",
+      "jpg-to-pdf",
+      "word-to-pdf"
+    ],
+    "split-pdf": [
+      "merge-pdf",
+      "extract-pdf-pages",
+      "delete-pdf-pages",
+      "reorder-pdf-pages",
+      "compress-pdf"
+    ],
+    "compress-pdf": [
+      "merge-pdf",
+      "split-pdf",
+      "pdf-to-word",
+      "compress-image",
+      "protect-pdf"
+    ],
+    "rotate-pdf": [
+      "reorder-pdf-pages",
+      "delete-pdf-pages",
+      "split-pdf",
+      "rotate-image",
+      "merge-pdf"
+    ],
+    "delete-pdf-pages": [
+      "extract-pdf-pages",
+      "split-pdf",
+      "reorder-pdf-pages",
+      "rotate-pdf",
+      "merge-pdf"
+    ],
+    "extract-pdf-pages": [
+      "split-pdf",
+      "delete-pdf-pages",
+      "reorder-pdf-pages",
+      "extract-images-from-pdf",
+      "merge-pdf"
+    ],
+    "reorder-pdf-pages": [
+      "rotate-pdf",
+      "delete-pdf-pages",
+      "extract-pdf-pages",
+      "split-pdf",
+      "merge-pdf"
+    ],
+    "pdf-page-counter": [
+      "pdf-metadata-viewer",
+      "merge-pdf",
+      "split-pdf",
+      "word-counter",
+      "character-counter"
+    ],
+    "pdf-metadata-viewer": [
+      "pdf-page-counter",
+      "image-metadata-viewer",
+      "protect-pdf",
+      "unlock-pdf"
+    ],
+    "protect-pdf": [
+      "unlock-pdf",
+      "add-pdf-watermark",
+      "compress-pdf",
+      "merge-pdf"
+    ],
+    "unlock-pdf": [
+      "protect-pdf",
+      "compress-pdf",
+      "split-pdf",
+      "pdf-to-word"
+    ],
+    "add-pdf-watermark": [
+      "add-page-numbers-pdf",
+      "protect-pdf",
+      "image-watermark",
+      "merge-pdf"
+    ],
+    "add-page-numbers-pdf": [
+      "add-pdf-watermark",
+      "reorder-pdf-pages",
+      "merge-pdf",
+      "split-pdf"
+    ],
+    "extract-images-from-pdf": [
+      "pdf-to-jpg",
+      "pdf-to-png",
+      "extract-pdf-pages",
+      "image-converter"
+    ],
+    "compress-image": [
+      "resize-image",
+      "image-converter",
+      "compress-pdf",
+      "crop-image",
+      "jpg-to-png"
+    ],
+    "resize-image": [
+      "crop-image",
+      "compress-image",
+      "rounded-corners",
+      "rotate-image",
+      "flip-image"
+    ],
+    "crop-image": [
+      "resize-image",
+      "rotate-image",
+      "flip-image",
+      "add-image-border",
+      "rounded-corners"
+    ],
+    "rotate-image": [
+      "flip-image",
+      "crop-image",
+      "rotate-pdf",
+      "resize-image",
+      "rounded-corners"
+    ],
+    "jpg-to-png": [
+      "png-to-jpg",
+      "webp-to-jpg",
+      "image-converter",
+      "jpg-to-pdf",
+      "compress-image"
+    ],
+    "png-to-jpg": [
+      "jpg-to-png",
+      "webp-to-jpg",
+      "image-converter",
+      "png-to-pdf",
+      "compress-image"
+    ],
+    "webp-to-jpg": [
+      "jpg-to-png",
+      "png-to-jpg",
+      "image-converter",
+      "compress-image",
+      "jpg-to-pdf"
+    ],
+    "image-converter": [
+      "jpg-to-png",
+      "png-to-jpg",
+      "webp-to-jpg",
+      "compress-image",
+      "image-to-base64"
+    ],
+    "image-to-base64": [
+      "base64-to-image",
+      "image-converter",
+      "image-metadata-viewer",
+      "compress-image"
+    ],
+    "base64-to-image": [
+      "image-to-base64",
+      "image-converter",
+      "compress-image",
+      "resize-image"
+    ],
+    "grayscale-image": [
+      "image-brightness",
+      "image-contrast",
+      "image-saturation",
+      "blur-image",
+      "crop-image"
+    ],
+    "blur-image": [
+      "grayscale-image",
+      "image-brightness",
+      "image-contrast",
+      "image-watermark",
+      "crop-image"
+    ],
+    "image-watermark": [
+      "add-pdf-watermark",
+      "add-image-border",
+      "blur-image",
+      "crop-image"
+    ],
+    "image-metadata-viewer": [
+      "pdf-metadata-viewer",
+      "image-to-base64",
+      "resize-image",
+      "compress-image"
+    ],
+    "flip-image": [
+      "rotate-image",
+      "crop-image",
+      "resize-image",
+      "add-image-border"
+    ],
+    "add-image-border": [
+      "rounded-corners",
+      "crop-image",
+      "resize-image",
+      "image-watermark"
+    ],
+    "rounded-corners": [
+      "add-image-border",
+      "crop-image",
+      "resize-image",
+      "rotate-image"
+    ],
+    "image-brightness": [
+      "image-contrast",
+      "image-saturation",
+      "grayscale-image",
+      "blur-image"
+    ],
+    "image-contrast": [
+      "image-brightness",
+      "image-saturation",
+      "grayscale-image",
+      "blur-image"
+    ],
+    "image-saturation": [
+      "image-brightness",
+      "image-contrast",
+      "grayscale-image",
+      "blur-image"
+    ],
+    "word-counter": [
+      "character-counter",
+      "case-converter",
+      "pdf-page-counter",
+      "pdf-to-word"
+    ],
+    "character-counter": [
+      "word-counter",
+      "case-converter",
+      "pdf-page-counter",
+      "pdf-metadata-viewer"
+    ],
+    "case-converter": [
+      "word-counter",
+      "character-counter",
+      "pdf-to-word",
+      "word-to-pdf"
+    ],
+    "bmi-calculator": [
+      "age-calculator",
+      "percentage-calculator",
+      "word-counter",
+      "character-counter"
+    ],
+    "age-calculator": [
+      "bmi-calculator",
+      "percentage-calculator",
+      "word-counter",
+      "character-counter"
+    ],
+    "percentage-calculator": [
+      "bmi-calculator",
+      "age-calculator",
+      "word-counter",
+      "character-counter"
+    ]
+  },
+  "pdf-to-word": {
+    "seoTitle": "PDF to Word Converter - Free Online PDF to DOCX | SmartTools",
+    "seoTitleFr": "Convertisseur PDF vers Word - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "محول PDF إلى Word - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert PDF files to editable Word documents online for free. Fast, private and easy to use with no registration required for conversion.",
+    "h1": "PDF to Word Converter",
+    "intro": "Convert your PDF documents into fully editable Word files with our free online PDF to Word converter. Upload your file and get an editable DOCX in seconds without losing original formatting.",
+    "features": [
+      "100% free with no registration required",
+      "Files processed directly in browser for privacy",
+      "High accuracy conversion to editable DOCX format",
+      "Preserves original layout, images, and fonts",
+      "Works seamlessly across desktop and mobile"
+    ],
+    "howTo": [
+      "Upload or drag and drop your PDF document",
+      "Our online engine converts the PDF into Word format",
+      "Download your fully editable DOCX document"
+    ],
+    "faq": [
+      {
+        "q": "Is this PDF to Word converter free?",
+        "a": "Yes, it is 100% free to use with no hidden fees or account registration required."
+      },
+      {
+        "q": "Are my uploaded PDF files safe and secure?",
+        "a": "Yes, all processing takes place locally inside your browser, ensuring maximum privacy."
+      },
+      {
+        "q": "Will the converted Word document keep its layout?",
+        "a": "Our converter preserves layout, typography, tables, and images as closely as possible."
+      },
+      {
+        "q": "Can I convert scanned PDFs to Word?",
+        "a": "Text-based PDFs convert best, while scanned files are extracted as images inside the Word document."
+      }
+    ]
+  },
+  "word-to-pdf": {
+    "seoTitle": "Word to PDF Converter - Free DOCX to PDF Online | SmartTools",
+    "seoTitleFr": "Convertisseur Word vers PDF - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "محول Word إلى PDF - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert Word documents (DOC, DOCX) to professional PDF files online for free. Fast processing in your browser with no registration needed.",
+    "h1": "Word to PDF Converter",
+    "intro": "Transform DOC and DOCX Word documents into polished, universal PDF files instantly. Our free online tool preserves your formatting, margins, and images perfectly across every operating system.",
+    "features": [
+      "Instant conversion from DOC and DOCX to PDF",
+      "100% client-side processing for total privacy",
+      "Retains exact typography, tables, and alignment",
+      "No software download or user registration needed",
+      "Compatible with Windows, Mac, iOS, and Android"
+    ],
+    "howTo": [
+      "Select or drop your DOC or DOCX file into the tool",
+      "The tool converts your document into a standard PDF",
+      "Download your newly generated PDF file immediately"
+    ],
+    "faq": [
+      {
+        "q": "How do I convert Word to PDF for free?",
+        "a": "Simply upload your DOCX file, wait a few seconds, and download your finished PDF document."
+      },
+      {
+        "q": "Does this tool support DOCX and older DOC formats?",
+        "a": "Yes, both modern DOCX files and legacy DOC files are fully supported."
+      },
+      {
+        "q": "Is there a limit on file size or conversions?",
+        "a": "There are no artificial daily limits or restrictions on the number of conversions."
+      },
+      {
+        "q": "Will my file formatting change after conversion?",
+        "a": "No, fonts, line spacing, margins, and embedded images remain identical to the original."
+      }
+    ]
+  },
+  "pdf-to-jpg": {
+    "seoTitle": "PDF to JPG Converter - Convert PDF to Image Online | SmartTools",
+    "seoTitleFr": "Convertisseur PDF vers JPG - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "محول PDF إلى JPG - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Extract pages from PDF files and convert them into high-quality JPG images online for free. Fast, private, and works on any web device.",
+    "h1": "PDF to JPG Converter",
+    "intro": "Convert every page of your PDF file into high-resolution JPG images in seconds. Ideal for sharing document pages, presenting visual content, or saving images without special PDF viewers.",
+    "features": [
+      "High-resolution JPG image extraction",
+      "Converts single pages or full document sets",
+      "Runs locally in browser without server upload",
+      "Free to use without registration or watermarks",
+      "Fast rendering engine for quick batch processing"
+    ],
+    "howTo": [
+      "Upload your PDF file to the converter tool",
+      "Select image quality and target pages if needed",
+      "Download individual JPG images or a zip bundle"
+    ],
+    "faq": [
+      {
+        "q": "Can I convert specific pages of a PDF to JPG?",
+        "a": "Yes, you can choose individual pages or convert all pages in your document at once."
+      },
+      {
+        "q": "What resolution are the extracted JPG images?",
+        "a": "Images are rendered at high DPI to ensure sharp text and clear graphics."
+      },
+      {
+        "q": "Are my document files kept private during conversion?",
+        "a": "Yes, conversion happens entirely inside your browser so your files never leave your device."
+      },
+      {
+        "q": "Is there any watermark added to output images?",
+        "a": "No, all generated JPG images are clean and free of watermarks."
+      }
+    ]
+  },
+  "pdf-to-png": {
+    "seoTitle": "PDF to PNG Converter - Free PDF to Image Extractor | SmartTools",
+    "seoTitleFr": "Convertisseur PDF vers PNG - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "محول PDF إلى PNG - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert PDF pages into transparent, crisp PNG images online for free. Quick, secure browser conversion with no installation required.",
+    "h1": "PDF to PNG Converter",
+    "intro": "Turn your PDF document pages into crisp, high-quality PNG image files effortlessly. PNG format guarantees lossless compression, ideal for document archival, graphics, and web publication.",
+    "features": [
+      "Lossless PNG conversion for maximum clarity",
+      "Private browser-based file conversion system",
+      "Supports multi-page PDFs with single-click download",
+      "No file size limits or mandatory registration",
+      "Cross-platform support across desktop and mobile"
+    ],
+    "howTo": [
+      "Select your PDF document from your file storage",
+      "Choose target page range for PNG conversion",
+      "Download rendered PNG images directly to your device"
+    ],
+    "faq": [
+      {
+        "q": "Why convert PDF pages to PNG instead of JPG?",
+        "a": "PNG provides lossless rendering, making text and graphic illustrations look clearer."
+      },
+      {
+        "q": "Can I convert large PDF files to PNG for free?",
+        "a": "Yes, our browser tool handles multi-page documents without caps or fees."
+      },
+      {
+        "q": "Does this tool work on mobile devices?",
+        "a": "Yes, it works smoothly on iPhone, Android, tablets, and desktop computers."
+      },
+      {
+        "q": "Do I need to install any plugin or software?",
+        "a": "No installation is required; the tool runs directly inside your web browser."
+      }
+    ]
+  },
+  "jpg-to-pdf": {
+    "seoTitle": "JPG to PDF Converter - Combine Images to PDF | SmartTools",
+    "seoTitleFr": "Convertisseur JPG vers PDF - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "محول JPG إلى PDF - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert JPG and JPEG images into a single formatted PDF file online for free. Fast, easy, and completely private browser-based tool.",
+    "h1": "JPG to PDF Converter",
+    "intro": "Combine multiple JPG images into a single neatly organized PDF document. Drag and drop your photos, arrange their order, and generate a standardized PDF ready for printing or sharing.",
+    "features": [
+      "Combine multiple JPG/JPEG files into one PDF",
+      "Reorder images before generating the PDF document",
+      "Automatic orientation and border adjustment",
+      "Private browser conversion with zero server uploads",
+      "100% free tool with no registration required"
+    ],
+    "howTo": [
+      "Upload one or multiple JPG images from your device",
+      "Arrange the order of your images as desired",
+      "Click convert to download your combined PDF file"
+    ],
+    "faq": [
+      {
+        "q": "Can I merge multiple JPG images into one PDF?",
+        "a": "Yes, you can upload as many JPG photos as you want and merge them into a single PDF."
+      },
+      {
+        "q": "Can I reorder images before creating the PDF?",
+        "a": "Yes, our intuitive interface lets you drag and reorder images effortlessly."
+      },
+      {
+        "q": "Will my image quality be preserved in the PDF?",
+        "a": "Yes, images retain high quality while fitting cleanly onto PDF pages."
+      },
+      {
+        "q": "Is my privacy protected while converting images?",
+        "a": "All image processing is done locally in your browser, keeping your data private."
+      }
+    ]
+  },
+  "png-to-pdf": {
+    "seoTitle": "PNG to PDF Converter - Merge PNG Images to PDF | SmartTools",
+    "seoTitleFr": "Convertisseur PNG vers PDF - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "محول PNG إلى PDF - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert PNG images to PDF online for free. Merge multiple PNG files into one seamless PDF document with customizable page layouts.",
+    "h1": "PNG to PDF Converter",
+    "intro": "Easily turn your PNG image files into clean, professional PDF documents. Combine screenshots, scans, or graphics into a single document without losing sharp text or visual details.",
+    "features": [
+      "Seamlessly merge multiple PNG images into PDF",
+      "Custom page layout and margin configurations",
+      "Fast local processing directly in web browser",
+      "Free online conversion with no registration",
+      "Works on Windows, macOS, Android, and iOS"
+    ],
+    "howTo": [
+      "Drag and drop your PNG images into the uploader",
+      "Organize page order and adjust orientation",
+      "Generate and download your combined PDF document"
+    ],
+    "faq": [
+      {
+        "q": "How do I convert transparent PNGs to PDF?",
+        "a": "Our converter automatically handles transparency, placing images cleanly on white PDF pages."
+      },
+      {
+        "q": "Is there a limit on how many PNGs I can convert?",
+        "a": "No, you can select and merge multiple PNG files in a single session."
+      },
+      {
+        "q": "Does converting PNG to PDF reduce quality?",
+        "a": "No, PNG images retain full visual clarity when compiled into the PDF file."
+      },
+      {
+        "q": "Are my files uploaded to an external server?",
+        "a": "No, processing happens locally in your web browser for complete privacy."
+      }
+    ]
+  },
+  "merge-pdf": {
+    "seoTitle": "Merge PDF Online - Combine Multiple PDF Files | SmartTools",
+    "seoTitleFr": "Fusionner PDF en ligne - Gratuit et rapide | SmartTools",
+    "seoTitleAr": "دمج ملفات PDF عبر الإنترنت - مجاني وسريع | SmartTools",
+    "seoDescription": "Combine multiple PDF files into one single document online for free. Reorder pages easily and merge PDFs securely in your browser.",
+    "h1": "Merge PDF Tool",
+    "intro": "Combine multiple PDF documents into a single unified file with our free online PDF merger. Easily arrange document order, remove redundant pages, and download your consolidated file instantly.",
+    "features": [
+      "Combine unlimited PDF documents into one file",
+      "Drag-and-drop page reordering prior to merging",
+      "100% private browser processing with zero uploads",
+      "Completely free with no registration or limits",
+      "Compatible with all modern web browsers and devices"
+    ],
+    "howTo": [
+      "Upload two or more PDF files you want to combine",
+      "Drag files into your preferred page sequence",
+      "Click Merge PDF and download your combined document"
+    ],
+    "faq": [
+      {
+        "q": "Is there a limit to how many PDFs I can merge?",
+        "a": "No, you can combine as many PDF documents as you need in one batch."
+      },
+      {
+        "q": "Can I change the order of files before merging?",
+        "a": "Yes, simply drag and drop the file thumbnails to reorder them prior to merging."
+      },
+      {
+        "q": "Is merging PDFs secure on SmartTools?",
+        "a": "Yes, merging is executed locally inside your web browser without uploading files."
+      },
+      {
+        "q": "Will bookmark links and formatting be preserved?",
+        "a": "Yes, standard document formatting and structures are preserved during the merge."
+      }
+    ]
+  },
+  "split-pdf": {
+    "seoTitle": "Split PDF Online - Separate PDF Pages for Free | SmartTools",
+    "seoTitleFr": "Diviser PDF en ligne - Gratuit et facile | SmartTools",
+    "seoTitleAr": "تقسيم ملف PDF عبر الإنترنت - مجاني وسهل | SmartTools",
+    "seoDescription": "Split PDF files into individual pages or specific page ranges online for free. Fast, secure, and easy PDF separator in your browser.",
+    "h1": "Split PDF Tool",
+    "intro": "Divide a large PDF file into individual pages or extracted custom page ranges. Our free online PDF splitter lets you isolate key pages quickly and download them as separate documents.",
+    "features": [
+      "Extract individual pages or custom page ranges",
+      "Visual page picker for precise splitting options",
+      "Local browser execution for full confidentiality",
+      "100% free tool with no watermark or registration",
+      "Fast processing speed even for large documents"
+    ],
+    "howTo": [
+      "Upload the PDF document you wish to split",
+      "Select page numbers or ranges to extract separately",
+      "Click Split PDF to download your separated files"
+    ],
+    "faq": [
+      {
+        "q": "How do I extract specific pages from a PDF?",
+        "a": "Upload your file, enter page ranges (e.g. 1-3, 5), and download the split document."
+      },
+      {
+        "q": "Can I split a PDF into separate single-page files?",
+        "a": "Yes, you can choose to extract every page into its own individual PDF file."
+      },
+      {
+        "q": "Is my confidential PDF file safe when split?",
+        "a": "Yes, processing happens locally in your web browser, ensuring high data security."
+      },
+      {
+        "q": "Do I need to sign up to use the PDF splitter?",
+        "a": "No registration is needed; you can split documents right away."
+      }
+    ]
+  },
+  "compress-pdf": {
+    "seoTitle": "Compress PDF Online - Reduce PDF File Size | SmartTools",
+    "seoTitleFr": "Compresser PDF en ligne - Réduire la taille | SmartTools",
+    "seoTitleAr": "ضغط ملف PDF عبر الإنترنت - تقليل الحجم | SmartTools",
+    "seoDescription": "Compress PDF files online for free to reduce file size while maintaining high quality. Fast, safe browser tool with no limits.",
+    "h1": "Compress PDF Tool",
+    "intro": "Shrink bulky PDF files down to manageable sizes without sacrificing clarity. Perfect for emailing documents, uploading forms to web portals, or saving cloud storage space.",
+    "features": [
+      "Intelligent PDF compression with high quality retention",
+      "Reduces file sizes for easier email attachments",
+      "Client-side processing guarantees data privacy",
+      "100% free with unlimited compressions daily",
+      "Works on desktop, mobile, and tablet browsers"
+    ],
+    "howTo": [
+      "Upload your large PDF file to the compression tool",
+      "Choose your preferred balance of compression and quality",
+      "Download your optimized PDF file with reduced size"
+    ],
+    "faq": [
+      {
+        "q": "Will PDF compression degrade text or image quality?",
+        "a": "Our algorithm minimizes size while retaining crisp text and clear document visuals."
+      },
+      {
+        "q": "How much file size reduction can I expect?",
+        "a": "Compression results vary, but files are often reduced by 30% to 70%."
+      },
+      {
+        "q": "Is it safe to compress private or official documents?",
+        "a": "Yes, files are processed locally in your browser and are never sent to external servers."
+      },
+      {
+        "q": "Is there a limit on how many PDFs I can compress?",
+        "a": "No, you can compress as many PDF documents as you need for free."
+      }
+    ]
+  },
+  "rotate-pdf": {
+    "seoTitle": "Rotate PDF Online - Turn PDF Pages 90 or 180° | SmartTools",
+    "seoTitleFr": "Pivoter PDF en ligne - Gratuit et rapide | SmartTools",
+    "seoTitleAr": "تدوير ملف PDF عبر الإنترنت - مجاني وسريع | SmartTools",
+    "seoDescription": "Rotate PDF pages clockwise or counterclockwise online for free. Fix upside-down or sideways pages easily in your browser.",
+    "h1": "Rotate PDF Tool",
+    "intro": "Fix upside-down scanned pages or rotated orientation in your PDF files. Rotate individual pages or all pages simultaneously by 90, 180, or 270 degrees in just a few clicks.",
+    "features": [
+      "Rotate specific pages or entire document set",
+      "Supports 90°, 180°, and 270° angle rotations",
+      "Visual thumbnail preview for easy page orientation",
+      "Private local processing inside your browser",
+      "No watermarks or sign-up required"
+    ],
+    "howTo": [
+      "Upload the PDF document needing page orientation fixes",
+      "Click rotation controls on individual or all pages",
+      "Save and download your newly rotated PDF file"
+    ],
+    "faq": [
+      {
+        "q": "Can I rotate only specific pages in a PDF?",
+        "a": "Yes, you can rotate individual pages or rotate all pages at once."
+      },
+      {
+        "q": "Can I save the rotated orientation permanently?",
+        "a": "Yes, downloading the modified PDF saves page orientation permanently."
+      },
+      {
+        "q": "Does rotating PDF pages alter document content?",
+        "a": "No, text, images, and formatting remain unchanged, only orientation is modified."
+      },
+      {
+        "q": "Is this rotation tool free to use?",
+        "a": "Yes, it is completely free with no usage limits."
+      }
+    ]
+  },
+  "delete-pdf-pages": {
+    "seoTitle": "Delete PDF Pages - Remove Pages from PDF Online | SmartTools",
+    "seoTitleFr": "Supprimer des pages PDF - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "حذف صفحات PDF - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Remove unwanted pages from PDF files online for free. Select thumbnails and delete extra pages instantly in your web browser.",
+    "h1": "Delete PDF Pages Tool",
+    "intro": "Remove unnecessary or duplicate pages from your PDF file effortlessly. Select visual page thumbnails, click delete, and instantly download your streamlined document.",
+    "features": [
+      "Visual thumbnail selection for easy page removal",
+      "Delete single or multiple pages in one step",
+      "Instant document restructuring in your browser",
+      "100% free service with complete file privacy",
+      "No registration or software download needed"
+    ],
+    "howTo": [
+      "Upload your PDF document into the page deletion tool",
+      "Click on the page thumbnails you wish to delete",
+      "Download your updated PDF without the deleted pages"
+    ],
+    "faq": [
+      {
+        "q": "Can I delete multiple pages at the same time?",
+        "a": "Yes, you can select and remove as many pages as you want in one go."
+      },
+      {
+        "q": "Can I undo page deletion before downloading?",
+        "a": "Yes, you can deselect pages before finalizing and downloading the document."
+      },
+      {
+        "q": "Are my files kept secure during the removal process?",
+        "a": "Yes, processing occurs entirely in your browser without uploading your files."
+      },
+      {
+        "q": "Is there any limit on document page count?",
+        "a": "No, you can upload and edit PDFs with any number of pages."
+      }
+    ]
+  },
+  "extract-pdf-pages": {
+    "seoTitle": "Extract PDF Pages - Save Specific Pages to PDF | SmartTools",
+    "seoTitleFr": "Extraire des pages PDF - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "استخراج صفحات PDF - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Extract selected pages from any PDF document online for free. Create a new PDF file with only the pages you need fast and easily.",
+    "h1": "Extract PDF Pages Tool",
+    "intro": "Select and extract crucial pages from lengthy PDF documents into a brand new standalone file. Perfect for pulling reports, specific chapters, or individual receipts.",
+    "features": [
+      "Extract precise page ranges or custom page selections",
+      "Generates a clean new PDF containing only chosen pages",
+      "Browser-side processing keeps documents confidential",
+      "Free online utility with zero restrictions",
+      "Intuitive user interface works on any screen size"
+    ],
+    "howTo": [
+      "Upload the source PDF file into the extraction tool",
+      "Choose the specific page numbers or ranges to extract",
+      "Click extract to generate and download your new PDF"
+    ],
+    "faq": [
+      {
+        "q": "How is page extraction different from splitting?",
+        "a": "Extraction creates a single new PDF containing only your selected pages."
+      },
+      {
+        "q": "Can I extract non-consecutive pages like 2, 5, and 9?",
+        "a": "Yes, you can specify custom individual page numbers or ranges."
+      },
+      {
+        "q": "Will the extracted pages retain high quality?",
+        "a": "Yes, page layout, fonts, and images are preserved exactly as original."
+      },
+      {
+        "q": "Are my PDF documents safe from privacy leaks?",
+        "a": "Yes, your files stay on your device because extraction runs in the browser."
+      }
+    ]
+  },
+  "reorder-pdf-pages": {
+    "seoTitle": "Reorder PDF Pages - Rearrange Pages Online | SmartTools",
+    "seoTitleFr": "Réorganiser les pages PDF - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "إعادة ترتيب صفحات PDF - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Rearrange and reorder pages in your PDF file online for free. Drag and drop thumbnails to reorganize PDF pages in seconds.",
+    "h1": "Reorder PDF Pages Tool",
+    "intro": "Reorganize the sequence of pages in your PDF file using an intuitive drag-and-drop interface. Rearrange misplaced pages and export a neatly ordered PDF document in seconds.",
+    "features": [
+      "Drag-and-drop visual page reorganization",
+      "Real-time thumbnail page numbers and previews",
+      "100% private local execution in browser memory",
+      "Free tool with no registration or usage caps",
+      "Supports small and multi-page PDF documents"
+    ],
+    "howTo": [
+      "Upload your PDF file to display page thumbnails",
+      "Drag and drop thumbnails into your desired sequence",
+      "Download your newly organized PDF document"
+    ],
+    "faq": [
+      {
+        "q": "How do I reorder PDF pages online?",
+        "a": "Upload your file, drag thumbnails into the right order, and download the new PDF."
+      },
+      {
+        "q": "Can I combine reordering with deleting pages?",
+        "a": "Yes, you can reorder pages and remove unwanted ones before exporting."
+      },
+      {
+        "q": "Does reordering alter text or image quality?",
+        "a": "No, content quality is untouched; only page sequence changes."
+      },
+      {
+        "q": "Is this tool free for personal and business use?",
+        "a": "Yes, SmartTools provides this utility 100% free for everyone."
+      }
+    ]
+  },
+  "pdf-page-counter": {
+    "seoTitle": "PDF Page Counter - Count PDF Pages Online | SmartTools",
+    "seoTitleFr": "Compteur de pages PDF - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "عدّاد صفحات PDF - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Count total pages in your PDF files instantly online for free. Quick PDF page counting utility for single or multiple files.",
+    "h1": "PDF Page Counter Tool",
+    "intro": "Instantly inspect and count the total number of pages in any PDF file without opening heavy PDF viewing software. Fast, efficient, and lightweight tool for document audit.",
+    "features": [
+      "Instant total page count calculation for PDF files",
+      "Lightweight browser utility with no file uploads",
+      "100% free with unlimited document checks",
+      "Helpful tool for printing estimation and file audits",
+      "Simple UI accessible from desktop or smartphone"
+    ],
+    "howTo": [
+      "Drop or select your PDF file in the counter tool",
+      "The tool instantly counts and displays total pages",
+      "View document page summary details on screen"
+    ],
+    "faq": [
+      {
+        "q": "How fast is the PDF page count check?",
+        "a": "It takes less than a second as the file is analyzed locally in your browser."
+      },
+      {
+        "q": "Does this tool upload my PDF file to any server?",
+        "a": "No, calculations run entirely in your local browser environment."
+      },
+      {
+        "q": "Can I use this page counter on mobile phones?",
+        "a": "Yes, it works seamlessly on iOS, Android, and desktop browsers."
+      },
+      {
+        "q": "Is there a limit on how many files I can count?",
+        "a": "No, you can inspect as many PDF files as you wish."
+      }
+    ]
+  },
+  "pdf-metadata-viewer": {
+    "seoTitle": "PDF Metadata Viewer - Inspect PDF Properties | SmartTools",
+    "seoTitleFr": "Visionneuse de métadonnées PDF - Gratuit | SmartTools",
+    "seoTitleAr": "عارض بيانات PDF الوصفية - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Inspect hidden metadata, author details, creation date, and PDF properties online for free. Safe and instant PDF info viewer in browser.",
+    "h1": "PDF Metadata Viewer Tool",
+    "intro": "Uncover embedded metadata and technical specifications of any PDF file. View title, author, producer software, creation date, keywords, and PDF version details instantly.",
+    "features": [
+      "View author, title, subject, and producer metadata",
+      "Inspect file size, page count, and PDF version details",
+      "100% browser-based inspection for complete privacy",
+      "Free tool with no software installation required",
+      "Instant data display upon file selection"
+    ],
+    "howTo": [
+      "Upload your PDF document into the metadata viewer",
+      "View all embedded document properties and attributes",
+      "Review technical specifications on screen"
+    ],
+    "faq": [
+      {
+        "q": "What metadata can I view in a PDF file?",
+        "a": "You can view Title, Author, Subject, Creator, Producer, Creation Date, and PDF Version."
+      },
+      {
+        "q": "Are my files uploaded when viewing metadata?",
+        "a": "No, document properties are parsed entirely inside your browser."
+      },
+      {
+        "q": "Can this tool help inspect suspicious PDF files?",
+        "a": "Yes, viewing metadata helps verify file origin, creation date, and generator tool."
+      },
+      {
+        "q": "Is the PDF metadata viewer completely free?",
+        "a": "Yes, it is 100% free with no account registration needed."
+      }
+    ]
+  },
+  "protect-pdf": {
+    "seoTitle": "Protect PDF - Encrypt & Password Protect PDF | SmartTools",
+    "seoTitleFr": "Protéger PDF - Mot de passe en ligne | SmartTools",
+    "seoTitleAr": "حماية ملف PDF - كلمة مرور عبر الإنترنت | SmartTools",
+    "seoDescription": "Secure PDF files with strong password encryption online for free. Prevent unauthorized opening and access directly in your browser.",
+    "h1": "Protect PDF Tool",
+    "intro": "Secure confidential PDF documents with strong password encryption. Prevent unauthorized access, protect sensitive business records, and restrict viewing with a custom password.",
+    "features": [
+      "Add strong password protection to PDF documents",
+      "Secure encryption handled directly in browser",
+      "100% confidential zero-upload security process",
+      "Free online security tool with unlimited usage",
+      "Compatible with standard PDF password readers"
+    ],
+    "howTo": [
+      "Upload the PDF document you want to secure",
+      "Enter and confirm your chosen strong password",
+      "Click Protect PDF and download your encrypted file"
+    ],
+    "faq": [
+      {
+        "q": "How secure is the password protection applied?",
+        "a": "It applies standard PDF encryption requiring the password to open the file."
+      },
+      {
+        "q": "Does SmartTools store or record my password?",
+        "a": "No, passwords and files are processed locally and never stored anywhere."
+      },
+      {
+        "q": "What happens if I forget my protected PDF password?",
+        "a": "You must remember your password as encrypted files cannot be opened without it."
+      },
+      {
+        "q": "Is password protection free on SmartTools?",
+        "a": "Yes, protecting your PDFs is 100% free with no hidden charges."
+      }
+    ]
+  },
+  "unlock-pdf": {
+    "seoTitle": "Unlock PDF - Remove Password Protection Online | SmartTools",
+    "seoTitleFr": "Déverrouiller PDF - Supprimer mot de passe | SmartTools",
+    "seoTitleAr": "إلغاء قفل PDF - إزالة كلمة المرور | SmartTools",
+    "seoDescription": "Remove password protection and unlock PDF files online for free. Decrypt password-protected PDFs quickly in your web browser.",
+    "h1": "Unlock PDF Tool",
+    "intro": "Remove password security from your encrypted PDF documents when you have authorization. Download a decrypted version of your file for easy sharing, viewing, and printing.",
+    "features": [
+      "Remove passwords from protected PDF documents",
+      "Instant browser decryption with maximum privacy",
+      "Free online utility without restrictions or caps",
+      "Saves an unencrypted file copy for convenience",
+      "Works seamlessly on all web devices and OS"
+    ],
+    "howTo": [
+      "Upload your password-protected PDF document",
+      "Enter the authorized password to unlock the file",
+      "Download your unlocked PDF file without security limits"
+    ],
+    "faq": [
+      {
+        "q": "Can I unlock a PDF if I know the password?",
+        "a": "Yes, entering the correct password removes protection permanently from the copy."
+      },
+      {
+        "q": "Is it safe to unlock confidential PDFs here?",
+        "a": "Yes, decryption runs locally in your browser so your files are never transmitted."
+      },
+      {
+        "q": "Will the document layout change after unlocking?",
+        "a": "No, all content, formatting, and images remain completely unchanged."
+      },
+      {
+        "q": "Is there a charge to unlock PDF documents?",
+        "a": "No, this unlocking tool is 100% free to use anytime."
+      }
+    ]
+  },
+  "add-pdf-watermark": {
+    "seoTitle": "Add Watermark to PDF - Stamp Text on PDF | SmartTools",
+    "seoTitleFr": "Ajouter un filigrane au PDF - En ligne | SmartTools",
+    "seoTitleAr": "إضافة علامة مائية إلى PDF - عبر الإنترنت | SmartTools",
+    "seoDescription": "Add custom text watermarks to PDF pages online for free. Adjust text opacity, position, font, and angle directly in your browser.",
+    "h1": "Add Watermark to PDF Tool",
+    "intro": "Stamp custom text watermarks onto your PDF pages to protect intellectual property or mark document status like Confidential, Draft, or Sample.",
+    "features": [
+      "Custom text watermarks with position & opacity control",
+      "Stamp Confidential, Draft, or custom branding text",
+      "100% browser-based rendering for privacy",
+      "Free utility with no file limits or watermarking logos",
+      "Compatible with multi-page PDF documents"
+    ],
+    "howTo": [
+      "Upload your PDF document to the watermark tool",
+      "Type your watermark text and adjust font size/angle",
+      "Download your watermarked PDF document instantly"
+    ],
+    "faq": [
+      {
+        "q": "Can I customize watermark text and position?",
+        "a": "Yes, you can customize text, font size, opacity, angle, and position."
+      },
+      {
+        "q": "Will the watermark appear on all PDF pages?",
+        "a": "Yes, the watermark is cleanly stamped across every page in the document."
+      },
+      {
+        "q": "Does this tool upload my PDF to any server?",
+        "a": "No, watermarking takes place completely inside your local browser."
+      },
+      {
+        "q": "Is adding watermarks to PDF free?",
+        "a": "Yes, it is completely free with no user limits."
+      }
+    ]
+  },
+  "add-page-numbers-pdf": {
+    "seoTitle": "Add Page Numbers to PDF - Number PDF Pages | SmartTools",
+    "seoTitleFr": "Ajouter des numéros de page au PDF | SmartTools",
+    "seoTitleAr": "إضافة أرقام الصفحات إلى PDF - مجاني | SmartTools",
+    "seoDescription": "Add page numbers to PDF documents online for free. Customize numbering position, format, and font style effortlessly in browser.",
+    "h1": "Add Page Numbers to PDF Tool",
+    "intro": "Insert clear page numbers into your PDF documents for better organization and readability. Select header or footer placement, custom numbering formats, and page ranges.",
+    "features": [
+      "Flexible positioning in headers or footers",
+      "Custom page numbering formats (Page 1 of N, etc.)",
+      "Client-side processing preserves complete privacy",
+      "100% free with unlimited document processing",
+      "Produces clean, professional document pagination"
+    ],
+    "howTo": [
+      "Upload your PDF file to the numbering tool",
+      "Choose number position, font style, and starting index",
+      "Download your updated PDF with formatted page numbers"
+    ],
+    "faq": [
+      {
+        "q": "Can I choose where page numbers are placed?",
+        "a": "Yes, you can position numbers at top/bottom, left, center, or right."
+      },
+      {
+        "q": "Can I format numbers as 'Page X of Y'?",
+        "a": "Yes, custom page numbering format options are available."
+      },
+      {
+        "q": "Will existing PDF text be overwritten?",
+        "a": "Numbers are placed cleanly over margin areas without distorting content."
+      },
+      {
+        "q": "Is adding page numbers free on SmartTools?",
+        "a": "Yes, it is 100% free with no sign-up requirement."
+      }
+    ]
+  },
+  "extract-images-from-pdf": {
+    "seoTitle": "Extract Images from PDF - Save Embedded Images | SmartTools",
+    "seoTitleFr": "Extraire les images d'un PDF - En ligne | SmartTools",
+    "seoTitleAr": "استخراج الصور من PDF - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Extract all embedded images from any PDF file online for free. Download photos and graphics in original resolution instantly.",
+    "h1": "Extract Images from PDF Tool",
+    "intro": "Extract high-resolution graphics and embedded photos from your PDF documents. Save extracted images in original formats without taking manual screenshots.",
+    "features": [
+      "Extracts all embedded photos and graphic elements",
+      "Saves images in original resolution and format",
+      "Browser-side extraction keeps documents private",
+      "Free tool with no registration or limits",
+      "Download individual images or zip archive"
+    ],
+    "howTo": [
+      "Upload your PDF document into the extraction engine",
+      "The tool scans and extracts all embedded images",
+      "Download individual extracted images or complete set"
+    ],
+    "faq": [
+      {
+        "q": "Does image extraction lower the original photo quality?",
+        "a": "No, images are extracted in their original native resolution."
+      },
+      {
+        "q": "What image formats are extracted from the PDF?",
+        "a": "Images are typically extracted as JPG or PNG depending on PDF embedding."
+      },
+      {
+        "q": "Are my document files kept secure during extraction?",
+        "a": "Yes, extraction runs locally inside your browser without external uploads."
+      },
+      {
+        "q": "Is there a limit on how many images I can extract?",
+        "a": "No, you can extract as many embedded images as needed for free."
+      }
+    ]
+  },
+  "compress-image": {
+    "seoTitle": "Compress Image Online - Reduce JPG & PNG Size | SmartTools",
+    "seoTitleFr": "Compresser l'image en ligne - Réduire la taille | SmartTools",
+    "seoTitleAr": "ضغط الصور عبر الإنترنت - تقليل حجم الصورة | SmartTools",
+    "seoDescription": "Compress JPG, PNG, and WEBP images online for free. Reduce image file size significantly while retaining high visual quality.",
+    "h1": "Compress Image Tool",
+    "intro": "Shrink image file sizes without compromising visual clarity. Perfect for speeding up web page loading, saving disk space, and attaching photos to emails.",
+    "features": [
+      "Supports JPG, PNG, WEBP, and GIF formats",
+      "Custom quality slider for optimal compression balance",
+      "100% browser execution ensuring photo privacy",
+      "Free tool with unlimited batch photo compressions",
+      "Instant side-by-side file size comparison"
+    ],
+    "howTo": [
+      "Upload your photo or image file to the compressor",
+      "Adjust compression quality to reach desired file size",
+      "Download your compressed image file instantly"
+    ],
+    "faq": [
+      {
+        "q": "Will image compression noticeably degrade photo quality?",
+        "a": "Our intelligent compression reduces file size while preserving high visual clarity."
+      },
+      {
+        "q": "Which image formats can I compress?",
+        "a": "You can compress JPG, PNG, WEBP, and GIF image files."
+      },
+      {
+        "q": "Are my uploaded photos safe and private?",
+        "a": "Yes, processing happens locally in your browser without server uploads."
+      },
+      {
+        "q": "Is there a limit on daily image compressions?",
+        "a": "No, you can compress as many images as you like for free."
+      }
+    ]
+  },
+  "resize-image": {
+    "seoTitle": "Resize Image Online - Change Image Dimensions | SmartTools",
+    "seoTitleFr": "Redimensionner l'image en ligne - Gratuit | SmartTools",
+    "seoTitleAr": "تغيير حجم الصورة عبر الإنترنت - مجاني وسريع | SmartTools",
+    "seoDescription": "Resize JPG, PNG, and WEBP images to custom width and height in pixels or percentage. Free, fast, private online image resizer.",
+    "h1": "Resize Image Tool",
+    "intro": "Change image dimensions in pixels or percentages effortlessly. Scale photos for social media profiles, web design, or printing while preserving aspect ratio.",
+    "features": [
+      "Resize by exact pixel dimensions or percentage scale",
+      "Lock aspect ratio option to prevent distortion",
+      "Private browser-based image scaling engine",
+      "100% free with no registration required",
+      "Supports JPG, PNG, WEBP, and SVG formats"
+    ],
+    "howTo": [
+      "Upload the image file you want to resize",
+      "Enter target width and height or percentage scale",
+      "Download your resized image file immediately"
+    ],
+    "faq": [
+      {
+        "q": "Can I lock the aspect ratio while resizing?",
+        "a": "Yes, locking aspect ratio ensures your image does not stretch or warp."
+      },
+      {
+        "q": "Does resizing reduce image file size?",
+        "a": "Yes, lowering pixel dimensions usually decreases file size significantly."
+      },
+      {
+        "q": "Is my image uploaded to an external server?",
+        "a": "No, resizing occurs locally inside your web browser."
+      },
+      {
+        "q": "Is this online image resizer free to use?",
+        "a": "Yes, it is completely free with no usage limits."
+      }
+    ]
+  },
+  "crop-image": {
+    "seoTitle": "Crop Image Online - Cut & Trim Photos for Free | SmartTools",
+    "seoTitleFr": "Recadrer l'image en ligne - Gratuit et facile | SmartTools",
+    "seoTitleAr": "اقتصاص الصورة عبر الإنترنت - مجاني وسهل | SmartTools",
+    "seoDescription": "Crop photos and images online for free. Trim unwanted borders and crop to custom aspect ratios like 16:9, 1:1, or 4:3 instantly.",
+    "h1": "Crop Image Tool",
+    "intro": "Crop photos and visual graphics with precision using visual handles or preset aspect ratios. Cut out unwanted backgrounds or frame images for Instagram, LinkedIn, or passports.",
+    "features": [
+      "Visual crop frame with intuitive drag controls",
+      "Preset aspect ratios (1:1 square, 16:9, 4:3, 3:2)",
+      "100% local processing keeps your photos private",
+      "Free tool with no watermarks or registration",
+      "Supports JPG, PNG, WEBP, and GIF images"
+    ],
+    "howTo": [
+      "Upload your image to activate the interactive cropper",
+      "Drag the cropping frame or select a preset ratio",
+      "Click crop and download your trimmed photo"
+    ],
+    "faq": [
+      {
+        "q": "What aspect ratios are supported in the cropper?",
+        "a": "Supports 1:1 square, 16:9 widescreen, 4:3 standard, custom freehand, and more."
+      },
+      {
+        "q": "Does cropping reduce photo pixel dimensions?",
+        "a": "Yes, cropping cuts away outer pixels, reducing dimensions to the selected box."
+      },
+      {
+        "q": "Are my photos kept private during cropping?",
+        "a": "Yes, all cropping is processed directly in your web browser."
+      },
+      {
+        "q": "Is there any watermark placed on cropped photos?",
+        "a": "No, your cropped images remain clean with zero watermarks."
+      }
+    ]
+  },
+  "rotate-image": {
+    "seoTitle": "Rotate Image Online - Flip & Turn Photos Free | SmartTools",
+    "seoTitleFr": "Pivoter l'image en ligne - Gratuit et rapide | SmartTools",
+    "seoTitleAr": "تدوير الصورة عبر الإنترنت - مجاني وسريع | SmartTools",
+    "seoDescription": "Rotate images 90, 180, or 270 degrees online for free. Flip photos horizontally or vertically with instant browser processing.",
+    "h1": "Rotate Image Tool",
+    "intro": "Correct image orientation or flip photos horizontally and vertically. Fix sideways photos captured on mobile phones and save properly oriented image files in seconds.",
+    "features": [
+      "Rotate images clockwise and counterclockwise",
+      "Horizontal and vertical image flipping controls",
+      "Lossless browser rendering for image quality",
+      "Free online utility without registration caps",
+      "Supports all major image formats (JPG, PNG, WEBP)"
+    ],
+    "howTo": [
+      "Upload your image file into the rotation tool",
+      "Click rotate or flip buttons to adjust orientation",
+      "Download your updated image file directly"
+    ],
+    "faq": [
+      {
+        "q": "Can I flip an image horizontally like a mirror?",
+        "a": "Yes, horizontal and vertical flip options are available."
+      },
+      {
+        "q": "Does rotating an image decrease its visual quality?",
+        "a": "No, rotation is applied losslessly to preserve visual fidelity."
+      },
+      {
+        "q": "Are photos uploaded to remote cloud servers?",
+        "a": "No, all rotation processing is executed locally in your browser."
+      },
+      {
+        "q": "Is the image rotation tool free for everyone?",
+        "a": "Yes, it is 100% free with unlimited daily usage."
+      }
+    ]
+  },
+  "jpg-to-png": {
+    "seoTitle": "JPG to PNG Converter - Convert JPG to PNG Online | SmartTools",
+    "seoTitleFr": "Convertisseur JPG vers PNG - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "محول JPG إلى PNG - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert JPG images to PNG format online for free. Fast, high-quality browser conversion preserving sharp edges and detail.",
+    "h1": "JPG to PNG Converter",
+    "intro": "Convert JPG and JPEG files into PNG format to enjoy lossless quality and transparent background support. Quick, free, and secure image conversion directly in your browser.",
+    "features": [
+      "Lossless JPG to PNG conversion quality",
+      "Client-side processing guarantees photo confidentiality",
+      "Batch conversion support for multiple images",
+      "Free online tool without account registration",
+      "Compatible with modern web browsers"
+    ],
+    "howTo": [
+      "Select or drag your JPG image into the uploader",
+      "Click convert to transform your file into PNG format",
+      "Download your high-resolution PNG image file"
+    ],
+    "faq": [
+      {
+        "q": "Why convert JPG images to PNG format?",
+        "a": "PNG offers lossless compression and transparent background capabilities."
+      },
+      {
+        "q": "Does converting JPG to PNG make the background transparent?",
+        "a": "JPGs lack transparency, but PNG format prepares the file for transparent edits."
+      },
+      {
+        "q": "Is my JPG photo kept private during conversion?",
+        "a": "Yes, conversion runs locally in your browser without server uploads."
+      },
+      {
+        "q": "Is there a limit on how many JPGs I can convert?",
+        "a": "No, you can convert as many files as you need for free."
+      }
+    ]
+  },
+  "png-to-jpg": {
+    "seoTitle": "PNG to JPG Converter - Convert PNG to JPG Online | SmartTools",
+    "seoTitleFr": "Convertisseur PNG vers JPG - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "محول PNG إلى JPG - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert PNG images to JPG format online for free. Reduce PNG image file sizes quickly with fast, secure browser conversion tool.",
+    "h1": "PNG to JPG Converter",
+    "intro": "Convert heavy PNG images into lightweight JPG format to save storage and speed up website uploads. Convert screenshots, graphics, and illustrations instantly.",
+    "features": [
+      "Fast PNG to JPG conversion with small file output",
+      "Customizable JPEG compression quality options",
+      "100% private browser processing with zero uploads",
+      "Free tool with unlimited file conversions",
+      "Cross-device support on phone, tablet, and desktop"
+    ],
+    "howTo": [
+      "Upload your PNG image file to the conversion tool",
+      "Adjust quality settings if desired for file size control",
+      "Download your newly formatted JPG image file"
+    ],
+    "faq": [
+      {
+        "q": "What happens to PNG transparency when converted to JPG?",
+        "a": "Since JPG does not support transparency, transparent areas become solid white."
+      },
+      {
+        "q": "Does converting PNG to JPG reduce file size?",
+        "a": "Yes, JPG files are typically much smaller than PNG files."
+      },
+      {
+        "q": "Are my images safe from unauthorized access?",
+        "a": "Yes, processing takes place locally inside your web browser."
+      },
+      {
+        "q": "Is there any sign-up needed to convert PNG to JPG?",
+        "a": "No, the converter is completely free with no registration required."
+      }
+    ]
+  },
+  "webp-to-jpg": {
+    "seoTitle": "WEBP to JPG Converter - Convert WEBP to JPG Free | SmartTools",
+    "seoTitleFr": "Convertisseur WEBP vers JPG - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "محول WEBP إلى JPG - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert WEBP images to standard JPG files online for free. Open and view WEBP photos on any software or web device easily.",
+    "h1": "WEBP to JPG Converter",
+    "intro": "Convert modern WEBP web images into universally compatible JPG format. Make website graphics compatible with photo viewers, graphics software, and old operating systems.",
+    "features": [
+      "Converts WEBP files to universal JPG format",
+      "Preserves image resolution and color vibrancy",
+      "Client-side processing guarantees full file privacy",
+      "Free online converter with no usage restrictions",
+      "Fast browser processing engine"
+    ],
+    "howTo": [
+      "Upload one or more WEBP image files to the converter",
+      "The engine processes WEBP into JPG format instantly",
+      "Download your standardized JPG files to your device"
+    ],
+    "faq": [
+      {
+        "q": "Why convert WEBP images to JPG format?",
+        "a": "JPG is compatible with virtually every app, photo editor, and device."
+      },
+      {
+        "q": "Does converting WEBP to JPG loss image quality?",
+        "a": "Quality is maintained at high fidelity during format transformation."
+      },
+      {
+        "q": "Are my uploaded WEBP files sent to any server?",
+        "a": "No, image conversion runs locally within your browser."
+      },
+      {
+        "q": "Is this WEBP converter free to use?",
+        "a": "Yes, SmartTools offers free conversion with zero fees."
+      }
+    ]
+  },
+  "image-converter": {
+    "seoTitle": "Image Converter - Convert JPG, PNG, WEBP, GIF | SmartTools",
+    "seoTitleFr": "Convertisseur d'images - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "محول الصور - تحويل JPG, PNG, WEBP, GIF | SmartTools",
+    "seoDescription": "Convert images between JPG, PNG, WEBP, and GIF formats online for free. Fast, multi-format image converter running in browser.",
+    "h1": "Image Converter Tool",
+    "intro": "Convert image files seamlessly between popular formats including JPG, PNG, WEBP, and GIF. Switch formats for optimized web performance, compatibility, or editing.",
+    "features": [
+      "Supports conversion between JPG, PNG, WEBP, and GIF",
+      "Batch file format conversion support",
+      "100% browser-based processing ensuring data privacy",
+      "Free tool with unlimited file format conversions",
+      "Simple intuitive controls for quick batch processing"
+    ],
+    "howTo": [
+      "Upload your image file and choose target output format",
+      "Adjust compression settings if applicable",
+      "Click convert and download your newly formatted image"
+    ],
+    "faq": [
+      {
+        "q": "Which image formats are supported by this converter?",
+        "a": "Supports JPG, JPEG, PNG, WEBP, and GIF image formats."
+      },
+      {
+        "q": "Can I convert multiple images at once?",
+        "a": "Yes, batch processing allows converting several images simultaneously."
+      },
+      {
+        "q": "Is my privacy protected while converting images?",
+        "a": "Yes, processing runs locally in your web browser."
+      },
+      {
+        "q": "Is there any file limit or paywall for conversions?",
+        "a": "No, SmartTools provides free unlimited image conversions."
+      }
+    ]
+  },
+  "image-to-base64": {
+    "seoTitle": "Image to Base64 - Convert Photos to Base64 String | SmartTools",
+    "seoTitleFr": "Image vers Base64 - Convertisseur en ligne | SmartTools",
+    "seoTitleAr": "تحويل الصورة إلى Base64 - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert JPG, PNG, WEBP, and SVG images to Base64 encoded strings online for free. Copy data URIs for inline HTML and CSS.",
+    "h1": "Image to Base64 Converter",
+    "intro": "Encode image files directly into Base64 string strings and HTML data URIs. Ideal for developers embedding icons, logos, and graphics directly into HTML, CSS, or JSON payloads.",
+    "features": [
+      "Generates raw Base64 string and HTML/CSS data URIs",
+      "Supports JPG, PNG, WEBP, GIF, and SVG files",
+      "Instant one-click copy to clipboard functionality",
+      "100% browser execution keeps images secure and private",
+      "Free tool designed for web developers and designers"
+    ],
+    "howTo": [
+      "Upload your image file to encode into Base64",
+      "View generated Base64 code and HTML data URIs",
+      "Click copy to clipboard to use in your web code"
+    ],
+    "faq": [
+      {
+        "q": "What is Base64 image encoding used for?",
+        "a": "Base64 encodes images into text strings for inline embedding in HTML/CSS."
+      },
+      {
+        "q": "What formats can I convert to Base64?",
+        "a": "Supports JPG, PNG, WEBP, GIF, and SVG image formats."
+      },
+      {
+        "q": "Does Base64 encoding send my photos to a server?",
+        "a": "No, encoding occurs completely inside your web browser."
+      },
+      {
+        "q": "Is the Base64 generator free to use?",
+        "a": "Yes, it is 100% free with unlimited encodings."
+      }
+    ]
+  },
+  "base64-to-image": {
+    "seoTitle": "Base64 to Image - Decode Base64 String to Photo | SmartTools",
+    "seoTitleFr": "Base64 vers Image - Décodeur en ligne | SmartTools",
+    "seoTitleAr": "فك ترميز Base64 إلى صورة - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Decode Base64 encoded strings into downloadable image files online for free. Preview and download PNG or JPG images instantly.",
+    "h1": "Base64 to Image Decoder",
+    "intro": "Decode raw Base64 strings back into viewable and downloadable photo files. Preview encoded image data instantly and save it as PNG or JPG file formats on your computer.",
+    "features": [
+      "Decode raw Base64 strings and data URI inputs",
+      "Instant visual image preview before downloading",
+      "Export decoded images as PNG or JPG format",
+      "100% private browser processing with zero leaks",
+      "Free online utility for web developers"
+    ],
+    "howTo": [
+      "Paste your Base64 string or data URI into text box",
+      "Preview the decoded image rendered on screen",
+      "Click download to save the image file to your device"
+    ],
+    "faq": [
+      {
+        "q": "How do I convert a Base64 string back to an image?",
+        "a": "Paste the string into our tool, preview the rendered image, and click download."
+      },
+      {
+        "q": "What file formats can be decoded from Base64?",
+        "a": "Decodes PNG, JPG, WEBP, GIF, and SVG image formats."
+      },
+      {
+        "q": "Is my Base64 string data sent to external servers?",
+        "a": "No, decoding takes place entirely inside your web browser."
+      },
+      {
+        "q": "Is this Base64 decoder tool free to use?",
+        "a": "Yes, SmartTools provides free decoding without limitations."
+      }
+    ]
+  },
+  "grayscale-image": {
+    "seoTitle": "Grayscale Image Online - Turn Photo to Black & White | SmartTools",
+    "seoTitleFr": "Image en niveaux de gris - Convertisseur gratuit | SmartTools",
+    "seoTitleAr": "تحويل الصورة إلى أبيض وأسود - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert color photos into classic black and white grayscale images online for free. Fast, high-quality browser photo filter.",
+    "h1": "Grayscale Image Tool",
+    "intro": "Transform vibrant color photos into elegant black and white grayscale images. Remove color saturation for artistic photography, printing efficiency, or vintage aesthetics.",
+    "features": [
+      "Instant conversion of color images to grayscale",
+      "Preserves image sharpness and tonal balance",
+      "100% browser execution ensuring image privacy",
+      "Free tool with no watermarks or registration",
+      "Supports JPG, PNG, WEBP, and GIF formats"
+    ],
+    "howTo": [
+      "Upload your color photo into the grayscale tool",
+      "The filter automatically converts the image to black & white",
+      "Download your monochrome photo file directly"
+    ],
+    "faq": [
+      {
+        "q": "Does converting to grayscale reduce file size?",
+        "a": "It can slightly reduce file size by stripping color channel data."
+      },
+      {
+        "q": "Can I convert grayscale photos back to color?",
+        "a": "No, grayscale conversion permanently removes color information in output files."
+      },
+      {
+        "q": "Is my image uploaded to any external server?",
+        "a": "No, grayscale filtering happens locally in your browser."
+      },
+      {
+        "q": "Is the grayscale image filter free?",
+        "a": "Yes, it is 100% free with unlimited image processing."
+      }
+    ]
+  },
+  "blur-image": {
+    "seoTitle": "Blur Image Online - Apply Blur Effect to Photos | SmartTools",
+    "seoTitleFr": "Flouter l'image en ligne - Gratuit et rapide | SmartTools",
+    "seoTitleAr": "تشويش الصورة عبر الإنترنت - مجاني وسريع | SmartTools",
+    "seoDescription": "Apply Gaussian blur and privacy blur effects to photos online for free. Adjust blur intensity sliders directly in your browser.",
+    "h1": "Blur Image Tool",
+    "intro": "Apply Gaussian blur effects to photos to obscure sensitive details or create aesthetic background depth. Control blur intensity easily with interactive sliders.",
+    "features": [
+      "Adjustable Gaussian blur intensity slider controls",
+      "Ideal for privacy masking or artistic photo depth",
+      "100% private browser processing with zero uploads",
+      "Free online utility with no registration required",
+      "Supports JPG, PNG, and WEBP image formats"
+    ],
+    "howTo": [
+      "Upload the image file you want to blur",
+      "Move the blur intensity slider to reach desired effect",
+      "Download your blurred photo file immediately"
+    ],
+    "faq": [
+      {
+        "q": "Can I control how blurry the photo gets?",
+        "a": "Yes, an intuitive slider lets you adjust blur strength from subtle to heavy."
+      },
+      {
+        "q": "Why should I use a blur effect on images?",
+        "a": "Blurring helps obscure personal data, faces, licenses, or create background focus."
+      },
+      {
+        "q": "Are my images sent to any server for processing?",
+        "a": "No, blur processing runs entirely inside your web browser."
+      },
+      {
+        "q": "Is the blur image tool completely free?",
+        "a": "Yes, it is 100% free with no hidden restrictions."
+      }
+    ]
+  },
+  "image-watermark": {
+    "seoTitle": "Image Watermark - Add Text Watermark to Photos | SmartTools",
+    "seoTitleFr": "Filigrane d'image - Ajouter texte sur photo | SmartTools",
+    "seoTitleAr": "علامة مائية للصورة - إضافة نص على الصور | SmartTools",
+    "seoDescription": "Add custom text watermarks to images and photos online for free. Customize font, opacity, size, and position directly in browser.",
+    "h1": "Image Watermark Tool",
+    "intro": "Protect your photography and digital artwork from unauthorized theft by adding custom text watermarks. Customize text font, size, opacity, color, and location.",
+    "features": [
+      "Custom text watermarking with opacity & position options",
+      "Protect photography and digital art copyright",
+      "Client-side processing keeps original files secure",
+      "Free tool with no forced branding or limits",
+      "Supports major image formats (JPG, PNG, WEBP)"
+    ],
+    "howTo": [
+      "Upload your photo or visual artwork into the tool",
+      "Type your watermark text and adjust font, size, and opacity",
+      "Download your watermarked photo file instantly"
+    ],
+    "faq": [
+      {
+        "q": "Can I adjust watermark transparency on my photo?",
+        "a": "Yes, opacity sliders allow subtle or bold watermark overlays."
+      },
+      {
+        "q": "Does adding a watermark lower image quality?",
+        "a": "No, visual resolution and sharpness remain intact."
+      },
+      {
+        "q": "Are my original unwatermarked photos saved on a server?",
+        "a": "No, files are processed locally and never uploaded to any server."
+      },
+      {
+        "q": "Is this photo watermarking tool free to use?",
+        "a": "Yes, SmartTools offers 100% free image watermarking."
+      }
+    ]
+  },
+  "image-metadata-viewer": {
+    "seoTitle": "Image Metadata Viewer - Inspect Photo EXIF Data | SmartTools",
+    "seoTitleFr": "Visionneuse de métadonnées d'image - EXIF | SmartTools",
+    "seoTitleAr": "عارض بيانات الصورة الوصفية - بيانات EXIF | SmartTools",
+    "seoDescription": "View hidden EXIF metadata, camera settings, GPS location, and file details online for free. Safe browser EXIF inspector.",
+    "h1": "Image Metadata Viewer Tool",
+    "intro": "Inspect embedded EXIF data in digital photos. Discover camera model, lens settings, ISO, shutter speed, aperture, capture date, and GPS coordinates.",
+    "features": [
+      "Inspect camera make, model, ISO, aperture, shutter speed",
+      "View capture timestamp, resolution, and color profile",
+      "100% local browser execution for photo privacy",
+      "Free online utility without software installation",
+      "Supports JPG, PNG, WEBP, and TIFF images"
+    ],
+    "howTo": [
+      "Upload your photo file to inspect metadata",
+      "View organized EXIF properties and camera technical specs",
+      "Review metadata details displayed on screen"
+    ],
+    "faq": [
+      {
+        "q": "What EXIF metadata can this tool reveal?",
+        "a": "Camera model, ISO, focal length, exposure, capture date, and dimensions."
+      },
+      {
+        "q": "Does inspecting EXIF upload my photos anywhere?",
+        "a": "No, metadata parsing takes place locally in your web browser."
+      },
+      {
+        "q": "Can I inspect mobile phone camera settings?",
+        "a": "Yes, photos taken on iPhones and Android phones contain rich EXIF data."
+      },
+      {
+        "q": "Is the EXIF metadata viewer completely free?",
+        "a": "Yes, SmartTools provides free metadata viewing for everyone."
+      }
+    ]
+  },
+  "flip-image": {
+    "seoTitle": "Flip Image Online - Mirror Photo Horizontally | SmartTools",
+    "seoTitleFr": "Retourner l'image en ligne - Gratuit et facile | SmartTools",
+    "seoTitleAr": "قلب الصورة عبر الإنترنت - مجاني وسهل | SmartTools",
+    "seoDescription": "Flip images horizontally or vertically online for free. Mirror photos and graphics instantly with browser-side image processing.",
+    "h1": "Flip Image Tool",
+    "intro": "Mirror photos horizontally or invert them vertically with one click. Ideal for correcting selfie mirror effects, flipping design graphics, or orienting photos.",
+    "features": [
+      "One-click horizontal and vertical image flipping",
+      "Mirror photo effect for selfies and graphics",
+      "100% private browser processing with zero uploads",
+      "Free online utility with no limits or watermarks",
+      "Supports JPG, PNG, WEBP, and GIF images"
+    ],
+    "howTo": [
+      "Upload your image file into the flipping tool",
+      "Click horizontal flip or vertical flip buttons",
+      "Download your mirrored image file directly"
+    ],
+    "faq": [
+      {
+        "q": "What is the difference between horizontal and vertical flip?",
+        "a": "Horizontal flip creates a left-right mirror image; vertical flip flips top-bottom."
+      },
+      {
+        "q": "Does flipping an image reduce visual quality?",
+        "a": "No, flipping changes pixel orientation without degrading image clarity."
+      },
+      {
+        "q": "Are my images kept private when flipping?",
+        "a": "Yes, flipping is executed locally in your browser."
+      },
+      {
+        "q": "Is the image flipping tool free to use?",
+        "a": "Yes, SmartTools provides free image flipping with no caps."
+      }
+    ]
+  },
+  "add-image-border": {
+    "seoTitle": "Add Image Border - Put Frame Around Photo Free | SmartTools",
+    "seoTitleFr": "Ajouter une bordure d'image - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "إضافة حد للصورة - إطار مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Add custom colored borders and frames around photos online for free. Adjust border width and color directly in your web browser.",
+    "h1": "Add Image Border Tool",
+    "intro": "Enhance your photos with stylish outer borders and frames. Choose custom border colors, pixel thickness, and padding to give graphics a framed look.",
+    "features": [
+      "Customizable border color picker and thickness slider",
+      "Add solid borders to photos, graphics, and memes",
+      "100% browser-based processing ensuring photo privacy",
+      "Free tool without watermarks or registration",
+      "Supports JPG, PNG, and WEBP image formats"
+    ],
+    "howTo": [
+      "Upload your photo into the border generator tool",
+      "Select border color and adjust pixel thickness slider",
+      "Download your framed image file directly"
+    ],
+    "faq": [
+      {
+        "q": "Can I pick any custom color for the photo border?",
+        "a": "Yes, a full color picker allows selecting any RGB color for your frame."
+      },
+      {
+        "q": "Does adding a border change overall image dimensions?",
+        "a": "Yes, border pixels expand the overall width and height of the image."
+      },
+      {
+        "q": "Are my uploaded photos safe from public access?",
+        "a": "Yes, all processing takes place locally inside your browser."
+      },
+      {
+        "q": "Is adding image borders completely free?",
+        "a": "Yes, it is 100% free with unlimited image framing."
+      }
+    ]
+  },
+  "rounded-corners": {
+    "seoTitle": "Rounded Corners - Round Photo Edges Online | SmartTools",
+    "seoTitleFr": "Coins arrondis d'image - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "زوايا دائرية للصورة - مجاني عبر الإنترنت | SmartTools",
+    "seoDescription": "Add rounded corners to photos and images online for free. Adjust corner radius pixels to create smooth rounded graphic designs.",
+    "h1": "Rounded Corners Image Tool",
+    "intro": "Give square photos smooth rounded corners or circular designs. Adjust corner radius pixel controls for modern web graphic designs, avatars, and icons.",
+    "features": [
+      "Adjustable corner radius slider for photo rounding",
+      "Exports with clean transparent background PNG format",
+      "100% local processing keeps your photos confidential",
+      "Free tool without forced registration or watermarks",
+      "Ideal for user avatars, app icons, and web cards"
+    ],
+    "howTo": [
+      "Upload your image into the rounded corner tool",
+      "Move corner radius slider to achieve desired curve",
+      "Download your rounded image file with transparent PNG background"
+    ],
+    "faq": [
+      {
+        "q": "Will my rounded corner photo have a transparent background?",
+        "a": "Yes, output files are exported as PNGs with transparent corner areas."
+      },
+      {
+        "q": "Can I make a photo completely circular?",
+        "a": "Yes, setting high radius on a square image creates a perfect circular avatar."
+      },
+      {
+        "q": "Are photos uploaded to remote servers for processing?",
+        "a": "No, all calculations are executed locally inside your web browser."
+      },
+      {
+        "q": "Is the rounded corner image tool free?",
+        "a": "Yes, SmartTools offers free rounded corner editing with zero fees."
+      }
+    ]
+  },
+  "image-brightness": {
+    "seoTitle": "Image Brightness - Adjust Photo Brightness Online | SmartTools",
+    "seoTitleFr": "Luminosité de l'image - Ajuster en ligne | SmartTools",
+    "seoTitleAr": "سطوع الصورة - ضبط سطوع الصور عبر الإنترنت | SmartTools",
+    "seoDescription": "Increase or decrease image brightness online for free. Fix dark or overexposed photos with real-time browser preview controls.",
+    "h1": "Image Brightness Tool",
+    "intro": "Lighten dark shadows or lower overexposed highlights in your photos. Adjust brightness levels using real-time interactive preview controls in your browser.",
+    "features": [
+      "Interactive brightness slider with instant visual feedback",
+      "Fix dark underexposed photos captured in low light",
+      "100% private browser processing with zero uploads",
+      "Free online editor with unlimited photo adjustments",
+      "Supports JPG, PNG, WEBP, and GIF images"
+    ],
+    "howTo": [
+      "Upload your photo into the brightness adjustment tool",
+      "Move the brightness slider left to darken or right to brighten",
+      "Download your updated photo file immediately"
+    ],
+    "faq": [
+      {
+        "q": "How do I brighten a dark photo online?",
+        "a": "Upload your image, slide the brightness control to the right, and download."
+      },
+      {
+        "q": "Does adjusting brightness lower image quality?",
+        "a": "Moderate adjustments preserve details while enhancing visual balance."
+      },
+      {
+        "q": "Is my photo file kept private during editing?",
+        "a": "Yes, adjustments run locally inside your browser."
+      },
+      {
+        "q": "Is the brightness adjustment tool completely free?",
+        "a": "Yes, SmartTools offers free photo brightness editing with no limits."
+      }
+    ]
+  },
+  "image-contrast": {
+    "seoTitle": "Image Contrast - Adjust Photo Contrast Online | SmartTools",
+    "seoTitleFr": "Contraste de l'image - Ajuster en ligne | SmartTools",
+    "seoTitleAr": "تباين الصورة - ضبط تباين الصور عبر الإنترنت | SmartTools",
+    "seoDescription": "Enhance photo contrast online for free. Make colors pop and increase dynamic range with easy slider controls in your web browser.",
+    "h1": "Image Contrast Tool",
+    "intro": "Enhance the dynamic range between light and dark areas in your photos. Make flat images look punchier, clearer, and visually striking.",
+    "features": [
+      "Real-time contrast slider controls for instant adjustments",
+      "Enhance visual punch and deep shadow details",
+      "Client-side processing preserves complete photo security",
+      "Free online utility with no account sign-up needed",
+      "Supports JPG, PNG, WEBP, and GIF formats"
+    ],
+    "howTo": [
+      "Upload your image to the contrast editing tool",
+      "Adjust contrast slider to increase or decrease pop",
+      "Download your updated photo file directly"
+    ],
+    "faq": [
+      {
+        "q": "What does image contrast adjustment do?",
+        "a": "It increases or decreases difference between light and dark areas in photos."
+      },
+      {
+        "q": "Can I preview contrast adjustments live?",
+        "a": "Yes, slider adjustments update the image preview instantly."
+      },
+      {
+        "q": "Are my images saved on external web servers?",
+        "a": "No, all photo modifications are executed locally in your browser."
+      },
+      {
+        "q": "Is the photo contrast editor free to use?",
+        "a": "Yes, it is 100% free with unlimited image adjustments."
+      }
+    ]
+  },
+  "image-saturation": {
+    "seoTitle": "Image Saturation - Adjust Photo Color Vibrancy | SmartTools",
+    "seoTitleFr": "Saturation de l'image - Ajuster en ligne | SmartTools",
+    "seoTitleAr": "تشبع ألوان الصورة - ضبط ألوان الصور | SmartTools",
+    "seoDescription": "Adjust color saturation and vibrancy of photos online for free. Boost dull colors or create desaturated looks in your browser.",
+    "h1": "Image Saturation Tool",
+    "intro": "Control color intensity and vibrancy in digital photos. Boost muted colors for vibrant landscape shots or desaturate images for subtle muted tones.",
+    "features": [
+      "Real-time color saturation slider for instant feedback",
+      "Boost dull photo colors or create muted artistic tones",
+      "100% private local execution in browser memory",
+      "Free tool with no watermarks or registration",
+      "Supports JPG, PNG, WEBP, and GIF formats"
+    ],
+    "howTo": [
+      "Upload your photo into the saturation adjustment tool",
+      "Move saturation slider right for vibrant colors or left for muted tones",
+      "Download your updated image file directly"
+    ],
+    "faq": [
+      {
+        "q": "Can I turn photos black and white using saturation?",
+        "a": "Yes, dragging saturation slider to zero removes all color."
+      },
+      {
+        "q": "How does saturation affect photo colors?",
+        "a": "Higher saturation makes colors more vivid; lower saturation makes them muted."
+      },
+      {
+        "q": "Are photos uploaded to an online server during edit?",
+        "a": "No, all edits happen locally inside your web browser."
+      },
+      {
+        "q": "Is the color saturation tool free for everyone?",
+        "a": "Yes, SmartTools provides free saturation editing with no caps."
+      }
+    ]
+  },
+  "word-counter": {
+    "seoTitle": "Word Counter - Count Words, Characters, Sentences | SmartTools",
+    "seoTitleFr": "Compteur de mots - Compter caractères et phrases | SmartTools",
+    "seoTitleAr": "عدّاد الكلمات - عدّ الأحرف والجمل والفقرات | SmartTools",
+    "seoDescription": "Count words, characters, sentences, paragraphs, and estimated reading time online for free. Instant real-time text counter.",
+    "h1": "Word Counter Tool",
+    "intro": "Analyze your written text instantly with our comprehensive word counter tool. Count total words, characters with and without spaces, sentences, paragraphs, and reading duration.",
+    "features": [
+      "Real-time word, character, sentence, and paragraph counts",
+      "Estimated reading time and speaking time indicators",
+      "Keyword density breakdown for SEO text optimization",
+      "100% private local text calculation without storage",
+      "Free tool with no text length limit"
+    ],
+    "howTo": [
+      "Type or paste your text into the word counting box",
+      "View real-time word, character, and sentence counts",
+      "Review reading time and word frequency analysis"
+    ],
+    "faq": [
+      {
+        "q": "Is there a limit on how much text I can count?",
+        "a": "No, you can paste essays, articles, or books with zero limits."
+      },
+      {
+        "q": "Is my written text stored or logged anywhere?",
+        "a": "No, calculations run in your browser memory and are never saved."
+      },
+      {
+        "q": "Does the word counter count characters with spaces?",
+        "a": "Yes, both character counts with spaces and without spaces are displayed."
+      },
+      {
+        "q": "Is the word counter free to use?",
+        "a": "Yes, SmartTools provides free text analysis with no sign-up."
+      }
+    ]
+  },
+  "character-counter": {
+    "seoTitle": "Character Counter - Count Text Length Online | SmartTools",
+    "seoTitleFr": "Compteur de caractères - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "عدّاد الأحرف - عدّ أحرف النصوص عبر الإنترنت | SmartTools",
+    "seoDescription": "Count characters, letters, spaces, and symbols online for free. Perfect character counter for Twitter, Meta tags, and SMS.",
+    "h1": "Character Counter Tool",
+    "intro": "Track text character length with precise breakdown for social media posts, SMS, SEO meta descriptions, and ad copy. Monitor length limits in real time as you type.",
+    "features": [
+      "Live character count tracking with/without spaces",
+      "Presets for Twitter/X, SMS, meta title, and description limits",
+      "100% private processing with zero text logging",
+      "Free online utility accessible on desktop and mobile",
+      "Letter, number, and special character breakdown"
+    ],
+    "howTo": [
+      "Paste or write your text into the character counter box",
+      "View character counts update live with space breakdown",
+      "Verify text fits targeted platform character limits"
+    ],
+    "faq": [
+      {
+        "q": "Why is character counting important for SEO?",
+        "a": "Meta titles (60 chars) and meta descriptions (160 chars) need strict lengths."
+      },
+      {
+        "q": "Does character count include spaces and punctuation?",
+        "a": "Yes, both total characters with spaces and without spaces are shown."
+      },
+      {
+        "q": "Is my text uploaded to a server when counting?",
+        "a": "No, character counting happens locally inside your web browser."
+      },
+      {
+        "q": "Is the character counter free to use?",
+        "a": "Yes, it is 100% free with unlimited text counting."
+      }
+    ]
+  },
+  "case-converter": {
+    "seoTitle": "Case Converter - Convert Text to UPPERCASE, lowercase | SmartTools",
+    "seoTitleFr": "Convertisseur de casse - Majuscule, minuscule | SmartTools",
+    "seoTitleAr": "محول حالة الأحرف - كبير، صغير، عناوين | SmartTools",
+    "seoDescription": "Convert text case online for free. Switch text to UPPERCASE, lowercase, Title Case, Sentence case, or camelCase instantly.",
+    "h1": "Case Converter Tool",
+    "intro": "Transform text case formatting instantly between UPPERCASE, lowercase, Title Case, Sentence case, Capitalized Case, and camelCase. Save time retyping text manually.",
+    "features": [
+      "Supports UPPERCASE, lowercase, Title Case, and Sentence case",
+      "Includes Developer modes: camelCase, snake_case, PascalCase",
+      "One-click copy converted text to clipboard",
+      "100% local text processing for privacy",
+      "Free tool with no text length limitations"
+    ],
+    "howTo": [
+      "Paste your text into the case converter text box",
+      "Click the desired case format button (e.g. UPPERCASE)",
+      "Copy your formatted text to clipboard with one click"
+    ],
+    "faq": [
+      {
+        "q": "What text case styles are supported?",
+        "a": "UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case, etc."
+      },
+      {
+        "q": "Can I convert large blocks of text at once?",
+        "a": "Yes, you can paste full pages of text for instant conversion."
+      },
+      {
+        "q": "Is my pasted text saved on any server?",
+        "a": "No, text transformation runs entirely inside your browser memory."
+      },
+      {
+        "q": "Is the text case converter free?",
+        "a": "Yes, SmartTools offers free case conversion with zero caps."
+      }
+    ]
+  },
+  "bmi-calculator": {
+    "seoTitle": "BMI Calculator - Calculate Body Mass Index Online | SmartTools",
+    "seoTitleFr": "Calculateur IMC - Indice de Masse Corporelle | SmartTools",
+    "seoTitleAr": "حاسبة مؤشر كتلة الجسم - حساب IMC مجاني | SmartTools",
+    "seoDescription": "Calculate Body Mass Index (BMI) online for free. Get instant metric and imperial health category results with healthy weight ranges.",
+    "h1": "BMI Calculator Tool",
+    "intro": "Calculate your Body Mass Index (BMI) to evaluate health status based on height and weight. Supports metric (cm/kg) and imperial (in/lbs) units with instant health classification.",
+    "features": [
+      "Calculates BMI with metric and imperial unit options",
+      "Displays weight categories (Underweight, Normal, Overweight, Obese)",
+      "Provides ideal target weight ranges for your height",
+      "100% private calculations running locally in browser",
+      "Free health utility with no personal data collection"
+    ],
+    "howTo": [
+      "Choose metric (cm/kg) or imperial (in/lbs) units",
+      "Enter your height and current weight values",
+      "View your calculated BMI score and weight classification"
+    ],
+    "faq": [
+      {
+        "q": "What is Body Mass Index (BMI)?",
+        "a": "BMI is a numerical value calculated from height and weight to assess body mass category."
+      },
+      {
+        "q": "What is considered a normal BMI range?",
+        "a": "A healthy BMI score for adults ranges between 18.5 and 24.9."
+      },
+      {
+        "q": "Is my health information kept private?",
+        "a": "Yes, calculations take place in your browser; no data is sent or saved."
+      },
+      {
+        "q": "Is the BMI calculator free to use?",
+        "a": "Yes, SmartTools provides free health calculations with zero fees."
+      }
+    ]
+  },
+  "age-calculator": {
+    "seoTitle": "Age Calculator - Calculate Exact Age in Years, Months, Days | SmartTools",
+    "seoTitleFr": "Calculateur d'âge - Âge exact en années, mois, jours | SmartTools",
+    "seoTitleAr": "حاسبة العمر - حساب العمر الدقيق بالسنوات والأيام | SmartTools",
+    "seoDescription": "Calculate your exact age in years, months, weeks, days, hours, and minutes online for free. Fast date of birth age calculator tool.",
+    "h1": "Age Calculator Tool",
+    "intro": "Calculate your exact chronological age down to years, months, weeks, days, hours, and minutes. Enter your birth date to find out day of week born and next birthday countdown.",
+    "features": [
+      "Detailed breakdown in years, months, days, hours, minutes",
+      "Calculates day of the week you were born on",
+      "Next birthday countdown timer and milestone tracking",
+      "100% private browser calculation without server logs",
+      "Free online utility for personal and official age checks"
+    ],
+    "howTo": [
+      "Select your date of birth from the calendar inputs",
+      "Select target date (defaults to current date)",
+      "Click calculate to view your exact age breakdown"
+    ],
+    "faq": [
+      {
+        "q": "Does this age calculator account for leap years?",
+        "a": "Yes, leap years and varying month lengths are factored into calculation."
+      },
+      {
+        "q": "Can I calculate age at a specific past or future date?",
+        "a": "Yes, you can set custom target dates to calculate age at any point in time."
+      },
+      {
+        "q": "Is my birth date stored on any server?",
+        "a": "No, calculations run locally in your browser with complete privacy."
+      },
+      {
+        "q": "Is the age calculator tool free?",
+        "a": "Yes, it is 100% free with no registration required."
+      }
+    ]
+  },
+  "percentage-calculator": {
+    "seoTitle": "Percentage Calculator - Calculate Percentages Easily | SmartTools",
+    "seoTitleFr": "Calculateur de pourcentage - Gratuit en ligne | SmartTools",
+    "seoTitleAr": "حاسبة النسبة المئوية - حساب النسبة بسهولة | SmartTools",
+    "seoDescription": "Calculate percentages, percentage increases, decreases, and differences online for free. Instant math calculator tool in browser.",
+    "h1": "Percentage Calculator Tool",
+    "intro": "Solve everyday percentage problems effortlessly with our free online percentage calculator. Calculate discounts, price increases, percent changes, and portion ratios instantly.",
+    "features": [
+      "Calculate percentage of a number, percentage change, and ratio",
+      "Ideal for financial discounts, tip calculations, and growth stats",
+      "Instant real-time calculation as you type values",
+      "100% local browser math processing with zero tracking",
+      "Free mathematical utility accessible on all devices"
+    ],
+    "howTo": [
+      "Choose calculation type (Percentage Of, Percent Change, etc.)",
+      "Enter the required numbers into input fields",
+      "View your calculated percentage result immediately"
+    ],
+    "faq": [
+      {
+        "q": "What percentage calculations can this tool solve?",
+        "a": "Calculates X% of Y, what percent X is of Y, and percentage increase/decrease."
+      },
+      {
+        "q": "Can I use this for calculating store discount prices?",
+        "a": "Yes, ideal for calculating retail discounts and tax amounts quickly."
+      },
+      {
+        "q": "Are my numeric inputs saved anywhere?",
+        "a": "No, calculations take place in your browser memory and are never saved."
+      },
+      {
+        "q": "Is the percentage calculator free to use?",
+        "a": "Yes, SmartTools offers free percentage calculations with no caps."
+      }
+    ]
+  }
+}

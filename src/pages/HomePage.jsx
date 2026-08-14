@@ -6,7 +6,7 @@ import tools from '../data/tools.json'
 import ToolCard from '../components/ToolCard'
 import SectionHeader from '../components/SectionHeader'
 import { CategoryGridSkeleton, ToolGridSkeleton } from '../components/Skeletons'
-import { useSEO, getPopularTools } from '../lib/seo'
+import { useSEO, getPopularTools, buildWebsiteJsonLd, SITE_URL } from '../lib/seo'
 import { getIcon } from '../lib/icons'
 import { getRecentToolSlugs } from '../lib/recentHelpers'
 
@@ -29,13 +29,15 @@ export default function HomePage({ lang, t }) {
   const [loading, setLoading] = useState(true)
 
   useSEO({
-    title: 'SmartTools - Free Online Tools',
+    title: 'SmartTools - Free Online Tools for PDF, Images & More',
     description: lang === 'ar'
       ? 'SmartTools — أدوات مجانية عبر الإنترنت لملفات PDF والصور والمزيد. بدون تسجيل.'
       : lang === 'fr'
       ? 'SmartTools — Outils en ligne gratuits pour PDF, images et plus. Sans inscription.'
-      : 'SmartTools — Free online tools for PDF, images, video, audio, text, SEO, developers and more. No sign-up required.',
+      : 'SmartTools — Free online tools for PDF, images, text and calculators. Convert, compress and edit files in your browser. No sign-up required.',
     canonical: '/',
+    lang,
+    jsonLd: buildWebsiteJsonLd(),
   })
 
   useEffect(() => {
@@ -240,6 +242,39 @@ export default function HomePage({ lang, t }) {
           )}
         </section>
 
+      </div>
+
+      {/* SEO Content Section */}
+      <div className="max-w-3xl mx-auto px-4 pb-12 md:pb-16">
+        <div className="space-y-4 text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed">
+          <h2 className="text-lg font-bold text-[#111111] dark:text-[#FAFAFA]">
+            {lang === 'ar' ? 'أدوات مجانية عبر الإنترنت' : lang === 'fr' ? 'Outils en ligne gratuits' : 'Free Online Tools'}
+          </h2>
+          <p>
+            {lang === 'ar'
+              ? 'SmartTools عبارة عن مجموعة من الأدوات المجانية عبر الإنترنت التي تعمل مباشرة في متصفحك. سواء كنت بحاجة إلى تحويل ملفات PDF أو ضغط الصور أو عد الكلمات أو حساب النسب المئوية، فإن أدواتنا سريعة وآمنة ولا تتطلب التسجيل.'
+              : lang === 'fr'
+              ? 'SmartTools est une collection d\'outils en ligne gratuits qui fonctionnent directement dans votre navigateur. Que vous ayez besoin de convertir des fichiers PDF, de compresser des images, de compter des mots ou de calculer des pourcentages, nos outils sont rapides, sûrs et ne nécessitent aucune inscription.'
+              : 'SmartTools is a collection of free online tools that work directly in your browser. Whether you need to convert PDF files, compress images, count words, or calculate percentages, our tools are fast, secure, and require no sign-up.'}
+          </p>
+          <p>
+            {lang === 'ar'
+              ? 'جميع المعالجة تتم محلياً في متصفحك، مما يعني أن ملفاتك لا تغادر جهازك أبداً. هذا يضمن خصوصيتك وأمانك الكامل.'
+              : lang === 'fr'
+              ? 'Tout le traitement se fait localement dans votre navigateur, ce qui signifie que vos fichiers ne quittent jamais votre appareil. Cela garantit une confidentialité et une sécurité totales.'
+              : 'All processing happens locally in your browser, meaning your files never leave your device. This ensures complete privacy and security.'}
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+            {categories.map(cat => (
+              <div key={cat.id}>
+                <Link to={`/categories/${cat.slug}`} className="font-semibold text-blue-600 dark:text-blue-400 hover:underline text-sm">
+                  {cat.name[lang]}
+                </Link>
+                <p className="text-xs mt-1">{cat.description[lang]}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )

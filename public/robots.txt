@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
-Sitemap: /sitemap.xml
+# Block internal application state pages
+Disallow: /favorites
+Disallow: /recent
+
+Sitemap: https://smarttools.app/sitemap.xml

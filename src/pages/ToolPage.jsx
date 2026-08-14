@@ -1,4 +1,5 @@
-import { useSEO, useToolViews } from '../lib/seo'
+import { useSEO, useToolViews, buildBreadcrumbJsonLd, buildFaqJsonLd, buildToolJsonLd, SITE_URL } from '../lib/seo'
+import toolSeoData from '../data/toolSeoData.json'
 import {
   ResizeImageEditor, CropImageEditor, CompressImageEditor,
   ImageConvertEditor, ImageUploadZone,
@@ -12,7 +13,7 @@ import PdfPageEditor from '../components/PdfPageEditor.jsx'
 import AdvancedPdfEditor from '../components/AdvancedPdfEditor.jsx'
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { CheckCircle2, Wrench, HelpCircle, ChevronDown, Loader2 } from 'lucide-react'
+import { CheckCircle2, Wrench, HelpCircle, ChevronDown, Loader2, AlertCircle } from 'lucide-react'
 import FavoriteButton from '../components/FavoriteButton'
 import { useRecentTools } from '../hooks/useRecentTools'
 import BatchProcessor from '../components/BatchProcessor'
@@ -765,6 +766,11 @@ function FAQItem({ question, answer }) {
 }
 
 function getFAQ(tool, lang) {
+  const seoData = toolSeoData[tool.slug]
+  if (seoData && seoData.faq && seoData.faq.length > 0) {
+    return seoData.faq
+  }
+  // Fallback generic FAQ
   return [
     { q: lang==='ar'?'هل هذه الأداة مجانية؟':lang==='fr'?'Cet outil est-il gratuit ?':'Is this tool free?', a: lang==='ar'?'نعم، مجانية 100% بدون قيود.':lang==='fr'?'Oui, 100% gratuit sans restriction.':'Yes, 100% free with no restrictions.' },
     { q: lang==='ar'?'هل أحتاج إلى تسجيل؟':lang==='fr'?'Ai-je besoin de m\'inscrire ?':'Do I need to register?', a: lang==='ar'?'لا، استخدم الأداة مباشرة.':lang==='fr'?'Non, utilisez l\'outil directement.':'No, just open and use it instantly.' },
@@ -774,25 +780,81 @@ function getFAQ(tool, lang) {
 
 export default function ToolPage({ slug, lang, t }) {
   const tool = tools.find(to => to.slug === slug)
-  if (!tool) return (
-    <div className="p-8 text-center"><p className="text-[#6B7280] dark:text-[#A1A1AA] mb-4">Tool not found.</p><Link to="/" className="text-blue-600 hover:underline text-sm">{t.breadcrumb.home}</Link></div>
-  )
-  const category = categories.find(c => c.id === tool.categoryId)
-  const Icon = getIcon(tool.icon)
-  const relatedTools = tools.filter(to => to.categoryId === tool.categoryId && to.id !== tool.id).slice(0, 6)
-  const faqs = getFAQ(tool, lang)
-  const catMap = Object.fromEntries(categories.map(c => [c.id, c]))
-  useSEO({ title: tool.name[lang], description: tool.description[lang], canonical: `/tools/${tool.slug}` })
-  useToolViews(tool.slug)
 
   const { addRecent } = useRecentTools()
   const recentTrackedRef = useRef(null)
   useEffect(() => {
-    if (recentTrackedRef.current !== slug) {
+    if (tool && recentTrackedRef.current !== slug) {
       recentTrackedRef.current = slug
       addRecent(slug)
     }
-  }, [slug, addRecent])
+  }, [slug, addRecent, tool])
+
+  if (!tool) return (
+    <div className="max-w-3xl mx-auto px-4 py-12 md:py-20 text-center">
+      <div className="w-16 h-16 rounded-2xl bg-red-50 dark:bg-red-950/30 flex items-center justify-center mx-auto mb-4">
+        <AlertCircle className="w-8 h-8 text-red-500" />
+      </div>
+      <h1 className="text-xl font-bold text-[#111111] dark:text-[#FAFAFA] mb-2">{lang==='ar'?'الأداة غير موجودة':lang==='fr'?'Outil introuvable':'Tool not found'}</h1>
+      <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] mb-6">{lang==='ar'?'قد تكون الأداة قد تم نقلها أو لم تعد متاحة.':lang==='fr'?'Cet outil a peut-être été déplacé ou n\'est plus disponible.':'This tool may have been moved or is no longer available.'}</p>
+      <div className="flex items-center justify-center gap-3 flex-wrap">
+        <Link to="/" className="btn-primary rounded-xl px-5 py-2.5 text-sm">{t.breadcrumb.home}</Link>
+        <Link to="/categories" className="px-5 py-2.5 text-sm font-medium rounded-xl border border-[#E5E7EB] dark:border-[#27272A] text-[#6B7280] dark:text-[#A1A1AA] hover:bg-[#F7F8FA] dark:hover:bg-[#18181B]">{t.nav.categories}</Link>
+        <Link to="/search" className="px-5 py-2.5 text-sm font-medium rounded-xl border border-[#E5E7EB] dark:border-[#27272A] text-[#6B7280] dark:text-[#A1A1AA] hover:bg-[#F7F8FA] dark:hover:bg-[#18181B]">{lang==='ar'?'بحث':lang==='fr'?'Rechercher':'Search'}</Link>
+      </div>
+    </div>
+  )
+
+  const category = categories.find(c => c.id === tool.categoryId)
+  const Icon = getIcon(tool.icon)
+  const catMap = Object.fromEntries(categories.map(c => [c.id, c]))
+
+  // Tool-specific SEO data
+  const seoData = toolSeoData[tool.slug] || {}
+  const seoTitle = lang === 'ar' ? (seoData.seoTitleAr || seoData.seoTitle || tool.name[lang]) : lang === 'fr' ? (seoData.seoTitleFr || seoData.seoTitle || tool.name[lang]) : (seoData.seoTitle || tool.name[lang])
+  const seoDesc = seoData.seoDescription || tool.description[lang]
+  const h1 = seoData.h1 || tool.name[lang]
+  const intro = seoData.intro || tool.description[lang]
+  const features = seoData.features || []
+  const howToSteps = seoData.howTo || []
+  const faqs = getFAQ(tool, lang)
+
+  // Related tools: use explicit mapping if available, fallback to same category
+  const relatedSlugs = (toolSeoData._related && toolSeoData._related[tool.slug]) || []
+  const relatedTools = relatedSlugs.length > 0
+    ? relatedSlugs.map(s => tools.find(to => to.slug === s)).filter(Boolean).slice(0, 6)
+    : tools.filter(to => to.categoryId === tool.categoryId && to.id !== tool.id).slice(0, 6)
+
+  // Breadcrumb items for JSON-LD
+  const breadcrumbItems = [
+    { name: 'Home', url: '/' },
+    { name: 'Categories', url: '/categories' },
+    category && { name: category.name.en, url: `/categories/${category.slug}` },
+    { name: tool.name.en, url: `/tools/${tool.slug}` },
+  ].filter(Boolean)
+
+  // Combined JSON-LD: breadcrumb + FAQ + tool
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      buildBreadcrumbJsonLd(breadcrumbItems),
+      buildToolJsonLd(tool, category),
+      ...(faqs.length > 0 ? [buildFaqJsonLd(faqs)] : []),
+    ],
+  }
+
+  useSEO({
+    title: seoTitle,
+    description: seoDesc,
+    canonical: `/tools/${tool.slug}`,
+    lang,
+    jsonLd,
+  })
+  useToolViews(tool.slug)
+
+  const howToLabel = lang === 'ar' ? 'كيفية الاستخدام' : lang === 'fr' ? 'Comment utiliser' : 'How to use'
+  const featuresLabel = lang === 'ar' ? 'المميزات' : lang === 'fr' ? 'Fonctionnalités' : 'Key Features'
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-6 md:py-8 animate-fade-in">
       <Breadcrumb items={[{label:t.breadcrumb.home,href:'/'},{label:t.nav.categories,href:'/categories'},category&&{label:category.name[lang],href:`/categories/${category.slug}`},{label:tool.name[lang]}].filter(Boolean)} />
@@ -800,16 +862,56 @@ export default function ToolPage({ slug, lang, t }) {
         <div className={`shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${category?.color || 'from-blue-600 to-blue-500'} flex items-center justify-center shadow-sm`}><Icon className="w-7 h-7 text-white" strokeWidth={1.6} /></div>
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold text-[#111111] dark:text-[#FAFAFA] leading-tight">{tool.name[lang]}</h1>
+            <h1 className="text-2xl font-bold text-[#111111] dark:text-[#FAFAFA] leading-tight">{h1}</h1>
             <FavoriteButton slug={tool.slug} size="lg" lang={lang} />
           </div>
-          <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] mt-1 leading-relaxed">{tool.description[lang]}</p>
+          <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] mt-1 leading-relaxed">{seoDesc}</p>
           {category && <Link to={`/categories/${category.slug}`} className={`inline-flex items-center gap-1 mt-2 text-xs font-semibold px-2.5 py-1 rounded-full ${category.bg} ${category.text} ${category.border} border`}><Icon className="w-3 h-3" strokeWidth={2} /> {category.name[lang]}</Link>}
         </div>
       </div>
       <div className="bg-white dark:bg-[#111113] border border-[#E5E7EB] dark:border-[#27272A] rounded-xl p-5 md:p-8 mb-6 shadow-card"><ToolInterface tool={tool} lang={lang} t={t} /></div>
-      <div className="mb-8"><p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed">{tool.description[lang]}</p></div>
+
+      {/* SEO Content: Intro */}
+      {intro && (
+        <div className="mb-8 prose-content">
+          <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed">{intro}</p>
+        </div>
+      )}
+
+      {/* SEO Content: Features */}
+      {features.length > 0 && (
+        <div className="mb-8">
+          <h2 className="font-bold text-base text-[#111111] dark:text-[#FAFAFA] mb-4">{featuresLabel}</h2>
+          <ul className="space-y-2">
+            {features.map((feat, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm text-[#6B7280] dark:text-[#A1A1AA]">
+                <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                <span>{feat}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* SEO Content: How To */}
+      {howToSteps.length > 0 && (
+        <div className="mb-8">
+          <h2 className="font-bold text-base text-[#111111] dark:text-[#FAFAFA] mb-4">{howToLabel}</h2>
+          <ol className="space-y-3">
+            {howToSteps.map((step, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 text-xs font-bold flex items-center justify-center">{i + 1}</span>
+                <span className="text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed pt-0.5">{step}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+
+      {/* FAQ */}
       <div className="mb-8"><h2 className="font-bold text-base text-[#111111] dark:text-[#FAFAFA] mb-4 flex items-center gap-2"><HelpCircle className="w-5 h-5 text-blue-500" />{t.tools.faq}</h2><div className="space-y-2">{faqs.map((faq,i)=><FAQItem key={i} question={faq.q} answer={faq.a} />)}</div></div>
+
+      {/* Related Tools */}
       {relatedTools.length > 0 && (
         <div>
           <h2 className="font-bold text-base text-[#111111] dark:text-[#FAFAFA] mb-4">{t.tools.related}</h2>

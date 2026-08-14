@@ -6,9 +6,11 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+const SITE_URL = 'https://smarttools.app'
+
 /**
  * Sitemap plugin — generates sitemap.xml at build time.
- * Reads categories.json and tools.json from src/data and creates URLs.
+ * Reads categories.json and tools.json from src/data and creates absolute URLs.
  */
 function sitemapPlugin() {
   return {
@@ -22,12 +24,15 @@ function sitemapPlugin() {
       const urls = []
 
       // Homepage
-      urls.push({ loc: '/', priority: '1.0', changefreq: 'daily', lastmod: today })
+      urls.push({ loc: `${SITE_URL}/`, priority: '1.0', changefreq: 'daily', lastmod: today })
 
-      // Categories
+      // Categories page
+      urls.push({ loc: `${SITE_URL}/categories`, priority: '0.7', changefreq: 'weekly', lastmod: today })
+
+      // Individual categories
       cats.forEach(cat => {
         urls.push({
-          loc: `/categories/${cat.slug}`,
+          loc: `${SITE_URL}/categories/${cat.slug}`,
           priority: '0.8',
           changefreq: 'weekly',
           lastmod: today,
@@ -37,7 +42,7 @@ function sitemapPlugin() {
       // Tools
       tools.forEach(tool => {
         urls.push({
-          loc: `/tools/${tool.slug}`,
+          loc: `${SITE_URL}/tools/${tool.slug}`,
           priority: '0.9',
           changefreq: 'monthly',
           lastmod: tool.created_at || today,
