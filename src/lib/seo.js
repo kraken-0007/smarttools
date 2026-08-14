@@ -8,7 +8,7 @@ import { useEffect } from 'react'
  * Usage: useSEO({ title, description, canonical, ogImage, ogType, jsonLd, lang })
  */
 
-export const SITE_URL = 'https://smarttools.app'
+export const SITE_URL = 'https://smarttools.vercel.app'
 export const SITE_NAME = 'SmartTools'
 
 function upsertMeta(selector, attr, content) {

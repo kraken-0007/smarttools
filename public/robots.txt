@@ -1,8 +1,7 @@
 User-agent: *
 Allow: /
 
-# Block internal application state pages
 Disallow: /favorites
 Disallow: /recent
 
-Sitemap: https://smarttools.app/sitemap.xml
+Sitemap: https://smarttools.vercel.app/sitemap.xml
