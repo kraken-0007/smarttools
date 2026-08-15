@@ -88,9 +88,9 @@
   },
   "image-tools": {
     "intro": {
-      "en": "SmartTools Image Tools provide 20 free online utilities for editing and converting images. Compress images to reduce file size, resize and crop with visual controls, convert between JPG, PNG, and WEBP formats, apply filters and adjustments, add watermarks and borders, flip and rotate images, and more. All processing is done in your browser — your images never leave your device.",
-      "fr": "Les outils image de SmartTools fournissent 20 utilitaires gratuits en ligne pour éditer et convertir des images. Compressez vos images pour réduire leur taille, redimensionnez et recadrez avec des contrôles visuels, convertissez entre les formats JPG, PNG et WEBP, appliquez des filtres et des réglages, ajoutez des filigranes et des bordures, pivotez et retournez vos images. Tout le traitement se fait dans votre navigateur — vos images ne quittent jamais votre appareil.",
-      "ar": "تقدم أدوات الصور من SmartTools 20 أداة مجانية عبر الإنترنت لتحرير الصور وتحويلها. اضغط الصور لتقليل الحجم، وغيّر الحجم وقص الصور بأدوات تحكم بصرية، وحوّل بين صيغ JPG و PNG و WEBP، وطبّق الفلاتر والتعديلات، وأضف العلامات المائية والحدود، وقم بتدوير الصور وقلبها والمزيد. تتم جميع المعالجة في متصفحك — صورك لا تغادر جهازك أبداً."
+      "en": "SmartTools Image Tools provide 26 free online utilities for editing and converting images. Compress images to reduce file size, resize and crop with visual controls, convert between JPG, PNG, and WEBP formats, apply filters and adjustments, add watermarks and borders, flip and rotate images, pixelate or redact specific areas, sharpen or invert colors, and more. All processing is done in your browser — your images never leave your device.",
+      "fr": "Les outils image de SmartTools fournissent 26 utilitaires gratuits en ligne pour éditer et convertir des images. Compressez vos images, redimensionnez et recadrez, convertissez entre les formats JPG, PNG et WEBP, appliquez des filtres, ajoutez des filigranes et des bordures, pivotez, pixelisez ou caviardez des zones spécifiques, nettoyez ou inversez les couleurs et plus. Tout le traitement se fait dans votre navigateur.",
+      "ar": "تقدم أدوات الصور من SmartTools 26 أداة مجانية عبر الإنترنت لتحرير الصور وتحويلها. اضغط الصور، وغيّر الحجم وقص الصور، وحوّل بين صيغ JPG و PNG و WEBP، وطبّق الفلاتر والتعديلات، وأضف العلامات المائية والحدود، وقلب الصور، وبكسل أو اعتّم مناطق محددة، وزد حدّة الصور أو اعكس الألوان والمزيد. تتم جميع المعالجة في متصفحك."
     },
     "faq": {
       "en": [

@@ -9,6 +9,10 @@ import {
   BorderEditor, RoundedCornersEditor, Base64Tool, Base64ToImageTool,
   ImageMetadataViewer, ImageConverterTool,
 } from '../components/ImageTools.jsx'
+import {
+  PixelateEditor, SharpenEditor, InvertEditor,
+  ColorAdjustEditor, RedactEditor, EraseAreaEditor,
+} from '../components/RegionTools.jsx'
 import PdfPageEditor from '../components/PdfPageEditor.jsx'
 import AdvancedPdfEditor from '../components/AdvancedPdfEditor.jsx'
 import { useState, useRef, useEffect } from 'react'
@@ -494,6 +498,42 @@ function RoundedCornersTool({ lang }) {
   return <RoundedCornersEditor file={file} lang={lang} />
 }
 
+function PixelateImageTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
+  return <PixelateEditor file={file} lang={lang} />
+}
+
+function SharpenImageTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
+  return <SharpenEditor file={file} lang={lang} />
+}
+
+function InvertImageTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
+  return <InvertEditor file={file} lang={lang} />
+}
+
+function ColorAdjustmentTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
+  return <ColorAdjustEditor file={file} lang={lang} />
+}
+
+function RedactImageTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
+  return <RedactEditor file={file} lang={lang} />
+}
+
+function EraseAreaTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
+  return <EraseAreaEditor file={file} lang={lang} />
+}
+
 /* ═══ TEXT TOOLS ═══ */
 
 function WordCounterTool({ lang }) {
@@ -689,6 +729,12 @@ const TOOL_COMPONENTS = {
   'image-brightness': ImageBrightnessTool,
   'image-contrast': ImageContrastTool,
   'image-saturation': ImageSaturationTool,
+  'pixelate-image': PixelateImageTool,
+  'sharpen-image': SharpenImageTool,
+  'invert-image': InvertImageTool,
+  'color-adjustment': ColorAdjustmentTool,
+  'redact-image': RedactImageTool,
+  'erase-area': EraseAreaTool,
   // Text Tools (3)
   'word-counter': WordCounterTool,
   'character-counter': CharacterCounterTool,

@@ -780,5 +780,107 @@
     },
     "icon": "Percent",
     "created_at": "2026-07-24"
+  },
+  {
+    "id": "pixelate-image",
+    "slug": "pixelate-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Pixelate Image",
+      "fr": "Pixeliser l'image",
+      "ar": "بكسلة الصورة"
+    },
+    "description": {
+      "en": "Pixelate selected areas or entire image",
+      "fr": "Pixeliser des zones sélectionnées ou toute l'image",
+      "ar": "بكسلة المناطق المحددة أو الصورة بالكامل"
+    },
+    "icon": "Grid3x3",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "sharpen-image",
+    "slug": "sharpen-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Sharpen Image",
+      "fr": "Nettoyer l'image",
+      "ar": "زيادة حدّة الصورة"
+    },
+    "description": {
+      "en": "Sharpen selected areas or entire image",
+      "fr": "Nettoyer des zones sélectionnées ou toute l'image",
+      "ar": "زيادة حدّة المناطق المحددة أو الصورة بالكامل"
+    },
+    "icon": "Zap",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "invert-image",
+    "slug": "invert-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Invert Colors",
+      "fr": "Inverser les couleurs",
+      "ar": "عكس الألوان"
+    },
+    "description": {
+      "en": "Invert colors in selected areas or entire image",
+      "fr": "Inverser les couleurs de zones sélectionnées ou de toute l'image",
+      "ar": "عكس ألوان المناطق المحددة أو الصورة بالكامل"
+    },
+    "icon": "Contrast",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "color-adjustment",
+    "slug": "color-adjustment",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Color Adjustment",
+      "fr": "Réglage des couleurs",
+      "ar": "ضبط الألوان"
+    },
+    "description": {
+      "en": "Adjust hue, temperature and tint of selected areas",
+      "fr": "Ajuster la teinte, la température et la nuance de zones sélectionnées",
+      "ar": "ضبط درجة اللون ودرجة الحرارة والصبغة للمناطق المحددة"
+    },
+    "icon": "Palette",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "redact-image",
+    "slug": "redact-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Redact Image",
+      "fr": "Caviarder l'image",
+      "ar": "تعتيم الصورة"
+    },
+    "description": {
+      "en": "Black out or redact selected areas of an image",
+      "fr": "Caviarder ou masquer des zones sélectionnées d'une image",
+      "ar": "تعتيم أو إخفاء المناطق المحددة من الصورة"
+    },
+    "icon": "EyeOff",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "erase-area",
+    "slug": "erase-area",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Erase Area",
+      "fr": "Effacer une zone",
+      "ar": "مسح منطقة"
+    },
+    "description": {
+      "en": "Erase or fill selected areas with a solid color",
+      "fr": "Effacer ou remplir des zones sélectionnées avec une couleur unie",
+      "ar": "مسح أو ملء المناطق المحددة بلون واحد"
+    },
+    "icon": "Eraser",
+    "created_at": "2026-08-15"
   }
 ]

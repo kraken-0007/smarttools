@@ -302,6 +302,54 @@
       "age-calculator",
       "word-counter",
       "character-counter"
+    ],
+    "pixelate-image": [
+      "blur-image",
+      "sharpen-image",
+      "invert-image",
+      "grayscale-image",
+      "compress-image",
+      "resize-image"
+    ],
+    "sharpen-image": [
+      "blur-image",
+      "pixelate-image",
+      "invert-image",
+      "image-brightness",
+      "image-contrast",
+      "resize-image"
+    ],
+    "invert-image": [
+      "grayscale-image",
+      "color-adjustment",
+      "image-brightness",
+      "image-contrast",
+      "pixelate-image",
+      "sharpen-image"
+    ],
+    "color-adjustment": [
+      "image-brightness",
+      "image-contrast",
+      "image-saturation",
+      "invert-image",
+      "grayscale-image",
+      "sharpen-image"
+    ],
+    "redact-image": [
+      "blur-image",
+      "pixelate-image",
+      "erase-area",
+      "image-watermark",
+      "add-image-border",
+      "crop-image"
+    ],
+    "erase-area": [
+      "redact-image",
+      "crop-image",
+      "blur-image",
+      "pixelate-image",
+      "image-watermark",
+      "compress-image"
     ]
   },
   "pdf-to-word": {
@@ -2555,6 +2603,378 @@
       {
         "q": "Are the mathematical results accurate?",
         "a": "Yes, calculations are executed using precise floating-point JavaScript arithmetic."
+      }
+    ]
+  },
+  "pixelate-image": {
+    "seoTitle": "Free Online Image Pixelator - Pixelate Image Areas | SmartTools",
+    "seoTitleFr": "Pixeliseur d'Image Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "بكسلة الصور مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Pixelate selected areas or entire images online for free. Interactive region selection with adjustable block size. Browser-based, no upload, no sign-up.",
+    "seoDescriptionFr": "Pixelisez des zones sélectionnées ou des images entières en ligne gratuitement. Sélection interactive de zone avec taille de bloc ajustable.",
+    "seoDescriptionAr": "بكسلة المناطق المحددة أو الصورة بالكامل مجاناً عبر الإنترنت. تحديد تفاعلي للمنطقة مع حجم كتلة قابل للتعديل.",
+    "faqs": [
+      {
+        "q": "What does pixelate do?",
+        "a": "Pixelation replaces small blocks of pixels with their average color, creating a blocky mosaic effect that hides details while keeping the general appearance."
+      },
+      {
+        "q": "Can I pixelate only part of an image?",
+        "a": "Yes. Draw a selection on the image and the pixelate effect will only apply to that region. You can add multiple selections."
+      },
+      {
+        "q": "What is the block size?",
+        "a": "Block size controls how large each pixelated block is. Larger blocks create a more visible mosaic effect."
+      },
+      {
+        "q": "Is my image uploaded?",
+        "a": "No. All processing happens in your browser. Your image never leaves your device."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait la pixelisation ?",
+        "a": "La pixelisation remplace les petits blocs de pixels par leur couleur moyenne, créant un effet de mosaïque qui masque les détails."
+      },
+      {
+        "q": "Puis-je pixeliser seulement une partie de l'image ?",
+        "a": "Oui. Dessinez une sélection sur l'image et l'effet de pixelisation s'appliquera uniquement à cette zone."
+      },
+      {
+        "q": "Qu'est-ce que la taille des blocs ?",
+        "a": "La taille des blocs contrôle la dimension de chaque bloc pixelisé. Des blocs plus grands créent un effet plus visible."
+      },
+      {
+        "q": "Mon image est-elle téléchargée ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا تفعل البكسلة؟",
+        "a": "البكسلة تستبدل مجموعات صغيرة من البكسلات بلونها المتوسط، مما يخلق تأثير فسيفساء يخفي التفاصيل مع الحفاظ على المظهر العام."
+      },
+      {
+        "q": "هل يمكنني بكسلة جزء فقط من الصورة؟",
+        "a": "نعم. ارسم تحديداً على الصورة وسيتم تطبيق تأثير البكسلة على تلك المنطقة فقط. يمكنك إضافة تحديدات متعددة."
+      },
+      {
+        "q": "ما هو حجم الكتلة؟",
+        "a": "حجم الكتلة يتحكم في حجم كل بلوك بكسل. الكتل الأكبر تخلق تأثير فسيفساء أكثر وضوحاً."
+      },
+      {
+        "q": "هل يتم رفع صورتي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      }
+    ]
+  },
+  "sharpen-image": {
+    "seoTitle": "Free Online Image Sharpener - Sharpen Image Areas | SmartTools",
+    "seoTitleFr": "Nettoyage d'Image Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "زيادة حدّة الصور مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Sharpen selected areas or entire images online for free. Adjustable sharpen amount with interactive region selection. Browser-based, no upload.",
+    "seoDescriptionFr": "Nettoyez des zones sélectionnées ou des images entières en ligne gratuitement. Quantité de netteté ajustable avec sélection interactive de zone.",
+    "seoDescriptionAr": "زيادة حدّة المناطق المحددة أو الصورة بالكامل مجاناً عبر الإنترنت. كمية الحدّة قابلة للتعديل مع تحديد تفاعلي للمنطقة.",
+    "faqs": [
+      {
+        "q": "What does sharpen do?",
+        "a": "Sharpening enhances edges and details in an image by increasing contrast between adjacent pixels, making the image appear crisper."
+      },
+      {
+        "q": "Can I sharpen only part of an image?",
+        "a": "Yes. Draw a selection and the sharpen effect will only apply to that region."
+      },
+      {
+        "q": "How much sharpening should I use?",
+        "a": "Start with 50% and adjust. Too much sharpening can create halos around edges and look unnatural."
+      },
+      {
+        "q": "Does sharpen work on blurry photos?",
+        "a": "Yes, but it cannot fully restore an out-of-focus image. It enhances existing edges rather than creating new detail."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait le nettoyage ?",
+        "a": "Le nettoyage améliore les contours et les détails en augmentant le contraste entre les pixels adjacents."
+      },
+      {
+        "q": "Puis-je nettoyer seulement une partie ?",
+        "a": "Oui. Dessinez une sélection et l'effet s'appliquera uniquement à cette zone."
+      },
+      {
+        "q": "Quelle quantité utiliser ?",
+        "a": "Commencez par 50% et ajustez. Trop de nettoyage peut créer des halos."
+      },
+      {
+        "q": "Cela fonctionne-t-il sur des photos floues ?",
+        "a": "Oui, mais cela ne peut pas restaurer complètement une image floue."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا تفعل زيادة الحدّة؟",
+        "a": "زيادة الحدّة تعزز الحواف والتفاصيل في الصورة عن طريق زيادة التباين بين البكسلات المتجاورة، مما يجعل الصورة تبدو أكثر وضوحاً."
+      },
+      {
+        "q": "هل يمكنني زيادة حدّة جزء فقط؟",
+        "a": "نعم. ارسم تحديداً وسيتم تطبيق تأثير زيادة الحدّة على تلك المنطقة فقط."
+      },
+      {
+        "q": "كم كمية زيادة الحدّة التي يجب استخدامها؟",
+        "a": "ابدأ بـ 50% وعدّل. الكثير من زيادة الحدّة قد يخلق هالات حول الحواف."
+      },
+      {
+        "q": "هل تعمل زيادة الحدّة على الصور الضبابية؟",
+        "a": "نعم، لكنها لا يمكنها استعادة صورة غير مركزة بالكامل."
+      }
+    ]
+  },
+  "invert-image": {
+    "seoTitle": "Free Online Color Inverter - Invert Image Colors | SmartTools",
+    "seoTitleFr": "Inverseur de Couleurs Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "عكس ألوان الصور مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Invert colors in selected areas or entire images online for free. Interactive region selection. Browser-based, no upload, no sign-up.",
+    "seoDescriptionFr": "Inversez les couleurs de zones sélectionnées ou d'images entières en ligne gratuitement. Sélection interactive de région.",
+    "seoDescriptionAr": "عكس ألوان المناطق المحددة أو الصورة بالكامل مجاناً عبر الإنترنت. تحديد تفاعلي للمنطقة.",
+    "faqs": [
+      {
+        "q": "What does invert colors do?",
+        "a": "Inverting colors replaces each color with its opposite: white becomes black, red becomes cyan, blue becomes yellow."
+      },
+      {
+        "q": "Can I invert only part of an image?",
+        "a": "Yes. Draw a selection and the color inversion will only apply to that region."
+      },
+      {
+        "q": "Is inverting the same as a negative?",
+        "a": "Yes, inverting colors produces the same effect as a film negative."
+      },
+      {
+        "q": "Why would I invert colors?",
+        "a": "Inverting is useful for creating artistic effects, checking contrast accessibility, or converting dark themes to light."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait l'inversion des couleurs ?",
+        "a": "L'inversion remplace chaque couleur par son opposé : le blanc devient noir, le rouge devient cyan."
+      },
+      {
+        "q": "Puis-je inverser seulement une partie ?",
+        "a": "Oui. Dessinez une sélection et l'inversion s'appliquera uniquement à cette zone."
+      },
+      {
+        "q": "Est-ce la même chose qu'un négatif ?",
+        "a": "Oui, l'inversion des couleurs produit le même effet qu'un négatif de film."
+      },
+      {
+        "q": "Pourquoi inverser les couleurs ?",
+        "a": "L'inversion est utile pour créer des effets artistiques ou vérifier l'accessibilité des contrastes."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل عكس الألوان؟",
+        "a": "عكس الألوان يستبدل كل لون بعكسه: الأبيض يصبح أسود، الأحمر يصبح سماوي."
+      },
+      {
+        "q": "هل يمكنني عكس جزء فقط؟",
+        "a": "نعم. ارسم تحديداً وسيتم تطبيق عكس الألوان على تلك المنطقة فقط."
+      },
+      {
+        "q": "هل عكس الألوان مثل النيجاتيف؟",
+        "a": "نعم، عكس الألوان ينتج نفس تأثير النيجاتيف."
+      },
+      {
+        "q": "لماذا أعكس الألوان؟",
+        "a": "العكس مفيد لإنشاء تأثيرات فنية أو فحص تباين الوصول."
+      }
+    ]
+  },
+  "color-adjustment": {
+    "seoTitle": "Free Online Color Adjustment Tool - Hue, Temperature, Tint | SmartTools",
+    "seoTitleFr": "Réglage des Couleurs Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "ضبط ألوان الصور مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Adjust hue, temperature and tint of selected image areas or entire images online for free. Interactive region selection. Browser-based.",
+    "seoDescriptionFr": "Ajustez la teinte, la température et la nuance de zones sélectionnées ou d'images entières en ligne gratuitement.",
+    "seoDescriptionAr": "ضبط درجة اللون ودرجة الحرارة والصبغة للمناطق المحددة أو الصورة بالكامل مجاناً عبر الإنترنت.",
+    "faqs": [
+      {
+        "q": "What is hue adjustment?",
+        "a": "Hue rotates all colors in the image around the color wheel, shifting the overall color scheme."
+      },
+      {
+        "q": "What does temperature do?",
+        "a": "Temperature shifts colors warmer (more red/yellow) or cooler (more blue)."
+      },
+      {
+        "q": "What does tint do?",
+        "a": "Tint shifts colors toward green (positive) or magenta (negative)."
+      },
+      {
+        "q": "Can I adjust only part of an image?",
+        "a": "Yes. Draw a selection and the color adjustments will only apply to that region."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Qu'est-ce que le réglage de la teinte ?",
+        "a": "La teinte fait tourner toutes les couleurs autour du cercle chromatique."
+      },
+      {
+        "q": "Que fait la température ?",
+        "a": "La température déplace les couleurs vers le chaud (rouge/jaune) ou le froid (bleu)."
+      },
+      {
+        "q": "Que fait la nuance ?",
+        "a": "La nuance déplace les couleurs vers le vert (positif) ou le magenta (négatif)."
+      },
+      {
+        "q": "Puis-je ajuster seulement une partie ?",
+        "a": "Oui. Dessinez une sélection et les ajustements s'appliqueront uniquement à cette zone."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ما هو ضبط درجة اللون؟",
+        "a": "درجة اللون تدور جميع الألوان في الصورة حول عجلة الألوان، مما يغير نظام الألوان العام."
+      },
+      {
+        "q": "ماذا تفعل درجة الحرارة؟",
+        "a": "درجة الحرارة تنقل الألوان نحو الدفء (أحمر/أصفر) أو البرودة (أزرق)."
+      },
+      {
+        "q": "ماذا تفعل الصبغة؟",
+        "a": "الصبغة تنقل الألوان نحو الأخضر (موجب) أو الأرجواني (سالب)."
+      },
+      {
+        "q": "هل يمكنني ضبط جزء فقط؟",
+        "a": "نعم. ارسم تحديداً وسيتم تطبيق التعديلات على تلك المنطقة فقط."
+      }
+    ]
+  },
+  "redact-image": {
+    "seoTitle": "Free Online Image Redaction Tool - Black Out Areas | SmartTools",
+    "seoTitleFr": "Outil de Caviardage d'Image Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "أداة تعتيم الصور مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Redact or black out selected areas of an image online for free. Interactive region selection with custom color. Browser-based, no upload.",
+    "seoDescriptionFr": "Caviardez ou masquez des zones sélectionnées d'une image en ligne gratuitement. Sélection interactive de région avec couleur personnalisée.",
+    "seoDescriptionAr": "تعتيم أو إخفاء المناطق المحددة من الصورة مجاناً عبر الإنترنت. تحديد تفاعلي للمنطقة مع لون مخصص.",
+    "faqs": [
+      {
+        "q": "What does redact do?",
+        "a": "Redaction fills the selected area with a solid color (black by default), permanently hiding the content underneath."
+      },
+      {
+        "q": "Can I use a different color?",
+        "a": "Yes. Use the color picker to choose any fill color for the redacted areas."
+      },
+      {
+        "q": "Can I redact multiple areas?",
+        "a": "Yes. Draw as many selections as needed. Each will be filled with the chosen color."
+      },
+      {
+        "q": "Is the redaction permanent?",
+        "a": "Yes. The downloaded image has the redacted areas permanently filled. The original content cannot be recovered from the output."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait le caviardage ?",
+        "a": "Le caviardage remplit la zone sélectionnée avec une couleur unie (noir par défaut)."
+      },
+      {
+        "q": "Puis-je utiliser une autre couleur ?",
+        "a": "Oui. Utilisez le sélecteur de couleur pour choisir la couleur de remplissage."
+      },
+      {
+        "q": "Puis-je caviarder plusieurs zones ?",
+        "a": "Oui. Dessinez autant de sélections que nécessaire."
+      },
+      {
+        "q": "Le caviardage est-il permanent ?",
+        "a": "Oui. L'image téléchargée a les zones caviardées définitivement remplies."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل التعتيم؟",
+        "a": "التعتيم يملأ المنطقة المحددة بلون واحد (أسود افتراضياً)، مما يخفي المحتوى تحته بشكل دائم."
+      },
+      {
+        "q": "هل يمكنني استخدام لون مختلف؟",
+        "a": "نعم. استخدم منتقي الألوان لاختيار أي لون للتعبئة."
+      },
+      {
+        "q": "هل يمكنني تعتيم مناطق متعددة؟",
+        "a": "نعم. ارسم أي عدد من التحديدات التي تحتاجها."
+      },
+      {
+        "q": "هل التعتيم دائم؟",
+        "a": "نعم. الصورة المحملة لها مناطق معتمة مملوءة بشكل دائم."
+      }
+    ]
+  },
+  "erase-area": {
+    "seoTitle": "Free Online Image Eraser - Erase Image Areas | SmartTools",
+    "seoTitleFr": "Gomme d'Image Gratuite en Ligne | SmartTools",
+    "seoTitleAr": "أداة مسح مناطق الصور مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Erase or fill selected areas of an image with a solid color online for free. Interactive region selection. Browser-based, no upload, no sign-up.",
+    "seoDescriptionFr": "Effacez ou remplissez des zones sélectionnées d'une image avec une couleur unie en ligne gratuitement.",
+    "seoDescriptionAr": "مسح أو ملء المناطق المحددة من الصورة بلون واحد مجاناً عبر الإنترنت.",
+    "faqs": [
+      {
+        "q": "What does erase area do?",
+        "a": "Erasing fills the selected area with a solid color (white by default), replacing the content underneath."
+      },
+      {
+        "q": "Can I use a different fill color?",
+        "a": "Yes. Use the color picker to choose any fill color."
+      },
+      {
+        "q": "Can I erase multiple areas?",
+        "a": "Yes. Draw as many selections as needed."
+      },
+      {
+        "q": "What's the difference between erase and redact?",
+        "a": "Erase defaults to white fill (useful for cleaning up), while redact defaults to black (useful for hiding sensitive info)."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait l'effacement de zone ?",
+        "a": "L'effacement remplit la zone sélectionnée avec une couleur unie (blanc par défaut)."
+      },
+      {
+        "q": "Puis-je utiliser une autre couleur ?",
+        "a": "Oui. Utilisez le sélecteur de couleur."
+      },
+      {
+        "q": "Puis-je effacer plusieurs zones ?",
+        "a": "Oui. Dessinez autant de sélections que nécessaire."
+      },
+      {
+        "q": "Quelle est la différence entre effacer et caviarder ?",
+        "a": "Effacer utilise le blanc par défaut, tandis que caviarder utilise le noir."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل مسح المنطقة؟",
+        "a": "المسح يملأ المنطقة المحددة بلون واحد (أبيض افتراضياً)، مستبدلاً المحتوى تحته."
+      },
+      {
+        "q": "هل يمكنني استخدام لون تعبئة مختلف؟",
+        "a": "نعم. استخدم منتقي الألوان لاختيار أي لون."
+      },
+      {
+        "q": "هل يمكنني مسح مناطق متعددة؟",
+        "a": "نعم. ارسم أي عدد من التحديدات."
+      },
+      {
+        "q": "ما الفرق بين المسح والتعتيم؟",
+        "a": "المسح يستخدم الأبيض افتراضياً، بينما التعتيم يستخدم الأسود."
       }
     ]
   }

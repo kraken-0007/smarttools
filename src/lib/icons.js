@@ -11,7 +11,8 @@ import {
   Braces, CheckSquare, Link, Unlink, Palette, Tag, Map,
   Server, Share2, Hash, Camera, Timer, ListChecks, StickyNote,
   Shuffle, Ruler, Scale, Thermometer, Gauge, QrCode,
-  Monitor, Table, FileOutput
+  Monitor, Table, FileOutput,
+  Grid3x3, Eraser, EyeOff, Contrast,
 } from 'lucide-react'
 
 export const ICON_MAP = {
@@ -28,7 +29,9 @@ export const ICON_MAP = {
   Server, Share2, Hash, Camera, Timer, ListChecks, StickyNote,
   Shuffle, Ruler, Scale, Thermometer, Gauge, QrCode,
   Monitor, Table, FileOutput,
-  FileConvert: FileOutput
+  Grid3x3, Eraser, EyeOff,
+  FileConvert: FileOutput,
+  Grid3X3: Grid3x3,
 }
 
 export function getIcon(name) {

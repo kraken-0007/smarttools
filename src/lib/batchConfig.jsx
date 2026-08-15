@@ -10,6 +10,7 @@ import {
   flipImage, grayscaleImage, blurImage,
   addTextWatermark, addImageBorder, addRoundedCorners,
   adjustBrightness, adjustContrast, adjustSaturation,
+  pixelateImageBatch, sharpenImageBatch, invertImageBatch, redactImageBatch,
   downloadBlob, getOutputFilename,
 } from './processors/image.js'
 import {
@@ -298,6 +299,90 @@ export const BATCH_CONFIG = {
     processor: async (file, settings) => {
       const blob = await rotatePdf(file, settings.angle ?? 90)
       return { blob, filename: getOutputFilename(file.name, 'pdf') }
+    },
+  },
+  // ── Region-based Image Tools (batch = full-image mode) ──
+  'pixelate-image': {
+    accept: IMAGE_ACCEPT,
+    hint: IMAGE_HINT,
+    settingsComponent: (props) => {
+      const { settings, setSettings, lang, fileCount } = props
+      const labels = {
+        en: { blockSize: 'Block Size', applyTo: 'Apply to', files: 'files (full image)' },
+        fr: { blockSize: 'Taille des blocs', applyTo: 'Appliquer à', files: 'fichiers (image entière)' },
+        ar: { blockSize: 'حجم الكتلة', applyTo: 'تطبيق على', files: 'ملفات (الصورة بالكامل)' },
+      }[lang]
+      const bs = settings.blockSize ?? 10
+      return (
+        <div className="space-y-3">
+          <div>
+            <label className="block text-xs font-medium text-[#6B7280] dark:text-[#A1A1AA] mb-1.5">
+              {labels.blockSize}: <span className="text-blue-600 dark:text-blue-400 font-semibold">{bs}px</span>
+            </label>
+            <input type="range" min="2" max="50" value={bs} onChange={e => setSettings(prev => ({ ...prev, blockSize: parseInt(e.target.value) }))} className="w-full accent-blue-600" />
+          </div>
+          <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA]">{labels.applyTo} {fileCount} {labels.files}</p>
+        </div>
+      )
+    },
+    processor: async (file, settings) => {
+      const blob = await pixelateImageBatch(file, settings.blockSize ?? 10)
+      return { blob, filename: getOutputFilename(file.name, 'jpg') }
+    },
+  },
+  'sharpen-image': {
+    accept: IMAGE_ACCEPT,
+    hint: IMAGE_HINT,
+    settingsComponent: (props) => {
+      const { settings, setSettings, lang, fileCount } = props
+      const labels = {
+        en: { amount: 'Sharpen Amount', applyTo: 'Apply to', files: 'files (full image)' },
+        fr: { amount: 'Quantité de netteté', applyTo: 'Appliquer à', files: 'fichiers (image entière)' },
+        ar: { amount: 'كمية الحدّة', applyTo: 'تطبيق على', files: 'ملفات (الصورة بالكامل)' },
+      }[lang]
+      const amt = settings.amount ?? 50
+      return (
+        <div className="space-y-3">
+          <div>
+            <label className="block text-xs font-medium text-[#6B7280] dark:text-[#A1A1AA] mb-1.5">
+              {labels.amount}: <span className="text-blue-600 dark:text-blue-400 font-semibold">{amt}%</span>
+            </label>
+            <input type="range" min="0" max="100" value={amt} onChange={e => setSettings(prev => ({ ...prev, amount: parseInt(e.target.value) }))} className="w-full accent-blue-600" />
+          </div>
+          <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA]">{labels.applyTo} {fileCount} {labels.files}</p>
+        </div>
+      )
+    },
+    processor: async (file, settings) => {
+      const blob = await sharpenImageBatch(file, settings.amount ?? 50)
+      return { blob, filename: getOutputFilename(file.name, 'jpg') }
+    },
+  },
+  'invert-image': {
+    accept: IMAGE_ACCEPT,
+    hint: IMAGE_HINT,
+    settingsComponent: NoSettingsBatch,
+    processor: async (file) => {
+      const blob = await invertImageBatch(file)
+      return { blob, filename: getOutputFilename(file.name, 'jpg') }
+    },
+  },
+  'redact-image': {
+    accept: IMAGE_ACCEPT,
+    hint: IMAGE_HINT,
+    settingsComponent: NoSettingsBatch,
+    processor: async (file) => {
+      const blob = await redactImageBatch(file, '#000000')
+      return { blob, filename: getOutputFilename(file.name, 'jpg') }
+    },
+  },
+  'erase-area': {
+    accept: IMAGE_ACCEPT,
+    hint: IMAGE_HINT,
+    settingsComponent: NoSettingsBatch,
+    processor: async (file) => {
+      const blob = await redactImageBatch(file, '#ffffff')
+      return { blob, filename: getOutputFilename(file.name, 'jpg') }
     },
   },
 }

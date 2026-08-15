@@ -1215,3 +1215,133 @@ export async function getImageMetadata(file) {
     throw new Error(`getImageMetadata failed: ${error.message}`);
   }
 }
+
+/* ═══════════════════════════════════════════════════
+ * 21-26. Region-based batch processors
+ * These apply the "full image" effect for batch processing.
+ * The interactive region selection is only available in the
+ * single-file editor — batch mode always processes the entire image.
+ * ═══════════════════════════════════════════════════ */
+
+/**
+ * 21. Pixelate Image (batch/full-image mode)
+ */
+export async function pixelateImageBatch(file, blockSize = 10) {
+  try {
+    const img = await loadImage(file);
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
+    if (file.type === 'image/jpeg' || file.type === 'image/jpg') {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    ctx.drawImage(img, 0, 0);
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+    const bs = Math.max(2, blockSize);
+    for (let y = 0; y < canvas.height; y += bs) {
+      for (let x = 0; x < canvas.width; x += bs) {
+        const cx = Math.min(x + Math.floor(bs / 2), canvas.width - 1);
+        const cy = Math.min(y + Math.floor(bs / 2), canvas.height - 1);
+        const idx = (cy * canvas.width + cx) * 4;
+        for (let dy = 0; dy < bs && y + dy < canvas.height; dy++) {
+          for (let dx = 0; dx < bs && x + dx < canvas.width; dx++) {
+            const i = ((y + dy) * canvas.width + (x + dx)) * 4;
+            data[i] = data[idx]; data[i+1] = data[idx+1]; data[i+2] = data[idx+2];
+          }
+        }
+      }
+    }
+    ctx.putImageData(imageData, 0, 0);
+    return await canvasToBlob(canvas, file.type || 'image/jpeg');
+  } catch (error) {
+    throw new Error(`pixelateImageBatch failed: ${error.message}`);
+  }
+}
+
+/**
+ * 22. Sharpen Image (batch/full-image mode)
+ */
+export async function sharpenImageBatch(file, amount = 50) {
+  try {
+    const img = await loadImage(file);
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
+    if (file.type === 'image/jpeg' || file.type === 'image/jpg') {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    ctx.drawImage(img, 0, 0);
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+    const output = new Uint8ClampedArray(data);
+    const strength = amount / 100;
+    for (let py = 1; py < canvas.height - 1; py++) {
+      for (let px = 1; px < canvas.width - 1; px++) {
+        for (let c = 0; c < 3; c++) {
+          let val = 0, ki = 0;
+          const kernel = [0, -strength, 0, -strength, 1 + 4 * strength, -strength, 0, -strength, 0];
+          for (let ky = -1; ky <= 1; ky++) {
+            for (let kx = -1; kx <= 1; kx++) {
+              val += data[((py + ky) * canvas.width + (px + kx)) * 4 + c] * kernel[ki++];
+            }
+          }
+          output[(py * canvas.width + px) * 4 + c] = Math.max(0, Math.min(255, val));
+        }
+      }
+    }
+    imageData.data.set(output);
+    ctx.putImageData(imageData, 0, 0);
+    return await canvasToBlob(canvas, file.type || 'image/jpeg');
+  } catch (error) {
+    throw new Error(`sharpenImageBatch failed: ${error.message}`);
+  }
+}
+
+/**
+ * 23. Invert Image (batch/full-image mode)
+ */
+export async function invertImageBatch(file) {
+  try {
+    const img = await loadImage(file);
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+    for (let i = 0; i < data.length; i += 4) {
+      data[i] = 255 - data[i];
+      data[i+1] = 255 - data[i+1];
+      data[i+2] = 255 - data[i+2];
+    }
+    ctx.putImageData(imageData, 0, 0);
+    return await canvasToBlob(canvas, file.type || 'image/jpeg');
+  } catch (error) {
+    throw new Error(`invertImageBatch failed: ${error.message}`);
+  }
+}
+
+/**
+ * 24. Redact Image (batch/full-image mode) — fill entire image with solid color
+ */
+export async function redactImageBatch(file, color = '#000000') {
+  try {
+    const img = await loadImage(file);
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    return await canvasToBlob(canvas, file.type || 'image/jpeg');
+  } catch (error) {
+    throw new Error(`redactImageBatch failed: ${error.message}`);
+  }
+}
