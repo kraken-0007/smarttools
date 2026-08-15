@@ -168,13 +168,13 @@ export function buildFaqJsonLd(faqs) {
   }
 }
 
-export function buildToolJsonLd(tool, category) {
+export function buildToolJsonLd(tool, category, descOverride) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: tool.name?.en || tool.name,
     url: `${SITE_URL}/tools/${tool.slug}`,
-    description: tool.description?.en || tool.description,
+    description: descOverride || tool.description?.en || tool.description,
     applicationCategory: 'UtilitiesApplication',
     operatingSystem: 'Any (Web Browser)',
     offers: {

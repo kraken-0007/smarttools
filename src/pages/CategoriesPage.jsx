@@ -49,9 +49,24 @@ export default function CategoriesPage({ lang, t, slug }) {
       ],
     }
 
+    const catSeoTitles = {
+      'pdf-tools': { en: 'Free PDF Tools Online - Edit, Convert, Merge PDF | SmartTools', fr: 'Outils PDF Gratuits en Ligne - Éditer, Convertir, Fusionner | SmartTools', ar: 'أدوات PDF مجانية عبر الإنترنت - تحرير وتحويل ودمج | SmartTools' },
+      'image-tools': { en: 'Free Image Tools Online - Edit, Convert, Resize Images | SmartTools', fr: 'Outils Image Gratuits en Ligne - Éditer, Convertir, Redimensionner | SmartTools', ar: 'أدوات الصور مجانية عبر الإنترنت - تحرير وتحويل وتغيير الحجم | SmartTools' },
+      'text-tools': { en: 'Free Text Tools Online - Word Counter, Case Converter | SmartTools', fr: 'Outils Texte Gratuits en Ligne - Compteur de Mots, Convertisseur | SmartTools', ar: 'أدوات النص مجانية عبر الإنترنت - عداد الكلمات ومحول الأحرف | SmartTools' },
+      'calculators': { en: 'Free Online Calculators - BMI, Age, Percentage | SmartTools', fr: 'Calculatrices Gratuites en Ligne - IMC, Âge, Pourcentage | SmartTools', ar: 'آلات حاسبة مجانية عبر الإنترنت - مؤشر كتلة الجسم والعمر والنسبة المئوية | SmartTools' },
+    }
+    const catSeoDescs = {
+      'pdf-tools': { en: 'Free online PDF tools to convert, merge, split, compress, rotate, and edit PDF files. No installation, no sign-up. All processing in your browser.', fr: 'Outils PDF gratuits en ligne pour convertir, fusionner, diviser, compresser et éditer des PDF. Sans installation, sans inscription. Tout dans votre navigateur.', ar: 'أدوات PDF مجانية عبر الإنترنت للتحويل والدمج والتقسيم والضغط وتحرير ملفات PDF. بدون تثبيت وبدون تسجيل. كل المعالجة في متصفحك.' },
+      'image-tools': { en: 'Free online image tools to compress, resize, crop, convert, and edit images. Supports JPG, PNG, WEBP. No upload, no sign-up. Browser-based.', fr: 'Outils image gratuits en ligne pour compresser, redimensionner, recadrer et éditer des images. JPG, PNG, WEBP. Sans upload, sans inscription.', ar: 'أدوات صور مجانية عبر الإنترنت لضغط وتغيير حجم وتحرير الصور. يدعم JPG و PNG و WEBP. بدون رفع وبدون تسجيل. في المتصفح.' },
+      'text-tools': { en: 'Free online text tools including word counter, character counter, and case converter. Instant results, no installation required. Works in your browser.', fr: 'Outils texte gratuits en ligne incluant compteur de mots, compteur de caractères et convertisseur de casse. Résultats instantanés, sans installation.', ar: 'أدوات نص مجانية عبر الإنترنت بما في ذلك عداد الكلمات وعدّاد الأحرف ومحول الأحرف. نتائج فورية بدون تثبيت. تعمل في متصفحك.' },
+      'calculators': { en: 'Free online calculators for BMI, age calculation, and percentage. Quick, accurate results. No sign-up required. Works on any device.', fr: 'Calculatrices gratuites en ligne pour l\'IMC, le calcul de l\'âge et les pourcentages. Résultats rapides et précis. Sans inscription.', ar: 'آلات حاسبة مجانية عبر الإنترنت لحساب مؤشر كتلة الجسم والعمر والنسبة المئوية. نتائج سريعة ودقيقة. بدون تسجيل.' },
+    }
+    const catSeoTitle = (catSeoTitles[category.slug] && catSeoTitles[category.slug][lang]) || `${category.name[lang]} - Free Online Tools | SmartTools`
+    const catSeoDesc = (catSeoDescs[category.slug] && catSeoDescs[category.slug][lang]) || category.description[lang]
+
     useSEO({
-      title: `${category.name[lang]} - Free Online Tools | SmartTools`,
-      description: category.description[lang],
+      title: catSeoTitle,
+      description: catSeoDesc,
       canonical: `/categories/${category.slug}`,
       lang,
       jsonLd: catJsonLd,

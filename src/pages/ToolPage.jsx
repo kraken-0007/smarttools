@@ -767,8 +767,10 @@ function FAQItem({ question, answer }) {
 
 function getFAQ(tool, lang) {
   const seoData = toolSeoData[tool.slug]
-  if (seoData && seoData.faq && seoData.faq.length > 0) {
-    return seoData.faq
+  if (seoData) {
+    if (lang === 'fr' && seoData.faqFr && seoData.faqFr.length > 0) return seoData.faqFr
+    if (lang === 'ar' && seoData.faqAr && seoData.faqAr.length > 0) return seoData.faqAr
+    if (seoData.faq && seoData.faq.length > 0) return seoData.faq
   }
   // Fallback generic FAQ
   return [
@@ -812,9 +814,9 @@ export default function ToolPage({ slug, lang, t }) {
   // Tool-specific SEO data
   const seoData = toolSeoData[tool.slug] || {}
   const seoTitle = lang === 'ar' ? (seoData.seoTitleAr || seoData.seoTitle || tool.name[lang]) : lang === 'fr' ? (seoData.seoTitleFr || seoData.seoTitle || tool.name[lang]) : (seoData.seoTitle || tool.name[lang])
-  const seoDesc = seoData.seoDescription || tool.description[lang]
+  const seoDesc = lang === 'ar' ? (seoData.seoDescriptionAr || seoData.seoDescription || tool.description.ar) : lang === 'fr' ? (seoData.seoDescriptionFr || seoData.seoDescription || tool.description.fr) : (seoData.seoDescription || tool.description.en)
   const h1 = seoData.h1 || tool.name[lang]
-  const intro = seoData.intro || tool.description[lang]
+  const intro = lang === 'ar' ? (seoData.introAr || seoData.intro || tool.description.ar) : lang === 'fr' ? (seoData.introFr || seoData.intro || tool.description.fr) : (seoData.intro || tool.description.en)
   const features = seoData.features || []
   const howToSteps = seoData.howTo || []
   const faqs = getFAQ(tool, lang)
@@ -838,7 +840,7 @@ export default function ToolPage({ slug, lang, t }) {
     '@context': 'https://schema.org',
     '@graph': [
       buildBreadcrumbJsonLd(breadcrumbItems),
-      buildToolJsonLd(tool, category),
+      buildToolJsonLd(tool, category, seoDesc),
       ...(faqs.length > 0 ? [buildFaqJsonLd(faqs)] : []),
     ],
   }
@@ -852,8 +854,8 @@ export default function ToolPage({ slug, lang, t }) {
   })
   useToolViews(tool.slug)
 
-  const howToLabel = lang === 'ar' ? 'كيفية الاستخدام' : lang === 'fr' ? 'Comment utiliser' : 'How to use'
-  const featuresLabel = lang === 'ar' ? 'المميزات' : lang === 'fr' ? 'Fonctionnalités' : 'Key Features'
+  const howToLabel = lang === 'ar' ? `كيفية استخدام ${tool.name.ar}` : lang === 'fr' ? `Comment utiliser ${tool.name.fr}` : `How to use ${tool.name.en}`
+  const featuresLabel = lang === 'ar' ? 'لماذا SmartTools؟' : lang === 'fr' ? 'Pourquoi SmartTools ?' : 'Why use SmartTools?'
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-6 md:py-8 animate-fade-in">
