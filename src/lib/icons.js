@@ -9,10 +9,12 @@ import {
   CaseSensitive, ListFilter, GitCompare, PenLine, FileSearch,
   Languages, RefreshCw, SpellCheck, Percent, Banknote, DollarSign,
   Braces, CheckSquare, Link, Unlink, Palette, Tag, Map,
-  Server, Share2, Hash, Camera, Timer, ListChecks, StickyNote,
+  Server, Hash, Camera, Timer, ListChecks, StickyNote,
   Shuffle, Ruler, Scale, Thermometer, Gauge, QrCode,
   Monitor, Table, FileOutput,
   Grid3x3, Eraser, EyeOff, Contrast,
+  Radio, Layers, ScanLine, Pipette, IdCard, Target, Printer,
+  Sparkles, Replace, LayoutGrid, ImagePlus, ZoomIn, Ratio,
 } from 'lucide-react'
 
 export const ICON_MAP = {
@@ -26,12 +28,14 @@ export const ICON_MAP = {
   CaseSensitive, ListFilter, GitCompare, PenLine, FileSearch,
   Languages, RefreshCw, SpellCheck, Percent, Banknote, DollarSign,
   Braces, CheckSquare, Link, Unlink, Palette, Tag, Map,
-  Server, Share2, Hash, Camera, Timer, ListChecks, StickyNote,
+  Server, Hash, Camera, Timer, ListChecks, StickyNote,
   Shuffle, Ruler, Scale, Thermometer, Gauge, QrCode,
   Monitor, Table, FileOutput,
   Grid3x3, Eraser, EyeOff,
   FileConvert: FileOutput,
   Grid3X3: Grid3x3,
+  Radio, Layers, ScanLine, Pipette, IdCard, Target, Printer,
+  Sparkles, Replace, LayoutGrid, ImagePlus, ZoomIn, Ratio,
 }
 
 export function getIcon(name) {

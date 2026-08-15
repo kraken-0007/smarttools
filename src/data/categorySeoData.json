@@ -88,9 +88,9 @@
   },
   "image-tools": {
     "intro": {
-      "en": "SmartTools Image Tools provide 26 free online utilities for editing and converting images. Compress images to reduce file size, resize and crop with visual controls, convert between JPG, PNG, and WEBP formats, apply filters and adjustments, add watermarks and borders, flip and rotate images, pixelate or redact specific areas, sharpen or invert colors, and more. All processing is done in your browser — your images never leave your device.",
-      "fr": "Les outils image de SmartTools fournissent 26 utilitaires gratuits en ligne pour éditer et convertir des images. Compressez vos images, redimensionnez et recadrez, convertissez entre les formats JPG, PNG et WEBP, appliquez des filtres, ajoutez des filigranes et des bordures, pivotez, pixelisez ou caviardez des zones spécifiques, nettoyez ou inversez les couleurs et plus. Tout le traitement se fait dans votre navigateur.",
-      "ar": "تقدم أدوات الصور من SmartTools 26 أداة مجانية عبر الإنترنت لتحرير الصور وتحويلها. اضغط الصور، وغيّر الحجم وقص الصور، وحوّل بين صيغ JPG و PNG و WEBP، وطبّق الفلاتر والتعديلات، وأضف العلامات المائية والحدود، وقلب الصور، وبكسل أو اعتّم مناطق محددة، وزد حدّة الصور أو اعكس الألوان والمزيد. تتم جميع المعالجة في متصفحك."
+      "en": "SmartTools Image Tools provide 52 free online utilities for editing and converting images. Compress, resize, crop, convert between formats, apply filters and adjustments, add watermarks and borders, flip and rotate, pixelate or redact areas, sharpen or invert colors, apply sepia and duotone, detect edges, create collages and contact sheets, extract color palettes, generate placeholders, and much more. All processing is done in your browser — your images never leave your device.",
+      "fr": "Les outils image de SmartTools fournissent 52 utilitaires gratuits en ligne pour éditer et convertir des images. Compressez, redimensionnez, recadrez, convertissez entre formats, appliquez des filtres, ajoutez des filigranes et bordures, pivotez, pixelisez, caviardez, nettoyez, inversez, appliquez du sépia et du duotone, détectez les contours, créez des collages et planches-contact, extrayez des palettes et plus.",
+      "ar": "تقدم أدوات الصور من SmartTools 52 أداة مجانية عبر الإنترنت لتحرير الصور وتحويلها. اضغط، غيّر الحجم، اقصص، حوّل بين الصيغ، طبّق الفلاتر، أضف العلامات المائية والحدود، قلّب، بكسل، اعتّم، زد حدّة، اعكس، طبّق سيبيا وثنائي اللون، كشف الحواف، أنشئ كولاجات ولوحات اتصال، استخرج لوحات ألوان والمزيد."
     },
     "faq": {
       "en": [

@@ -44,7 +44,7 @@ function useImageLoader(file) {
 const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
 
 /* ═══ Multi-language labels ═══ */
-function getLabels(lang) {
+export function getLabels(lang) {
   const base = {
     en: {
       selectArea: 'Select Area', fullImage: 'Apply to Full Image',

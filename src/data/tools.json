@@ -882,5 +882,447 @@
     },
     "icon": "Eraser",
     "created_at": "2026-08-15"
+  },
+  {
+    "id": "sepia-image",
+    "slug": "sepia-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Sepia Image",
+      "fr": "Image sépia",
+      "ar": "صورة سيبيا"
+    },
+    "description": {
+      "en": "Apply sepia tone to images or selected areas",
+      "fr": "Appliquer un ton sépia aux images",
+      "ar": "تطبيق لون سيبيا على الصور"
+    },
+    "icon": "Palette",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "posterize-image",
+    "slug": "posterize-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Posterize Image",
+      "fr": "Postériser l'image",
+      "ar": "تصبير الصورة"
+    },
+    "description": {
+      "en": "Reduce color levels for a poster effect",
+      "fr": "Réduire les niveaux de couleur pour un effet poster",
+      "ar": "تقليل مستويات الألوان لتأثير الملصق"
+    },
+    "icon": "Layers",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "threshold-image",
+    "slug": "threshold-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Threshold Image",
+      "fr": "Seuil de l'image",
+      "ar": "عتبة الصورة"
+    },
+    "description": {
+      "en": "Convert image to black and white using threshold",
+      "fr": "Convertir l'image en noir et blanc avec un seuil",
+      "ar": "تحويل الصورة إلى أبيض وأسود باستخدام العتبة"
+    },
+    "icon": "Contrast",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "duotone-image",
+    "slug": "duotone-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Duotone Image",
+      "fr": "Image en duotone",
+      "ar": "صورة ثنائية اللون"
+    },
+    "description": {
+      "en": "Apply duotone color mapping to images",
+      "fr": "Appliquer un mappage en duotone aux images",
+      "ar": "تطبيق تعيين لون ثنائي على الصور"
+    },
+    "icon": "Palette",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "image-noise",
+    "slug": "image-noise",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Image Noise Generator",
+      "fr": "Générateur de bruit d'image",
+      "ar": "مولد ضوضاء الصورة"
+    },
+    "description": {
+      "en": "Add random noise to images or selected areas",
+      "fr": "Ajouter du bruit aléatoire aux images",
+      "ar": "إضافة ضوضاء عشوائية إلى الصور"
+    },
+    "icon": "Radio",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "image-denoise",
+    "slug": "image-denoise",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Image Denoise",
+      "fr": "Réduction du bruit",
+      "ar": "إزالة ضوضاء الصورة"
+    },
+    "description": {
+      "en": "Reduce noise in images using median filter",
+      "fr": "Réduire le bruit avec un filtre médian",
+      "ar": "تقليل الضوضاء باستخدام مرشح متوسط"
+    },
+    "icon": "Shield",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "edge-detection",
+    "slug": "edge-detection",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Edge Detection",
+      "fr": "Détection des contours",
+      "ar": "كشف الحواف"
+    },
+    "description": {
+      "en": "Detect edges in images using Sobel operator",
+      "fr": "Détecter les contours avec l'opérateur Sobel",
+      "ar": "كشف الحواف باستخدام عامل سوبل"
+    },
+    "icon": "ScanLine",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "emboss-image",
+    "slug": "emboss-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Emboss Image",
+      "fr": "Image en relief",
+      "ar": "صورة بارزة"
+    },
+    "description": {
+      "en": "Apply emboss effect to images",
+      "fr": "Appliquer un effet de relief aux images",
+      "ar": "تطبيق تأثير بارز على الصور"
+    },
+    "icon": "Layers",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "sketch-image",
+    "slug": "sketch-image",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Sketch Effect",
+      "fr": "Effet croquis",
+      "ar": "تأثير الرسم"
+    },
+    "description": {
+      "en": "Convert image to a pencil sketch",
+      "fr": "Convertir l'image en croquis au crayon",
+      "ar": "تحويل الصورة إلى رسم بالقلم"
+    },
+    "icon": "PenLine",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "color-picker",
+    "slug": "color-picker",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Color Picker",
+      "fr": "Pipette à couleurs",
+      "ar": "منتقي الألوان"
+    },
+    "description": {
+      "en": "Pick colors from any image and get HEX/RGB values",
+      "fr": "Choisir des couleurs dans une image",
+      "ar": "اختيار الألوان من أي صورة والحصول على قيم HEX/RGB"
+    },
+    "icon": "Pipette",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "extract-palette",
+    "slug": "extract-palette",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Extract Color Palette",
+      "fr": "Extraire la palette de couleurs",
+      "ar": "استخراج لوحة الألوان"
+    },
+    "description": {
+      "en": "Extract dominant colors from any image",
+      "fr": "Extraire les couleurs dominantes d'une image",
+      "ar": "استخراج الألوان المهيمنة من أي صورة"
+    },
+    "icon": "Palette",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "image-splitter",
+    "slug": "image-splitter",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Image Splitter",
+      "fr": "Découpeur d'image",
+      "ar": "قاسم الصورة"
+    },
+    "description": {
+      "en": "Split image into rows and columns of tiles",
+      "fr": "Découper l'image en tuiles",
+      "ar": "قسم الصورة إلى صفوف وأعمدة من البلاط"
+    },
+    "icon": "Grid3x3",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "image-slicer",
+    "slug": "image-slicer",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Image Slicer",
+      "fr": "Trancheur d'image",
+      "ar": "تقطيع الصورة"
+    },
+    "description": {
+      "en": "Slice image into horizontal or vertical strips",
+      "fr": "Trancher l'image en bandes horizontales ou verticales",
+      "ar": "تقطيع الصورة إلى شرائح أفقية أو عمودية"
+    },
+    "icon": "Scissors",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "social-media-resizer",
+    "slug": "social-media-resizer",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Social Media Resizer",
+      "fr": "Redimensionnement Réseaux Sociaux",
+      "ar": "تغيير حجم وسائل التواصل الاجتماعي"
+    },
+    "description": {
+      "en": "Resize images for Instagram, Facebook, Twitter and more",
+      "fr": "Redimensionner pour Instagram, Facebook, Twitter et plus",
+      "ar": "تغيير حجم الصور لإنستغرام وفيسبوك وتويتر والمزيد"
+    },
+    "icon": "Share2",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "passport-photo",
+    "slug": "passport-photo",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Passport Photo Maker",
+      "fr": "Créateur de photo d'identité",
+      "ar": "صانع صور جواز السفر"
+    },
+    "description": {
+      "en": "Create passport and ID photos with correct dimensions",
+      "fr": "Créer des photos d'identité aux bonnes dimensions",
+      "ar": "إنشاء صور جواز السفر والهوية بالأبعاد الصحيحة"
+    },
+    "icon": "IdCard",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "file-size-targeter",
+    "slug": "file-size-targeter",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "File Size Targeter",
+      "fr": "Cible de taille de fichier",
+      "ar": "مستهدف حجم الملف"
+    },
+    "description": {
+      "en": "Compress image to a specific target file size",
+      "fr": "Compresser l'image à une taille cible",
+      "ar": "ضغط الصورة إلى حجم ملف محدد"
+    },
+    "icon": "Target",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "transparency-editor",
+    "slug": "transparency-editor",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Transparency Editor",
+      "fr": "Éditeur de transparence",
+      "ar": "محرر الشفافية"
+    },
+    "description": {
+      "en": "Adjust opacity or remove background color",
+      "fr": "Ajuster l'opacité ou supprimer la couleur de fond",
+      "ar": "ضبط الشفافية أو إزالة لون الخلفية"
+    },
+    "icon": "Eye",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "image-upscaler",
+    "slug": "image-upscaler",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Image Upscaler",
+      "fr": "Agrandisseur d'image",
+      "ar": "مكبر الصورة"
+    },
+    "description": {
+      "en": "Upscale images up to 4x with quality smoothing",
+      "fr": "Agrandir les images jusqu'à 4x",
+      "ar": "تكبير الصور حتى 4 أضعاف مع تنعيم عالي الجودة"
+    },
+    "icon": "ZoomIn",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "aspect-ratio-converter",
+    "slug": "aspect-ratio-converter",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Aspect Ratio Converter",
+      "fr": "Convertisseur de ratio d'aspect",
+      "ar": "محوّل نسبة العرض إلى الارتفاع"
+    },
+    "description": {
+      "en": "Convert image to any aspect ratio by cropping or padding",
+      "fr": "Convertir l'image à n'importe quel ratio",
+      "ar": "تحويل الصورة إلى أي نسبة عرض إلى ارتفاع"
+    },
+    "icon": "Ratio",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "dpi-converter",
+    "slug": "dpi-converter",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "DPI Converter",
+      "fr": "Convertisseur DPI",
+      "ar": "محوّل DPI"
+    },
+    "description": {
+      "en": "Change image DPI metadata for print production",
+      "fr": "Changer les métadonnées DPI pour l'impression",
+      "ar": "تغيير بيانات DPI للصورة للطباعة"
+    },
+    "icon": "Printer",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "add-shadow",
+    "slug": "add-shadow",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Add Shadow to Image",
+      "fr": "Ajouter une ombre",
+      "ar": "إضافة ظل للصورة"
+    },
+    "description": {
+      "en": "Add customizable drop shadow to images",
+      "fr": "Ajouter une ombre portée personnalisable",
+      "ar": "إضافة ظل قابل للتخصيص للصور"
+    },
+    "icon": "Sun",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "glow-effect",
+    "slug": "glow-effect",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Glow Effect",
+      "fr": "Effet de halo",
+      "ar": "تأثير التوهج"
+    },
+    "description": {
+      "en": "Add a glowing aura around images",
+      "fr": "Ajouter un halo lumineux autour des images",
+      "ar": "إضافة هالة متوهجة حول الصور"
+    },
+    "icon": "Sparkles",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "color-replacement",
+    "slug": "color-replacement",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Color Replacement",
+      "fr": "Remplacement de couleur",
+      "ar": "استبدال الألوان"
+    },
+    "description": {
+      "en": "Replace one color with another in images",
+      "fr": "Remplacer une couleur par une autre",
+      "ar": "استبدال لون بآخر في الصور"
+    },
+    "icon": "Replace",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "collage-maker",
+    "slug": "collage-maker",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Collage Maker",
+      "fr": "Créateur de collage",
+      "ar": "صانع الكولاج"
+    },
+    "description": {
+      "en": "Combine multiple images into a collage",
+      "fr": "Combiner plusieurs images en un collage",
+      "ar": "دمج صور متعددة في كولاج"
+    },
+    "icon": "LayoutGrid",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "contact-sheet",
+    "slug": "contact-sheet",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Contact Sheet Maker",
+      "fr": "Planche-contact",
+      "ar": "صانع ورقة الاتصال"
+    },
+    "description": {
+      "en": "Create a contact sheet from multiple images",
+      "fr": "Créer une planche-contact à partir d'images",
+      "ar": "إنشاء ورقة اتصال من صور متعددة"
+    },
+    "icon": "Grid3x3",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "placeholder-generator",
+    "slug": "placeholder-generator",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Placeholder Generator",
+      "fr": "Générateur de placeholder",
+      "ar": "مولد صور العنصر النائب"
+    },
+    "description": {
+      "en": "Generate placeholder images with custom size and text",
+      "fr": "Générer des images placeholder personnalisées",
+      "ar": "توليد صور عنصر نائب بمقاس ونص مخصص"
+    },
+    "icon": "ImagePlus",
+    "created_at": "2026-08-15"
   }
 ]
