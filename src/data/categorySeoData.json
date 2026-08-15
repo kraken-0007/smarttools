@@ -1,0 +1,350 @@
+{
+  "pdf-tools": {
+    "intro": {
+      "en": "SmartTools PDF Tools offer 20 free online utilities for working with PDF documents. Convert PDF to Word, JPG, or PNG; merge multiple PDFs into one file; split large documents; compress PDFs to reduce file size; rotate, reorder, or delete pages; add watermarks and page numbers; and more. Every tool runs entirely in your browser — no uploads, no sign-up, no software installation.",
+      "fr": "Les outils PDF de SmartTools offrent 20 utilitaires gratuits en ligne pour travailler avec des documents PDF. Convertissez un PDF en Word, JPG ou PNG ; fusionnez plusieurs PDF en un seul fichier ; divisez de grands documents ; compressez vos PDF pour réduire leur taille ; pivotez, réorganisez ou supprimez des pages ; ajoutez des filigranes et des numéros de page. Chaque outil fonctionne entièrement dans votre navigateur — sans upload, sans inscription.",
+      "ar": "تقدم أدوات PDF من SmartTools 20 أداة مجانية عبر الإنترنت للتعامل مع مستندات PDF. تحويل PDF إلى Word أو JPG أو PNG؛ دمج ملفات PDF متعددة في ملف واحد؛ تقسيم المستندات الكبيرة؛ ضغط PDF لتقليل الحجم؛ تدوير الصفحات أو إعادة ترتيبها أو حذفها؛ إضافة العلامات المائية وأرقام الصفحات والمزيد. تعمل كل أداة بالكامل في متصفحك — بدون رفع وبدون تسجيل."
+    },
+    "faq": {
+      "en": [
+        {
+          "q": "Are all PDF tools free?",
+          "a": "Yes, every SmartTools PDF tool is 100% free with no hidden costs, no premium tiers, and no sign-up required."
+        },
+        {
+          "q": "Do I need to install software?",
+          "a": "No. All tools run directly in your web browser. No downloads, no plugins, no installations."
+        },
+        {
+          "q": "Are my PDF files uploaded to a server?",
+          "a": "No. All processing happens locally in your browser. Your files never leave your device, ensuring complete privacy."
+        },
+        {
+          "q": "What is the maximum file size?",
+          "a": "The maximum file size is 50MB per file for PDF tools. Larger files may cause performance issues in the browser."
+        },
+        {
+          "q": "Do the tools work on mobile?",
+          "a": "Yes, all PDF tools are fully responsive and work on smartphones, tablets, and desktop computers."
+        },
+        {
+          "q": "Which PDF tools are most popular?",
+          "a": "PDF to Word, Compress PDF, Merge PDF, and Split PDF are the most used PDF tools on SmartTools."
+        }
+      ],
+      "fr": [
+        {
+          "q": "Tous les outils PDF sont-ils gratuits ?",
+          "a": "Oui, tous les outils PDF de SmartTools sont 100% gratuits, sans frais cachés et sans inscription."
+        },
+        {
+          "q": "Dois-je installer un logiciel ?",
+          "a": "Non. Tous les outils fonctionnent directement dans votre navigateur. Aucun téléchargement ni plugin requis."
+        },
+        {
+          "q": "Mes fichiers PDF sont-ils téléchargés sur un serveur ?",
+          "a": "Non. Tout le traitement se fait localement dans votre navigateur. Vos fichiers ne quittent jamais votre appareil."
+        },
+        {
+          "q": "Quelle est la taille maximale des fichiers ?",
+          "a": "La taille maximale est de 50 Mo par fichier. Les fichiers plus volumineux peuvent entraîner des problèmes de performance."
+        },
+        {
+          "q": "Les outils fonctionnent-ils sur mobile ?",
+          "a": "Oui, tous les outils PDF sont entièrement responsives et fonctionnent sur smartphone, tablette et ordinateur."
+        },
+        {
+          "q": "Quels outils PDF sont les plus populaires ?",
+          "a": "PDF vers Word, Compresser PDF, Fusionner PDF et Diviser PDF sont les plus utilisés."
+        }
+      ],
+      "ar": [
+        {
+          "q": "هل جميع أدوات PDF مجانية؟",
+          "a": "نعم، كل أداة PDF في SmartTools مجانية 100% بدون أي رسوم خفية وبدون تسجيل."
+        },
+        {
+          "q": "هل أحتاج إلى تثبيت برنامج؟",
+          "a": "لا. تعمل جميع الأدوات مباشرة في متصفحك. بدون تنزيل أو إضافات."
+        },
+        {
+          "q": "هل يتم رفع ملفات PDF إلى خادم؟",
+          "a": "لا. تتم جميع المعالجة محلياً في متصفحك. ملفاتك لا تغادر جهازك أبداً."
+        },
+        {
+          "q": "ما هو الحد الأقصى لحجم الملف؟",
+          "a": "الحد الأقصى لحجم الملف هو 50 ميجابايت. قد تؤدي الملفات الأكبر إلى مشاكل في الأداء."
+        },
+        {
+          "q": "هل تعمل الأدوات على الهاتف المحمول؟",
+          "a": "نعم، جميع أدوات PDF متجاوبة بالكامل وتعمل على الهواتف والأجهزة اللوحية وأجهزة الكمبيوتر."
+        },
+        {
+          "q": "ما هي أدوات PDF الأكثر شيوعاً؟",
+          "a": "PDF إلى Word وضغط PDF ودمج PDF وتقسيم PDF هي الأكثر استخداماً."
+        }
+      ]
+    }
+  },
+  "image-tools": {
+    "intro": {
+      "en": "SmartTools Image Tools provide 20 free online utilities for editing and converting images. Compress images to reduce file size, resize and crop with visual controls, convert between JPG, PNG, and WEBP formats, apply filters and adjustments, add watermarks and borders, flip and rotate images, and more. All processing is done in your browser — your images never leave your device.",
+      "fr": "Les outils image de SmartTools fournissent 20 utilitaires gratuits en ligne pour éditer et convertir des images. Compressez vos images pour réduire leur taille, redimensionnez et recadrez avec des contrôles visuels, convertissez entre les formats JPG, PNG et WEBP, appliquez des filtres et des réglages, ajoutez des filigranes et des bordures, pivotez et retournez vos images. Tout le traitement se fait dans votre navigateur — vos images ne quittent jamais votre appareil.",
+      "ar": "تقدم أدوات الصور من SmartTools 20 أداة مجانية عبر الإنترنت لتحرير الصور وتحويلها. اضغط الصور لتقليل الحجم، وغيّر الحجم وقص الصور بأدوات تحكم بصرية، وحوّل بين صيغ JPG و PNG و WEBP، وطبّق الفلاتر والتعديلات، وأضف العلامات المائية والحدود، وقم بتدوير الصور وقلبها والمزيد. تتم جميع المعالجة في متصفحك — صورك لا تغادر جهازك أبداً."
+    },
+    "faq": {
+      "en": [
+        {
+          "q": "Are all image tools free?",
+          "a": "Yes, every SmartTools image tool is 100% free with no limitations, no sign-up, and no watermarks added to your images."
+        },
+        {
+          "q": "What image formats are supported?",
+          "a": "SmartTools supports JPG, JPEG, PNG, WEBP, and GIF formats. The image converter tool handles additional formats as well."
+        },
+        {
+          "q": "Is there a file size limit?",
+          "a": "Yes, the maximum file size is 50MB. For very large images, the tools use preview scaling while keeping the original resolution for the final output."
+        },
+        {
+          "q": "Do you store my images?",
+          "a": "No. All image processing happens locally in your browser. Your images are never uploaded to any server."
+        },
+        {
+          "q": "Can I batch process multiple images?",
+          "a": "Yes, the batch processing system lets you process multiple images at once, with progress tracking and ZIP download."
+        },
+        {
+          "q": "Which image tools are most popular?",
+          "a": "Compress Image, Resize Image, JPG to PNG, and PNG to JPG are the most used image tools on SmartTools."
+        }
+      ],
+      "fr": [
+        {
+          "q": "Tous les outils image sont-ils gratuits ?",
+          "a": "Oui, tous les outils image de SmartTools sont 100% gratuits, sans limitations et sans ajout de filigrane sur vos images."
+        },
+        {
+          "q": "Quels formats d'image sont pris en charge ?",
+          "a": "SmartTools prend en charge les formats JPG, JPEG, PNG, WEBP et GIF. Le convertisseur d'images gère des formats supplémentaires."
+        },
+        {
+          "q": "Y a-t-il une limite de taille de fichier ?",
+          "a": "Oui, la taille maximale est de 50 Mo. Pour les très grandes images, les outils utilisent une mise à l'échelle de prévisualisation tout en conservant la résolution originale pour le résultat final."
+        },
+        {
+          "q": "Stockez-vous mes images ?",
+          "a": "Non. Tout le traitement se fait localement dans votre navigateur. Vos images ne sont jamais téléchargées sur un serveur."
+        },
+        {
+          "q": "Puis-je traiter plusieurs images par lot ?",
+          "a": "Oui, le système de traitement par lot vous permet de traiter plusieurs images à la fois, avec suivi de progression et téléchargement ZIP."
+        },
+        {
+          "q": "Quels outils image sont les plus populaires ?",
+          "a": "Compresser Image, Redimensionner Image, JPG vers PNG et PNG vers JPG sont les plus utilisés."
+        }
+      ],
+      "ar": [
+        {
+          "q": "هل جميع أدوات الصور مجانية؟",
+          "a": "نعم، كل أداة صور في SmartTools مجانية 100% بدون قيود وبدون تسجيل وبدون إضافة علامات مائية على صورك."
+        },
+        {
+          "q": "ما هي صيغ الصور المدعومة؟",
+          "a": "يدعم SmartTools صيغ JPG و JPEG و PNG و WEBP و GIF. كما يدعم محول الصور صيغاً إضافية."
+        },
+        {
+          "q": "هل هناك حد لحجم الملف؟",
+          "a": "نعم، الحد الأقصى لحجم الملف هو 50 ميجابايت. للصور الكبيرة جداً، تستخدم الأدوات معاينة مصغرة مع الاحتفاظ بالدقة الأصلية للنتيجة النهائية."
+        },
+        {
+          "q": "هل تخزنون صوري؟",
+          "a": "لا. تتم جميع معالجة الصور محلياً في متصفحك. لا يتم رفع صورك إلى أي خادم."
+        },
+        {
+          "q": "هل يمكنني معالجة صور متعددة دفعة واحدة؟",
+          "a": "نعم، نظام المعالجة الدفعية يتيح لك معالجة صور متعددة في وقت واحد مع تتبع التقدم وتنزيل ZIP."
+        },
+        {
+          "q": "ما هي أدوات الصور الأكثر شيوعاً؟",
+          "a": "ضغط الصور وتغيير الحجم و JPG إلى PNG و PNG إلى JPG هي الأكثر استخداماً."
+        }
+      ]
+    }
+  },
+  "text-tools": {
+    "intro": {
+      "en": "SmartTools Text Tools offer 3 free online utilities for working with text. Count words, characters, sentences, and paragraphs with the word counter; count exact characters with the character counter; and convert text between uppercase, lowercase, title case, and sentence case. All tools run instantly in your browser with no installation required.",
+      "fr": "Les outils texte de SmartTools offrent 3 utilitaires gratuits en ligne pour travailler avec du texte. Comptez les mots, caractères, phrases et paragraphes avec le compteur de mots ; comptez les caractères exacts ; et convertissez le texte entre majuscules, minuscules, casse de titre et casse de phrase. Tous les outils fonctionnent instantanément dans votre navigateur sans installation.",
+      "ar": "تقدم أدوات النص من SmartTools 3 أدوات مجانية عبر الإنترنت للتعامل مع النصوص. عدّ الكلمات والأحرف والجمل والفقرات باستخدام عدّاد الكلمات؛ عدّ الأحرف بدقة؛ وحوّل النص بين الأحرف الكبيرة والصغيرة وحالة العنوان وحالة الجملة. تعمل جميع الأدوات فوراً في متصفحك بدون تثبيت."
+    },
+    "faq": {
+      "en": [
+        {
+          "q": "Are text tools free?",
+          "a": "Yes, all SmartTools text tools are 100% free with no sign-up required."
+        },
+        {
+          "q": "Do I need to install anything?",
+          "a": "No, all text tools run directly in your browser with instant results."
+        },
+        {
+          "q": "Do the tools work offline?",
+          "a": "Once the page is loaded, text tools work without an internet connection since all processing is client-side."
+        },
+        {
+          "q": "Can I count words in Arabic text?",
+          "a": "Yes, the word counter supports Arabic, French, English, and all Unicode text correctly."
+        },
+        {
+          "q": "Is there a character limit?",
+          "a": "No, there is no character limit. You can paste and process text of any length."
+        },
+        {
+          "q": "Do text tools work on mobile?",
+          "a": "Yes, all text tools are fully responsive and work on any device with a browser."
+        }
+      ],
+      "fr": [
+        {
+          "q": "Les outils texte sont-ils gratuits ?",
+          "a": "Oui, tous les outils texte de SmartTools sont 100% gratuits sans inscription."
+        },
+        {
+          "q": "Dois-je installer quelque chose ?",
+          "a": "Non, tous les outils texte fonctionnent directement dans votre navigateur avec des résultats instantanés."
+        },
+        {
+          "q": "Les outils fonctionnent-ils hors ligne ?",
+          "a": "Une fois la page chargée, les outils texte fonctionnent sans connexion Internet car tout le traitement est côté client."
+        },
+        {
+          "q": "Puis-je compter des mots en texte arabe ?",
+          "a": "Oui, le compteur de mots prend en charge l'arabe, le français, l'anglais et tout texte Unicode."
+        },
+        {
+          "q": "Y a-t-il une limite de caractères ?",
+          "a": "Non, il n'y a pas de limite. Vous pouvez coller et traiter du texte de toute longueur."
+        },
+        {
+          "q": "Les outils texte fonctionnent-ils sur mobile ?",
+          "a": "Oui, tous les outils texte sont entièrement responsives."
+        }
+      ],
+      "ar": [
+        {
+          "q": "هل أدوات النص مجانية؟",
+          "a": "نعم، جميع أدوات النص في SmartTools مجانية 100% بدون تسجيل."
+        },
+        {
+          "q": "هل أحتاج إلى تثبيت شيء ما؟",
+          "a": "لا، تعمل جميع أدوات النص مباشرة في متصفحك بنتائج فورية."
+        },
+        {
+          "q": "هل تعمل الأدوات دون اتصال بالإنترنت؟",
+          "a": "بمجرد تحميل الصفحة، تعمل أدوات النص بدون اتصال بالإنترنت لأن كل المعالجة تتم في المتصفح."
+        },
+        {
+          "q": "هل يمكنني عدّ الكلمات في النص العربي؟",
+          "a": "نعم، يدعم عدّاد الكلمات العربية والفرنسية والإنجليزية وكل نصوص Unicode."
+        },
+        {
+          "q": "هل هناك حد للأحرف؟",
+          "a": "لا، لا يوجد حد للأحرف. يمكنك لصق ومعالجة نص بأي طول."
+        },
+        {
+          "q": "هل تعمل أدوات النص على الهاتف المحمول؟",
+          "a": "نعم، جميع أدوات النص متجاوبة بالكامل وتعمل على أي جهاز."
+        }
+      ]
+    }
+  },
+  "calculators": {
+    "intro": {
+      "en": "SmartTools Calculators offer 3 free online calculators for everyday use. Calculate your Body Mass Index (BMI) with the BMI calculator, determine exact age in years, months, and days with the age calculator, and compute percentages, increases, and decreases with the percentage calculator. All calculators provide instant, accurate results with no sign-up required.",
+      "fr": "Les calculatrices SmartTools offrent 3 calculatrices gratuites en ligne pour un usage quotidien. Calculez votre Indice de Masse Corporelle (IMC), déterminez votre âge exact en années, mois et jours, et calculez des pourcentages, augmentations et réductions. Toutes les calculatrices fournissent des résultats instantanés et précis sans inscription.",
+      "ar": "تقدم آلة حاسبة SmartTools 3 آلات حاسبة مجانية عبر الإنترنت للاستخدام اليومي. احسب مؤشر كتلة جسمك (BMI)، حدد عمرك بالضبط بالسنوات والأشهر والأيام، واحسب النسب المئوية والزيادات والنقصان. توفر جميع الآلات الحاسبة نتائج فورية ودقيقة بدون تسجيل."
+    },
+    "faq": {
+      "en": [
+        {
+          "q": "Are the calculators free?",
+          "a": "Yes, all SmartTools calculators are 100% free with no sign-up or registration required."
+        },
+        {
+          "q": "Are the results accurate?",
+          "a": "Yes, all calculators use standard, well-established formulas and provide accurate results. The BMI calculator uses the WHO standard formula."
+        },
+        {
+          "q": "Do calculators work on mobile?",
+          "a": "Yes, all calculators are fully responsive and optimized for touch input on mobile devices."
+        },
+        {
+          "q": "Do I need an internet connection?",
+          "a": "Once the page loads, calculators work without an internet connection since all computation is done locally."
+        },
+        {
+          "q": "Can I use the BMI calculator with metric units?",
+          "a": "Yes, the BMI calculator supports both metric (kg/cm) and imperial (lbs/inches) units."
+        },
+        {
+          "q": "Is my data stored?",
+          "a": "No, all calculations are done in your browser. No data is stored or sent to any server."
+        }
+      ],
+      "fr": [
+        {
+          "q": "Les calculatrices sont-elles gratuites ?",
+          "a": "Oui, toutes les calculatrices SmartTools sont 100% gratuites sans inscription."
+        },
+        {
+          "q": "Les résultats sont-ils précis ?",
+          "a": "Oui, toutes les calculatrices utilisent des formules standard reconnues et fournissent des résultats précis. La calculatrice IMC utilise la formule standard de l'OMS."
+        },
+        {
+          "q": "Les calculatrices fonctionnent-elles sur mobile ?",
+          "a": "Oui, toutes les calculatrices sont entièrement responsives et optimisées pour les écrans tactiles."
+        },
+        {
+          "q": "Ai-je besoin d'une connexion Internet ?",
+          "a": "Une fois la page chargée, les calculatrices fonctionnent sans connexion Internet."
+        },
+        {
+          "q": "Puis-je utiliser la calculatrice IMC avec des unités métriques ?",
+          "a": "Oui, la calculatrice IMC prend en charge les unités métriques (kg/cm) et impériales (lbs/pouces)."
+        },
+        {
+          "q": "Mes données sont-elles stockées ?",
+          "a": "Non, tous les calculs se font dans votre navigateur. Aucune donnée n'est stockée ou envoyée à un serveur."
+        }
+      ],
+      "ar": [
+        {
+          "q": "هل الآلات الحاسبة مجانية؟",
+          "a": "نعم، جميع آلات SmartTools الحاسبة مجانية 100% بدون تسجيل."
+        },
+        {
+          "q": "هل النتائج دقيقة؟",
+          "a": "نعم، تستخدم جميع الآلات الحاسبة صيغ قياسية ومعترف بها وتوفر نتائج دقيقة. تستخدم آلة BMI الصيغة القياسية لمنظمة الصحة العالمية."
+        },
+        {
+          "q": "هل تعمل الآلات الحاسبة على الهاتف المحمول؟",
+          "a": "نعم، جميع الآلات الحاسبة متجاوبة بالكامل ومحسّنة لإدخال اللمس على الأجهزة المحمولة."
+        },
+        {
+          "q": "هل أحتاج إلى اتصال بالإنترنت؟",
+          "a": "بمجرد تحميل الصفحة، تعمل الآلات الحاسبة بدون اتصال بالإنترنت."
+        },
+        {
+          "q": "هل يمكنني استخدام آلة BMI بالوحدات المترية؟",
+          "a": "نعم، تدعم آلة BMI الوحدات المترية (كجم/سم) والإمبراطورية (رطل/بوصة)."
+        },
+        {
+          "q": "هل يتم تخزين بياناتي؟",
+          "a": "لا، تتم جميع الحسابات في متصفحك. لا يتم تخزين أو إرسال أي بيانات إلى أي خادم."
+        }
+      ]
+    }
+  }
+}
