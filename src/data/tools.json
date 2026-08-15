@@ -1324,5 +1324,379 @@
     },
     "icon": "ImagePlus",
     "created_at": "2026-08-15"
+  },
+  {
+    "id": "audio-cutter",
+    "slug": "audio-cutter",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "Audio Cutter",
+      "fr": "Coupeur Audio",
+      "ar": "قاطع الصوت"
+    },
+    "description": {
+      "en": "Cut and trim audio files precisely",
+      "fr": "Couper et découper des fichiers audio",
+      "ar": "قص وتقصيح ملفات الصوت"
+    },
+    "icon": "Scissors",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "audio-merger",
+    "slug": "audio-merger",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "Audio Merger",
+      "fr": "Fusionneur Audio",
+      "ar": "دمج الصوت"
+    },
+    "description": {
+      "en": "Merge multiple audio files into one",
+      "fr": "Fusionner plusieurs fichiers audio",
+      "ar": "دمج ملفات صوتية متعددة في واحد"
+    },
+    "icon": "Files",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "audio-converter",
+    "slug": "audio-converter",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "Audio Converter",
+      "fr": "Convertisseur Audio",
+      "ar": "محوّل الصوت"
+    },
+    "description": {
+      "en": "Convert audio between WAV MP3 OGG M4A formats",
+      "fr": "Convertir l'audio entre WAV MP3 OGG M4A",
+      "ar": "تحويل الصوت بين WAV MP3 OGG M4A"
+    },
+    "icon": "Repeat",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "audio-compressor",
+    "slug": "audio-compressor",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "Audio Compressor",
+      "fr": "Compresseur Audio",
+      "ar": "ضاغط الصوت"
+    },
+    "description": {
+      "en": "Compress audio files to reduce size",
+      "fr": "Compresser les fichiers audio",
+      "ar": "ضغط ملفات الصوت لتقليل الحجم"
+    },
+    "icon": "Minimize2",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "audio-trimmer",
+    "slug": "audio-trimmer",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "Audio Trimmer",
+      "fr": "Découpeur Audio",
+      "ar": "مقص الصوت"
+    },
+    "description": {
+      "en": "Trim audio from start or end",
+      "fr": "Découper l'audio du début ou de la fin",
+      "ar": "قص الصوت من البداية أو النهاية"
+    },
+    "icon": "Scissors",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "audio-volume-booster",
+    "slug": "audio-volume-booster",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "Audio Volume Booster",
+      "fr": "Amplificateur de Volume",
+      "ar": "مضخم الصوت"
+    },
+    "description": {
+      "en": "Increase or decrease audio volume",
+      "fr": "Augmenter ou diminuer le volume audio",
+      "ar": "زيادة أو تقليل مستوى الصوت"
+    },
+    "icon": "Volume2",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "audio-normalizer",
+    "slug": "audio-normalizer",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "Audio Normalizer",
+      "fr": "Normaliseur Audio",
+      "ar": "مطبع الصوت"
+    },
+    "description": {
+      "en": "Normalize audio volume to a standard level",
+      "fr": "Normaliser le volume audio",
+      "ar": "تطبيع مستوى الصوت"
+    },
+    "icon": "Activity",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "audio-fade",
+    "slug": "audio-fade",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "Audio Fade In/Out",
+      "fr": "Fondu Audio",
+      "ar": "تلاشي الصوت"
+    },
+    "description": {
+      "en": "Add fade in and fade out effects",
+      "fr": "Ajouter des effets de fondu entrant et sortant",
+      "ar": "إضافة تأثيرات التلاشي الداخولي والخروجي"
+    },
+    "icon": "Sun",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "audio-speed-changer",
+    "slug": "audio-speed-changer",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "Audio Speed Changer",
+      "fr": "Changeur de Vitesse",
+      "ar": "تغيير سرعة الصوت"
+    },
+    "description": {
+      "en": "Change audio playback speed",
+      "fr": "Changer la vitesse de lecture audio",
+      "ar": "تغيير سرعة تشغيل الصوت"
+    },
+    "icon": "Gauge",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "audio-pitch-changer",
+    "slug": "audio-pitch-changer",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "Audio Pitch Changer",
+      "fr": "Changeur de Tonalité",
+      "ar": "تغيير طبقة الصوت"
+    },
+    "description": {
+      "en": "Change audio pitch without affecting speed",
+      "fr": "Changer la tonalité sans affecter la vitesse",
+      "ar": "تغيير طبقة الصوت دون التأثير على السرعة"
+    },
+    "icon": "TrendingUp",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "audio-recorder",
+    "slug": "audio-recorder",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "Audio Recorder",
+      "fr": "Enregistreur Audio",
+      "ar": "مسجل الصوت"
+    },
+    "description": {
+      "en": "Record audio directly from your microphone",
+      "fr": "Enregistrer l'audio depuis le microphone",
+      "ar": "تسجيل الصوت مباشرة من الميكروفون"
+    },
+    "icon": "Mic",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "wav-to-mp3",
+    "slug": "wav-to-mp3",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "WAV to MP3",
+      "fr": "WAV vers MP3",
+      "ar": "WAV إلى MP3"
+    },
+    "description": {
+      "en": "Convert WAV audio files to MP3 format",
+      "fr": "Convertir les fichiers WAV en MP3",
+      "ar": "تحويل ملفات WAV إلى صيغة MP3"
+    },
+    "icon": "Repeat",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "mp3-to-wav",
+    "slug": "mp3-to-wav",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "MP3 to WAV",
+      "fr": "MP3 vers WAV",
+      "ar": "MP3 إلى WAV"
+    },
+    "description": {
+      "en": "Convert MP3 audio files to WAV format",
+      "fr": "Convertir les fichiers MP3 en WAV",
+      "ar": "تحويل ملفات MP3 إلى صيغة WAV"
+    },
+    "icon": "Repeat",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "m4a-to-mp3",
+    "slug": "m4a-to-mp3",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "M4A to MP3",
+      "fr": "M4A vers MP3",
+      "ar": "M4A إلى MP3"
+    },
+    "description": {
+      "en": "Convert M4A audio files to MP3 format",
+      "fr": "Convertir les fichiers M4A en MP3",
+      "ar": "تحويل ملفات M4A إلى صيغة MP3"
+    },
+    "icon": "Repeat",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "ogg-to-mp3",
+    "slug": "ogg-to-mp3",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "OGG to MP3",
+      "fr": "OGG vers MP3",
+      "ar": "OGG إلى MP3"
+    },
+    "description": {
+      "en": "Convert OGG audio files to MP3 format",
+      "fr": "Convertir les fichiers OGG en MP3",
+      "ar": "تحويل ملفات OGG إلى صيغة MP3"
+    },
+    "icon": "Repeat",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "mp3-to-ogg",
+    "slug": "mp3-to-ogg",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "MP3 to OGG",
+      "fr": "MP3 vers OGG",
+      "ar": "MP3 إلى OGG"
+    },
+    "description": {
+      "en": "Convert MP3 audio files to OGG format",
+      "fr": "Convertir les fichiers MP3 en OGG",
+      "ar": "تحويل ملفات MP3 إلى صيغة OGG"
+    },
+    "icon": "Repeat",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "flac-to-mp3",
+    "slug": "flac-to-mp3",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "FLAC to MP3",
+      "fr": "FLAC vers MP3",
+      "ar": "FLAC إلى MP3"
+    },
+    "description": {
+      "en": "Convert FLAC audio files to MP3 format",
+      "fr": "Convertir les fichiers FLAC en MP3",
+      "ar": "تحويل ملفات FLAC إلى صيغة MP3"
+    },
+    "icon": "Repeat",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "audio-to-wav",
+    "slug": "audio-to-wav",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "Audio to WAV",
+      "fr": "Audio vers WAV",
+      "ar": "الصوت إلى WAV"
+    },
+    "description": {
+      "en": "Convert any audio format to WAV",
+      "fr": "Convertir tout format audio en WAV",
+      "ar": "تحويل أي صيغة صوت إلى WAV"
+    },
+    "icon": "Repeat",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "extract-audio-from-video",
+    "slug": "extract-audio-from-video",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "Extract Audio from Video",
+      "fr": "Extraire l'Audio de la Vidéo",
+      "ar": "استخراج الصوت من الفيديو"
+    },
+    "description": {
+      "en": "Extract audio track from video files",
+      "fr": "Extraire la piste audio des fichiers vidéo",
+      "ar": "استخراج المسار الصوتي من ملفات الفيديو"
+    },
+    "icon": "FileVideo",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "mp4-to-mp3",
+    "slug": "mp4-to-mp3",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "MP4 to MP3",
+      "fr": "MP4 vers MP3",
+      "ar": "MP4 إلى MP3"
+    },
+    "description": {
+      "en": "Convert MP4 video files to MP3 audio",
+      "fr": "Convertir les fichiers MP4 en MP3",
+      "ar": "تحويل ملفات MP4 إلى MP3"
+    },
+    "icon": "FileVideo",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "url-audio-converter",
+    "slug": "url-audio-converter",
+    "categoryId": "audio-tools",
+    "name": {
+      "en": "URL Audio Converter",
+      "fr": "Convertisseur URL Audio",
+      "ar": "محوّل URL الصوتي"
+    },
+    "description": {
+      "en": "Process audio from a direct media URL",
+      "fr": "Traiter l'audio depuis une URL directe",
+      "ar": "معالجة الصوت من رابط وسائط مباشر"
+    },
+    "icon": "Link",
+    "created_at": "2026-08-15"
+  },
+  {
+    "id": "remove-background",
+    "slug": "remove-background",
+    "categoryId": "image-tools",
+    "name": {
+      "en": "Remove Background",
+      "fr": "Supprimer l'Arrière-plan",
+      "ar": "إزالة الخلفية"
+    },
+    "description": {
+      "en": "AI-powered background removal from images",
+      "fr": "Suppression d'arrière-plan par IA",
+      "ar": "إزالة الخلفية بالذكاء الاصطناعي"
+    },
+    "icon": "Scissors",
+    "created_at": "2026-08-15"
   }
 ]

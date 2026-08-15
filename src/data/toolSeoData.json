@@ -558,6 +558,182 @@
       "rotate-image",
       "jpg-to-png",
       "png-to-jpg"
+    ],
+    "remove-background": [
+      "transparency-editor",
+      "image-watermark",
+      "crop-image",
+      "resize-image",
+      "color-picker",
+      "compress-image"
+    ],
+    "audio-cutter": [
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster",
+      "audio-normalizer"
+    ],
+    "audio-merger": [
+      "audio-cutter",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster",
+      "audio-normalizer"
+    ],
+    "audio-converter": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster",
+      "audio-normalizer"
+    ],
+    "audio-compressor": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-trimmer",
+      "audio-volume-booster",
+      "audio-normalizer"
+    ],
+    "audio-trimmer": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-volume-booster",
+      "audio-normalizer"
+    ],
+    "audio-volume-booster": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-normalizer"
+    ],
+    "audio-normalizer": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "audio-fade": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "audio-speed-changer": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "audio-pitch-changer": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "audio-recorder": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "wav-to-mp3": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "mp3-to-wav": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "m4a-to-mp3": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "ogg-to-mp3": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "mp3-to-ogg": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "flac-to-mp3": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "audio-to-wav": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "extract-audio-from-video": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "mp4-to-mp3": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
+    ],
+    "url-audio-converter": [
+      "audio-cutter",
+      "audio-merger",
+      "audio-converter",
+      "audio-compressor",
+      "audio-trimmer",
+      "audio-volume-booster"
     ]
   },
   "pdf-to-word": {
@@ -4795,6 +4971,1370 @@
       {
         "q": "ما الصيغ المدعومة؟",
         "a": "الصيغ المدعومة هي JPG و PNG و WEBP و GIF."
+      }
+    ]
+  },
+  "remove-background": {
+    "seoTitle": "Free Online Background Remover - AI Remove Background | SmartTools",
+    "seoTitleFr": "Suppression d'Arrière-plan IA Gratuite | SmartTools",
+    "seoTitleAr": "إزالة الخلفية بالذكاء الاصطناعي مجاناً | SmartTools",
+    "seoDescription": "Remove image backgrounds instantly with AI. Upload an image and get a transparent PNG. No upload to servers, no sign-up. Free online background remover.",
+    "seoDescriptionFr": "Supprimez l'arrière-plan des images instantanément avec l'IA. Obtenez un PNG transparent. Gratuit en ligne.",
+    "seoDescriptionAr": "إزالة خلفية الصور فوراً بالذكاء الاصطناعي. احصل على PNG شفاف. مجاناً عبر الإنترنت.",
+    "faqs": [
+      {
+        "q": "How does background removal work?",
+        "a": "It uses an AI model (ONNX) that runs in your browser. The model identifies the foreground subject and removes the background."
+      },
+      {
+        "q": "Is my image uploaded?",
+        "a": "No. The AI model runs locally in your browser. Your image never leaves your device."
+      },
+      {
+        "q": "Why does it take time on first use?",
+        "a": "The AI model (~20MB) needs to download on first use. Subsequent uses are faster as the model is cached."
+      },
+      {
+        "q": "What output format do I get?",
+        "a": "You get a transparent PNG file with the background removed."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Comment fonctionne la suppression d'arrière-plan ?",
+        "a": "Elle utilise un modèle d'IA (ONNX) qui s'exécute dans votre navigateur."
+      },
+      {
+        "q": "Mon image est-elle téléchargée ?",
+        "a": "Non. Le modèle s'exécute localement dans votre navigateur."
+      },
+      {
+        "q": "Pourquoi cela prend-il du temps ?",
+        "a": "Le modèle d'IA (~20 Mo) doit être téléchargé lors de la première utilisation."
+      },
+      {
+        "q": "Quel format de sortie ?",
+        "a": "Vous obtenez un fichier PNG transparent."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "كيف تعمل إزالة الخلفية؟",
+        "a": "تستخدم نموذج ذكاء اصطناعي (ONNX) يعمل في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع صورتي؟",
+        "a": "لا. النموذج يعمل محلياً في متصفحك."
+      },
+      {
+        "q": "لماذا يستغرق وقتاً؟",
+        "a": "نموذج الذكاء الاصطناعي (~20 ميجابايت) يحتاج للتحميل عند الاستخدام الأول."
+      },
+      {
+        "q": "ما صيغة الإخراج؟",
+        "a": "تحصل على ملف PNG شفاف."
+      }
+    ]
+  },
+  "audio-cutter": {
+    "seoTitle": "Free Online Audio Cutter - Audio Cutter Tool | SmartTools",
+    "seoTitleFr": "Audio Cutter Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "Audio Cutter مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Cut and trim audio files precisely. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Couper et découper des fichiers audio. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "قص وتقصيح ملفات الصوت. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does Audio Cutter do?",
+        "a": "Cut and trim audio files precisely. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait Audio Cutter ?",
+        "a": "Couper et découper des fichiers audio. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل Audio Cutter؟",
+        "a": "قص وتقصيح ملفات الصوت. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "audio-merger": {
+    "seoTitle": "Free Online Audio Merger - Audio Merger Tool | SmartTools",
+    "seoTitleFr": "Audio Merger Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "Audio Merger مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Merge multiple audio files into one. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Fusionner plusieurs fichiers audio. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "دمج ملفات صوتية متعددة في واحد. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does Audio Merger do?",
+        "a": "Merge multiple audio files into one. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait Audio Merger ?",
+        "a": "Fusionner plusieurs fichiers audio. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل Audio Merger؟",
+        "a": "دمج ملفات صوتية متعددة في واحد. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "audio-converter": {
+    "seoTitle": "Free Online Audio Converter - Audio Converter Tool | SmartTools",
+    "seoTitleFr": "Audio Converter Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "Audio Converter مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert audio between WAV MP3 OGG M4A formats. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Convertir l'audio entre WAV MP3 OGG M4A. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "تحويل الصوت بين WAV MP3 OGG M4A. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does Audio Converter do?",
+        "a": "Convert audio between WAV MP3 OGG M4A formats. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait Audio Converter ?",
+        "a": "Convertir l'audio entre WAV MP3 OGG M4A. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل Audio Converter؟",
+        "a": "تحويل الصوت بين WAV MP3 OGG M4A. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "audio-compressor": {
+    "seoTitle": "Free Online Audio Compressor - Audio Compressor Tool | SmartTools",
+    "seoTitleFr": "Audio Compressor Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "Audio Compressor مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Compress audio files to reduce size. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Compresser les fichiers audio. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "ضغط ملفات الصوت لتقليل الحجم. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does Audio Compressor do?",
+        "a": "Compress audio files to reduce size. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait Audio Compressor ?",
+        "a": "Compresser les fichiers audio. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل Audio Compressor؟",
+        "a": "ضغط ملفات الصوت لتقليل الحجم. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "audio-trimmer": {
+    "seoTitle": "Free Online Audio Trimmer - Audio Trimmer Tool | SmartTools",
+    "seoTitleFr": "Audio Trimmer Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "Audio Trimmer مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Trim audio from start or end. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Découper l'audio du début ou de la fin. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "قص الصوت من البداية أو النهاية. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does Audio Trimmer do?",
+        "a": "Trim audio from start or end. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait Audio Trimmer ?",
+        "a": "Découper l'audio du début ou de la fin. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل Audio Trimmer؟",
+        "a": "قص الصوت من البداية أو النهاية. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "audio-volume-booster": {
+    "seoTitle": "Free Online Audio Volume Booster - Audio Volume Booster Tool | SmartTools",
+    "seoTitleFr": "Audio Volume Booster Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "Audio Volume Booster مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Increase or decrease audio volume. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Augmenter ou diminuer le volume audio. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "زيادة أو تقليل مستوى الصوت. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does Audio Volume Booster do?",
+        "a": "Increase or decrease audio volume. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait Audio Volume Booster ?",
+        "a": "Augmenter ou diminuer le volume audio. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل Audio Volume Booster؟",
+        "a": "زيادة أو تقليل مستوى الصوت. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "audio-normalizer": {
+    "seoTitle": "Free Online Audio Normalizer - Audio Normalizer Tool | SmartTools",
+    "seoTitleFr": "Audio Normalizer Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "Audio Normalizer مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Normalize audio volume to a standard level. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Normaliser le volume audio. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "تطبيع مستوى الصوت. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does Audio Normalizer do?",
+        "a": "Normalize audio volume to a standard level. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait Audio Normalizer ?",
+        "a": "Normaliser le volume audio. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل Audio Normalizer؟",
+        "a": "تطبيع مستوى الصوت. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "audio-fade": {
+    "seoTitle": "Free Online Audio Fade In/Out - Audio Fade In/Out Tool | SmartTools",
+    "seoTitleFr": "Audio Fade In/Out Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "Audio Fade In/Out مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Add fade in and fade out effects. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Ajouter des effets de fondu entrant et sortant. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "إضافة تأثيرات التلاشي الداخولي والخروجي. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does Audio Fade In/Out do?",
+        "a": "Add fade in and fade out effects. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait Audio Fade In/Out ?",
+        "a": "Ajouter des effets de fondu entrant et sortant. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل Audio Fade In/Out؟",
+        "a": "إضافة تأثيرات التلاشي الداخولي والخروجي. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "audio-speed-changer": {
+    "seoTitle": "Free Online Audio Speed Changer - Audio Speed Changer Tool | SmartTools",
+    "seoTitleFr": "Audio Speed Changer Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "Audio Speed Changer مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Change audio playback speed. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Changer la vitesse de lecture audio. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "تغيير سرعة تشغيل الصوت. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does Audio Speed Changer do?",
+        "a": "Change audio playback speed. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait Audio Speed Changer ?",
+        "a": "Changer la vitesse de lecture audio. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل Audio Speed Changer؟",
+        "a": "تغيير سرعة تشغيل الصوت. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "audio-pitch-changer": {
+    "seoTitle": "Free Online Audio Pitch Changer - Audio Pitch Changer Tool | SmartTools",
+    "seoTitleFr": "Audio Pitch Changer Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "Audio Pitch Changer مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Change audio pitch without affecting speed. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Changer la tonalité sans affecter la vitesse. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "تغيير طبقة الصوت دون التأثير على السرعة. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does Audio Pitch Changer do?",
+        "a": "Change audio pitch without affecting speed. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait Audio Pitch Changer ?",
+        "a": "Changer la tonalité sans affecter la vitesse. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل Audio Pitch Changer؟",
+        "a": "تغيير طبقة الصوت دون التأثير على السرعة. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "audio-recorder": {
+    "seoTitle": "Free Online Audio Recorder - Audio Recorder Tool | SmartTools",
+    "seoTitleFr": "Audio Recorder Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "Audio Recorder مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Record audio directly from your microphone. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Enregistrer l'audio depuis le microphone. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "تسجيل الصوت مباشرة من الميكروفون. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does Audio Recorder do?",
+        "a": "Record audio directly from your microphone. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait Audio Recorder ?",
+        "a": "Enregistrer l'audio depuis le microphone. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل Audio Recorder؟",
+        "a": "تسجيل الصوت مباشرة من الميكروفون. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "wav-to-mp3": {
+    "seoTitle": "Free Online WAV to MP3 - WAV to MP3 Tool | SmartTools",
+    "seoTitleFr": "WAV to MP3 Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "WAV to MP3 مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert WAV audio files to MP3 format. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Convertir les fichiers WAV en MP3. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "تحويل ملفات WAV إلى صيغة MP3. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does WAV to MP3 do?",
+        "a": "Convert WAV audio files to MP3 format. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait WAV to MP3 ?",
+        "a": "Convertir les fichiers WAV en MP3. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل WAV to MP3؟",
+        "a": "تحويل ملفات WAV إلى صيغة MP3. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "mp3-to-wav": {
+    "seoTitle": "Free Online MP3 to WAV - MP3 to WAV Tool | SmartTools",
+    "seoTitleFr": "MP3 to WAV Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "MP3 to WAV مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert MP3 audio files to WAV format. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Convertir les fichiers MP3 en WAV. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "تحويل ملفات MP3 إلى صيغة WAV. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does MP3 to WAV do?",
+        "a": "Convert MP3 audio files to WAV format. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait MP3 to WAV ?",
+        "a": "Convertir les fichiers MP3 en WAV. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل MP3 to WAV؟",
+        "a": "تحويل ملفات MP3 إلى صيغة WAV. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "m4a-to-mp3": {
+    "seoTitle": "Free Online M4A to MP3 - M4A to MP3 Tool | SmartTools",
+    "seoTitleFr": "M4A to MP3 Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "M4A to MP3 مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert M4A audio files to MP3 format. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Convertir les fichiers M4A en MP3. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "تحويل ملفات M4A إلى صيغة MP3. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does M4A to MP3 do?",
+        "a": "Convert M4A audio files to MP3 format. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait M4A to MP3 ?",
+        "a": "Convertir les fichiers M4A en MP3. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل M4A to MP3؟",
+        "a": "تحويل ملفات M4A إلى صيغة MP3. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "ogg-to-mp3": {
+    "seoTitle": "Free Online OGG to MP3 - OGG to MP3 Tool | SmartTools",
+    "seoTitleFr": "OGG to MP3 Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "OGG to MP3 مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert OGG audio files to MP3 format. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Convertir les fichiers OGG en MP3. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "تحويل ملفات OGG إلى صيغة MP3. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does OGG to MP3 do?",
+        "a": "Convert OGG audio files to MP3 format. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait OGG to MP3 ?",
+        "a": "Convertir les fichiers OGG en MP3. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل OGG to MP3؟",
+        "a": "تحويل ملفات OGG إلى صيغة MP3. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "mp3-to-ogg": {
+    "seoTitle": "Free Online MP3 to OGG - MP3 to OGG Tool | SmartTools",
+    "seoTitleFr": "MP3 to OGG Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "MP3 to OGG مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert MP3 audio files to OGG format. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Convertir les fichiers MP3 en OGG. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "تحويل ملفات MP3 إلى صيغة OGG. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does MP3 to OGG do?",
+        "a": "Convert MP3 audio files to OGG format. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait MP3 to OGG ?",
+        "a": "Convertir les fichiers MP3 en OGG. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل MP3 to OGG؟",
+        "a": "تحويل ملفات MP3 إلى صيغة OGG. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "flac-to-mp3": {
+    "seoTitle": "Free Online FLAC to MP3 - FLAC to MP3 Tool | SmartTools",
+    "seoTitleFr": "FLAC to MP3 Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "FLAC to MP3 مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert FLAC audio files to MP3 format. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Convertir les fichiers FLAC en MP3. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "تحويل ملفات FLAC إلى صيغة MP3. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does FLAC to MP3 do?",
+        "a": "Convert FLAC audio files to MP3 format. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait FLAC to MP3 ?",
+        "a": "Convertir les fichiers FLAC en MP3. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل FLAC to MP3؟",
+        "a": "تحويل ملفات FLAC إلى صيغة MP3. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "audio-to-wav": {
+    "seoTitle": "Free Online Audio to WAV - Audio to WAV Tool | SmartTools",
+    "seoTitleFr": "Audio to WAV Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "Audio to WAV مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert any audio format to WAV. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Convertir tout format audio en WAV. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "تحويل أي صيغة صوت إلى WAV. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does Audio to WAV do?",
+        "a": "Convert any audio format to WAV. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait Audio to WAV ?",
+        "a": "Convertir tout format audio en WAV. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل Audio to WAV؟",
+        "a": "تحويل أي صيغة صوت إلى WAV. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "extract-audio-from-video": {
+    "seoTitle": "Free Online Extract Audio from Video - Extract Audio from Video Tool | SmartTools",
+    "seoTitleFr": "Extract Audio from Video Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "Extract Audio from Video مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Extract audio track from video files. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Extraire la piste audio des fichiers vidéo. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "استخراج المسار الصوتي من ملفات الفيديو. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does Extract Audio from Video do?",
+        "a": "Extract audio track from video files. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait Extract Audio from Video ?",
+        "a": "Extraire la piste audio des fichiers vidéo. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل Extract Audio from Video؟",
+        "a": "استخراج المسار الصوتي من ملفات الفيديو. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "mp4-to-mp3": {
+    "seoTitle": "Free Online MP4 to MP3 - MP4 to MP3 Tool | SmartTools",
+    "seoTitleFr": "MP4 to MP3 Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "MP4 to MP3 مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Convert MP4 video files to MP3 audio. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Convertir les fichiers MP4 en MP3. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "تحويل ملفات MP4 إلى MP3. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does MP4 to MP3 do?",
+        "a": "Convert MP4 video files to MP3 audio. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait MP4 to MP3 ?",
+        "a": "Convertir les fichiers MP4 en MP3. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل MP4 to MP3؟",
+        "a": "تحويل ملفات MP4 إلى MP3. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
+      }
+    ]
+  },
+  "url-audio-converter": {
+    "seoTitle": "Free Online URL Audio Converter - URL Audio Converter Tool | SmartTools",
+    "seoTitleFr": "URL Audio Converter Gratuit en Ligne | SmartTools",
+    "seoTitleAr": "URL Audio Converter مجاناً عبر الإنترنت | SmartTools",
+    "seoDescription": "Process audio from a direct media URL. Browser-based, no upload, no sign-up. Free online audio tool.",
+    "seoDescriptionFr": "Traiter l'audio depuis une URL directe. Outil audio en ligne gratuit, basé sur le navigateur.",
+    "seoDescriptionAr": "معالجة الصوت من رابط وسائط مباشر. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
+    "faqs": [
+      {
+        "q": "What does URL Audio Converter do?",
+        "a": "Process audio from a direct media URL. All processing happens in your browser."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. All processing happens in your browser. Your audio never leaves your device."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, this tool is completely free with no sign-up required."
+      },
+      {
+        "q": "What formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
+      }
+    ],
+    "faqsFr": [
+      {
+        "q": "Que fait URL Audio Converter ?",
+        "a": "Traiter l'audio depuis une URL directe. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Mon fichier est-il téléchargé ?",
+        "a": "Non. Tout le traitement se fait dans votre navigateur."
+      },
+      {
+        "q": "Est-ce gratuit ?",
+        "a": "Oui, cet outil est entièrement gratuit sans inscription."
+      },
+      {
+        "q": "Quels formats sont supportés ?",
+        "a": "MP3, WAV, OGG, M4A, FLAC et plus."
+      }
+    ],
+    "faqsAr": [
+      {
+        "q": "ماذا يفعل URL Audio Converter؟",
+        "a": "معالجة الصوت من رابط وسائط مباشر. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل يتم رفع ملفي؟",
+        "a": "لا. تتم جميع المعالجة في متصفحك."
+      },
+      {
+        "q": "هل هو مجاني؟",
+        "a": "نعم، هذه الأداة مجانية بالكامل بدون تسجيل."
+      },
+      {
+        "q": "ما الصيغ المدعومة؟",
+        "a": "MP3، WAV، OGG، M4A، FLAC والمزيد."
       }
     ]
   }

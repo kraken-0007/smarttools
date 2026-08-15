@@ -88,9 +88,9 @@
   },
   "image-tools": {
     "intro": {
-      "en": "SmartTools Image Tools provide 52 free online utilities for editing and converting images. Compress, resize, crop, convert between formats, apply filters and adjustments, add watermarks and borders, flip and rotate, pixelate or redact areas, sharpen or invert colors, apply sepia and duotone, detect edges, create collages and contact sheets, extract color palettes, generate placeholders, and much more. All processing is done in your browser — your images never leave your device.",
-      "fr": "Les outils image de SmartTools fournissent 52 utilitaires gratuits en ligne pour éditer et convertir des images. Compressez, redimensionnez, recadrez, convertissez entre formats, appliquez des filtres, ajoutez des filigranes et bordures, pivotez, pixelisez, caviardez, nettoyez, inversez, appliquez du sépia et du duotone, détectez les contours, créez des collages et planches-contact, extrayez des palettes et plus.",
-      "ar": "تقدم أدوات الصور من SmartTools 52 أداة مجانية عبر الإنترنت لتحرير الصور وتحويلها. اضغط، غيّر الحجم، اقصص، حوّل بين الصيغ، طبّق الفلاتر، أضف العلامات المائية والحدود، قلّب، بكسل، اعتّم، زد حدّة، اعكس، طبّق سيبيا وثنائي اللون، كشف الحواف، أنشئ كولاجات ولوحات اتصال، استخرج لوحات ألوان والمزيد."
+      "en": "SmartTools Image Tools provide 53 free online utilities for editing and converting images. Compress, resize, crop, convert between formats, apply filters and adjustments, add watermarks and borders, remove backgrounds with AI, create collages and contact sheets, extract color palettes, generate placeholders, and much more. All processing is done in your browser — your images never leave your device.",
+      "fr": "Les outils image de SmartTools fournissent 53 utilitaires gratuits en ligne pour éditer et convertir des images. Compressez, redimensionnez, recadrez, convertissez entre formats, appliquez des filtres, ajoutez des filigranes et bordures, supprimez les arrière-plans avec l'IA et plus.",
+      "ar": "تقدم أدوات الصور من SmartTools 53 أداة مجانية عبر الإنترنت لتحرير الصور وتحويلها. اضغط، غيّر الحجم، اقصص، حوّل بين الصيغ، طبّق الفلاتر، أضف العلامات المائية والحدود، أزل الخلفيات بالذكاء الاصطناعي والمزيد."
     },
     "faq": {
       "en": [
@@ -346,5 +346,36 @@
         }
       ]
     }
+  },
+  "audio-tools": {
+    "seoTitle": "Free Online Audio Tools - MP3 Cutter, Converter, Recorder | SmartTools",
+    "seoTitleFr": "Outils Audio Gratuits en Ligne | SmartTools",
+    "seoTitleAr": "أدوات الصوت المجانية عبر الإنترنت | SmartTools",
+    "seoDescription": "21 free online audio tools. Cut, merge, convert, compress, record, and edit audio in your browser. MP3, WAV, OGG, M4A, FLAC support. No upload, no sign-up.",
+    "seoDescriptionFr": "21 outils audio gratuits en ligne. Couper, fusionner, convertir, compresser, enregistrer et éditer l'audio dans votre navigateur.",
+    "seoDescriptionAr": "21 أداة صوتية مجانية عبر الإنترنت. قص، دمج، تحويل، ضغط، تسجيل وتحرير الصوت في متصفحك.",
+    "intro": {
+      "en": "SmartTools Audio Tools provide 21 free online utilities for editing and converting audio files. Cut and trim audio, merge multiple files, convert between formats (MP3, WAV, OGG, M4A, FLAC), boost volume, normalize levels, add fade effects, change speed and pitch, record from microphone, extract audio from video, and more. All processing is done in your browser — your audio never leaves your device.",
+      "fr": "Les outils audio de SmartTools fournissent 21 utilitaires gratuits en ligne pour éditer et convertir des fichiers audio. Couper, fusionner, convertir, amplifier, normaliser, fondre, changer la vitesse et la tonalité, enregistrer et plus.",
+      "ar": "تقدم أدوات الصوت من SmartTools 21 أداة مجانية عبر الإنترنت لتحرير وتحويل ملفات الصوت. قص، دمج، تحويل، تضخيم، تطبيع، تلاشي، تغيير السرعة والطبقة، تسجيل والمزيد."
+    },
+    "faqs": [
+      {
+        "q": "Are these audio tools free?",
+        "a": "Yes, all audio tools are completely free with no sign-up required."
+      },
+      {
+        "q": "Is my audio uploaded to a server?",
+        "a": "No. All processing happens in your browser. Your audio files never leave your device."
+      },
+      {
+        "q": "What audio formats are supported?",
+        "a": "MP3, WAV, OGG, M4A, FLAC, and more. The browser's native audio decoder handles most common formats."
+      },
+      {
+        "q": "Can I extract audio from video?",
+        "a": "Yes, the MP4 to MP3 and Extract Audio from Video tools can extract audio tracks from video files using FFmpeg (loaded on demand)."
+      }
+    ]
   }
 }

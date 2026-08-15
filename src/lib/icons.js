@@ -15,6 +15,7 @@ import {
   Grid3x3, Eraser, EyeOff, Contrast,
   Radio, Layers, ScanLine, Pipette, IdCard, Target, Printer,
   Sparkles, Replace, LayoutGrid, ImagePlus, ZoomIn, Ratio,
+  FileVideo,
 } from 'lucide-react'
 
 export const ICON_MAP = {
@@ -36,6 +37,7 @@ export const ICON_MAP = {
   Grid3X3: Grid3x3,
   Radio, Layers, ScanLine, Pipette, IdCard, Target, Printer,
   Sparkles, Replace, LayoutGrid, ImagePlus, ZoomIn, Ratio,
+  FileVideo,
 }
 
 export function getIcon(name) {

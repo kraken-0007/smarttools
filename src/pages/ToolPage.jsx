@@ -26,6 +26,13 @@ import {
   GlowEffectEditor, ColorReplacementEditor, CollageMakerEditor,
   ContactSheetEditor, PlaceholderGeneratorEditor,
 } from '../components/ImageUtilities.jsx'
+import {
+  AudioCutterEditor, AudioTrimmerEditor, AudioVolumeBoosterEditor,
+  AudioNormalizerEditor, AudioFadeEditor, AudioSpeedChangerEditor,
+  AudioPitchChangerEditor, AudioRecorderEditor, AudioMergerEditor,
+  AudioConverterEditor, AudioCompressorEditor, VideoToAudioEditor,
+  URLAudioConverterEditor, RemoveBackgroundEditor,
+} from '../components/AudioTools.jsx'
 import PdfPageEditor from '../components/PdfPageEditor.jsx'
 import AdvancedPdfEditor from '../components/AdvancedPdfEditor.jsx'
 import { useState, useRef, useEffect } from 'react'
@@ -676,6 +683,194 @@ function PlaceholderGeneratorTool({ lang }) {
   return <PlaceholderGeneratorEditor lang={lang} />
 }
 
+function RemoveBackgroundTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
+  return <RemoveBackgroundEditor file={file} lang={lang} />
+}
+
+function AudioCutterTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioCutterEditor file={file} lang={lang} />
+}
+function AudioTrimmerTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioTrimmerEditor file={file} lang={lang} />
+}
+function AudioVolumeBoosterTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioVolumeBoosterEditor file={file} lang={lang} />
+}
+function AudioNormalizerTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioNormalizerEditor file={file} lang={lang} />
+}
+function AudioFadeTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioFadeEditor file={file} lang={lang} />
+}
+function AudioSpeedChangerTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioSpeedChangerEditor file={file} lang={lang} />
+}
+function AudioPitchChangerTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioPitchChangerEditor file={file} lang={lang} />
+}
+function AudioRecorderTool({ lang }) {
+  return <AudioRecorderEditor lang={lang} />
+}
+function AudioMergerTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioMergerEditor file={file} lang={lang} />
+}
+function AudioConverterTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioConverterEditor file={file} lang={lang} targetFormat="mp3" />
+}
+function AudioCompressorTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioCompressorEditor file={file} lang={lang} />
+}
+function WavToMp3Tool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioConverterEditor file={file} lang={lang} targetFormat="mp3" />
+}
+function Mp3ToWavTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioConverterEditor file={file} lang={lang} targetFormat="wav" />
+}
+function M4aToMp3Tool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioConverterEditor file={file} lang={lang} targetFormat="mp3" />
+}
+function OggToMp3Tool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioConverterEditor file={file} lang={lang} targetFormat="mp3" />
+}
+function Mp3ToOggTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioConverterEditor file={file} lang={lang} targetFormat="ogg" />
+}
+function FlacToMp3Tool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioConverterEditor file={file} lang={lang} targetFormat="mp3" />
+}
+function AudioToWavTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <AudioUploadZone onFile={setFile} lang={lang} />
+  return <AudioConverterEditor file={file} lang={lang} targetFormat="wav" />
+}
+function ExtractAudioFromVideoTool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <VideoUploadZone onFile={setFile} lang={lang} />
+  return <VideoToAudioEditor file={file} lang={lang} targetFormat="mp3" />
+}
+function Mp4ToMp3Tool({ lang }) {
+  const [file, setFile] = useState(null)
+  if (!file) return <VideoUploadZone onFile={setFile} lang={lang} />
+  return <VideoToAudioEditor file={file} lang={lang} targetFormat="mp3" />
+}
+function URLAudioConverterTool({ lang }) {
+  return <URLAudioConverterEditor lang={lang} />
+}
+
+function AudioUploadZone({ onFile, lang }) {
+  const [dragOver, setDragOver] = useState(false)
+  const [error, setError] = useState(null)
+  const inputRef = useRef(null)
+  const ACCEPTED = ['audio/mpeg', 'audio/mp3', 'audio/wav', 'audio/x-wav', 'audio/ogg', 'audio/mp4', 'audio/x-m4a', 'audio/flac', 'audio/aac', 'audio/webm', 'audio/opus', 'video/webm']
+  const labels = {
+    en: { drop: 'Drop audio here', or: 'or', choose: 'Choose Audio', formats: 'MP3, WAV, OGG, M4A, FLAC · Max 50MB' },
+    fr: { drop: 'Déposez l\'audio', or: 'ou', choose: 'Choisir l\'audio', formats: 'MP3, WAV, OGG, M4A, FLAC · Max 50 Mo' },
+    ar: { drop: 'أفلت الصوت هنا', or: 'أو', choose: 'اختر الصوت', formats: 'MP3, WAV, OGG, M4A, FLAC · بحد أقصى 50 ميجابايت' },
+  }[lang]
+  const validate = (f) => {
+    if (!f) return false
+    if (!ACCEPTED.includes(f.type) && !/\.(mp3|wav|ogg|m4a|flac|aac|opus)$/i.test(f.name)) { setError(lang==='ar'?'صيغة غير مدعومة':'Format non supporté'); return false }
+    if (f.size > 50*1024*1024) { setError(lang==='ar'?'حجم كبير جداً':'Fichier trop volumineux'); return false }
+    setError(null); return true
+  }
+  return (
+    <div className="space-y-3">
+      <div className={`upload-box p-8 md:p-12 text-center cursor-pointer transition-all ${dragOver ? 'dragover' : ''}`}
+        onDragOver={(e) => { e.preventDefault(); setDragOver(true) }}
+        onDragLeave={() => setDragOver(false)}
+        onDrop={(e) => { e.preventDefault(); setDragOver(false); const f = e.dataTransfer.files[0]; if (validate(f)) onFile(f) }}
+        onClick={() => inputRef.current?.click()} role="button" tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter') inputRef.current?.click() }}>
+        <input ref={inputRef} type="file" className="hidden" accept="audio/*,.mp3,.wav,.ogg,.m4a,.flac,.aac,.opus"
+          onChange={(e) => { const f = e.target.files[0]; if (validate(f)) onFile(f) }} />
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center">
+            <Volume2 className="w-7 h-7 text-blue-600 dark:text-blue-400" strokeWidth={1.6} />
+          </div>
+          <p className="text-base font-bold text-[#111111] dark:text-[#FAFAFA]">{labels.drop}</p>
+          <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA]">{labels.or}</p>
+          <span className="btn-primary rounded-xl px-5 py-2.5 text-sm">{labels.choose}</span>
+          <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA] mt-1">{labels.formats}</p>
+        </div>
+      </div>
+      {error && <div className="flex items-center gap-2 p-3 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 text-sm"><AlertCircle className="w-4 h-4 shrink-0" /> {error}</div>}
+    </div>
+  )
+}
+
+function VideoUploadZone({ onFile, lang }) {
+  const [dragOver, setDragOver] = useState(false)
+  const [error, setError] = useState(null)
+  const inputRef = useRef(null)
+  const labels = {
+    en: { drop: 'Drop video here', or: 'or', choose: 'Choose Video', formats: 'MP4, WebM, AVI, MOV · Max 100MB' },
+    fr: { drop: 'Déposez la vidéo', or: 'ou', choose: 'Choisir la vidéo', formats: 'MP4, WebM, AVI, MOV · Max 100 Mo' },
+    ar: { drop: 'أفلت الفيديو هنا', or: 'أو', choose: 'اختر الفيديو', formats: 'MP4, WebM, AVI, MOV · بحد أقصى 100 ميجابايت' },
+  }[lang]
+  const validate = (f) => {
+    if (!f) return false
+    if (f.size > 100*1024*1024) { setError(lang==='ar'?'حجم كبير جداً':'Fichier trop volumineux'); return false }
+    setError(null); return true
+  }
+  return (
+    <div className="space-y-3">
+      <div className={`upload-box p-8 md:p-12 text-center cursor-pointer transition-all ${dragOver ? 'dragover' : ''}`}
+        onDragOver={(e) => { e.preventDefault(); setDragOver(true) }}
+        onDragLeave={() => setDragOver(false)}
+        onDrop={(e) => { e.preventDefault(); setDragOver(false); const f = e.dataTransfer.files[0]; if (validate(f)) onFile(f) }}
+        onClick={() => inputRef.current?.click()} role="button" tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter') inputRef.current?.click() }}>
+        <input ref={inputRef} type="file" className="hidden" accept="video/*,.mp4,.webm,.avi,.mov,.mkv"
+          onChange={(e) => { const f = e.target.files[0]; if (validate(f)) onFile(f) }} />
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center">
+            <Film className="w-7 h-7 text-blue-600 dark:text-blue-400" strokeWidth={1.6} />
+          </div>
+          <p className="text-base font-bold text-[#111111] dark:text-[#FAFAFA]">{labels.drop}</p>
+          <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA]">{labels.or}</p>
+          <span className="btn-primary rounded-xl px-5 py-2.5 text-sm">{labels.choose}</span>
+          <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA] mt-1">{labels.formats}</p>
+        </div>
+      </div>
+      {error && <div className="flex items-center gap-2 p-3 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 text-sm"><AlertCircle className="w-4 h-4 shrink-0" /> {error}</div>}
+    </div>
+  )
+}
+
 /* ═══ TEXT TOOLS ═══ */
 
 function WordCounterTool({ lang }) {
@@ -903,6 +1098,29 @@ const TOOL_COMPONENTS = {
   'collage-maker': CollageMakerTool,
   'contact-sheet': ContactSheetTool,
   'placeholder-generator': PlaceholderGeneratorTool,
+  'remove-background': RemoveBackgroundTool,
+  // Audio Tools (22)
+  'audio-cutter': AudioCutterTool,
+  'audio-trimmer': AudioTrimmerTool,
+  'audio-volume-booster': AudioVolumeBoosterTool,
+  'audio-normalizer': AudioNormalizerTool,
+  'audio-fade': AudioFadeTool,
+  'audio-speed-changer': AudioSpeedChangerTool,
+  'audio-pitch-changer': AudioPitchChangerTool,
+  'audio-recorder': AudioRecorderTool,
+  'audio-merger': AudioMergerTool,
+  'audio-converter': AudioConverterTool,
+  'audio-compressor': AudioCompressorTool,
+  'wav-to-mp3': WavToMp3Tool,
+  'mp3-to-wav': Mp3ToWavTool,
+  'm4a-to-mp3': M4aToMp3Tool,
+  'ogg-to-mp3': OggToMp3Tool,
+  'mp3-to-ogg': Mp3ToOggTool,
+  'flac-to-mp3': FlacToMp3Tool,
+  'audio-to-wav': AudioToWavTool,
+  'extract-audio-from-video': ExtractAudioFromVideoTool,
+  'mp4-to-mp3': Mp4ToMp3Tool,
+  'url-audio-converter': URLAudioConverterTool,
   // Text Tools (3)
   'word-counter': WordCounterTool,
   'character-counter': CharacterCounterTool,

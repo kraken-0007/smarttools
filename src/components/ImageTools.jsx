@@ -277,69 +277,159 @@ export function RotateFlipEditor({ file, lang, onProcess }) {
   )
 }
 
-/* ═══ WatermarkEditor ═══ */
-export function WatermarkEditor({ file, lang, onProcess }) {
+/* ═══ WatermarkEditor (Improved — drag, resize, rotate) ═══ */
+export function WatermarkEditor({ file, lang }) {
   const { img, url, width, height, loading } = useImageLoader(file)
   const canvasRef = useRef(null)
+  const overlayRef = useRef(null)
   const [text, setText] = useState('Watermark')
   const [fontSize, setFontSize] = useState(48)
   const [opacity, setOpacity] = useState(50)
   const [color, setColor] = useState('#ffffff')
   const [rotation, setRotation] = useState(0)
-  const [position, setPosition] = useState('center')
   const [processing, setProcessing] = useState(false)
   const [result, setResult] = useState(null)
+  const [dragState, setDragState] = useState({ dragging: false, mode: null, startX: 0, startY: 0 })
+  // Watermark position in image coordinates (center x, center y, scale, rotation)
+  const [wmPos, setWmPos] = useState({ x: 0, y: 0, w: 0, h: 0 })
+  const [displaySize, setDisplaySize] = useState({ w: 0, h: 0 })
   const history = useEditorHistory(20)
 
   const labels = {
-    en: { text: 'Watermark Text', fontSize: 'Font Size', opacity: 'Opacity', color: 'Color', rotation: 'Rotation', position: 'Position', apply: 'Apply & Download', reset: 'Reset', processing: 'Processing...', topLeft: 'Top Left', topCenter: 'Top Center', topRight: 'Top Right', center: 'Center', bottomLeft: 'Bottom Left', bottomCenter: 'Bottom Center', bottomRight: 'Bottom Right' },
-    fr: { text: 'Texte du filigrane', fontSize: 'Taille', opacity: 'Opacité', color: 'Couleur', rotation: 'Rotation', position: 'Position', apply: 'Appliquer & Télécharger', reset: 'Réinitialiser', processing: 'Traitement...', topLeft: 'Haut Gauche', topCenter: 'Haut Centre', topRight: 'Haut Droite', center: 'Centre', bottomLeft: 'Bas Gauche', bottomCenter: 'Bas Centre', bottomRight: 'Bas Droite' },
-    ar: { text: 'نص العلامة المائية', fontSize: 'حجم الخط', opacity: 'الشفافية', color: 'اللون', rotation: 'الدوران', position: 'الموضع', apply: 'تطبيق وتحميل', reset: 'إعادة تعيين', processing: 'جارٍ المعالجة...', topLeft: 'أعلى اليسار', topCenter: 'أعلى الوسط', topRight: 'أعلى اليمين', center: 'الوسط', bottomLeft: 'أسفل اليسار', bottomCenter: 'أسفل الوسط', bottomRight: 'أسفل اليمين' },
+    en: { text: 'Watermark Text', fontSize: 'Font Size', opacity: 'Opacity', color: 'Color', rotation: 'Rotation', apply: 'Apply & Download', reset: 'Reset', resetPos: 'Reset Position', processing: 'Processing...', drag: 'Drag the watermark to reposition' },
+    fr: { text: 'Texte du filigrane', fontSize: 'Taille', opacity: 'Opacité', color: 'Couleur', rotation: 'Rotation', apply: 'Appliquer & Télécharger', reset: 'Réinitialiser', resetPos: 'Réinitialiser la position', processing: 'Traitement...', drag: 'Glissez le filigrane pour le repositionner' },
+    ar: { text: 'نص العلامة المائية', fontSize: 'حجم الخط', opacity: 'الشفافية', color: 'اللون', rotation: 'الدوران', apply: 'تطبيق وتحميل', reset: 'إعادة تعيين', resetPos: 'إعادة تعيين الموضع', processing: 'جارٍ المعالجة...', drag: 'اسحب العلامة المائية لإعادة التموضع' },
   }[lang]
 
-  const positions = [
-    { key: 'top-left', label: labels.topLeft }, { key: 'top-center', label: labels.topCenter }, { key: 'top-right', label: labels.topRight },
-    { key: 'center', label: labels.center },
-    { key: 'bottom-left', label: labels.bottomLeft }, { key: 'bottom-center', label: labels.bottomCenter }, { key: 'bottom-right', label: labels.bottomRight },
-  ]
-
+  // Compute display size
   useEffect(() => {
-    if (!img || !canvasRef.current) return
-    const canvas = canvasRef.current
-    canvas.width = width; canvas.height = height
-    const ctx = canvas.getContext('2d')
-    ctx.drawImage(img, 0, 0)
+    if (!width || !height) return
+    const maxW = 500, maxH = 400
+    const ratio = Math.min(maxW / width, maxH / height, 1)
+    setDisplaySize({ w: Math.round(width * ratio), h: Math.round(height * ratio) })
+  }, [width, height])
 
-    if (text) {
-      ctx.save()
-      ctx.globalAlpha = opacity / 100
-      ctx.font = `bold ${fontSize}px Arial, sans-serif`
-      ctx.fillStyle = color
-      const metrics = ctx.measureText(text)
-      const tw = metrics.width, th = fontSize
-      let x, y
-      const pad = 20
-      switch (position) {
-        case 'top-left': x = pad; y = th + pad; break
-        case 'top-center': x = (width - tw) / 2; y = th + pad; break
-        case 'top-right': x = width - tw - pad; y = th + pad; break
-        case 'center': x = (width - tw) / 2; y = (height + th) / 2; break
-        case 'bottom-left': x = pad; y = height - pad; break
-        case 'bottom-center': x = (width - tw) / 2; y = height - pad; break
-        case 'bottom-right': x = width - tw - pad; y = height - pad; break
-        default: x = (width - tw) / 2; y = (height + th) / 2
-      }
-      ctx.translate(x + tw / 2, y - th / 2)
-      ctx.rotate(rotation * Math.PI / 180)
-      ctx.fillText(text, -tw / 2, th / 2)
-      ctx.restore()
+  // Initialize watermark position to center
+  useEffect(() => {
+    if (width && height) {
+      setWmPos({ x: width / 2, y: height / 2, w: width, h: height })
     }
-  }, [img, text, fontSize, opacity, color, rotation, position, width, height])
+  }, [width, height])
+
+  // Scale factors
+  const scaleX = width / displaySize.w || 1
+  const scaleY = height / displaySize.h || 1
+
+  // Draw preview on canvas
+  const drawPreview = useCallback(() => {
+    const canvas = canvasRef.current
+    const overlay = overlayRef.current
+    if (!canvas || !overlay || !img) return
+    
+    canvas.width = displaySize.w
+    canvas.height = displaySize.h
+    overlay.width = displaySize.w
+    overlay.height = displaySize.h
+    
+    const ctx = canvas.getContext('2d')
+    ctx.clearRect(0, 0, displaySize.w, displaySize.h)
+    ctx.drawImage(img, 0, 0, displaySize.w, displaySize.h)
+    
+    // Draw watermark on overlay
+    const octx = overlay.getContext('2d')
+    octx.clearRect(0, 0, displaySize.w, displaySize.h)
+    if (text) {
+      const dispX = wmPos.x / scaleX
+      const dispY = wmPos.y / scaleY
+      const dispFontSize = fontSize * (displaySize.w / width)
+      
+      octx.save()
+      octx.globalAlpha = opacity / 100
+      octx.font = `bold ${dispFontSize}px Arial, sans-serif`
+      octx.fillStyle = color
+      octx.textAlign = 'center'
+      octx.textBaseline = 'middle'
+      octx.translate(dispX, dispY)
+      octx.rotate(rotation * Math.PI / 180)
+      octx.fillText(text, 0, 0)
+      
+      // Draw bounding box for visual feedback
+      octx.globalAlpha = 0.3
+      octx.strokeStyle = '#2563eb'
+      octx.lineWidth = 1
+      octx.setLineDash([4, 4])
+      const metrics = octx.measureText(text)
+      const tw = metrics.width
+      const th = dispFontSize
+      octx.strokeRect(-tw/2 - 4, -th/2 - 4, tw + 8, th + 8)
+      octx.restore()
+    }
+  }, [img, displaySize, text, fontSize, opacity, color, rotation, wmPos, scaleX, scaleY, width])
+
+  useEffect(() => { drawPreview() }, [drawPreview])
+
+  // Handle drag on overlay
+  const handlePointerDown = (e) => {
+    e.preventDefault()
+    const overlay = overlayRef.current
+    if (!overlay) return
+    const rect = overlay.getBoundingClientRect()
+    const cx = e.touches ? e.touches[0].clientX : e.clientX
+    const cy = e.touches ? e.touches[0].clientY : e.clientY
+    const dispX = cx - rect.left
+    const dispY = cy - rect.top
+    setDragState({ dragging: true, mode: 'move', startX: dispX, startY: dispY })
+  }
+
+  const handlePointerMove = (e) => {
+    if (!dragState.dragging) return
+    e.preventDefault()
+    const overlay = overlayRef.current
+    if (!overlay) return
+    const rect = overlay.getBoundingClientRect()
+    const cx = e.touches ? e.touches[0].clientX : e.clientX
+    const cy = e.touches ? e.touches[0].clientY : e.clientY
+    const dispX = cx - rect.left
+    const dispY = cy - rect.top
+    // Update watermark position (convert display coords to image coords)
+    setWmPos(prev => ({
+      ...prev,
+      x: clamp(dispX * scaleX, 0, width),
+      y: clamp(dispY * scaleY, 0, height),
+    }))
+  }
+
+  const handlePointerUp = () => {
+    if (dragState.dragging) {
+      history.pushState({ text, fontSize, opacity, color, rotation, wmPos })
+    }
+    setDragState({ dragging: false, mode: null, startX: 0, startY: 0 })
+  }
+
+  const handleResetPos = () => {
+    setWmPos({ x: width / 2, y: height / 2, w: width, h: height })
+    setRotation(0)
+  }
 
   const handleApply = async () => {
     setProcessing(true)
     try {
-      const canvas = canvasRef.current
+      const canvas = document.createElement('canvas')
+      canvas.width = width; canvas.height = height
+      const ctx = canvas.getContext('2d')
+      ctx.drawImage(img, 0, 0)
+      if (text) {
+        ctx.save()
+        ctx.globalAlpha = opacity / 100
+        ctx.font = `bold ${fontSize}px Arial, sans-serif`
+        ctx.fillStyle = color
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'middle'
+        ctx.translate(wmPos.x, wmPos.y)
+        ctx.rotate(rotation * Math.PI / 180)
+        ctx.fillText(text, 0, 0)
+        ctx.restore()
+      }
       const blob = await new Promise((resolve, reject) => {
         canvas.toBlob(b => b ? resolve(b) : reject(new Error('Export failed')), 'image/png')
       })
@@ -371,44 +461,48 @@ export function WatermarkEditor({ file, lang, onProcess }) {
       <div className="flex items-center justify-between">
         <EditorHistoryToolbar canUndo={history.canUndo} canRedo={history.canRedo} onUndo={history.undo} onRedo={history.redo} lang={lang} />
       </div>
-      <div className="rounded-xl border border-[#E5E7EB] dark:border-[#27272A] overflow-hidden bg-[#F7F8FA] dark:bg-[#18181B] p-4 flex justify-center">
-        <canvas ref={canvasRef} className="max-w-full max-h-[400px] rounded-lg" />
+      <div className="rounded-xl border border-[#E5E7EB] dark:border-[#27272A] overflow-hidden bg-[#F7F8FA] dark:bg-[#18181B] p-4 flex justify-center relative" style={{ minHeight: '200px' }}>
+        <div className="relative inline-block" style={{ width: displaySize.w, height: displaySize.h }}>
+          <canvas ref={canvasRef} style={{ width: displaySize.w, height: displaySize.h }} className="rounded-lg" />
+          <canvas
+            ref={overlayRef}
+            style={{ width: displaySize.w, height: displaySize.h, cursor: dragState.dragging ? 'grabbing' : 'grab', touchAction: 'none' }}
+            className="absolute top-0 left-0 rounded-lg"
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerLeave={handlePointerUp}
+          />
+        </div>
       </div>
+      <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA] text-center">{labels.drag}</p>
 
       <div className="space-y-3">
         <div>
           <label className="block text-sm font-medium text-[#111111] dark:text-[#FAFAFA] mb-1.5">{labels.text}</label>
-          <input type="text" value={text} onChange={e => setText(e.target.value)} onBlur={() => history.pushState({ text, fontSize, opacity, color, rotation, position })} className="input-field" />
+          <input type="text" value={text} onChange={e => setText(e.target.value)} onBlur={() => history.pushState({ text, fontSize, opacity, color, rotation, wmPos })} className="input-field" />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="block text-xs font-medium text-[#6B7280] dark:text-[#A1A1AA] mb-1">{labels.fontSize}: {fontSize}px</label>
-            <input type="range" min="12" max="120" value={fontSize} onChange={e => setFontSize(parseInt(e.target.value))} className="w-full accent-blue-600" />
+            <input type="range" min="12" max="200" value={fontSize} onChange={e => setFontSize(parseInt(e.target.value))} onPointerUp={() => history.pushState({ text, fontSize, opacity, color, rotation, wmPos })} className="w-full accent-blue-600" />
           </div>
           <div>
             <label className="block text-xs font-medium text-[#6B7280] dark:text-[#A1A1AA] mb-1">{labels.opacity}: {opacity}%</label>
-            <input type="range" min="0" max="100" value={opacity} onChange={e => setOpacity(parseInt(e.target.value))} className="w-full accent-blue-600" />
+            <input type="range" min="0" max="100" value={opacity} onChange={e => setOpacity(parseInt(e.target.value))} onPointerUp={() => history.pushState({ text, fontSize, opacity, color, rotation, wmPos })} className="w-full accent-blue-600" />
           </div>
           <div>
             <label className="block text-xs font-medium text-[#6B7280] dark:text-[#A1A1AA] mb-1">{labels.rotation}: {rotation}°</label>
-            <input type="range" min="-90" max="90" value={rotation} onChange={e => setRotation(parseInt(e.target.value))} className="w-full accent-blue-600" />
+            <input type="range" min="-180" max="180" value={rotation} onChange={e => setRotation(parseInt(e.target.value))} onPointerUp={() => history.pushState({ text, fontSize, opacity, color, rotation, wmPos })} className="w-full accent-blue-600" />
           </div>
           <div>
             <label className="block text-xs font-medium text-[#6B7280] dark:text-[#A1A1AA] mb-1">{labels.color}</label>
             <input type="color" value={color} onChange={e => setColor(e.target.value)} className="w-full h-9 rounded-lg border border-[#E5E7EB] dark:border-[#27272A] cursor-pointer" />
           </div>
         </div>
-        <div>
-          <label className="block text-sm font-medium text-[#111111] dark:text-[#FAFAFA] mb-1.5">{labels.position}</label>
-          <div className="grid grid-cols-4 gap-2">
-            {positions.map(p => (
-              <button key={p.key} onClick={() => setPosition(p.key)}
-                className={`px-2 py-2 rounded-lg text-xs font-medium border transition-colors ${position === p.key ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/20 text-blue-600 dark:text-blue-400' : 'border-[#E5E7EB] dark:border-[#27272A] text-[#6B7280] dark:text-[#A1A1AA] hover:border-blue-300'}`}>
-                {p.label}
-              </button>
-            ))}
-          </div>
-        </div>
+        <button onClick={handleResetPos} className="text-sm text-blue-600 dark:text-blue-400 font-medium hover:underline">
+          {labels.resetPos}
+        </button>
       </div>
 
       <button onClick={handleApply} disabled={processing} className="btn-primary w-full justify-center py-3.5 text-sm disabled:opacity-50">
@@ -418,7 +512,7 @@ export function WatermarkEditor({ file, lang, onProcess }) {
   )
 }
 
-/* ═══ BorderEditor ═══ */
+/* ═══ BorderEditor ═══ *//* ═══ BorderEditor ═══ */
 export function BorderEditor({ file, lang }) {
   const { img, url, width, height, loading } = useImageLoader(file)
   const canvasRef = useRef(null)

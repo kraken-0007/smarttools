@@ -74,5 +74,27 @@
       "fr": "Calculatrices IMC, âge, pourcentage",
       "ar": "حاسبة العمر ومؤشر كتلة الجسم والنسبة المئوية"
     }
+  },
+  {
+    "id": "audio-tools",
+    "slug": "audio-tools",
+    "name_en": "Audio Tools",
+    "name_fr": "Outils Audio",
+    "name_ar": "أدوات الصوت",
+    "icon": "Music",
+    "color": "from-amber-500 to-yellow-500",
+    "bg": "bg-amber-50 dark:bg-amber-950/30",
+    "text": "text-amber-600 dark:text-amber-400",
+    "border": "border-amber-100 dark:border-amber-900/50",
+    "name": {
+      "en": "Audio Tools",
+      "fr": "Outils Audio",
+      "ar": "أدوات الصوت"
+    },
+    "description": {
+      "en": "Cut, merge, convert, compress and edit audio files",
+      "fr": "Coupez, fusionnez, convertissez et éditez vos fichiers audio",
+      "ar": "قص ودمج وتحويل وضغط وتحرير ملفات الصوت"
+    }
   }
 ]
