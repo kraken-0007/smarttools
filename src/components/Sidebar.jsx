@@ -112,14 +112,14 @@ export default function Sidebar({ lang, t, isOpen, onClose }) {
       <aside
         className={`
           ${widthClass}
-          fixed top-14 h-[calc(100vh-3.5rem)] z-30
+          fixed top-14 h-[calc(100dvh-3.5rem)] z-30
           bg-white dark:bg-[#0A0A0B]
           ${dir === 'rtl' ? 'border-s' : 'border-e'} border-[#E5E7EB] dark:border-[#27272A]
           flex flex-col
           transition-all duration-300 ease-in-out
           ${dir === 'rtl' ? 'end-0' : 'start-0'}
           ${isOpen ? 'translate-x-0' : dir === 'rtl' ? 'translate-x-full lg:translate-x-0' : '-translate-x-full lg:translate-x-0'}
-          lg:sticky lg:top-14 lg:h-[calc(100vh-3.5rem)] lg:flex
+          lg:sticky lg:top-14 lg:h-[calc(100dvh-3.5rem)] lg:flex
         `}
       >
         {/* Mobile header */}

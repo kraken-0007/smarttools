@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 /**
  * SEO Hook — sets document head meta tags dynamically.
  * Supports: title, description, canonical, OG, Twitter, hreflang, JSON-LD.
- * All canonical URLs are absolute (https://smarttools.app/...).
+ * All canonical URLs are absolute (https://smartools.vercel.app/...).
  *
  * Usage: useSEO({ title, description, canonical, ogImage, ogType, jsonLd, lang })
  */

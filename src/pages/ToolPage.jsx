@@ -13,26 +13,21 @@ import {
   PixelateEditor, SharpenEditor, InvertEditor,
   ColorAdjustEditor, RedactEditor, EraseAreaEditor,
 } from '../components/RegionTools.jsx'
+
 import {
-  SepiaEditor, PosterizeEditor, ThresholdEditor, DuotoneEditor,
-  NoiseGeneratorEditor, DenoiseEditor, EdgeDetectionEditor,
-  EmbossEditor, SketchEditor,
-} from '../components/SimpleFilters.jsx'
-import {
-  ColorPickerEditor, ExtractPaletteEditor, ImageSplitterEditor,
-  ImageSlicerEditor, SocialMediaResizerEditor, PassportPhotoEditor,
+  ColorPickerEditor, ExtractPaletteEditor,
+  SocialMediaResizerEditor, PassportPhotoEditor,
   FileSizeTargeterEditor, TransparencyEditor, ImageUpscalerEditor,
-  AspectRatioEditor, DpiConverterEditor, AddShadowEditor,
-  GlowEffectEditor, ColorReplacementEditor, CollageMakerEditor,
-  ContactSheetEditor, PlaceholderGeneratorEditor,
+  AspectRatioEditor, DpiConverterEditor,
 } from '../components/ImageUtilities.jsx'
 import {
   AudioCutterEditor, AudioTrimmerEditor, AudioVolumeBoosterEditor,
   AudioNormalizerEditor, AudioFadeEditor, AudioSpeedChangerEditor,
   AudioPitchChangerEditor, AudioRecorderEditor, AudioMergerEditor,
   AudioConverterEditor, AudioCompressorEditor, VideoToAudioEditor,
-  URLAudioConverterEditor, RemoveBackgroundEditor,
+  URLAudioConverterEditor,
 } from '../components/AudioTools.jsx'
+import { RemoveBackgroundProEditor } from '../components/RemoveBackgroundPro.jsx'
 import PdfPageEditor from '../components/PdfPageEditor.jsx'
 import AdvancedPdfEditor from '../components/AdvancedPdfEditor.jsx'
 import { useState, useRef, useEffect } from 'react'
@@ -554,51 +549,15 @@ function EraseAreaTool({ lang }) {
   return <EraseAreaEditor file={file} lang={lang} />
 }
 
-function SepiaImageTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <SepiaEditor file={file} lang={lang} />
-}
-function PosterizeImageTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <PosterizeEditor file={file} lang={lang} />
-}
-function ThresholdImageTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <ThresholdEditor file={file} lang={lang} />
-}
-function DuotoneImageTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <DuotoneEditor file={file} lang={lang} />
-}
-function ImageNoiseTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <NoiseGeneratorEditor file={file} lang={lang} />
-}
-function ImageDenoiseTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <DenoiseEditor file={file} lang={lang} />
-}
-function EdgeDetectionTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <EdgeDetectionEditor file={file} lang={lang} />
-}
-function EmbossImageTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <EmbossEditor file={file} lang={lang} />
-}
-function SketchImageTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <SketchEditor file={file} lang={lang} />
-}
+
+
+
+
+
+
+
+
+
 function ColorPickerTool({ lang }) {
   const [file, setFile] = useState(null)
   if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
@@ -609,16 +568,8 @@ function ExtractPaletteTool({ lang }) {
   if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
   return <ExtractPaletteEditor file={file} lang={lang} />
 }
-function ImageSplitterTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <ImageSplitterEditor file={file} lang={lang} />
-}
-function ImageSlicerTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <ImageSlicerEditor file={file} lang={lang} />
-}
+
+
 function SocialMediaResizerTool({ lang }) {
   const [file, setFile] = useState(null)
   if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
@@ -654,39 +605,11 @@ function DpiConverterTool({ lang }) {
   if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
   return <DpiConverterEditor file={file} lang={lang} />
 }
-function AddShadowTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <AddShadowEditor file={file} lang={lang} />
-}
-function GlowEffectTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <GlowEffectEditor file={file} lang={lang} />
-}
-function ColorReplacementTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <ColorReplacementEditor file={file} lang={lang} />
-}
-function CollageMakerTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <CollageMakerEditor file={file} lang={lang} />
-}
-function ContactSheetTool({ lang }) {
-  const [file, setFile] = useState(null)
-  if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <ContactSheetEditor file={file} lang={lang} />
-}
-function PlaceholderGeneratorTool({ lang }) {
-  return <PlaceholderGeneratorEditor lang={lang} />
-}
 
 function RemoveBackgroundTool({ lang }) {
   const [file, setFile] = useState(null)
   if (!file) return <ImageUploadZone onFile={setFile} lang={lang} />
-  return <RemoveBackgroundEditor file={file} lang={lang} />
+  return <RemoveBackgroundProEditor file={file} lang={lang} />
 }
 
 function AudioCutterTool({ lang }) {
@@ -1072,19 +995,8 @@ const TOOL_COMPONENTS = {
   'color-adjustment': ColorAdjustmentTool,
   'redact-image': RedactImageTool,
   'erase-area': EraseAreaTool,
-  'sepia-image': SepiaImageTool,
-  'posterize-image': PosterizeImageTool,
-  'threshold-image': ThresholdImageTool,
-  'duotone-image': DuotoneImageTool,
-  'image-noise': ImageNoiseTool,
-  'image-denoise': ImageDenoiseTool,
-  'edge-detection': EdgeDetectionTool,
-  'emboss-image': EmbossImageTool,
-  'sketch-image': SketchImageTool,
   'color-picker': ColorPickerTool,
   'extract-palette': ExtractPaletteTool,
-  'image-splitter': ImageSplitterTool,
-  'image-slicer': ImageSlicerTool,
   'social-media-resizer': SocialMediaResizerTool,
   'passport-photo': PassportPhotoTool,
   'file-size-targeter': FileSizeTargeterTool,
@@ -1092,12 +1004,6 @@ const TOOL_COMPONENTS = {
   'image-upscaler': ImageUpscalerTool,
   'aspect-ratio-converter': AspectRatioConverterTool,
   'dpi-converter': DpiConverterTool,
-  'add-shadow': AddShadowTool,
-  'glow-effect': GlowEffectTool,
-  'color-replacement': ColorReplacementTool,
-  'collage-maker': CollageMakerTool,
-  'contact-sheet': ContactSheetTool,
-  'placeholder-generator': PlaceholderGeneratorTool,
   'remove-background': RemoveBackgroundTool,
   // Audio Tools (22)
   'audio-cutter': AudioCutterTool,

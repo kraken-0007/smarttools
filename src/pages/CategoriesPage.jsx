@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
+import { SITE_URL } from '../lib/seo'
 import categories from '../data/categories.json'
 import tools from '../data/tools.json'
 import ToolCard from '../components/ToolCard'
@@ -58,7 +59,7 @@ export default function CategoriesPage({ lang, t, slug }) {
           '@type': 'CollectionPage',
           name: category.name.en,
           description: catSeoDesc,
-          url: `https://smartools.vercel.app/categories/${category.slug}`,
+          url: `${SITE_URL}/categories/${category.slug}`,
         },
       ],
     }
@@ -199,7 +200,7 @@ export default function CategoriesPage({ lang, t, slug }) {
           '@type': 'CollectionPage',
           name: 'SmartTools Categories',
           description: 'Browse all SmartTools tool categories — PDF tools, image tools, text tools and calculators.',
-          url: 'https://smartools.vercel.app/categories',
+          url: SITE_URL + '/categories',
         },
       ],
     },

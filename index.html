@@ -36,7 +36,7 @@
     <meta property="og:image" content="/logo.png" />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
-    <meta property="og:url" content="https://smarttools.app/" />
+    <meta property="og:url" content="https://smartools.vercel.app/" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -50,7 +50,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Canonical (set by useSEO on page change) -->
-    <link rel="canonical" href="https://smarttools.app/" />
+    <link rel="canonical" href="https://smartools.vercel.app/" />
+    <!-- Structured Data: WebSite + Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SmartTools",
+      "alternateName": "SmartTools - Free Online Tools",
+      "url": "https://smartools.vercel.app/",
+      "description": "Free online tools for PDF, images, audio, text and more. No sign-up required.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://smartools.vercel.app/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SmartTools",
+      "url": "https://smartools.vercel.app/",
+      "logo": "https://smartools.vercel.app/logo.png",
+      "description": "SmartTools provides free online tools for PDF, images, audio, text and more."
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
