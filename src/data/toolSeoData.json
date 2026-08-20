@@ -2861,7 +2861,21 @@
     "seoDescription": "Pixelate selected areas or entire images online for free. Interactive region selection with adjustable block size. Browser-based, no upload, no sign-up.",
     "seoDescriptionFr": "Pixelisez des zones sélectionnées ou des images entières en ligne gratuitement. Sélection interactive de zone avec taille de bloc ajustable.",
     "seoDescriptionAr": "بكسلة المناطق المحددة أو الصورة بالكامل مجاناً عبر الإنترنت. تحديد تفاعلي للمنطقة مع حجم كتلة قابل للتعديل.",
-    "faqs": [
+    "intro": "Blur out sensitive details or add a retro pixel art effect to your images with our free online pixelate tool. Select specific areas or pixelate the entire photo directly in your browser without uploading your files.",
+    "howTo": [
+      "Upload your image by dragging it into the editor or clicking browse.",
+      "Select specific regions to pixelate or apply the effect to the entire image.",
+      "Adjust the pixel size slider to control the level of pixelation.",
+      "Click Apply and download your pixelated image."
+    ],
+    "features": [
+      "Selective area pixelation for privacy protection",
+      "Adjustable pixel block size for customized visual effect",
+      "100% private in-browser processing with no server uploads",
+      "Instant image export with original resolution preserved"
+    ],
+    "h1": "Pixelate Image",
+    "faq": [
       {
         "q": "What does pixelate do?",
         "a": "Pixelation replaces small blocks of pixels with their average color, creating a blocky mosaic effect that hides details while keeping the general appearance."
@@ -2879,7 +2893,7 @@
         "a": "No. All processing happens in your browser. Your image never leaves your device."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait la pixelisation ?",
         "a": "La pixelisation remplace les petits blocs de pixels par leur couleur moyenne, créant un effet de mosaïque qui masque les détails."
@@ -2897,7 +2911,7 @@
         "a": "Non. Tout le traitement se fait dans votre navigateur."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا تفعل البكسلة؟",
         "a": "البكسلة تستبدل مجموعات صغيرة من البكسلات بلونها المتوسط، مما يخلق تأثير فسيفساء يخفي التفاصيل مع الحفاظ على المظهر العام."
@@ -2923,7 +2937,21 @@
     "seoDescription": "Sharpen selected areas or entire images online for free. Adjustable sharpen amount with interactive region selection. Browser-based, no upload.",
     "seoDescriptionFr": "Nettoyez des zones sélectionnées ou des images entières en ligne gratuitement. Quantité de netteté ajustable avec sélection interactive de zone.",
     "seoDescriptionAr": "زيادة حدّة المناطق المحددة أو الصورة بالكامل مجاناً عبر الإنترنت. كمية الحدّة قابلة للتعديل مع تحديد تفاعلي للمنطقة.",
-    "faqs": [
+    "intro": "Enhance blurry photos and bring out fine details with our free online image sharpening tool. Adjust image clarity and edge sharpness instantly in your browser without downloading extra software.",
+    "howTo": [
+      "Upload your photo by dragging it or selecting it from your device.",
+      "Choose whether to sharpen selected areas or the whole image.",
+      "Use the sharpness intensity slider to refine details.",
+      "Preview the sharpened result and download the final image."
+    ],
+    "features": [
+      "Precision sharpness adjustment slider for exact detail control",
+      "Selective sharpening for targeted area enhancement",
+      "Browser-based processing ensuring complete file privacy",
+      "Supports popular image formats including JPG, PNG, and WebP"
+    ],
+    "h1": "Sharpen Image",
+    "faq": [
       {
         "q": "What does sharpen do?",
         "a": "Sharpening enhances edges and details in an image by increasing contrast between adjacent pixels, making the image appear crisper."
@@ -2941,7 +2969,7 @@
         "a": "Yes, but it cannot fully restore an out-of-focus image. It enhances existing edges rather than creating new detail."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait le nettoyage ?",
         "a": "Le nettoyage améliore les contours et les détails en augmentant le contraste entre les pixels adjacents."
@@ -2959,7 +2987,7 @@
         "a": "Oui, mais cela ne peut pas restaurer complètement une image floue."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا تفعل زيادة الحدّة؟",
         "a": "زيادة الحدّة تعزز الحواف والتفاصيل في الصورة عن طريق زيادة التباين بين البكسلات المتجاورة، مما يجعل الصورة تبدو أكثر وضوحاً."
@@ -2985,7 +3013,21 @@
     "seoDescription": "Invert colors in selected areas or entire images online for free. Interactive region selection. Browser-based, no upload, no sign-up.",
     "seoDescriptionFr": "Inversez les couleurs de zones sélectionnées ou d'images entières en ligne gratuitement. Sélection interactive de région.",
     "seoDescriptionAr": "عكس ألوان المناطق المحددة أو الصورة بالكامل مجاناً عبر الإنترنت. تحديد تفاعلي للمنطقة.",
-    "faqs": [
+    "intro": "Invert the color spectrum of your images to create high-contrast visuals or film negative effects effortlessly. Process specific sections or full photos directly in your web browser with zero sign-up.",
+    "howTo": [
+      "Upload your image file into the online editor.",
+      "Select the region you wish to invert or choose the full photo.",
+      "Click Invert Colors to transform your image instantly.",
+      "Download the color-inverted image to your device."
+    ],
+    "features": [
+      "Instant color inversion for negative photo effects",
+      "Option to invert full image or selected target areas",
+      "No software installation or account sign-up needed",
+      "Fast local processing with high-quality image export"
+    ],
+    "h1": "Invert Image Colors",
+    "faq": [
       {
         "q": "What does invert colors do?",
         "a": "Inverting colors replaces each color with its opposite: white becomes black, red becomes cyan, blue becomes yellow."
@@ -3003,7 +3045,7 @@
         "a": "Inverting is useful for creating artistic effects, checking contrast accessibility, or converting dark themes to light."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait l'inversion des couleurs ?",
         "a": "L'inversion remplace chaque couleur par son opposé : le blanc devient noir, le rouge devient cyan."
@@ -3021,7 +3063,7 @@
         "a": "L'inversion est utile pour créer des effets artistiques ou vérifier l'accessibilité des contrastes."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل عكس الألوان؟",
         "a": "عكس الألوان يستبدل كل لون بعكسه: الأبيض يصبح أسود، الأحمر يصبح سماوي."
@@ -3047,7 +3089,21 @@
     "seoDescription": "Adjust hue, temperature and tint of selected image areas or entire images online for free. Interactive region selection. Browser-based.",
     "seoDescriptionFr": "Ajustez la teinte, la température et la nuance de zones sélectionnées ou d'images entières en ligne gratuitement.",
     "seoDescriptionAr": "ضبط درجة اللون ودرجة الحرارة والصبغة للمناطق المحددة أو الصورة بالكامل مجاناً عبر الإنترنت.",
-    "faqs": [
+    "intro": "Fine-tune hue, color temperature, saturation, and tint for your photos using our free online color adjustment tool. Customize image visual tone with instant live preview in your browser.",
+    "howTo": [
+      "Upload the photo you want to color adjust.",
+      "Use sliders to adjust hue, temperature, tint, and saturation.",
+      "Preview your changes in real-time as you tweak settings.",
+      "Click Export to save the color-adjusted photo."
+    ],
+    "features": [
+      "Comprehensive controls for hue, tint, and color warmth",
+      "Real-time canvas preview for immediate visual feedback",
+      "No file uploaded to servers - all processing in browser",
+      "Works seamlessly across desktop, tablet, and mobile devices"
+    ],
+    "h1": "Color Adjustment",
+    "faq": [
       {
         "q": "What is hue adjustment?",
         "a": "Hue rotates all colors in the image around the color wheel, shifting the overall color scheme."
@@ -3065,7 +3121,7 @@
         "a": "Yes. Draw a selection and the color adjustments will only apply to that region."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Qu'est-ce que le réglage de la teinte ?",
         "a": "La teinte fait tourner toutes les couleurs autour du cercle chromatique."
@@ -3083,7 +3139,7 @@
         "a": "Oui. Dessinez une sélection et les ajustements s'appliqueront uniquement à cette zone."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ما هو ضبط درجة اللون؟",
         "a": "درجة اللون تدور جميع الألوان في الصورة حول عجلة الألوان، مما يغير نظام الألوان العام."
@@ -3109,7 +3165,21 @@
     "seoDescription": "Redact or black out selected areas of an image online for free. Interactive region selection with custom color. Browser-based, no upload.",
     "seoDescriptionFr": "Caviardez ou masquez des zones sélectionnées d'une image en ligne gratuitement. Sélection interactive de région avec couleur personnalisée.",
     "seoDescriptionAr": "تعتيم أو إخفاء المناطق المحددة من الصورة مجاناً عبر الإنترنت. تحديد تفاعلي للمنطقة مع لون مخصص.",
-    "faqs": [
+    "intro": "Protect confidential information by blacking out or hiding sensitive text and faces in photos. Redact confidential documents and personal data quickly and securely inside your browser.",
+    "howTo": [
+      "Upload the document or photo containing sensitive information.",
+      "Draw rectangular redaction boxes over secret text or regions.",
+      "Choose redaction style such as solid blackout or fill color.",
+      "Download the secure, redacted image to your device."
+    ],
+    "features": [
+      "Easy blackout redacting for sensitive text and identity safety",
+      "Multiple redaction block choices including solid dark cover",
+      "100% secure in-browser execution with no server storage",
+      "Preserves underlying image quality and resolution"
+    ],
+    "h1": "Redact Image",
+    "faq": [
       {
         "q": "What does redact do?",
         "a": "Redaction fills the selected area with a solid color (black by default), permanently hiding the content underneath."
@@ -3127,7 +3197,7 @@
         "a": "Yes. The downloaded image has the redacted areas permanently filled. The original content cannot be recovered from the output."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait le caviardage ?",
         "a": "Le caviardage remplit la zone sélectionnée avec une couleur unie (noir par défaut)."
@@ -3145,7 +3215,7 @@
         "a": "Oui. L'image téléchargée a les zones caviardées définitivement remplies."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل التعتيم؟",
         "a": "التعتيم يملأ المنطقة المحددة بلون واحد (أسود افتراضياً)، مما يخفي المحتوى تحته بشكل دائم."
@@ -3171,7 +3241,21 @@
     "seoDescription": "Erase or fill selected areas of an image with a solid color online for free. Interactive region selection. Browser-based, no upload, no sign-up.",
     "seoDescriptionFr": "Effacez ou remplissez des zones sélectionnées d'une image avec une couleur unie en ligne gratuitement.",
     "seoDescriptionAr": "مسح أو ملء المناطق المحددة من الصورة بلون واحد مجاناً عبر الإنترنت.",
-    "faqs": [
+    "intro": "Remove unwanted spots or fill image areas with solid color using our free online area eraser. Easily clean up photo defects and wipe sections clean with local browser processing.",
+    "howTo": [
+      "Upload your target image into the eraser tool.",
+      "Select the region you want to wipe or fill.",
+      "Pick a fill color or select transparent fill.",
+      "Click Erase and download the cleaned image."
+    ],
+    "features": [
+      "Precise selection tool to target specific image areas",
+      "Fill erased sections with solid colors or background tone",
+      "Browser-based privacy with zero server file transfers",
+      "Fast processing without sign-up or subscription fees"
+    ],
+    "h1": "Erase Image Area",
+    "faq": [
       {
         "q": "What does erase area do?",
         "a": "Erasing fills the selected area with a solid color (white by default), replacing the content underneath."
@@ -3189,7 +3273,7 @@
         "a": "Erase defaults to white fill (useful for cleaning up), while redact defaults to black (useful for hiding sensitive info)."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait l'effacement de zone ?",
         "a": "L'effacement remplit la zone sélectionnée avec une couleur unie (blanc par défaut)."
@@ -3207,7 +3291,7 @@
         "a": "Effacer utilise le blanc par défaut, tandis que caviarder utilise le noir."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل مسح المنطقة؟",
         "a": "المسح يملأ المنطقة المحددة بلون واحد (أبيض افتراضياً)، مستبدلاً المحتوى تحته."
@@ -3233,7 +3317,20 @@
     "seoDescription": "Pick colors from any image and get HEX/RGB values. Browser-based, no upload, no sign-up. Free online tool.",
     "seoDescriptionFr": "Choisir des couleurs dans une image. Outil en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "اختيار الألوان من أي صورة والحصول على قيم HEX/RGB. أداة مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Extract exact color codes from any uploaded image using an interactive eyedropper tool. Get accurate HEX, RGB, and HSL values instantly in your browser.",
+    "howTo": [
+      "Upload any photo or graphics file to the color picker.",
+      "Hover and click on any point of the image with the eyedropper.",
+      "Copy the detected HEX, RGB, or HSL color code with one click."
+    ],
+    "features": [
+      "Interactive eyedropper for precise pixel color sampling",
+      "Instant output in HEX, RGB, and HSL color formats",
+      "Copy color codes directly to clipboard in one tap",
+      "Works on any device with zero software download needed"
+    ],
+    "h1": "Image Color Picker",
+    "faq": [
       {
         "q": "What does Color Picker do?",
         "a": "Pick colors from any image and get HEX/RGB values. All processing happens in your browser."
@@ -3251,7 +3348,7 @@
         "a": "JPG, PNG, WEBP, and GIF formats are supported."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Color Picker ?",
         "a": "Choisir des couleurs dans une image. Tout le traitement se fait dans votre navigateur."
@@ -3269,7 +3366,7 @@
         "a": "Les formats JPG, PNG, WEBP et GIF sont supportés."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Color Picker؟",
         "a": "اختيار الألوان من أي صورة والحصول على قيم HEX/RGB. تتم جميع المعالجة في متصفحك."
@@ -3295,7 +3392,21 @@
     "seoDescription": "Extract dominant colors from any image. Browser-based, no upload, no sign-up. Free online tool.",
     "seoDescriptionFr": "Extraire les couleurs dominantes d'une image. Outil en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "استخراج الألوان المهيمنة من أي صورة. أداة مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Generate beautiful color palettes from your favorite images and photos automatically. Discover dominant colors and copy color codes for design projects right in your web browser.",
+    "howTo": [
+      "Upload an image to automatically analyze its color scheme.",
+      "View the extracted list of dominant palette colors.",
+      "Click any color swatch to copy its HEX or RGB code.",
+      "Download the full palette breakdown for design references."
+    ],
+    "features": [
+      "Automatic detection of dominant color palettes from photos",
+      "Quick copy options for HEX and RGB codes",
+      "Ideal for web designers, artists, and brand strategists",
+      "Private local analysis keeping your image secure"
+    ],
+    "h1": "Extract Color Palette",
+    "faq": [
       {
         "q": "What does Extract Color Palette do?",
         "a": "Extract dominant colors from any image. All processing happens in your browser."
@@ -3313,7 +3424,7 @@
         "a": "JPG, PNG, WEBP, and GIF formats are supported."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Extract Color Palette ?",
         "a": "Extraire les couleurs dominantes d'une image. Tout le traitement se fait dans votre navigateur."
@@ -3331,7 +3442,7 @@
         "a": "Les formats JPG, PNG, WEBP et GIF sont supportés."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Extract Color Palette؟",
         "a": "استخراج الألوان المهيمنة من أي صورة. تتم جميع المعالجة في متصفحك."
@@ -3357,7 +3468,21 @@
     "seoDescription": "Resize images for Instagram, Facebook, Twitter and more. Browser-based, no upload, no sign-up. Free online tool.",
     "seoDescriptionFr": "Redimensionner pour Instagram, Facebook, Twitter et plus. Outil en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تغيير حجم الصور لإنستغرام وفيسبوك وتويتر والمزيد. أداة مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Crop and resize images to fit exact post, banner, and story sizes for Instagram, Facebook, Twitter, LinkedIn, and YouTube. Get perfect image dimensions in seconds without distortion.",
+    "howTo": [
+      "Upload the image you want to resize for social networks.",
+      "Select a target platform preset like Instagram Post or YouTube Header.",
+      "Adjust cropping or positioning if needed.",
+      "Download the perfectly formatted image."
+    ],
+    "features": [
+      "Pre-configured dimension presets for major social platforms",
+      "Smart crop and fit controls to prevent image stretching",
+      "Fast in-browser resizing with no account requirement",
+      "High-quality output optimized for fast web loading"
+    ],
+    "h1": "Social Media Image Resizer",
+    "faq": [
       {
         "q": "What does Social Media Resizer do?",
         "a": "Resize images for Instagram, Facebook, Twitter and more. All processing happens in your browser."
@@ -3375,7 +3500,7 @@
         "a": "JPG, PNG, WEBP, and GIF formats are supported."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Social Media Resizer ?",
         "a": "Redimensionner pour Instagram, Facebook, Twitter et plus. Tout le traitement se fait dans votre navigateur."
@@ -3393,7 +3518,7 @@
         "a": "Les formats JPG, PNG, WEBP et GIF sont supportés."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Social Media Resizer؟",
         "a": "تغيير حجم الصور لإنستغرام وفيسبوك وتويتر والمزيد. تتم جميع المعالجة في متصفحك."
@@ -3419,7 +3544,21 @@
     "seoDescription": "Create passport and ID photos with correct dimensions. Browser-based, no upload, no sign-up. Free online tool.",
     "seoDescriptionFr": "Créer des photos d'identité aux bonnes dimensions. Outil en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "إنشاء صور جواز السفر والهوية بالأبعاد الصحيحة. أداة مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Format photos into official passport, visa, and ID dimensions for various countries online. Crop, adjust alignment, and download printable passport photo sheets instantly.",
+    "howTo": [
+      "Upload a clear portrait photo taken against a plain background.",
+      "Select your country and passport/ID photo size specification.",
+      "Align face guidelines over your eyes and head.",
+      "Download the compliant single photo or printable sheet."
+    ],
+    "features": [
+      "Standard passport photo dimension templates for global countries",
+      "Visual face alignment guide for accurate ID positioning",
+      "Generates multi-photo printable grid sheets",
+      "100% free and private browser processing"
+    ],
+    "h1": "Passport Photo Maker",
+    "faq": [
       {
         "q": "What does Passport Photo Maker do?",
         "a": "Create passport and ID photos with correct dimensions. All processing happens in your browser."
@@ -3437,7 +3576,7 @@
         "a": "JPG, PNG, WEBP, and GIF formats are supported."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Passport Photo Maker ?",
         "a": "Créer des photos d'identité aux bonnes dimensions. Tout le traitement se fait dans votre navigateur."
@@ -3455,7 +3594,7 @@
         "a": "Les formats JPG, PNG, WEBP et GIF sont supportés."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Passport Photo Maker؟",
         "a": "إنشاء صور جواز السفر والهوية بالأبعاد الصحيحة. تتم جميع المعالجة في متصفحك."
@@ -3481,7 +3620,21 @@
     "seoDescription": "Compress image to a specific target file size. Browser-based, no upload, no sign-up. Free online tool.",
     "seoDescriptionFr": "Compresser l'image à une taille cible. Outil en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "ضغط الصورة إلى حجم ملف محدد. أداة مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Compress images down to a specific target file size in KB or MB without sacrificing visual clarity. Meet exact upload requirements for job portals and official applications easily.",
+    "howTo": [
+      "Upload the image file you need to shrink.",
+      "Enter your desired target file size limit in KB or MB.",
+      "Click Compress to automatically optimize image parameters.",
+      "Download the resized file meeting your target constraint."
+    ],
+    "features": [
+      "Targeted file size compression in custom KB or MB limits",
+      "Smart quality balancing algorithm for crisp visuals",
+      "Ideal for strict form upload limits on application portals",
+      "Private client-side optimization with zero server storage"
+    ],
+    "h1": "File Size Targeter",
+    "faq": [
       {
         "q": "What does File Size Targeter do?",
         "a": "Compress image to a specific target file size. All processing happens in your browser."
@@ -3499,7 +3652,7 @@
         "a": "JPG, PNG, WEBP, and GIF formats are supported."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait File Size Targeter ?",
         "a": "Compresser l'image à une taille cible. Tout le traitement se fait dans votre navigateur."
@@ -3517,7 +3670,7 @@
         "a": "Les formats JPG, PNG, WEBP et GIF sont supportés."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل File Size Targeter؟",
         "a": "ضغط الصورة إلى حجم ملف محدد. تتم جميع المعالجة في متصفحك."
@@ -3543,7 +3696,21 @@
     "seoDescription": "Adjust opacity or remove background color. Browser-based, no upload, no sign-up. Free online tool.",
     "seoDescriptionFr": "Ajuster l'opacité ou supprimer la couleur de fond. Outil en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "ضبط الشفافية أو إزالة لون الخلفية. أداة مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Adjust photo transparency, edit opacity, or make selected background colors transparent in PNG images. Create seamless graphics and overlays right inside your browser.",
+    "howTo": [
+      "Upload your PNG or JPG image file.",
+      "Use the opacity slider or pick a background color to make transparent.",
+      "Preview transparent areas against a checkerboard grid.",
+      "Download the edited image with full alpha channel support."
+    ],
+    "features": [
+      "Custom opacity slider and color transparency keying",
+      "Checkerboard background preview for transparency verification",
+      "Exports clean PNG images with full alpha channel data",
+      "No sign-up or software installation required"
+    ],
+    "h1": "Transparency Editor",
+    "faq": [
       {
         "q": "What does Transparency Editor do?",
         "a": "Adjust opacity or remove background color. All processing happens in your browser."
@@ -3561,7 +3728,7 @@
         "a": "JPG, PNG, WEBP, and GIF formats are supported."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Transparency Editor ?",
         "a": "Ajuster l'opacité ou supprimer la couleur de fond. Tout le traitement se fait dans votre navigateur."
@@ -3579,7 +3746,7 @@
         "a": "Les formats JPG, PNG, WEBP et GIF sont supportés."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Transparency Editor؟",
         "a": "ضبط الشفافية أو إزالة لون الخلفية. تتم جميع المعالجة في متصفحك."
@@ -3605,7 +3772,21 @@
     "seoDescription": "Upscale images up to 4x with quality smoothing. Browser-based, no upload, no sign-up. Free online tool.",
     "seoDescriptionFr": "Agrandir les images jusqu'à 4x. Outil en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تكبير الصور حتى 4 أضعاف مع تنعيم عالي الجودة. أداة مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Increase image resolution up to 4x while maintaining edge clarity and reducing pixelation. Upscale low-resolution photos and graphics effortlessly inside your web browser.",
+    "howTo": [
+      "Upload a low-resolution image file.",
+      "Choose your desired upscaling factor like 2x or 4x.",
+      "Apply quality smoothing and detail enhancement.",
+      "Download the sharp, high-resolution upscaled photo."
+    ],
+    "features": [
+      "Upscales images up to 4x target dimensions",
+      "Smoothing algorithms reduce pixel artifacts and blur",
+      "Fast local processing without long server queues",
+      "Free to use with no subscription or account needed"
+    ],
+    "h1": "Image Upscaler",
+    "faq": [
       {
         "q": "What does Image Upscaler do?",
         "a": "Upscale images up to 4x with quality smoothing. All processing happens in your browser."
@@ -3623,7 +3804,7 @@
         "a": "JPG, PNG, WEBP, and GIF formats are supported."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Image Upscaler ?",
         "a": "Agrandir les images jusqu'à 4x. Tout le traitement se fait dans votre navigateur."
@@ -3641,7 +3822,7 @@
         "a": "Les formats JPG, PNG, WEBP et GIF sont supportés."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Image Upscaler؟",
         "a": "تكبير الصور حتى 4 أضعاف مع تنعيم عالي الجودة. تتم جميع المعالجة في متصفحك."
@@ -3667,7 +3848,21 @@
     "seoDescription": "Convert image to any aspect ratio by cropping or padding. Browser-based, no upload, no sign-up. Free online tool.",
     "seoDescriptionFr": "Convertir l'image à n'importe quel ratio. Outil en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تحويل الصورة إلى أي نسبة عرض إلى ارتفاع. أداة مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Convert images to standard aspect ratios like 16:9, 4:3, 1:1, or 9:16 using cropping or background padding. Format pictures for display screens and video media in seconds.",
+    "howTo": [
+      "Upload the photo you want to reformat.",
+      "Select your desired aspect ratio preset or enter custom ratio.",
+      "Choose between crop-to-fill or pad-with-color modes.",
+      "Click Convert and download your reformatted image."
+    ],
+    "features": [
+      "Popular aspect ratio presets including 16:9, 1:1, and 9:16",
+      "Flexible crop or color padding border choices",
+      "Preserves maximum image detail and sharpness",
+      "100% browser-based processing with instant download"
+    ],
+    "h1": "Aspect Ratio Converter",
+    "faq": [
       {
         "q": "What does Aspect Ratio Converter do?",
         "a": "Convert image to any aspect ratio by cropping or padding. All processing happens in your browser."
@@ -3685,7 +3880,7 @@
         "a": "JPG, PNG, WEBP, and GIF formats are supported."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Aspect Ratio Converter ?",
         "a": "Convertir l'image à n'importe quel ratio. Tout le traitement se fait dans votre navigateur."
@@ -3703,7 +3898,7 @@
         "a": "Les formats JPG, PNG, WEBP et GIF sont supportés."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Aspect Ratio Converter؟",
         "a": "تحويل الصورة إلى أي نسبة عرض إلى ارتفاع. تتم جميع المعالجة في متصفحك."
@@ -3729,7 +3924,21 @@
     "seoDescription": "Change image DPI metadata for print production. Browser-based, no upload, no sign-up. Free online tool.",
     "seoDescriptionFr": "Changer les métadonnées DPI pour l'impression. Outil en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تغيير بيانات DPI للصورة للطباعة. أداة مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Change image DPI (Dots Per Inch) metadata to 300 DPI or custom values for high-quality printing. Ensure your photos meet professional print shop requirements without altering pixel counts.",
+    "howTo": [
+      "Upload your image file to the DPI converter.",
+      "Enter your target DPI value such as 300 DPI for print.",
+      "Click Change DPI to rewrite image metadata.",
+      "Download the updated image file ready for printing."
+    ],
+    "features": [
+      "Quickly change metadata DPI to 300, 150, or custom DPI values",
+      "Prepares photos for professional printing and publishing",
+      "Does not stretch or distort pixel dimensions",
+      "Client-side processing keeps your photos confidential"
+    ],
+    "h1": "DPI Converter",
+    "faq": [
       {
         "q": "What does DPI Converter do?",
         "a": "Change image DPI metadata for print production. All processing happens in your browser."
@@ -3747,7 +3956,7 @@
         "a": "JPG, PNG, WEBP, and GIF formats are supported."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait DPI Converter ?",
         "a": "Changer les métadonnées DPI pour l'impression. Tout le traitement se fait dans votre navigateur."
@@ -3765,7 +3974,7 @@
         "a": "Les formats JPG, PNG, WEBP et GIF sont supportés."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل DPI Converter؟",
         "a": "تغيير بيانات DPI للصورة للطباعة. تتم جميع المعالجة في متصفحك."
@@ -3791,7 +4000,21 @@
     "seoDescription": "Remove image backgrounds instantly with AI. Upload an image and get a transparent PNG. No upload to servers, no sign-up. Free online background remover.",
     "seoDescriptionFr": "Supprimez l'arrière-plan des images instantanément avec l'IA. Obtenez un PNG transparent. Gratuit en ligne.",
     "seoDescriptionAr": "إزالة خلفية الصور فوراً بالذكاء الاصطناعي. احصل على PNG شفاف. مجاناً عبر الإنترنت.",
-    "faqs": [
+    "intro": "Automatically remove backgrounds from photos to isolate subjects and create transparent PNGs. Powered by smart browser AI to give you clean subject cutouts instantly.",
+    "howTo": [
+      "Upload your image containing a clear foreground subject.",
+      "Wait a few seconds while the automated background cutout runs.",
+      "Refine edges or touch up background boundaries if desired.",
+      "Download the subject photo with a transparent background."
+    ],
+    "features": [
+      "Automatic subject detection and background isolation",
+      "Outputs transparent PNG files ready for design overlays",
+      "In-browser AI execution protects your image privacy",
+      "Works on product photos, portraits, and graphics"
+    ],
+    "h1": "Remove Background",
+    "faq": [
       {
         "q": "How does background removal work?",
         "a": "It uses an AI model (ONNX) that runs in your browser. The model identifies the foreground subject and removes the background."
@@ -3809,7 +4032,7 @@
         "a": "You get a transparent PNG file with the background removed."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Comment fonctionne la suppression d'arrière-plan ?",
         "a": "Elle utilise un modèle d'IA (ONNX) qui s'exécute dans votre navigateur."
@@ -3827,7 +4050,7 @@
         "a": "Vous obtenez un fichier PNG transparent."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "كيف تعمل إزالة الخلفية؟",
         "a": "تستخدم نموذج ذكاء اصطناعي (ONNX) يعمل في متصفحك."
@@ -3853,7 +4076,21 @@
     "seoDescription": "Cut and trim audio files precisely. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Couper et découper des fichiers audio. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "قص وتقصيح ملفات الصوت. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Cut, trim, and split audio tracks with precision using an interactive waveform editor. Create custom ringtones, clips, and sound bytes right inside your web browser.",
+    "howTo": [
+      "Upload your audio file by dragging or selecting from your file manager.",
+      "Drag start and end handles on the audio waveform display.",
+      "Play to preview the selected audio snippet.",
+      "Click Cut and download the trimmed audio track."
+    ],
+    "features": [
+      "Visual waveform editor for millisecond-level precision cutting",
+      "Supports MP3, WAV, AAC, M4A, and OGG audio formats",
+      "100% private in-browser editing with zero server upload",
+      "Export cut snippets instantly in your preferred format"
+    ],
+    "h1": "Audio Cutter",
+    "faq": [
       {
         "q": "What does Audio Cutter do?",
         "a": "Cut and trim audio files precisely. All processing happens in your browser."
@@ -3871,7 +4108,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Audio Cutter ?",
         "a": "Couper et découper des fichiers audio. Tout le traitement se fait dans votre navigateur."
@@ -3889,7 +4126,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Audio Cutter؟",
         "a": "قص وتقصيح ملفات الصوت. تتم جميع المعالجة في متصفحك."
@@ -3915,7 +4152,21 @@
     "seoDescription": "Merge multiple audio files into one. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Fusionner plusieurs fichiers audio. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "دمج ملفات صوتية متعددة في واحد. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Combine multiple audio tracks into a single continuous sound file seamlessly. Join songs, voice recordings, and sound effects online without quality loss.",
+    "howTo": [
+      "Upload two or more audio files you want to combine.",
+      "Arrange the audio tracks in your desired sequence.",
+      "Choose the output format and audio quality.",
+      "Click Merge and download the unified audio file."
+    ],
+    "features": [
+      "Join unlimited audio files into one continuous track",
+      "Drag-and-drop track reordering for easy sequencing",
+      "Seamless audio joining with consistent output bitrate",
+      "Browser-based processing ensuring total audio privacy"
+    ],
+    "h1": "Audio Merger",
+    "faq": [
       {
         "q": "What does Audio Merger do?",
         "a": "Merge multiple audio files into one. All processing happens in your browser."
@@ -3933,7 +4184,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Audio Merger ?",
         "a": "Fusionner plusieurs fichiers audio. Tout le traitement se fait dans votre navigateur."
@@ -3951,7 +4202,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Audio Merger؟",
         "a": "دمج ملفات صوتية متعددة في واحد. تتم جميع المعالجة في متصفحك."
@@ -3977,7 +4228,21 @@
     "seoDescription": "Convert audio between WAV MP3 OGG M4A formats. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Convertir l'audio entre WAV MP3 OGG M4A. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تحويل الصوت بين WAV MP3 OGG M4A. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Convert audio files between popular formats like MP3, WAV, OGG, M4A, and FLAC instantly. Enjoy fast batch conversion in your browser without downloading heavy software.",
+    "howTo": [
+      "Upload your audio track into the converter tool.",
+      "Select target output format like MP3, WAV, or OGG.",
+      "Adjust audio quality bitrate settings if desired.",
+      "Click Convert and download your converted file."
+    ],
+    "features": [
+      "Multi-format converter supporting MP3, WAV, OGG, M4A, and FLAC",
+      "Customizable audio quality and bitrate options",
+      "Fast browser processing with no installation required",
+      "No sign-up or file conversion limits"
+    ],
+    "h1": "Audio Converter",
+    "faq": [
       {
         "q": "What does Audio Converter do?",
         "a": "Convert audio between WAV MP3 OGG M4A formats. All processing happens in your browser."
@@ -3995,7 +4260,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Audio Converter ?",
         "a": "Convertir l'audio entre WAV MP3 OGG M4A. Tout le traitement se fait dans votre navigateur."
@@ -4013,7 +4278,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Audio Converter؟",
         "a": "تحويل الصوت بين WAV MP3 OGG M4A. تتم جميع المعالجة في متصفحك."
@@ -4039,7 +4304,21 @@
     "seoDescription": "Compress audio files to reduce size. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Compresser les fichiers audio. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "ضغط ملفات الصوت لتقليل الحجم. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Reduce audio file sizes by adjusting bitrate and sample rates without noticeable quality degradation. Shrink large sound recordings for easier sharing and email attachment.",
+    "howTo": [
+      "Upload the audio file you need to compress.",
+      "Select desired target bitrate or compression level.",
+      "Preview the estimated compressed file size.",
+      "Click Compress and download the smaller audio file."
+    ],
+    "features": [
+      "Reduces audio file size by up to 80% with clear sound",
+      "Adjustable bitrate levels for customized compression",
+      "Entirely local in-browser processing for file privacy",
+      "Compatible with MP3, WAV, M4A, and OGG inputs"
+    ],
+    "h1": "Audio Compressor",
+    "faq": [
       {
         "q": "What does Audio Compressor do?",
         "a": "Compress audio files to reduce size. All processing happens in your browser."
@@ -4057,7 +4336,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Audio Compressor ?",
         "a": "Compresser les fichiers audio. Tout le traitement se fait dans votre navigateur."
@@ -4075,7 +4354,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Audio Compressor؟",
         "a": "ضغط ملفات الصوت لتقليل الحجم. تتم جميع المعالجة في متصفحك."
@@ -4101,7 +4380,21 @@
     "seoDescription": "Trim audio from start or end. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Découper l'audio du début ou de la fin. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "قص الصوت من البداية أو النهاية. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Trim silent headers or unwanted tails from audio recordings in seconds. Easily clean up voice notes, podcasts, and sound clips directly in your web browser.",
+    "howTo": [
+      "Upload your audio recording into the trimmer.",
+      "Set start time and end time to define the active clip.",
+      "Listen to the selection using the built-in audio player.",
+      "Click Trim and save the final audio clip."
+    ],
+    "features": [
+      "Precise start and end timestamp trimming control",
+      "Interactive waveform playback preview before saving",
+      "No software installation or registration needed",
+      "Preserves original audio fidelity and stereo balance"
+    ],
+    "h1": "Audio Trimmer",
+    "faq": [
       {
         "q": "What does Audio Trimmer do?",
         "a": "Trim audio from start or end. All processing happens in your browser."
@@ -4119,7 +4412,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Audio Trimmer ?",
         "a": "Découper l'audio du début ou de la fin. Tout le traitement se fait dans votre navigateur."
@@ -4137,7 +4430,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Audio Trimmer؟",
         "a": "قص الصوت من البداية أو النهاية. تتم جميع المعالجة في متصفحك."
@@ -4163,7 +4456,21 @@
     "seoDescription": "Increase or decrease audio volume. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Augmenter ou diminuer le volume audio. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "زيادة أو تقليل مستوى الصوت. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Amplify quiet sound files or lower excessively loud audio tracks easily. Boost voice recordings and music volume up to 500% directly in your browser.",
+    "howTo": [
+      "Upload the audio track with low volume.",
+      "Adjust the volume gain slider to increase or decrease decibels.",
+      "Play the boosted audio preview to check loudness.",
+      "Download the volume-boosted audio file."
+    ],
+    "features": [
+      "Boost audio volume up to 500% without distortion",
+      "Simple slider controls for instant loudness tuning",
+      "Real-time audio preview player for quick checking",
+      "100% private in-browser processing with zero uploads"
+    ],
+    "h1": "Audio Volume Booster",
+    "faq": [
       {
         "q": "What does Audio Volume Booster do?",
         "a": "Increase or decrease audio volume. All processing happens in your browser."
@@ -4181,7 +4488,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Audio Volume Booster ?",
         "a": "Augmenter ou diminuer le volume audio. Tout le traitement se fait dans votre navigateur."
@@ -4199,7 +4506,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Audio Volume Booster؟",
         "a": "زيادة أو تقليل مستوى الصوت. تتم جميع المعالجة في متصفحك."
@@ -4225,7 +4532,21 @@
     "seoDescription": "Normalize audio volume to a standard level. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Normaliser le volume audio. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تطبيع مستوى الصوت. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Normalize audio volume peaks across recordings to achieve consistent loudness standards. Eliminate sudden volume jumps in podcasts and music tracks effortlessly.",
+    "howTo": [
+      "Upload your audio track to the normalizer tool.",
+      "Select target volume peak level or normalization standard.",
+      "Click Normalize to equalize audio amplitude.",
+      "Download the normalized audio file."
+    ],
+    "features": [
+      "Equalizes sound levels for consistent listening volume",
+      "Prevents audio clipping and unwanted harsh distortion",
+      "Ideal for podcasts, voiceovers, and playlist audio",
+      "Free browser tool with no sign-up or software needed"
+    ],
+    "h1": "Audio Normalizer",
+    "faq": [
       {
         "q": "What does Audio Normalizer do?",
         "a": "Normalize audio volume to a standard level. All processing happens in your browser."
@@ -4243,7 +4564,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Audio Normalizer ?",
         "a": "Normaliser le volume audio. Tout le traitement se fait dans votre navigateur."
@@ -4261,7 +4582,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Audio Normalizer؟",
         "a": "تطبيع مستوى الصوت. تتم جميع المعالجة في متصفحك."
@@ -4287,7 +4608,21 @@
     "seoDescription": "Add fade in and fade out effects. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Ajouter des effets de fondu entrant et sortant. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "إضافة تأثيرات التلاشي الداخولي والخروجي. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Apply smooth fade-in and fade-out audio transitions to eliminate abrupt starts and harsh endings. Enhance music tracks and sound clips right in your browser.",
+    "howTo": [
+      "Upload the audio file you want to edit.",
+      "Set the duration in seconds for fade-in and fade-out effects.",
+      "Preview the faded audio track using the built-in player.",
+      "Click Apply Fade and download the processed audio."
+    ],
+    "features": [
+      "Customizable fade-in and fade-out duration settings",
+      "Smooth gain curve transitions to prevent audio pops",
+      "Fast local processing keeps audio files completely private",
+      "Works on smartphones, tablets, and desktop computers"
+    ],
+    "h1": "Audio Fade In / Fade Out",
+    "faq": [
       {
         "q": "What does Audio Fade In/Out do?",
         "a": "Add fade in and fade out effects. All processing happens in your browser."
@@ -4305,7 +4640,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Audio Fade In/Out ?",
         "a": "Ajouter des effets de fondu entrant et sortant. Tout le traitement se fait dans votre navigateur."
@@ -4323,7 +4658,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Audio Fade In/Out؟",
         "a": "إضافة تأثيرات التلاشي الداخولي والخروجي. تتم جميع المعالجة في متصفحك."
@@ -4349,7 +4684,21 @@
     "seoDescription": "Change audio playback speed. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Changer la vitesse de lecture audio. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تغيير سرعة تشغيل الصوت. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Speed up or slow down audio playback rate without changing pitch. Accelerate lectures or slow down music tracks for practice with instant browser processing.",
+    "howTo": [
+      "Upload the audio track you wish to adjust.",
+      "Set the speed multiplier slider (e.g. 0.5x, 1.25x, 2.0x).",
+      "Listen to the real-time preview of the speed-adjusted audio.",
+      "Download the modified audio file to your device."
+    ],
+    "features": [
+      "Adjust playback speed from 0.25x to 3.0x seamlessly",
+      "Maintains original audio pitch while altering tempo",
+      "Great for studying lectures, transcription, and music practice",
+      "100% browser-based operation with zero server storage"
+    ],
+    "h1": "Audio Speed Changer",
+    "faq": [
       {
         "q": "What does Audio Speed Changer do?",
         "a": "Change audio playback speed. All processing happens in your browser."
@@ -4367,7 +4716,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Audio Speed Changer ?",
         "a": "Changer la vitesse de lecture audio. Tout le traitement se fait dans votre navigateur."
@@ -4385,7 +4734,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Audio Speed Changer؟",
         "a": "تغيير سرعة تشغيل الصوت. تتم جميع المعالجة في متصفحك."
@@ -4411,7 +4760,21 @@
     "seoDescription": "Change audio pitch without affecting speed. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Changer la tonalité sans affecter la vitesse. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تغيير طبقة الصوت دون التأثير على السرعة. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Shift audio pitch higher or lower by semitones without changing the playback tempo. Transpose music tracks or adjust voice tone easily in your web browser.",
+    "howTo": [
+      "Upload your audio file into the pitch changer.",
+      "Adjust semitone slider up or down to alter pitch key.",
+      "Preview the pitch-shifted audio playback.",
+      "Click Save and download the transposed audio file."
+    ],
+    "features": [
+      "Shift pitch up or down by exact semitones",
+      "Keeps original audio speed and tempo completely unchanged",
+      "Ideal for musicians adjusting backing tracks to key",
+      "Runs locally in browser with complete file confidentiality"
+    ],
+    "h1": "Audio Pitch Changer",
+    "faq": [
       {
         "q": "What does Audio Pitch Changer do?",
         "a": "Change audio pitch without affecting speed. All processing happens in your browser."
@@ -4429,7 +4792,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Audio Pitch Changer ?",
         "a": "Changer la tonalité sans affecter la vitesse. Tout le traitement se fait dans votre navigateur."
@@ -4447,7 +4810,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Audio Pitch Changer؟",
         "a": "تغيير طبقة الصوت دون التأثير على السرعة. تتم جميع المعالجة في متصفحك."
@@ -4473,7 +4836,21 @@
     "seoDescription": "Record audio directly from your microphone. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Enregistrer l'audio depuis le microphone. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تسجيل الصوت مباشرة من الميكروفون. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Record high-quality voice notes, interviews, or sound directly from your computer or phone microphone. Save audio recordings as MP3 or WAV files instantly with no software required.",
+    "howTo": [
+      "Allow microphone permission when prompted by your browser.",
+      "Click Record to start capturing your voice or audio.",
+      "Click Stop when finished and listen to the playback.",
+      "Download your recorded file in MP3 or WAV format."
+    ],
+    "features": [
+      "Direct microphone recording with live audio level meter",
+      "No third-party apps or plugins required",
+      "Recordings stay strictly local on your device",
+      "Export recordings instantly as MP3 or WAV files"
+    ],
+    "h1": "Audio Recorder",
+    "faq": [
       {
         "q": "What does Audio Recorder do?",
         "a": "Record audio directly from your microphone. All processing happens in your browser."
@@ -4491,7 +4868,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Audio Recorder ?",
         "a": "Enregistrer l'audio depuis le microphone. Tout le traitement se fait dans votre navigateur."
@@ -4509,7 +4886,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Audio Recorder؟",
         "a": "تسجيل الصوت مباشرة من الميكروفون. تتم جميع المعالجة في متصفحك."
@@ -4535,7 +4912,21 @@
     "seoDescription": "Convert WAV audio files to MP3 format. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Convertir les fichiers WAV en MP3. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تحويل ملفات WAV إلى صيغة MP3. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Convert large uncompressed WAV audio files into lightweight MP3 format online for free. Reduce file size drastically while preserving rich sound quality inside your browser.",
+    "howTo": [
+      "Upload your WAV audio file into the converter.",
+      "Select desired MP3 bitrate quality (e.g. 192kbps or 320kbps).",
+      "Click Convert to encode WAV to MP3 format.",
+      "Download the converted MP3 file to your device."
+    ],
+    "features": [
+      "Fast WAV to MP3 encoding with customizable bitrates",
+      "Shrinks audio file size by up to 90% for easy sharing",
+      "100% browser-based conversion protecting sound privacy",
+      "Works on desktop, mobile, and tablet browsers"
+    ],
+    "h1": "WAV to MP3 Converter",
+    "faq": [
       {
         "q": "What does WAV to MP3 do?",
         "a": "Convert WAV audio files to MP3 format. All processing happens in your browser."
@@ -4553,7 +4944,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait WAV to MP3 ?",
         "a": "Convertir les fichiers WAV en MP3. Tout le traitement se fait dans votre navigateur."
@@ -4571,7 +4962,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل WAV to MP3؟",
         "a": "تحويل ملفات WAV إلى صيغة MP3. تتم جميع المعالجة في متصفحك."
@@ -4597,7 +4988,21 @@
     "seoDescription": "Convert MP3 audio files to WAV format. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Convertir les fichiers MP3 en WAV. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تحويل ملفات MP3 إلى صيغة WAV. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Convert compressed MP3 audio files into uncompressed WAV format for editing and studio production. Fast, loss-free audio conversion running right in your web browser.",
+    "howTo": [
+      "Upload your MP3 file into the conversion box.",
+      "Choose target sample rate and audio channels if needed.",
+      "Click Convert to generate the uncompressed WAV file.",
+      "Download the full-fidelity WAV audio track."
+    ],
+    "features": [
+      "Converts MP3 to standard uncompressed WAV audio",
+      "Suitable for audio editing software and production work",
+      "No software download or user registration required",
+      "Client-side processing ensures complete file security"
+    ],
+    "h1": "MP3 to WAV Converter",
+    "faq": [
       {
         "q": "What does MP3 to WAV do?",
         "a": "Convert MP3 audio files to WAV format. All processing happens in your browser."
@@ -4615,7 +5020,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait MP3 to WAV ?",
         "a": "Convertir les fichiers MP3 en WAV. Tout le traitement se fait dans votre navigateur."
@@ -4633,7 +5038,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل MP3 to WAV؟",
         "a": "تحويل ملفات MP3 إلى صيغة WAV. تتم جميع المعالجة في متصفحك."
@@ -4659,7 +5064,21 @@
     "seoDescription": "Convert M4A audio files to MP3 format. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Convertir les fichiers M4A en MP3. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تحويل ملفات M4A إلى صيغة MP3. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Convert Apple M4A audio recordings and iTunes files to universal MP3 format online. Play your audio files across any device or media player effortlessly.",
+    "howTo": [
+      "Upload your M4A audio file.",
+      "Select your preferred MP3 bitrate quality.",
+      "Click Convert to convert M4A to MP3.",
+      "Download the converted MP3 file immediately."
+    ],
+    "features": [
+      "Transforms Apple M4A and AAC audio to standard MP3",
+      "Preserves sound clarity and original audio metadata",
+      "In-browser conversion with zero file uploads to servers",
+      "Compatible with all operating systems and browsers"
+    ],
+    "h1": "M4A to MP3 Converter",
+    "faq": [
       {
         "q": "What does M4A to MP3 do?",
         "a": "Convert M4A audio files to MP3 format. All processing happens in your browser."
@@ -4677,7 +5096,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait M4A to MP3 ?",
         "a": "Convertir les fichiers M4A en MP3. Tout le traitement se fait dans votre navigateur."
@@ -4695,7 +5114,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل M4A to MP3؟",
         "a": "تحويل ملفات M4A إلى صيغة MP3. تتم جميع المعالجة في متصفحك."
@@ -4721,7 +5140,21 @@
     "seoDescription": "Convert OGG audio files to MP3 format. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Convertir les fichiers OGG en MP3. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تحويل ملفات OGG إلى صيغة MP3. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Convert OGG Vorbis audio tracks into broadly compatible MP3 files online for free. Enjoy seamless audio playback on all smartphones, car stereos, and media players.",
+    "howTo": [
+      "Upload your OGG audio file into the converter.",
+      "Choose your desired MP3 audio quality level.",
+      "Click Convert to run the conversion process.",
+      "Download your MP3 file instantly."
+    ],
+    "features": [
+      "Fast OGG to MP3 format conversion",
+      "Universal compatibility for playback on any device",
+      "100% private processing running in your browser",
+      "No sign-up or hidden file size fees"
+    ],
+    "h1": "OGG to MP3 Converter",
+    "faq": [
       {
         "q": "What does OGG to MP3 do?",
         "a": "Convert OGG audio files to MP3 format. All processing happens in your browser."
@@ -4739,7 +5172,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait OGG to MP3 ?",
         "a": "Convertir les fichiers OGG en MP3. Tout le traitement se fait dans votre navigateur."
@@ -4757,7 +5190,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل OGG to MP3؟",
         "a": "تحويل ملفات OGG إلى صيغة MP3. تتم جميع المعالجة في متصفحك."
@@ -4783,7 +5216,21 @@
     "seoDescription": "Convert MP3 audio files to OGG format. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Convertir les fichiers MP3 en OGG. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تحويل ملفات MP3 إلى صيغة OGG. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Convert MP3 files into open-source OGG Vorbis audio format online for free. Perfect for web application development, game audio, and open media workflows.",
+    "howTo": [
+      "Upload your MP3 track into the conversion window.",
+      "Select target OGG quality settings.",
+      "Click Convert to process the file.",
+      "Download the encoded OGG audio file."
+    ],
+    "features": [
+      "Converts MP3 tracks to efficient OGG Vorbis format",
+      "Ideal for web developers, game audio, and media projects",
+      "Fast in-browser encoding with total data privacy",
+      "Free tool requiring no registration or software download"
+    ],
+    "h1": "MP3 to OGG Converter",
+    "faq": [
       {
         "q": "What does MP3 to OGG do?",
         "a": "Convert MP3 audio files to OGG format. All processing happens in your browser."
@@ -4801,7 +5248,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait MP3 to OGG ?",
         "a": "Convertir les fichiers MP3 en OGG. Tout le traitement se fait dans votre navigateur."
@@ -4819,7 +5266,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل MP3 to OGG؟",
         "a": "تحويل ملفات MP3 إلى صيغة OGG. تتم جميع المعالجة في متصفحك."
@@ -4845,7 +5292,21 @@
     "seoDescription": "Convert FLAC audio files to MP3 format. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Convertir les fichiers FLAC en MP3. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تحويل ملفات FLAC إلى صيغة MP3. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Convert lossless FLAC audio files to compact MP3 format online for free. Save device storage space while maintaining high audio playback quality.",
+    "howTo": [
+      "Upload your high-definition FLAC audio file.",
+      "Select output MP3 bitrate quality up to 320kbps.",
+      "Click Convert to transform FLAC to MP3.",
+      "Download the compressed MP3 track."
+    ],
+    "features": [
+      "Converts heavy FLAC audio to lightweight MP3 files",
+      "Supports high-bitrate MP3 output up to 320kbps",
+      "Private client-side conversion keeps audio files safe",
+      "No software installation or account sign-up needed"
+    ],
+    "h1": "FLAC to MP3 Converter",
+    "faq": [
       {
         "q": "What does FLAC to MP3 do?",
         "a": "Convert FLAC audio files to MP3 format. All processing happens in your browser."
@@ -4863,7 +5324,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait FLAC to MP3 ?",
         "a": "Convertir les fichiers FLAC en MP3. Tout le traitement se fait dans votre navigateur."
@@ -4881,7 +5342,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل FLAC to MP3؟",
         "a": "تحويل ملفات FLAC إلى صيغة MP3. تتم جميع المعالجة في متصفحك."
@@ -4907,7 +5368,21 @@
     "seoDescription": "Convert any audio format to WAV. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Convertir tout format audio en WAV. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تحويل أي صيغة صوت إلى WAV. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Convert any audio format including MP3, M4A, OGG, or FLAC into clean WAV audio files online. Generate standard uncompressed WAV audio for editing and broadcast.",
+    "howTo": [
+      "Upload an audio file in any supported format.",
+      "Select WAV as your target output format.",
+      "Click Convert to start processing.",
+      "Download the newly generated WAV file."
+    ],
+    "features": [
+      "Universal audio input support converting to WAV format",
+      "Lossless signal path for professional audio work",
+      "100% in-browser processing with zero server uploads",
+      "Works on mobile devices, tablets, and desktop computers"
+    ],
+    "h1": "Audio to WAV Converter",
+    "faq": [
       {
         "q": "What does Audio to WAV do?",
         "a": "Convert any audio format to WAV. All processing happens in your browser."
@@ -4925,7 +5400,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Audio to WAV ?",
         "a": "Convertir tout format audio en WAV. Tout le traitement se fait dans votre navigateur."
@@ -4943,7 +5418,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Audio to WAV؟",
         "a": "تحويل أي صيغة صوت إلى WAV. تتم جميع المعالجة في متصفحك."
@@ -4969,7 +5444,21 @@
     "seoDescription": "Extract audio track from video files. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Extraire la piste audio des fichiers vidéo. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "استخراج المسار الصوتي من ملفات الفيديو. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Separate sound tracks from video files like MP4, MOV, or AVI and save them as MP3 or WAV audio. Extract music, speeches, and interviews from videos instantly in your browser.",
+    "howTo": [
+      "Upload your video file (MP4, MOV, AVI, WEBM).",
+      "Select desired audio output format (MP3 or WAV).",
+      "Click Extract Audio to demux the video track.",
+      "Download the extracted audio file to your device."
+    ],
+    "features": [
+      "Extracts clear sound tracks from MP4, MOV, AVI, and WEBM",
+      "Save extracted audio as MP3 or WAV file",
+      "Browser-based video processing ensures complete privacy",
+      "Fast extraction with no file upload delays"
+    ],
+    "h1": "Extract Audio from Video",
+    "faq": [
       {
         "q": "What does Extract Audio from Video do?",
         "a": "Extract audio track from video files. All processing happens in your browser."
@@ -4987,7 +5476,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait Extract Audio from Video ?",
         "a": "Extraire la piste audio des fichiers vidéo. Tout le traitement se fait dans votre navigateur."
@@ -5005,7 +5494,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل Extract Audio from Video؟",
         "a": "استخراج المسار الصوتي من ملفات الفيديو. تتم جميع المعالجة في متصفحك."
@@ -5031,7 +5520,21 @@
     "seoDescription": "Convert MP4 video files to MP3 audio. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Convertir les fichiers MP4 en MP3. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "تحويل ملفات MP4 إلى MP3. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Extract and convert MP4 video files into high-quality MP3 audio tracks online for free. Turn music videos, podcasts, and recordings into standalone MP3 audio files.",
+    "howTo": [
+      "Upload your MP4 video file into the converter.",
+      "Select target MP3 audio bitrate quality.",
+      "Click Convert to extract MP3 audio from video.",
+      "Download the converted MP3 file to your device."
+    ],
+    "features": [
+      "Direct MP4 video to MP3 audio conversion",
+      "Customizable MP3 audio bitrate settings",
+      "100% private in-browser conversion with zero upload",
+      "Free tool with no software installation required"
+    ],
+    "h1": "MP4 to MP3 Converter",
+    "faq": [
       {
         "q": "What does MP4 to MP3 do?",
         "a": "Convert MP4 video files to MP3 audio. All processing happens in your browser."
@@ -5049,7 +5552,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait MP4 to MP3 ?",
         "a": "Convertir les fichiers MP4 en MP3. Tout le traitement se fait dans votre navigateur."
@@ -5067,7 +5570,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل MP4 to MP3؟",
         "a": "تحويل ملفات MP4 إلى MP3. تتم جميع المعالجة في متصفحك."
@@ -5093,7 +5596,21 @@
     "seoDescription": "Process audio from a direct media URL. Browser-based, no upload, no sign-up. Free online audio tool.",
     "seoDescriptionFr": "Traiter l'audio depuis une URL directe. Outil audio en ligne gratuit, basé sur le navigateur.",
     "seoDescriptionAr": "معالجة الصوت من رابط وسائط مباشر. أداة صوتية مجانية عبر الإنترنت، تعمل في المتصفح.",
-    "faqs": [
+    "intro": "Convert audio directly from online media URLs without downloading the file to your computer first. Process web audio streams into MP3 or WAV formats fast and easily.",
+    "howTo": [
+      "Paste the direct media URL into the input field.",
+      "Select your desired output audio format.",
+      "Click Fetch and Convert to process the media URL.",
+      "Download the converted audio file."
+    ],
+    "features": [
+      "Convert audio directly from direct web media links",
+      "Supports conversion to MP3, WAV, and OGG formats",
+      "Saves bandwidth by avoiding manual double downloading",
+      "Fast and convenient browser tool with zero installation"
+    ],
+    "h1": "URL Audio Converter",
+    "faq": [
       {
         "q": "What does URL Audio Converter do?",
         "a": "Process audio from a direct media URL. All processing happens in your browser."
@@ -5111,7 +5628,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC and more. Output depends on the tool."
       }
     ],
-    "faqsFr": [
+    "faqFr": [
       {
         "q": "Que fait URL Audio Converter ?",
         "a": "Traiter l'audio depuis une URL directe. Tout le traitement se fait dans votre navigateur."
@@ -5129,7 +5646,7 @@
         "a": "MP3, WAV, OGG, M4A, FLAC et plus."
       }
     ],
-    "faqsAr": [
+    "faqAr": [
       {
         "q": "ماذا يفعل URL Audio Converter؟",
         "a": "معالجة الصوت من رابط وسائط مباشر. تتم جميع المعالجة في متصفحك."

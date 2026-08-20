@@ -31,12 +31,15 @@ export default function CategoriesPage({ lang, t, slug }) {
     const catSeoTitles = {
       'pdf-tools': { en: 'Free PDF Tools Online - Edit, Convert, Merge PDF | SmartTools', fr: 'Outils PDF Gratuits en Ligne - Éditer, Convertir, Fusionner | SmartTools', ar: 'أدوات PDF مجانية عبر الإنترنت - تحرير وتحويل ودمج | SmartTools' },
       'image-tools': { en: 'Free Image Tools Online - Edit, Convert, Resize Images | SmartTools', fr: 'Outils Image Gratuits en Ligne - Éditer, Convertir, Redimensionner | SmartTools', ar: 'أدوات الصور مجانية عبر الإنترنت - تحرير وتحويل وتغيير الحجم | SmartTools' },
+      'audio-tools': { en: 'Free Audio Tools Online - Cut, Convert, Record Audio | SmartTools', fr: 'Outils Audio Gratuits en Ligne - Couper, Convertir, Enregistrer | SmartTools', ar: 'أدوات الصوت مجانية عبر الإنترنت - قص وتحويل وتسجيل | SmartTools' },
       'text-tools': { en: 'Free Text Tools Online - Word Counter, Case Converter | SmartTools', fr: 'Outils Texte Gratuits en Ligne - Compteur de Mots, Convertisseur | SmartTools', ar: 'أدوات النص مجانية عبر الإنترنت - عداد الكلمات ومحول الأحرف | SmartTools' },
       'calculators': { en: 'Free Online Calculators - BMI, Age, Percentage | SmartTools', fr: 'Calculatrices Gratuites en Ligne - IMC, Âge, Pourcentage | SmartTools', ar: 'آلات حاسبة مجانية عبر الإنترنت - مؤشر كتلة الجسم والعمر والنسبة المئوية | SmartTools' },
     }
+    const catToolCount = catTools.length
     const catSeoDescs = {
-      'pdf-tools': { en: '20 free online PDF tools to convert, merge, split, compress, rotate, and edit PDF files. No installation, no sign-up. All processing in your browser.', fr: '20 outils PDF gratuits en ligne pour convertir, fusionner, diviser, compresser et éditer des PDF. Sans installation, sans inscription. Tout dans votre navigateur.', ar: '20 أداة PDF مجانية عبر الإنترنت للتحويل والدمج والتقسيم والضغط وتحرير ملفات PDF. بدون تثبيت وبدون تسجيل. كل المعالجة في متصفحك.' },
-      'image-tools': { en: '20 free online image tools to compress, resize, crop, convert, and edit images. Supports JPG, PNG, WEBP. No upload, no sign-up. Browser-based.', fr: '20 outils image gratuits en ligne pour compresser, redimensionner, recadrer et éditer des images. JPG, PNG, WEBP. Sans upload, sans inscription.', ar: '20 أداة صور مجانية عبر الإنترنت لضغط وتغيير حجم وتحرير الصور. يدعم JPG و PNG و WEBP. بدون رفع وبدون تسجيل. في المتصفح.' },
+      'pdf-tools': { en: `${catToolCount} free online PDF tools to convert, merge, split, compress, rotate, and edit PDF files. No installation, no sign-up. All processing in your browser.`, fr: `${catToolCount} outils PDF gratuits en ligne pour convertir, fusionner, diviser, compresser et éditer des PDF. Sans installation, sans inscription. Tout dans votre navigateur.`, ar: `${catToolCount} أداة PDF مجانية عبر الإنترنت للتحويل والدمج والتقسيم والضغط وتحرير ملفات PDF. بدون تثبيت وبدون تسجيل. كل المعالجة في متصفحك.` },
+      'image-tools': { en: `${catToolCount} free online image tools to compress, resize, crop, convert, and edit images. Supports JPG, PNG, WEBP. No upload, no sign-up. Browser-based.`, fr: `${catToolCount} outils image gratuits en ligne pour compresser, redimensionner, recadrer et éditer des images. JPG, PNG, WEBP. Sans upload, sans inscription.`, ar: `${catToolCount} أداة صور مجانية عبر الإنترنت لضغط وتغيير حجم وتحرير الصور. يدعم JPG و PNG و WEBP. بدون رفع وبدون تسجيل. في المتصفح.` },
+      'audio-tools': { en: `${catToolCount} free online audio tools to cut, merge, convert, compress, record, and edit audio files. MP3, WAV, OGG, M4A support. No upload, no sign-up.`, fr: `${catToolCount} outils audio gratuits en ligne pour couper, fusionner, convertir, compresser, enregistrer et éditer l\'audio. MP3, WAV, OGG, M4A. Sans upload, sans inscription.`, ar: `${catToolCount} أداة صوت مجانية عبر الإنترنت للقص والدمج والتحويل والضغط والتسجيل وتحرير الصوت. MP3، WAV، OGG، M4A. بدون رفع وبدون تسجيل.` },
       'text-tools': { en: 'Free online text tools including word counter, character counter, and case converter. Instant results, no installation required. Works in your browser.', fr: 'Outils texte gratuits en ligne incluant compteur de mots, compteur de caractères et convertisseur de casse. Résultats instantanés, sans installation.', ar: 'أدوات نص مجانية عبر الإنترنت بما في ذلك عداد الكلمات وعدّاد الأحرف ومحول الأحرف. نتائج فورية بدون تثبيت. تعمل في متصفحك.' },
       'calculators': { en: 'Free online calculators for BMI, age calculation, and percentage. Quick, accurate results. No sign-up required. Works on any device.', fr: 'Calculatrices gratuites en ligne pour l\'IMC, le calcul de l\'âge et les pourcentages. Résultats rapides et précis. Sans inscription.', ar: 'آلات حاسبة مجانية عبر الإنترنت لحساب مؤشر كتلة الجسم والعمر والنسبة المئوية. نتائج سريعة ودقيقة. بدون تسجيل.' },
     }
@@ -95,8 +98,15 @@ export default function CategoriesPage({ lang, t, slug }) {
         </div>
 
         {/* ── SEO Intro ── */}
-        <div className="mb-6 md:mb-8">
-          <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed max-w-3xl">{catIntro}</p>
+        <div className="mb-6 md:mb-8 space-y-3 max-w-3xl">
+          <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed">{catIntro}</p>
+          <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed">
+            {lang === 'ar'
+              ? 'جميع الأدوات تعمل مباشرة في متصفحك. لا يتم رفع ملفاتك إلى أي خادم، مما يضمن خصوصيتك وأمان بياناتك.'
+              : lang === 'fr'
+              ? 'Tous les outils fonctionnent directement dans votre navigateur. Vos fichiers ne sont téléchargés sur aucun serveur, garantissant votre confidentialité et la sécurité de vos données.'
+              : 'All tools run directly in your browser. Your files are never uploaded to any server, ensuring your privacy and data security.'}
+          </p>
         </div>
 
         {/* ── Tools Grid ── */}

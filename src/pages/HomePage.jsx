@@ -6,7 +6,7 @@ import tools from '../data/tools.json'
 import ToolCard from '../components/ToolCard'
 import SectionHeader from '../components/SectionHeader'
 import { CategoryGridSkeleton, ToolGridSkeleton } from '../components/Skeletons'
-import { useSEO, getPopularTools, buildWebsiteJsonLd, SITE_URL } from '../lib/seo'
+import { useSEO, getPopularTools, buildWebsiteJsonLd, buildFaqJsonLd, SITE_URL } from '../lib/seo'
 import { getIcon } from '../lib/icons'
 import { getRecentToolSlugs } from '../lib/recentHelpers'
 
@@ -28,16 +28,44 @@ function isNew(tool) {
 export default function HomePage({ lang, t }) {
   const [loading, setLoading] = useState(true)
 
+  const homepageFaqs = lang === 'ar' ? [
+    { q: 'هل أدوات SmartTools مجانية؟', a: 'نعم، جميع أدوات SmartTools مجانية 100% ولا تتطلب التسجيل أو إنشاء حساب.' },
+    { q: 'هل يتم رفع ملفاتي إلى الخادم؟', a: 'لا، تتم جميع المعالجة محلياً في متصفحك. ملفاتك لا تغادر جهازك أبداً.' },
+    { q: 'ما نوع الأدوات المتاحة؟', a: 'نقدم أدوات لملفات PDF والصور والصوت والنص والآلات الحاسبة. تشمل التحويل والضغط والتحرير والمزيد.' },
+    { q: 'هل تعمل الأدوات على الهاتف المحمول؟', a: 'نعم، جميع أدواتنا تعمل على الهواتف والأجهزة اللوحية وأجهزة الكمبيوتر.' },
+    { q: 'هل أحتاج إلى تثبيت أي برنامج؟', a: 'لا، جميع الأدوات تعمل مباشرة في المتصفح بدون أي تثبيت.' },
+  ] : lang === 'fr' ? [
+    { q: 'Les outils SmartTools sont-ils gratuits ?', a: 'Oui, tous les outils SmartTools sont 100% gratuits et ne nécessitent aucune inscription.' },
+    { q: 'Mes fichiers sont-ils téléchargés sur un serveur ?', a: 'Non, tout le traitement se fait localement dans votre navigateur. Vos fichiers ne quittent jamais votre appareil.' },
+    { q: 'Quels types d\'outils sont disponibles ?', a: 'Nous proposons des outils pour PDF, images, audio, texte et calculatrices. Conversion, compression, édition et plus.' },
+    { q: 'Les outils fonctionnent-ils sur mobile ?', a: 'Oui, tous nos outils fonctionnent sur mobile, tablette et ordinateur.' },
+    { q: 'Dois-je installer un logiciel ?', a: 'Non, tous les outils fonctionnent directement dans le navigateur sans installation.' },
+  ] : [
+    { q: 'Are SmartTools tools free?', a: 'Yes, all SmartTools tools are 100% free and require no registration or account creation.' },
+    { q: 'Are my files uploaded to a server?', a: 'No, all processing happens locally in your browser. Your files never leave your device.' },
+    { q: 'What types of tools are available?', a: 'We offer tools for PDF files, images, audio, text, and calculators — including conversion, compression, editing, and more.' },
+    { q: 'Do the tools work on mobile?', a: 'Yes, all our tools work on phones, tablets, and desktop computers.' },
+    { q: 'Do I need to install any software?', a: 'No, all tools run directly in your browser without any installation.' },
+  ]
+
+  const homepageJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      ...buildWebsiteJsonLd()['@graph'],
+      buildFaqJsonLd(homepageFaqs),
+    ],
+  }
+
   useSEO({
     title: 'SmartTools - Free Online Tools for PDF, Images & More',
     description: lang === 'ar'
-      ? 'SmartTools — أدوات مجانية عبر الإنترنت لملفات PDF والصور والمزيد. بدون تسجيل.'
+      ? 'SmartTools — أدوات مجانية عبر الإنترنت لملفات PDF والصور والصوت والمزيد. تحويل وضغط وتحرير الملفات في متصفحك. بدون تسجيل.'
       : lang === 'fr'
-      ? 'SmartTools — Outils en ligne gratuits pour PDF, images et plus. Sans inscription.'
-      : 'SmartTools — Free online tools for PDF, images, text and calculators. Convert, compress and edit files in your browser. No sign-up required.',
+      ? 'SmartTools — Outils en ligne gratuits pour PDF, images, audio et plus. Convertissez, compressez et éditez vos fichiers dans votre navigateur. Sans inscription.'
+      : 'SmartTools — Free online tools for PDF, images, audio, text and calculators. Convert, compress and edit files directly in your browser. No sign-up required.',
     canonical: '/',
     lang,
-    jsonLd: buildWebsiteJsonLd(),
+    jsonLd: homepageJsonLd,
   })
 
   useEffect(() => {
@@ -244,37 +272,79 @@ export default function HomePage({ lang, t }) {
 
       </div>
 
-      {/* SEO Content Section */}
-      <div className="max-w-3xl mx-auto px-4 pb-12 md:pb-16">
-        <div className="space-y-4 text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed">
+      {/* ── SEO Content Section ── */}
+      <div className="max-w-3xl mx-auto px-4 pb-12 md:pb-16 space-y-10">
+
+        {/* What is SmartTools */}
+        <section className="space-y-4">
           <h2 className="text-lg font-bold text-[#111111] dark:text-[#FAFAFA]">
-            {lang === 'ar' ? 'أدوات مجانية عبر الإنترنت' : lang === 'fr' ? 'Outils en ligne gratuits' : 'Free Online Tools'}
+            {lang === 'ar' ? 'ما هو SmartTools؟' : lang === 'fr' ? 'Qu\'est-ce que SmartTools ?' : 'What is SmartTools?'}
           </h2>
-          <p>
+          <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed">
             {lang === 'ar'
-              ? 'SmartTools عبارة عن مجموعة من الأدوات المجانية عبر الإنترنت التي تعمل مباشرة في متصفحك. سواء كنت بحاجة إلى تحويل ملفات PDF أو ضغط الصور أو عد الكلمات أو حساب النسب المئوية، فإن أدواتنا سريعة وآمنة ولا تتطلب التسجيل.'
+              ? 'SmartTools هي منصة أدوات مجانية عبر الإنترنت تجمع أكثر من 80 أداة في مكان واحد. تعمل جميع الأدوات مباشرة في متصفحك — لا حاجة للتثبيت أو التسجيل أو رفع الملفات. تشمل الأدوات تحويل وضغط وتحرير ملفات PDF، تحرير وتحويل الصور، تسجيل وتحرير الصوت، أدوات نصية وآلات حاسبة.'
               : lang === 'fr'
-              ? 'SmartTools est une collection d\'outils en ligne gratuits qui fonctionnent directement dans votre navigateur. Que vous ayez besoin de convertir des fichiers PDF, de compresser des images, de compter des mots ou de calculer des pourcentages, nos outils sont rapides, sûrs et ne nécessitent aucune inscription.'
-              : 'SmartTools is a collection of free online tools that work directly in your browser. Whether you need to convert PDF files, compress images, count words, or calculate percentages, our tools are fast, secure, and require no sign-up.'}
+              ? 'SmartTools est une plateforme d\'outils en ligne gratuits qui regroupe plus de 80 outils au même endroit. Tous les outils fonctionnent directement dans votre navigateur — pas d\'installation, pas d\'inscription, pas de téléversement de fichiers. Les outils incluent la conversion, la compression et l\'édition de PDF, l\'édition et la conversion d\'images, l\'enregistrement et l\'édition audio, des outils texte et des calculatrices.'
+              : 'SmartTools is a free online tools platform that brings together 80+ tools in one place. All tools run directly in your browser — no installation, no sign-up, no file uploads. Tools include PDF conversion, compression and editing, image editing and conversion, audio recording and editing, text utilities, and calculators.'}
           </p>
-          <p>
+          <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed">
             {lang === 'ar'
-              ? 'جميع المعالجة تتم محلياً في متصفحك، مما يعني أن ملفاتك لا تغادر جهازك أبداً. هذا يضمن خصوصيتك وأمانك الكامل.'
+              ? 'جميع المعالجة تتم محلياً في متصفحك، مما يعني أن ملفاتك لا تغادر جهازك أبداً. هذا يضمن خصوصيتك وأمانك الكامل. لا نخزن ملفاتك ولا نتتبع ما تفعله.'
               : lang === 'fr'
-              ? 'Tout le traitement se fait localement dans votre navigateur, ce qui signifie que vos fichiers ne quittent jamais votre appareil. Cela garantit une confidentialité et une sécurité totales.'
-              : 'All processing happens locally in your browser, meaning your files never leave your device. This ensures complete privacy and security.'}
+              ? 'Tout le traitement se fait localement dans votre navigateur, ce qui signifie que vos fichiers ne quittent jamais votre appareil. Cela garantit une confidentialité et une sécurité totales. Nous ne stockons pas vos fichiers et ne suivons pas ce que vous faites.'
+              : 'All processing happens locally in your browser, meaning your files never leave your device. This ensures complete privacy and security. We don\'t store your files or track what you do with them.'}
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-            {categories.map(cat => (
-              <div key={cat.id}>
-                <Link to={`/categories/${cat.slug}`} className="font-semibold text-blue-600 dark:text-blue-400 hover:underline text-sm">
-                  {cat.name[lang]}
-                </Link>
-                <p className="text-xs mt-1">{cat.description[lang]}</p>
+        </section>
+
+        {/* Categories with descriptions and links */}
+        <section className="space-y-4">
+          <h2 className="text-lg font-bold text-[#111111] dark:text-[#FAFAFA]">
+            {lang === 'ar' ? 'فئات الأدوات' : lang === 'fr' ? 'Catégories d\'outils' : 'Tool Categories'}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {categories.map(cat => {
+              const catTools = tools.filter(to => to.categoryId === cat.id)
+              return (
+                <div key={cat.id} className="space-y-1">
+                  <Link to={`/categories/${cat.slug}`} className="font-semibold text-blue-600 dark:text-blue-400 hover:underline text-sm">
+                    {cat.name[lang]} ({catTools.length})
+                  </Link>
+                  <p className="text-xs text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed">{cat.description[lang]}</p>
+                </div>
+              )
+            })}
+          </div>
+        </section>
+
+        {/* Popular tool links */}
+        <section className="space-y-4">
+          <h2 className="text-lg font-bold text-[#111111] dark:text-[#FAFAFA]">
+            {lang === 'ar' ? 'أدوات شائعة' : lang === 'fr' ? 'Outils populaires' : 'Popular Tools'}
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {popularToday.map(tool => (
+              <Link key={tool.id} to={`/tools/${tool.slug}`} className="px-3 py-1.5 rounded-lg text-sm font-medium border border-[#E5E7EB] dark:border-[#27272A] text-[#6B7280] dark:text-[#A1A1AA] hover:border-blue-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                {tool.name[lang]}
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="space-y-4">
+          <h2 className="text-lg font-bold text-[#111111] dark:text-[#FAFAFA]">
+            {lang === 'ar' ? 'الأسئلة الشائعة' : lang === 'fr' ? 'Questions fréquentes' : 'Frequently Asked Questions'}
+          </h2>
+          <div className="space-y-2">
+            {homepageFaqs.map((faq, i) => (
+              <div key={i} className="border border-[#E5E7EB] dark:border-[#27272A] rounded-xl p-4">
+                <p className="text-sm font-semibold text-[#111111] dark:text-[#FAFAFA] mb-1">{faq.q}</p>
+                <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA] leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
-        </div>
+        </section>
+
       </div>
     </div>
   )

@@ -8,10 +8,14 @@
  */
 
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
-import {
-  buildPDFFromEditorState, extractPDFPagesByIndex, mergePDFsWithOrder,
-  addPageNumbersAdvanced, addWatermarkAdvanced,
-} from '../lib/processors/pdf.js'
+// PDF processor functions are dynamically imported for lazy loading
+let _pdfProc = null
+async function pdfProc() {
+  if (!_pdfProc) {
+    _pdfProc = await import('../lib/processors/pdf.js')
+  }
+  return _pdfProc
+}
 import {
   Loader2, RotateCcw, RotateCw, Trash2, Copy, Download, Check, X,
   ZoomIn, ZoomOut, Maximize, Undo2, Redo2, RefreshCw,
@@ -338,7 +342,7 @@ export default function AdvancedPdfEditor({ files: initialFiles, mode = 'edit', 
     if (editorPages.length === 0) return
     setProcessing(true)
     try {
-            const blob = await buildPDFFromEditorState(editorPages)
+            const blob = await (await pdfProc()).buildPDFFromEditorState(editorPages)
       const originalIds = new Set(originalPages.map(p => p.id))
       const deletedCount = originalPages.length - editorPages.filter(p => originalIds.has(p.id)).length
       setExportResult({ blob, deleted: deletedCount, total: editorPages.length })
@@ -352,8 +356,8 @@ export default function AdvancedPdfEditor({ files: initialFiles, mode = 'edit', 
     try {
             const byFile = new Map()
       selectedIndices.forEach(idx => { const page = editorPages[idx]; if (!byFile.has(page.file)) byFile.set(page.file, []); byFile.get(page.file).push(page.originalIndex) })
-      if (byFile.size === 1) { const [file, indices] = [...byFile.entries()][0]; const blob = await extractPDFPagesByIndex(file, indices); downloadBlob(blob, 'extracted-pages.pdf') }
-      else { const docs = [...byFile.entries()].map(([file, pageIndices]) => ({ file, pageIndices })); const blob = await mergePDFsWithOrder(docs); downloadBlob(blob, 'extracted-pages.pdf') }
+      if (byFile.size === 1) { const [file, indices] = [...byFile.entries()][0]; const blob = await (await pdfProc()).extractPDFPagesByIndex(file, indices); downloadBlob(blob, 'extracted-pages.pdf') }
+      else { const docs = [...byFile.entries()].map(([file, pageIndices]) => ({ file, pageIndices })); const blob = await (await pdfProc()).mergePDFsWithOrder(docs); downloadBlob(blob, 'extracted-pages.pdf') }
     } catch (err) { setError(err.message || 'Extract failed') }
     setProcessing(false)
   }, [editorPages, selectedIndices])
@@ -386,7 +390,7 @@ export default function AdvancedPdfEditor({ files: initialFiles, mode = 'edit', 
   const handleMerge = useCallback(async () => {
     setProcessing(true)
     try {
-            const blob = await buildPDFFromEditorState(editorPages)
+            const blob = await (await pdfProc()).buildPDFFromEditorState(editorPages)
       downloadBlob(blob, 'merged.pdf')
       setExportResult({ blob, deleted: 0, total: editorPages.length })
     } catch (err) { setError(err.message || 'Merge failed') }
@@ -512,9 +516,9 @@ export default function AdvancedPdfEditor({ files: initialFiles, mode = 'edit', 
         </div>
       )}
 
-      {showPageNumbers && <PageNumbersPanel tr={tr} selectedIndices={selectedIndices} onApply={async (options) => { setProcessing(true); try { const blob = await buildPDFFromEditorState(editorPages); const resultBlob = await addPageNumbersAdvanced(blob, { ...options, pageIndices: options.applyToSelected ? selectedIndices : null }); setExportResult({ blob: resultBlob, deleted: 0, total: editorPages.length }); setShowPageNumbers(false) } catch (err) { setError(err.message) } setProcessing(false) }} onClose={() => setShowPageNumbers(false)} processing={processing} />}
+      {showPageNumbers && <PageNumbersPanel tr={tr} selectedIndices={selectedIndices} onApply={async (options) => { setProcessing(true); try { const blob = await (await pdfProc()).buildPDFFromEditorState(editorPages); const resultBlob = await (await pdfProc()).addPageNumbersAdvanced(blob, { ...options, pageIndices: options.applyToSelected ? selectedIndices : null }); setExportResult({ blob: resultBlob, deleted: 0, total: editorPages.length }); setShowPageNumbers(false) } catch (err) { setError(err.message) } setProcessing(false) }} onClose={() => setShowPageNumbers(false)} processing={processing} />}
 
-      {showWatermark && <WatermarkPanel tr={tr} selectedIndices={selectedIndices} onApply={async (options) => { setProcessing(true); try { const blob = await buildPDFFromEditorState(editorPages); const resultBlob = await addWatermarkAdvanced(blob, { ...options, pageIndices: options.applyToSelected ? selectedIndices : null }); setExportResult({ blob: resultBlob, deleted: 0, total: editorPages.length }); setShowWatermark(false) } catch (err) { setError(err.message) } setProcessing(false) }} onClose={() => setShowWatermark(false)} processing={processing} />}
+      {showWatermark && <WatermarkPanel tr={tr} selectedIndices={selectedIndices} onApply={async (options) => { setProcessing(true); try { const blob = await (await pdfProc()).buildPDFFromEditorState(editorPages); const resultBlob = await (await pdfProc()).addWatermarkAdvanced(blob, { ...options, pageIndices: options.applyToSelected ? selectedIndices : null }); setExportResult({ blob: resultBlob, deleted: 0, total: editorPages.length }); setShowWatermark(false) } catch (err) { setError(err.message) } setProcessing(false) }} onClose={() => setShowWatermark(false)} processing={processing} />}
 
       <div className="flex flex-col lg:flex-row gap-3">
         <div className="lg:w-64 shrink-0 order-2 lg:order-1">

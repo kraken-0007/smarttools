@@ -359,7 +359,7 @@
       "fr": "Les outils audio de SmartTools fournissent 21 utilitaires gratuits en ligne pour éditer et convertir des fichiers audio. Couper, fusionner, convertir, amplifier, normaliser, fondre, changer la vitesse et la tonalité, enregistrer et plus.",
       "ar": "تقدم أدوات الصوت من SmartTools 21 أداة مجانية عبر الإنترنت لتحرير وتحويل ملفات الصوت. قص، دمج، تحويل، تضخيم، تطبيع، تلاشي، تغيير السرعة والطبقة، تسجيل والمزيد."
     },
-    "faqs": [
+    "faq": [
       {
         "q": "Are these audio tools free?",
         "a": "Yes, all audio tools are completely free with no sign-up required."

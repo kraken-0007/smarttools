@@ -45,12 +45,7 @@ import Breadcrumb from '../components/Breadcrumb'
 import { getIcon } from '../lib/icons'
 import { FileUploader, ProcessButton, ResultDisplay, ErrorDisplay, useToolProcessor } from '../lib/processors/shared.jsx'
 import { downloadBlob, getOutputFilename, formatFileSize } from '../lib/processors/image.js'
-import {
-  pdfToJpg, jpgToPdf, mergePDFs, splitPDF, compressPDF, pdfToWord, wordToPdf,
-  pdfToPng, pngToPdf, rotatePdf, deletePdfPages, extractPdfPages, reorderPdfPages,
-  countPdfPages, getPdfMetadata, protectPdf, unlockPdf, addWatermarkPdf,
-  addPageNumbersPdf, extractImagesFromPdf,
-} from '../lib/processors/pdf.js'
+// PDF processors are dynamically imported for lazy loading
 import { countWords, countCharacters, convertCase } from '../lib/processors/text.js'
 import { calculateAge, calculateBMI, calculatePercentage } from '../lib/processors/calculators.js'
 
@@ -68,7 +63,7 @@ function ProcessingIndicator() {
 function PdfToJpgTool({ lang }) {
   const [file, setFile] = useState(null)
   const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
-    const pages = await pdfToJpg(f)
+    const { pdfToJpg } = await import('../lib/processors/pdf.js'); const pages = await pdfToJpg(f)
     return pages.map((p, i) => ({ blob: p.blob, filename: `page-${i+1}.jpg` }))
   }, lang)
   const handleReset = () => { setFile(null); reset() }
@@ -89,7 +84,7 @@ function PdfToJpgTool({ lang }) {
 function PdfToPngTool({ lang }) {
   const [file, setFile] = useState(null)
   const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
-    const pages = await pdfToPng(f)
+    const { pdfToPng } = await import('../lib/processors/pdf.js'); const pages = await pdfToPng(f)
     return pages.map((p, i) => ({ blob: p.blob, filename: `page-${i+1}.png` }))
   }, lang)
   const handleReset = () => { setFile(null); reset() }
@@ -110,7 +105,7 @@ function PdfToPngTool({ lang }) {
 function JpgToPdfTool({ lang }) {
   const [files, setFiles] = useState([])
   const { loading, results, error, process, reset } = useToolProcessor(async (imgs) => {
-    const blob = await jpgToPdf(imgs); return { blob, filename: 'converted.pdf' }
+    const { jpgToPdf } = await import('../lib/processors/pdf.js'); const blob = await jpgToPdf(imgs); return { blob, filename: 'converted.pdf' }
   }, lang)
   const handleReset = () => { setFiles([]); reset() }
   return (
@@ -130,7 +125,7 @@ function JpgToPdfTool({ lang }) {
 function PngToPdfTool({ lang }) {
   const [files, setFiles] = useState([])
   const { loading, results, error, process, reset } = useToolProcessor(async (imgs) => {
-    const blob = await pngToPdf(imgs); return { blob, filename: 'converted.pdf' }
+    const { pngToPdf } = await import('../lib/processors/pdf.js'); const blob = await pngToPdf(imgs); return { blob, filename: 'converted.pdf' }
   }, lang)
   const handleReset = () => { setFiles([]); reset() }
   return (
@@ -158,7 +153,7 @@ function SplitPdfTool({ lang }) {
 function CompressPdfTool({ lang }) {
   const [file, setFile] = useState(null)
   const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
-    const blob = await compressPDF(f)
+    const { compressPDF } = await import('../lib/processors/pdf.js'); const blob = await compressPDF(f)
     const saved = Math.round((1 - blob.size/f.size) * 100)
     return { blob, filename: 'compressed.pdf', saved }
   }, lang)
@@ -189,7 +184,7 @@ function CompressPdfTool({ lang }) {
 function PdfToWordTool({ lang }) {
   const [file, setFile] = useState(null)
   const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
-    const blob = await pdfToWord(f)
+    const { pdfToWord } = await import('../lib/processors/pdf.js'); const blob = await pdfToWord(f)
     return { blob, filename: getOutputFilename(f.name, 'doc') }
   }, lang)
   const handleReset = () => { setFile(null); reset() }
@@ -210,7 +205,7 @@ function PdfToWordTool({ lang }) {
 function WordToPdfTool({ lang }) {
   const [file, setFile] = useState(null)
   const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
-    const blob = await wordToPdf(f); return { blob, filename: 'converted.pdf' }
+    const { wordToPdf } = await import('../lib/processors/pdf.js'); const blob = await wordToPdf(f); return { blob, filename: 'converted.pdf' }
   }, lang)
   const handleReset = () => { setFile(null); reset() }
   return (
@@ -250,7 +245,7 @@ function ReorderPdfPagesTool({ lang }) {
 function PdfPageCounterTool({ lang }) {
   const [file, setFile] = useState(null)
   const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
-    return await countPdfPages(f)
+    const { countPdfPages } = await import('../lib/processors/pdf.js'); return await countPdfPages(f)
   }, lang)
   const handleReset = () => { setFile(null); reset() }
   return (
@@ -281,7 +276,7 @@ function PdfPageCounterTool({ lang }) {
 function PdfMetadataViewerTool({ lang }) {
   const [file, setFile] = useState(null)
   const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
-    return await getPdfMetadata(f)
+    const { getPdfMetadata } = await import('../lib/processors/pdf.js'); return await getPdfMetadata(f)
   }, lang)
   const handleReset = () => { setFile(null); reset() }
   const labels = {
@@ -321,7 +316,7 @@ function ProtectPdfTool({ lang }) {
   const [file, setFile] = useState(null)
   const [password, setPassword] = useState('')
   const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
-    const blob = await protectPdf(f, password); return { blob, filename: 'protected.pdf' }
+    const { protectPdf } = await import('../lib/processors/pdf.js'); const blob = await protectPdf(f, password); return { blob, filename: 'protected.pdf' }
   }, lang)
   const handleReset = () => { setFile(null); setPassword(''); reset() }
   return (
@@ -350,7 +345,7 @@ function UnlockPdfTool({ lang }) {
   const [file, setFile] = useState(null)
   const [password, setPassword] = useState('')
   const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
-    const blob = await unlockPdf(f, password); return { blob, filename: 'unlocked.pdf' }
+    const { unlockPdf } = await import('../lib/processors/pdf.js'); const blob = await unlockPdf(f, password); return { blob, filename: 'unlocked.pdf' }
   }, lang)
   const handleReset = () => { setFile(null); setPassword(''); reset() }
   return (
@@ -386,7 +381,7 @@ function AddPageNumbersPdfTool({ lang }) {
 function ExtractImagesFromPdfTool({ lang }) {
   const [file, setFile] = useState(null)
   const { loading, results, error, process, reset } = useToolProcessor(async (f) => {
-    const images = await extractImagesFromPdf(f)
+    const { extractImagesFromPdf } = await import('../lib/processors/pdf.js'); const images = await extractImagesFromPdf(f)
     if (!images || images.length === 0) throw new Error(lang==='ar'?'لم يتم العثور على صور':lang==='fr'?'Aucune image trouvée':'No images found in PDF')
     return images.map((img, i) => ({ blob: img.blob, filename: `image-p${img.page}-${i+1}.png` }))
   }, lang)

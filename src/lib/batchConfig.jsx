@@ -13,9 +13,8 @@ import {
   pixelateImageBatch, sharpenImageBatch, invertImageBatch, redactImageBatch,
   downloadBlob, getOutputFilename,
 } from './processors/image.js'
-import {
-  pdfToJpg, pdfToPng, jpgToPdf, pngToPdf, mergePDFs, compressPDF, rotatePdf,
-} from './processors/pdf.js'
+// PDF processor functions are dynamically imported inside their processor functions
+
 import {
   CompressBatchSettings, ResizeBatchSettings, RotateBatchSettings,
   ConvertBatchSettings, FlipBatchSettings, FilterBatchSettings,
@@ -241,7 +240,7 @@ export const BATCH_CONFIG = {
     hint: PDF_HINT,
     settingsComponent: NoSettingsBatch,
     processor: async (file) => {
-      const blob = await pdfToJpg(file)
+      const { pdfToJpg } = await import('./processors/pdf.js'); const blob = await pdfToJpg(file)
       return { blob, filename: getOutputFilename(file.name, 'zip') }
     },
   },
@@ -250,7 +249,7 @@ export const BATCH_CONFIG = {
     hint: PDF_HINT,
     settingsComponent: NoSettingsBatch,
     processor: async (file) => {
-      const blob = await pdfToPng(file)
+      const { pdfToPng } = await import('./processors/pdf.js'); const blob = await pdfToPng(file)
       return { blob, filename: getOutputFilename(file.name, 'zip') }
     },
   },
@@ -259,7 +258,7 @@ export const BATCH_CONFIG = {
     hint: IMAGE_HINT,
     settingsComponent: NoSettingsBatch,
     processor: async (file) => {
-      const blob = await jpgToPdf([file])
+      const { jpgToPdf } = await import('./processors/pdf.js'); const blob = await jpgToPdf([file])
       return { blob, filename: getOutputFilename(file.name, 'pdf') }
     },
   },
@@ -268,7 +267,7 @@ export const BATCH_CONFIG = {
     hint: IMAGE_HINT,
     settingsComponent: NoSettingsBatch,
     processor: async (file) => {
-      const blob = await pngToPdf([file])
+      const { pngToPdf } = await import('./processors/pdf.js'); const blob = await pngToPdf([file])
       return { blob, filename: getOutputFilename(file.name, 'pdf') }
     },
   },
@@ -279,7 +278,7 @@ export const BATCH_CONFIG = {
     orderMatters: true,
     processor: async (file, settings, allFiles) => {
       // For merge, we need all files — handled specially
-      const blob = await mergePDFs(allFiles || [file])
+      const { mergePDFs } = await import('./processors/pdf.js'); const blob = await mergePDFs(allFiles || [file])
       return { blob, filename: 'merged.pdf' }
     },
   },
@@ -288,7 +287,7 @@ export const BATCH_CONFIG = {
     hint: PDF_HINT,
     settingsComponent: NoSettingsBatch,
     processor: async (file) => {
-      const blob = await compressPDF(file)
+      const { compressPDF } = await import('./processors/pdf.js'); const blob = await compressPDF(file)
       return { blob, filename: getOutputFilename(file.name, 'pdf') }
     },
   },
@@ -297,7 +296,7 @@ export const BATCH_CONFIG = {
     hint: PDF_HINT,
     settingsComponent: RotateBatchSettings,
     processor: async (file, settings) => {
-      const blob = await rotatePdf(file, settings.angle ?? 90)
+      const { rotatePdf } = await import('./processors/pdf.js'); const blob = await rotatePdf(file, settings.angle ?? 90)
       return { blob, filename: getOutputFilename(file.name, 'pdf') }
     },
   },
